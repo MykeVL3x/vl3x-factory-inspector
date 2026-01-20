@@ -1,0 +1,316 @@
+{
+  "_copyright": "Designed & Implemented - Mike Levine - V1.0 18 Jan 2026. All VL3x details copyright \u00a9 2026 TC-Helicon. All Rights Reserved.",
+  "_sot_captured": "19 Jan 2026 - Factory Reset SOT Values",
+  "INPUT": [
+    {
+      "l": "MIC GAIN",
+      "v": 22,
+      "d": "22 dB",
+      "offset": 69
+    },
+    {
+      "l": "INPUT TYPE",
+      "v": 0,
+      "d": "0",
+      "offset": 20
+    },
+    {
+      "l": "MIC CLIP PROTECTION",
+      "v": 1,
+      "d": "ON",
+      "offset": 124
+    },
+    {
+      "l": "USB MODE",
+      "v": 0,
+      "d": "0",
+      "offset": 139
+    },
+    {
+      "l": "GLOBAL PITCH CORRECT",
+      "v": 0,
+      "d": "0%",
+      "offset": 61
+    },
+    {
+      "l": "LEAD MUTE",
+      "v": 0,
+      "d": "OFF",
+      "offset": 68
+    },
+    {
+      "l": "AUX GAIN",
+      "v": 0,
+      "d": "0 dB",
+      "offset": 74
+    },
+    {
+      "l": "AUX VOCAL CANCEL",
+      "v": 0,
+      "d": "OFF",
+      "offset": 28
+    },
+    {
+      "l": "MONITOR GAIN",
+      "v": 0,
+      "d": "0 dB",
+      "offset": 73
+    },
+    {
+      "l": "ROOMSENSE AUTO-DETECT",
+      "v": 0,
+      "d": "OFF",
+      "offset": 24
+    },
+    {
+      "l": "LEAD DELAY",
+      "v": 0,
+      "d": "0",
+      "offset": 27
+    }
+  ],
+  "OUTPUT": [
+    {
+      "l": "XLR OUTPUT",
+      "v": 1,
+      "d": "1",
+      "offset": 96
+    },
+    {
+      "l": "XLR OUTPUT LEVEL",
+      "v": 0,
+      "d": "0",
+      "offset": 25
+    },
+    {
+      "l": "GUITAR JACK MODE",
+      "v": 0,
+      "d": "0",
+      "offset": 140
+    },
+    {
+      "l": "TALK TRIM",
+      "v": 0,
+      "d": "0 dB",
+      "offset": 75
+    },
+    {
+      "l": "USB OUTPUT MODE",
+      "v": 0,
+      "d": "Locked - derived from USB MODE",
+      "offset": null
+    },
+    {
+      "l": "USB OUTPUT TRIM",
+      "v": 6,
+      "d": "6 dB",
+      "offset": 95
+    }
+  ],
+  "GUITAR": [
+    {
+      "l": "INPUT GAIN",
+      "v": 10,
+      "d": "10 dB",
+      "offset": 70
+    },
+    {
+      "l": "PHASE",
+      "v": 0,
+      "d": "0",
+      "offset": 21
+    },
+    {
+      "l": "SPEAKER SIM ENABLE",
+      "v": 1,
+      "d": "ON",
+      "offset": 60
+    },
+    {
+      "l": "OUTPUT MODE",
+      "v": 0,
+      "d": "0",
+      "offset": 94
+    },
+    {
+      "l": "GATE THRESHOLD",
+      "v": -63,
+      "d": "-63",
+      "offset": 51
+    }
+  ],
+  "MIDI": [
+    {
+      "l": "SOURCE",
+      "v": 0,
+      "d": "Must stay USB",
+      "offset": null
+    },
+    {
+      "l": "MIDI TEMPO",
+      "v": 0,
+      "d": "OFF",
+      "offset": 19
+    },
+    {
+      "l": "INPUT CHANNEL",
+      "v": 0,
+      "d": "Must stay 1",
+      "offset": null
+    },
+    {
+      "l": "OUTPUT CHANNEL",
+      "v": 0,
+      "d": "Must stay 1",
+      "offset": null
+    },
+    {
+      "l": "INPUT FILTER",
+      "v": 0,
+      "d": "Must have no filters",
+      "offset": null
+    },
+    {
+      "l": "OUTPUT FILTER",
+      "v": 0,
+      "d": "Must have no filters",
+      "offset": null
+    },
+    {
+      "l": "TRANSPOSE",
+      "v": 0,
+      "d": "0",
+      "offset": 18
+    },
+    {
+      "l": "PITCHBEND RANGE",
+      "v": 12,
+      "d": "12",
+      "offset": 17
+    },
+    {
+      "l": "SPLIT NOTE",
+      "v": 0,
+      "d": "0",
+      "offset": 16
+    },
+    {
+      "l": "SPLIT DIRECTION",
+      "v": 0,
+      "d": "0",
+      "offset": 15
+    },
+    {
+      "l": "VIBRATO BOOST",
+      "v": 0,
+      "d": "0",
+      "offset": 58
+    },
+    {
+      "l": "SYSEX ID",
+      "v": 0,
+      "d": "Must stay 0",
+      "offset": null
+    },
+    {
+      "l": "MIDI TX DELAY",
+      "v": 0,
+      "d": "0",
+      "offset": 138
+    }
+  ],
+  "TONE": [
+    {
+      "l": "TONE",
+      "v": 1,
+      "d": "ON",
+      "offset": 62
+    },
+    {
+      "l": "SHAPE",
+      "v": 50,
+      "d": "50",
+      "offset": 32
+    },
+    {
+      "l": "COMPRESS",
+      "v": 50,
+      "d": "50",
+      "offset": 35
+    },
+    {
+      "l": "DE-ESS",
+      "v": 50,
+      "d": "50",
+      "offset": 39
+    }
+  ],
+  "SYSTEM": [
+    {
+      "l": "GLOBAL TEMPO",
+      "v": 0,
+      "d": "OFF",
+      "offset": 8
+    },
+    {
+      "l": "GLOBAL PRESET",
+      "v": -21,
+      "d": "491",
+      "offset": 122
+    },
+    {
+      "l": "GLOBAL KEY/SCALE",
+      "v": 0,
+      "d": "OFF",
+      "offset": 7
+    },
+    {
+      "l": "ALL GUITAR FX GLOBAL",
+      "v": 0,
+      "d": "OFF",
+      "offset": 121
+    },
+    {
+      "l": "GLOBAL NATPLAY SOURCE",
+      "v": 0,
+      "d": "0",
+      "offset": 59
+    },
+    {
+      "l": "MIX ROOMSENSE TO NP",
+      "v": 0,
+      "d": "OFF",
+      "offset": 128
+    },
+    {
+      "l": "TUNER REFERENCE",
+      "v": -16,
+      "d": "440 Hz",
+      "offset": 4
+    },
+    {
+      "l": "HIT BEHAVIOR",
+      "v": 0,
+      "d": "0",
+      "offset": 5
+    },
+    {
+      "l": "AUX IN TYPE",
+      "v": 0,
+      "d": "0",
+      "offset": 76
+    },
+    {
+      "l": "CONTRAST",
+      "v": 0,
+      "d": "50%",
+      "offset": 0
+    },
+    {
+      "l": "MIX SCREEN TIMEOUT",
+      "v": 7,
+      "d": "7",
+      "offset": 129
+    }
+  ]
+}
