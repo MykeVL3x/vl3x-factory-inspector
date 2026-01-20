@@ -179,7 +179,7 @@ function setView(view) {
       updatePresetHeader(elements.presetTitle, elements.presetInfo, null);
       elements.paramsContainer.innerHTML = `<div class="empty-state">
         <div class="img-wrapper">
-          <img src="vl3x-social-preview_2.png" alt="VL3X Factory Inspector">
+          <img src="vl3xImage.png" alt="VL3X Factory Inspector">
           <div class="img-overlay">
             <h3>No Preset Selected</h3>
             <p>Select a preset from the list to view its parameters</p>
