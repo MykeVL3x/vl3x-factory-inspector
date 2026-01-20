@@ -1,0 +1,87 @@
+<!--
+  VL3X Factory Preset Inspector - Modular Version
+  Designed & Implemented - Mike Levine - V2.0 18 Jan 2026
+  All VL3x details copyright 2026 TC Helicon. All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta property="og:title" content="VL3X Factory Inspector" />
+  <meta property="og:description" content="Browse all 259 VL3X factory presets (1-254 + GBL 490-494) - vocal effects, guitar tones, and settings at a glance" />
+  <meta property="og:image" content="https://mykevl3x.github.io/vl3x-factory-inspector/VL3xImage.png" />
+  <meta property="og:url" content="https://mykevl3x.github.io/vl3x-factory-inspector/" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>VL3X Factory Preset Inspector</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Preset Panel (Left) -->
+    <div class="preset-panel">
+      <div class="panel-header">
+        <h1>VL3X Preset Inspector</h1>
+        <div class="subtitle">Inspect factory presets differently!</div>
+      </div>
+
+      <div class="view-toggle">
+        <button class="view-btn" id="viewSetup">Setup</button>
+        <button class="view-btn active" id="viewPresets">Presets</button>
+        <button class="view-btn" id="viewEffects" disabled style="opacity:0.4;cursor:not-allowed;">Effects</button>
+      </div>
+
+      <div class="caution-box" id="cautionBox" style="display:none;">
+        <strong>CAUTION:</strong><br>
+        If using VoiceSupport2 or VoiceLive Editor, keep MIDI settings:<br>
+        - INPUT SOURCE=USB<br>
+        - INPUT/OUTPUT Channels=1<br>
+        - No INPUT/OUTPUT FILTERS<br>
+        - SYSEX ID=0
+      </div>
+
+      <div class="search-box" id="searchBox">
+        <input type="text" id="search" placeholder="Search presets...">
+      </div>
+
+      <div class="preset-list" id="presetList">
+        <div class="loading">Loading presets...</div>
+      </div>
+    </div>
+
+    <!-- Detail Panel (Right) -->
+    <div class="detail-panel">
+      <div class="detail-header">
+        <div class="copyright">
+          BASED ON:<br>
+          Firmware: 2.3.07 Build 379<br>
+          Manufacture Date: 2025.10.04
+        </div>
+        <h2 id="presetTitle">Select a Preset</h2>
+        <div class="preset-info" id="presetInfo">Click a preset to view parameters</div>
+      </div>
+
+      <div class="category-tabs" id="categoryTabs"></div>
+      <div class="subtabs" id="guitarSubtabs" style="display:none;"></div>
+
+      <div class="params-container" id="paramsContainer">
+        <div class="empty-state">
+          <div class="img-wrapper">
+            <img src="VL3xImage.png" alt="VL3X Factory Inspector">
+            <div class="img-overlay">
+              <h3>No Preset Selected</h3>
+              <p>Select a preset from the list to view its parameters</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-bar">
+        <span id="statsLeft">Total Presets: 259 | Total Parameters: 472</span>
+        <span>Created by Mike Levine | 18 Jan 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
