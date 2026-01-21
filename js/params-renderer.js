@@ -189,6 +189,17 @@ export function renderParams(container, data, preset, category, subtab) {
     </div>`;
   }
 
+  // Educational panel for ButtonMap category
+  if (category === 'buttonmap') {
+    html += `<div class="preset-info-box buttonmap-info">
+      <strong>Cross-Domain Button Assignments</strong><br><br>
+      You can trigger Vocal effects while in Guitar mode (and vice versa) by assigning effects across layers.<br><br>
+      <strong>Example:</strong> While playing in Guitar mode, tap a button to trigger Vocal Harmony
+      without switching layers. Or in Vocal mode, control Guitar Delay with a footswitch.<br><br>
+      <em>Factory presets use same-layer assignments only. Cross-Domain values show 0 unless customized.</em>
+    </div>`;
+  }
+
   if (styleHeader) {
     html += '<div class="style-header">' + styleHeader + '</div>';
   }

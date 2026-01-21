@@ -40,6 +40,7 @@ export const CATEGORIES = {
   vocal_params: 'Vocal',
   guitar_params: 'Guitar',
   looper: 'Looper',
+  buttonmap: 'ButtonMap',
   pedal_control: 'Expr Pedal'
 };
 
