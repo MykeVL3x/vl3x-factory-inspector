@@ -158,32 +158,44 @@
       border-color: var(--accent);
     }
 
-    .value-row {
+    .slider-row {
       display: flex;
-      gap: 0.3rem;
       align-items: center;
+      gap: 0.5rem;
     }
 
-    .value-slider {
+    .param-slider {
       flex: 1;
-      height: 4px;
+      height: 6px;
       -webkit-appearance: none;
+      appearance: none;
       background: var(--border);
-      border-radius: 2px;
+      border-radius: 3px;
+      cursor: pointer;
     }
 
-    .value-slider::-webkit-slider-thumb {
+    .param-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 12px;
-      height: 12px;
+      appearance: none;
+      width: 14px;
+      height: 14px;
       background: var(--accent);
       border-radius: 50%;
       cursor: pointer;
     }
 
-    .value-input {
-      width: 50px;
-      padding: 0.25rem;
+    .param-slider::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+    }
+
+    .value-display {
+      width: 60px;
+      padding: 0.3rem;
       border: 1px solid var(--border);
       border-radius: 4px;
       background: var(--card-bg);
@@ -193,9 +205,9 @@
     }
 
     .value-unit {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
-      min-width: 20px;
+      min-width: 24px;
     }
 
     .add-btn {
@@ -480,9 +492,11 @@
             <label>Subcategory</label>
             <select id="paramSubcategory" class="form-select"></select>
           </div>
-          <div class="form-group" id="enumGroup" style="display:none;">
-            <label>Select Option</label>
-            <select id="enumSelect" class="form-select"></select>
+          <div class="form-group">
+            <label>Option</label>
+            <select id="enumSelect" class="form-select">
+              <option value="">—</option>
+            </select>
           </div>
           <div class="form-group">
             <label>Parameter</label>
@@ -490,9 +504,9 @@
           </div>
           <div class="form-group">
             <label>Value <span id="valueRange"></span></label>
-            <div class="value-row">
-              <input type="range" id="paramSlider" class="value-slider">
-              <input type="number" id="paramValue" class="value-input">
+            <div class="slider-row">
+              <input type="range" id="valueSlider" class="param-slider" min="0" max="100" value="0">
+              <input type="number" id="paramValue" class="value-display">
               <span id="paramUnit" class="value-unit"></span>
             </div>
           </div>
@@ -533,7 +547,7 @@
           <li><strong>Add parameters to your sequence</strong>
             <ul>
               <li>Select Category → Subcategory → Parameter</li>
-              <li>Set the value using the slider or type directly</li>
+              <li>Set the value (use Option dropdown for named values)</li>
               <li>Click <strong>+ Add to Sequence</strong></li>
               <li>Repeat for each parameter you want to change</li>
             </ul>
@@ -566,11 +580,10 @@
     const categorySelect = document.getElementById('paramCategory');
     const subcatSelect = document.getElementById('paramSubcategory');
     const paramSelect = document.getElementById('paramSelect');
-    const paramSlider = document.getElementById('paramSlider');
+    const valueSlider = document.getElementById('valueSlider');
     const paramValue = document.getElementById('paramValue');
     const paramUnit = document.getElementById('paramUnit');
     const valueRange = document.getElementById('valueRange');
-    const enumGroup = document.getElementById('enumGroup');
     const enumSelect = document.getElementById('enumSelect');
     const addBtn = document.getElementById('addParam');
     const batchList = document.getElementById('batchList');
@@ -614,21 +627,23 @@
       subcatSelect.addEventListener('change', updateParameters);
       paramSelect.addEventListener('change', updateValueConstraints);
 
-      // Value changes
-      paramSlider.addEventListener('input', () => {
-        paramValue.value = paramSlider.value;
-        syncEnumSelect();
+      // Slider updates value display
+      valueSlider.addEventListener('input', () => {
+        paramValue.value = valueSlider.value;
       });
 
+      // Value input updates slider (clamp to valid range)
       paramValue.addEventListener('input', () => {
-        paramSlider.value = paramValue.value;
-        syncEnumSelect();
+        const min = parseInt(valueSlider.min);
+        const max = parseInt(valueSlider.max);
+        let val = parseInt(paramValue.value) || min;
+        if (val < min) val = min;
+        if (val > max) val = max;
+        paramValue.value = val;
+        valueSlider.value = val;
       });
 
-      enumSelect.addEventListener('change', () => {
-        paramValue.value = enumSelect.value;
-        paramSlider.value = enumSelect.value;
-      });
+      // Option dropdown is independent - no connection to slider or value
 
       // Add parameter
       addBtn.addEventListener('click', addParameter);
@@ -654,6 +669,17 @@
       paramSelect.innerHTML = params.map(p =>
         `<option value="${p.offset}" data-min="${p.min}" data-max="${p.max}" data-unit="${p.unit || ''}" data-enum="${p.enum || ''}" data-name="${p.name}">${p.name}</option>`
       ).join('');
+
+      // Populate Option dropdown based on subcategory (find first param with enum)
+      const enumParam = params.find(p => p.enum && ENUMS[p.enum]);
+      if (enumParam) {
+        const vals = getEnumValues(enumParam.enum);
+        enumSelect.innerHTML = vals.map((v, i) => `<option value="${i}">${i}: ${v}</option>`).join('');
+        enumSelect.selectedIndex = 0;
+      } else {
+        enumSelect.innerHTML = '';
+      }
+
       updateValueConstraints();
     }
 
@@ -664,37 +690,18 @@
       const min = parseInt(opt.dataset.min);
       const max = parseInt(opt.dataset.max);
       const unit = opt.dataset.unit || '';
-      const enumType = opt.dataset.enum;
 
-      paramSlider.min = min;
-      paramSlider.max = max;
+      // Update slider and value constraints to match parameter range
+      valueSlider.min = min;
+      valueSlider.max = max;
       paramValue.min = min;
       paramValue.max = max;
       paramUnit.textContent = unit;
       valueRange.textContent = `(${min} to ${max})`;
 
-      // Default value
-      let defaultVal = (unit === 'dB' && min < 0) ? 0 : min;
-      defaultVal = Math.max(min, Math.min(max, defaultVal));
-      paramValue.value = defaultVal;
-      paramSlider.value = defaultVal;
-
-      // Enum handling
-      if (enumType && ENUMS[enumType]) {
-        enumGroup.style.display = 'block';
-        const vals = getEnumValues(enumType);
-        enumSelect.innerHTML = vals.map((v, i) => `<option value="${i}">${i}: ${v}</option>`).join('');
-        enumSelect.value = defaultVal;
-      } else {
-        enumGroup.style.display = 'none';
-      }
-    }
-
-    function syncEnumSelect() {
-      const opt = paramSelect.selectedOptions[0];
-      if (opt && opt.dataset.enum && ENUMS[opt.dataset.enum]) {
-        enumSelect.value = paramValue.value;
-      }
+      // Start at left (minimum value)
+      valueSlider.value = min;
+      paramValue.value = min;
     }
 
     function addParameter() {
