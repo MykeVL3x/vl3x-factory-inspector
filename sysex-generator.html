@@ -666,9 +666,11 @@
       const category = categorySelect.value;
       const subcategory = subcatSelect.value;
       const params = getParameters(category, subcategory);
-      paramSelect.innerHTML = '<option value="" disabled selected>SELECT</option>' + params.map(p =>
-        `<option value="${p.offset}" data-min="${p.min}" data-max="${p.max}" data-unit="${p.unit || ''}" data-enum="${p.enum || ''}" data-name="${p.name}">${p.name.toUpperCase()}</option>`
-      ).join('');
+      paramSelect.innerHTML = '<option value="" disabled selected>SELECT</option>' + params
+        .filter(p => p.name.toUpperCase() !== 'TYPE')
+        .map(p =>
+          `<option value="${p.offset}" data-min="${p.min}" data-max="${p.max}" data-unit="${p.unit || ''}" data-enum="${p.enum || ''}" data-name="${p.name}">${p.name.toUpperCase()}</option>`
+        ).join('');
 
       // Populate Option dropdown based on subcategory (find first param with enum)
       const enumParam = params.find(p => p.enum && ENUMS[p.enum]);
