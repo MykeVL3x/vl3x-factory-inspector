@@ -4549,3 +4549,15 @@ export function getParameters(category, subcategory) {
 export function getEnumValues(enumName) {
   return ENUMS[enumName] || [];
 }
+
+export function findParamByOffset(offset) {
+  for (const category of Object.keys(VL3X_PARAMS)) {
+    for (const subcategory of Object.keys(VL3X_PARAMS[category])) {
+      const param = VL3X_PARAMS[category][subcategory].find(p => p.offset === offset);
+      if (param) {
+        return { ...param, category, subcategory };
+      }
+    }
+  }
+  return null;
+}
