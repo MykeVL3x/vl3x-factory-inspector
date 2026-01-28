@@ -311,8 +311,8 @@
       line-height: 1.6;
       white-space: pre-wrap;
       color: #c9d1d9;
-      min-height: 150px;
-      max-height: 300px;
+      min-height: 216px;
+      max-height: 432px;
       overflow-y: auto;
     }
 
@@ -385,6 +385,57 @@
       position: absolute;
       left: 0.3rem;
       color: var(--accent-green);
+    }
+
+    .how-to-steps {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.75rem;
+      color: var(--text);
+      counter-reset: step;
+    }
+
+    .how-to-steps > li {
+      padding: 0.3rem 0 0.3rem 1.5rem;
+      position: relative;
+      counter-increment: step;
+    }
+
+    .how-to-steps > li::before {
+      content: counter(step) ".";
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-weight: 600;
+    }
+
+    .how-to-steps ul {
+      list-style: none;
+      padding-left: 0.75rem;
+      margin: 0.2rem 0 0 0;
+      color: var(--text-muted);
+    }
+
+    .how-to-steps ul li {
+      padding: 0.15rem 0 0.15rem 0.75rem;
+      position: relative;
+    }
+
+    .how-to-steps ul li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    .tips-warning {
+      margin-top: 0.5rem;
+      padding: 0.4rem 0.6rem;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: 4px;
+      font-size: 0.7rem;
+      color: var(--accent-orange);
     }
 
     @media (max-width: 900px) {
@@ -471,16 +522,31 @@
       </div>
 
       <div class="tips-section">
-        <h3>Usage Tips</h3>
-        <ul>
-          <li>Editor Enable (0x15) is required before any parameter changes take effect</li>
-          <li>200ms wait after Editor Enable ensures the VL3X is ready</li>
-          <li>50ms between messages (PC load, parameter changes) prevents collisions</li>
-          <li>Bank Select (CC 0 + CC 32) required for presets 129+ (banks 1-3)</li>
-          <li>Use Mixer levels (-61 dB = muted) for pop-free effect toggling</li>
-          <li>Changes affect the LIVE preset only, not stored preset data</li>
-          <li>Paste this sequence into onSong, MC-8, or any MIDI controller</li>
-        </ul>
+        <h3>How to Use</h3>
+        <ol class="how-to-steps">
+          <li><strong>Enter a preset number</strong> (optional)
+            <ul>
+              <li>Leave blank to modify the current live preset</li>
+              <li>Enter 1-500 to load a preset</li>
+            </ul>
+          </li>
+          <li><strong>Add parameters to your sequence</strong>
+            <ul>
+              <li>Select Category → Subcategory → Parameter</li>
+              <li>Set the value using the slider or type directly</li>
+              <li>Click <strong>+ Add to Sequence</strong></li>
+              <li>Repeat for each parameter you want to change</li>
+            </ul>
+          </li>
+          <li><strong>Generate and copy</strong>
+            <ul>
+              <li>Click <strong>Generate Sequence</strong></li>
+              <li>Click <strong>Copy to Clipboard</strong></li>
+              <li>Paste into onSong, MC-8, or your MIDI controller</li>
+            </ul>
+          </li>
+        </ol>
+        <div class="tips-warning">Saving to preset is likely not something you want to do during a live set. Consider the save carefully if you do use it.</div>
       </div>
     </main>
   </div>

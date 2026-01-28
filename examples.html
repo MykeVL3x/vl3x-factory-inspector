@@ -1,0 +1,340 @@
+<!--
+  VL3X Factory Preset Inspector - Examples Page
+  Designed & Implemented - Mike Levine - V2.0 26 Jan 2026
+  All VL3x details copyright 2026 TC Helicon. All Rights Reserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Building VL3X Control using MIDI & SysEx</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .examples-container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .examples-nav {
+      width: 380px;
+      background: var(--panel-bg);
+      border-right: 1px solid var(--border);
+      padding: 0.5rem;
+      overflow-y: auto;
+    }
+
+    .examples-nav h1 {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+      color: var(--accent);
+    }
+
+    .examples-nav .back-link {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    .examples-nav .back-link:hover {
+      color: var(--accent);
+    }
+
+    .examples-content {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      overflow-y: auto;
+      background: var(--bg);
+      font-size: 0.8rem;
+    }
+
+    .example-article {
+      display: none;
+      max-width: 900px;
+    }
+
+    .example-article.active {
+      display: block;
+    }
+
+    .example-article h2 {
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+      font-size: 1.3rem;
+    }
+
+    .example-article h3 {
+      color: var(--text);
+      margin-top: 0.6rem;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+
+    .example-article h4 {
+      color: var(--accent);
+      margin-top: 0;
+      margin-bottom: 0.2rem;
+      font-size: 0.85rem;
+    }
+
+    .example-article p {
+      line-height: 1.4;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+    }
+
+    .example-article ul {
+      margin-bottom: 0.35rem;
+      padding-left: 1.25rem;
+    }
+
+    .example-article li {
+      margin-bottom: 0.2rem;
+      line-height: 1.4;
+    }
+
+    .highlight-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      padding: 0.5rem 0.75rem;
+      border-radius: 0 6px 6px 0;
+      margin: 0.35rem 0;
+    }
+
+    .highlight-box.warning {
+      border-left-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.1);
+    }
+
+    .highlight-box h4 {
+      margin: 0 0 0.2rem 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.4rem 0.6rem;
+      margin: 0.25rem 0;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .step-number {
+      color: var(--accent);
+      font-weight: bold;
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: none;
+      border: 1px solid #9ca3af;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content p {
+      margin: 0.15rem 0;
+    }
+
+    .step-content ul {
+      margin: 0.2rem 0;
+    }
+
+    .timing-list {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.5rem;
+      margin: 0.35rem 0;
+      list-style: none;
+    }
+
+    .timing-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timing-list li:last-child {
+      border-bottom: none;
+    }
+
+    .timing-list strong {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .examples-container {
+        flex-direction: column;
+        overflow-y: auto;
+      }
+      .examples-nav {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="examples-container">
+    <nav class="examples-nav">
+      <a href="index.html#sysex" class="back-link">&larr; Back to SysEx</a>
+      <h1>Building VL3X Control</h1>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">using MIDI & SysEx</p>
+
+      <div style="margin-bottom: 1rem;">
+        <a href="sysex-generator.html" style="display: block; padding: 0.5rem 0.75rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.9rem;">SysEx Generator</a>
+        <a href="examples.html" style="display: block; padding: 0.5rem 0.75rem; background: var(--accent); border: 1px solid var(--accent); border-radius: 6px; color: #fff; text-decoration: none; font-size: 0.9rem;">Examples: SysEx Workflows</a>
+      </div>
+
+      <div style="background: var(--card-bg); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 0.75rem; font-size: 0.85rem;">
+        <h4 style="margin: 0 0 0.5rem 0; color: var(--accent); font-size: 0.9rem;">Example: Preset 300 - changed AMP TYPE from Acoustic to BODYREZ1</h4>
+
+        <p style="margin: 0.5rem 0 0.25rem 0; color: var(--text-muted);">Load Preset:</p>
+        <code style="display: block; color: #9ca3af;">CC0 = 0</code>
+        <code style="display: block; color: #9ca3af;">CC32 = 2</code>
+        <code style="display: block; color: #9ca3af;">PC = 44</code>
+
+        <p style="margin: 0.75rem 0 0.25rem 0; color: var(--text-muted);">Editor Enable:</p>
+        <code style="display: block; color: #10b981; font-size: 0.75rem;">F0 00 01 38 00 6D 15 00 F7</code>
+        <code style="display: block; color: #9ca3af; margin-top: 0.5rem;">Delay/Wait 200ms</code>
+
+        <p style="margin: 0.75rem 0 0.25rem 0; color: var(--text-muted);">Amp = BodyRez1:</p>
+        <code style="display: block; color: #10b981; font-size: 0.75rem;">F0 00 01 38 00 6D 22 00 21 00 00 00 19 F7</code>
+
+      </div>
+
+      <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 6px; padding: 0.75rem; margin-top: 0.75rem; font-size: 0.85rem;">
+        <p style="margin: 0 0 0.5rem 0; color: #f59e0b; font-size: 0.9rem; font-weight: 600;">Save To Preset:</p>
+        <code style="display: block; color: #10b981; font-size: 0.75rem;">F0 00 01 38 00 6D 24 00 F7</code>
+        <p style="margin: 0.5rem 0 0 0; color: #f59e0b; font-size: 0.8rem;">Saving to preset is likely not something you want to do during a live set. Consider the save carefully if you do use it.</p>
+        <p style="margin: 0.5rem 0 0 0; color: var(--text-muted); font-size: 0.8rem;">You can use SysEx to configure any preset Guitar/Vocal settings and save it. I find it much faster to do by hand, but you have an option.</p>
+      </div>
+    </nav>
+
+    <main class="examples-content">
+      <article id="replace-steps" class="example-article active">
+        <h2>Building VL3X Control using MIDI & SysEx</h2>
+        <p>Control your VL3X from onSong, an MC-8, or any MIDI controller. <strong>Note:</strong> You can't load or modify a preset that hasn't been initialized.</p>
+
+        <!-- Section A: Switch Presets -->
+        <h3>A. Switch to a Preset</h3>
+        <p>Load a preset using standard MIDI messages. No SysEx required.</p>
+
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>For Presets 1-128</h4>
+            <p>Send Program Change only. Value = preset number.</p>
+            <p><strong>Example for Preset 50:</strong> PC=50</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>For Presets 129+</h4>
+            <p>Send Bank Select first, then Program Change.</p>
+            <ul>
+              <li><strong>CC 0:</strong> Value = 0</li>
+              <li><strong>CC 32:</strong> Value = preset ÷ 128 (rounded down)</li>
+              <li><strong>PC:</strong> Value = preset % 128</li>
+            </ul>
+            <p><strong>Example for Preset 300:</strong> CC0=0, CC32=2, PC=44</p>
+          </div>
+        </div>
+
+        <!-- Section B: Change Parameters Live -->
+        <h3>B. Change Parameters Live (Temporary)</h3>
+        <p>Modify any parameter in real-time. Changes are <strong>temporary</strong> and lost when you switch presets.</p>
+
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Load Your Preset</h4>
+            <p>Use the Program Change method from Section A.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Send Editor Enable</h4>
+            <code style="display:block; background:#1a1a2e; color:#10b981; padding:0.4rem 0.6rem; border-radius:4px; font-size:0.75rem;">F0 00 01 38 00 6D 15 00 F7</code>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Delay/Wait 200ms</h4>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Send Parameter Change</h4>
+            <p>Use the <a href="sysex-generator.html" style="color:var(--accent);">SysEx Generator</a> to build the command. Repeat for multiple params (50ms between).</p>
+          </div>
+        </div>
+
+        <!-- Section C: Store Changes Permanently -->
+        <h3>C. Store Changes Permanently</h3>
+
+        <div class="highlight-box warning">
+          <h4>Use With Caution</h4>
+          <p>Stored changes overwrite the preset. This is rarely needed for live performance.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">1-4</div>
+          <div class="step-content">
+            <h4>Follow Section B Steps</h4>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>Send Store Command</h4>
+            <code style="display:block; background:#1a1a2e; color:#10b981; padding:0.4rem 0.6rem; border-radius:4px; font-size:0.75rem;">F0 00 01 38 00 6D 24 00 F7</code>
+          </div>
+        </div>
+
+        <!-- Timing Summary -->
+        <h3>Timing Summary</h3>
+        <ul class="timing-list">
+          <li><span>After preset switch (PC)</span><strong>200ms</strong></li>
+          <li><span>After Editor Enable</span><strong>200ms</strong></li>
+          <li><span>Between parameter changes</span><strong>50ms</strong></li>
+          <li><span>After Preset Store</span><strong>500ms</strong></li>
+        </ul>
+      </article>
+    </main>
+  </div>
+
+</body>
+</html>
