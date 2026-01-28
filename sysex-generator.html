@@ -687,7 +687,16 @@
 
     function updateValueConstraints() {
       const opt = paramSelect.selectedOptions[0];
-      if (!opt || !opt.value) return;  // Skip if SELECT placeholder
+      if (!opt || !opt.value) {
+        // Reset to neutral state when SELECT placeholder is shown
+        valueSlider.min = 0;
+        valueSlider.max = 100;
+        valueSlider.value = 0;
+        paramValue.value = '';
+        paramUnit.textContent = '';
+        valueRange.textContent = '';
+        return;
+      }
 
       const min = parseInt(opt.dataset.min);
       const max = parseInt(opt.dataset.max);
@@ -708,7 +717,7 @@
 
     function addParameter() {
       const opt = paramSelect.selectedOptions[0];
-      if (!opt) return;
+      if (!opt || !opt.value) return;  // Skip if no selection or SELECT placeholder
 
       const offset = parseInt(opt.value);
       const name = opt.dataset.name;
