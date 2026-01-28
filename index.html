@@ -28,6 +28,9 @@
         <button class="view-btn" id="viewSetup">Setup</button>
         <button class="view-btn active" id="viewPresets">Presets</button>
         <button class="view-btn" id="viewEffects" disabled style="opacity:0.4;cursor:not-allowed;">Effects</button>
+        <button class="view-btn" id="viewSysEx">SysEx</button>
+        <a href="sysex-generator.html" class="view-btn sysex-gen-link" id="sysexLinkRow">SysEx Generator</a>
+        <a href="examples.html" class="view-btn sysex-gen-link" id="examplesLinkRow">Examples</a>
       </div>
 
       <div class="caution-box" id="cautionBox" style="display:none;">
@@ -45,6 +48,13 @@
 
       <div class="preset-list" id="presetList">
         <div class="loading">Loading presets...</div>
+      </div>
+
+      <div class="sysex-nav" id="sysexNav" style="display:none; padding:1rem;">
+        <h3 style="color:#00d4ff; font-size:0.9rem; margin-bottom:1rem;">SysEx Tools</h3>
+        <a href="sysex-generator.html" style="display:block; padding:0.75rem; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.5); border-radius:6px; color:#10b981; text-decoration:none; margin-bottom:0.5rem; font-size:0.9rem;">1. SysEx Generator</a>
+        <div style="display:block; padding:0.75rem; background:rgba(0,212,255,0.15); border:1px solid rgba(0,212,255,0.3); border-radius:6px; color:#00d4ff; margin-bottom:0.5rem; font-size:0.9rem;">2. What is SysEx? <span style="color:#888; font-size:0.8rem;">(current view)</span></div>
+        <a href="examples.html" style="display:block; padding:0.75rem; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.1); border-radius:6px; color:#e0e0e0; text-decoration:none; font-size:0.9rem;">3. Examples &amp; Workflows</a>
       </div>
     </div>
 
@@ -65,6 +75,7 @@
 
       <div class="params-container" id="paramsContainer">
         <div class="empty-state">
+          <p class="inspector-description">The VL3X Preset Inspector is a website that lets you browse every factory preset like flipping through a recipe app - you can see exactly what ingredients (effects, settings, button assignments) each preset uses. The main purpose is to provide a browsable way to look at the most important settings and setups the VL3X uses.</p>
           <div class="img-wrapper">
             <img src="VL3xImage.png" alt="VL3X Factory Inspector">
             <div class="img-overlay">
@@ -76,7 +87,7 @@
       </div>
 
       <div class="stats-bar">
-        <span id="statsLeft">Total Presets: 259 | Total Parameters: 472</span>
+        <span id="statsLeft">Total Factory Presets: 259 | Total Parameters: 472</span>
         <span>Created by Mike Levine | 18 Jan 2026</span>
       </div>
     </div>

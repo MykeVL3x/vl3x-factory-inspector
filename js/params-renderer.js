@@ -126,6 +126,7 @@ export function isStyleHeaderParam(label, displayValue, category, subtab) {
 export function renderParams(container, data, preset, category, subtab) {
   if (!preset) {
     container.innerHTML = `<div class="empty-state">
+      <p class="inspector-description">The VL3X Preset Inspector is a website that lets you browse every factory preset like flipping through a recipe app - you can see exactly what ingredients (effects, settings, button assignments) each preset uses. The main purpose is to provide a browsable way to look at the most important settings and setups the VL3X uses.</p>
       <div class="img-wrapper">
         <img src="VL3xImage.png" alt="VL3X Factory Inspector">
         <div class="img-overlay">
@@ -220,5 +221,5 @@ export function renderParams(container, data, preset, category, subtab) {
  * @param {number} showing - Number of params showing
  */
 export function updateStatsBar(statsEl, showing) {
-  statsEl.textContent = `Total Presets: 259 | Total Parameters: 472 | Parameters Showing: ${showing}`;
+  statsEl.textContent = `Total Factory Presets: 259 | Total Parameters: 472 | Parameters Showing: ${showing}`;
 }

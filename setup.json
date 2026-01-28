@@ -97,8 +97,8 @@
     {
       "l": "USB OUTPUT MODE",
       "v": 0,
-      "d": "Locked - derived from USB MODE",
-      "offset": null
+      "d": "0",
+      "offset": 26
     },
     {
       "l": "USB OUTPUT TRIM",
@@ -143,8 +143,8 @@
     {
       "l": "SOURCE",
       "v": 0,
-      "d": "Must stay USB",
-      "offset": null
+      "d": "USB",
+      "offset": 9
     },
     {
       "l": "MIDI TEMPO",
@@ -155,26 +155,26 @@
     {
       "l": "INPUT CHANNEL",
       "v": 0,
-      "d": "Must stay 1",
-      "offset": null
+      "d": "1",
+      "offset": 10
     },
     {
       "l": "OUTPUT CHANNEL",
       "v": 0,
-      "d": "Must stay 1",
-      "offset": null
+      "d": "1",
+      "offset": 11
     },
     {
       "l": "INPUT FILTER",
       "v": 0,
-      "d": "Must have no filters",
-      "offset": null
+      "d": "NONE",
+      "offset": 12
     },
     {
       "l": "OUTPUT FILTER",
       "v": 0,
-      "d": "Must have no filters",
-      "offset": null
+      "d": "NONE",
+      "offset": 13
     },
     {
       "l": "TRANSPOSE",
@@ -209,8 +209,8 @@
     {
       "l": "SYSEX ID",
       "v": 0,
-      "d": "Must stay 0",
-      "offset": null
+      "d": "0",
+      "offset": 14
     },
     {
       "l": "MIDI TX DELAY",
@@ -302,7 +302,7 @@
     },
     {
       "l": "CONTRAST",
-      "v": 0,
+      "v": 5,
       "d": "50%",
       "offset": 0
     },
