@@ -493,7 +493,7 @@
             <select id="paramSubcategory" class="form-select"></select>
           </div>
           <div class="form-group">
-            <label>Option</label>
+            <label>Type/Style</label>
             <select id="enumSelect" class="form-select">
               <option value="">—</option>
             </select>
@@ -597,7 +597,7 @@
     function init() {
       // Populate categories
       const categories = getCategories();
-      categorySelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join('');
+      categorySelect.innerHTML = categories.map(c => `<option value="${c}">${c.toUpperCase()}</option>`).join('');
 
       updateSubcategories();
       setupEventListeners();
@@ -658,7 +658,7 @@
     function updateSubcategories() {
       const category = categorySelect.value;
       const subcats = getSubcategories(category);
-      subcatSelect.innerHTML = subcats.map(s => `<option value="${s}">${s}</option>`).join('');
+      subcatSelect.innerHTML = subcats.map(s => `<option value="${s}">${s.toUpperCase()}</option>`).join('');
       updateParameters();
     }
 
@@ -666,15 +666,15 @@
       const category = categorySelect.value;
       const subcategory = subcatSelect.value;
       const params = getParameters(category, subcategory);
-      paramSelect.innerHTML = params.map(p =>
-        `<option value="${p.offset}" data-min="${p.min}" data-max="${p.max}" data-unit="${p.unit || ''}" data-enum="${p.enum || ''}" data-name="${p.name}">${p.name}</option>`
+      paramSelect.innerHTML = '<option value="" disabled selected>SELECT</option>' + params.map(p =>
+        `<option value="${p.offset}" data-min="${p.min}" data-max="${p.max}" data-unit="${p.unit || ''}" data-enum="${p.enum || ''}" data-name="${p.name}">${p.name.toUpperCase()}</option>`
       ).join('');
 
       // Populate Option dropdown based on subcategory (find first param with enum)
       const enumParam = params.find(p => p.enum && ENUMS[p.enum]);
       if (enumParam) {
         const vals = getEnumValues(enumParam.enum);
-        enumSelect.innerHTML = vals.map((v, i) => `<option value="${i}">${i}: ${v}</option>`).join('');
+        enumSelect.innerHTML = vals.map((v, i) => `<option value="${i}">${v.toUpperCase()}</option>`).join('');
         enumSelect.selectedIndex = 0;
       } else {
         enumSelect.innerHTML = '';
@@ -685,7 +685,7 @@
 
     function updateValueConstraints() {
       const opt = paramSelect.selectedOptions[0];
-      if (!opt) return;
+      if (!opt || !opt.value) return;  // Skip if SELECT placeholder
 
       const min = parseInt(opt.dataset.min);
       const max = parseInt(opt.dataset.max);
