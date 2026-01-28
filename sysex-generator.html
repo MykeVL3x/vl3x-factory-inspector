@@ -133,24 +133,55 @@
     }
 
     .form-group {
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
     }
 
     .form-group label {
       display: block;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.1rem;
     }
 
     .form-select {
       width: 100%;
-      padding: 0.3rem;
+      padding: 0.25rem;
       border: 1px solid var(--border);
       border-radius: 4px;
       background: var(--card-bg);
       color: var(--text);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+    }
+
+    .harmony-key-scale {
+      display: none;
+      background: rgba(0, 212, 255, 0.05);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 4px;
+      padding: 0.3rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .harmony-key-scale.visible {
+      display: block;
+    }
+
+    .harmony-key-scale h4 {
+      font-size: 0.6rem;
+      color: var(--accent);
+      margin: 0 0 0.2rem 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .harmony-row {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .harmony-row .form-group {
+      flex: 1;
+      margin-bottom: 0;
     }
 
     .form-select:focus {
@@ -492,6 +523,19 @@
             <label>Subcategory</label>
             <select id="paramSubcategory" class="form-select"></select>
           </div>
+          <div class="harmony-key-scale" id="harmonyKeyScale">
+            <h4>Harmony Key/Scale</h4>
+            <div class="harmony-row">
+              <div class="form-group">
+                <label>Key</label>
+                <select id="harmonyKey" class="form-select"></select>
+              </div>
+              <div class="form-group">
+                <label>Scale</label>
+                <select id="harmonyScale" class="form-select"></select>
+              </div>
+            </div>
+          </div>
           <div class="form-group">
             <label>Type/Style</label>
             <select id="enumSelect" class="form-select">
@@ -585,6 +629,9 @@
     const paramUnit = document.getElementById('paramUnit');
     const valueRange = document.getElementById('valueRange');
     const enumSelect = document.getElementById('enumSelect');
+    const harmonyKeyScaleDiv = document.getElementById('harmonyKeyScale');
+    const harmonyKeySelect = document.getElementById('harmonyKey');
+    const harmonyScaleSelect = document.getElementById('harmonyScale');
     const addBtn = document.getElementById('addParam');
     const batchList = document.getElementById('batchList');
     const batchCount = document.getElementById('batchCount');
@@ -598,6 +645,14 @@
       // Populate categories
       const categories = getCategories();
       categorySelect.innerHTML = categories.map(c => `<option value="${c}">${c.toUpperCase()}</option>`).join('');
+
+      // Populate Harmony Key dropdown (offset 39)
+      const keys = getEnumValues('key');
+      harmonyKeySelect.innerHTML = keys.map((k, i) => `<option value="${i}">${k}</option>`).join('');
+
+      // Populate Harmony Scale dropdown (offset 40)
+      const scales = getEnumValues('scale');
+      harmonyScaleSelect.innerHTML = scales.map((s, i) => `<option value="${i}">${s.toUpperCase()}</option>`).join('');
 
       updateSubcategories();
       setupEventListeners();
@@ -666,8 +721,19 @@
       const category = categorySelect.value;
       const subcategory = subcatSelect.value;
       const params = getParameters(category, subcategory);
+
+      // Show Harmony Key/Scale when Vocal > Harmony selected
+      const showHarmonyKeyScale = (category === 'Vocal' && subcategory === 'Harmony');
+      harmonyKeyScaleDiv.classList.toggle('visible', showHarmonyKeyScale);
+
+      // Filter out KEY and SCALE from Parameter dropdown when showing dedicated controls
       paramSelect.innerHTML = '<option value="" selected>DEFAULT</option>' + params
-        .filter(p => p.name.toUpperCase() !== 'TYPE')
+        .filter(p => {
+          const name = p.name.toUpperCase();
+          if (name === 'TYPE') return false;
+          if (showHarmonyKeyScale && (name === 'KEY' || name === 'SCALE')) return false;
+          return true;
+        })
         .map(p =>
           `<option value="${p.offset}" data-min="${p.min}" data-max="${p.max}" data-unit="${p.unit || ''}" data-enum="${p.enum || ''}" data-name="${p.name}">${p.name.toUpperCase()}</option>`
         ).join('');
@@ -716,32 +782,56 @@
     }
 
     function addParameter() {
+      const category = categorySelect.value;
+      const subcategory = subcatSelect.value;
+      const showHarmonyKeyScale = (category === 'Vocal' && subcategory === 'Harmony');
+
+      // If Harmony Key/Scale visible and no specific parameter selected, add Key and Scale
       const opt = paramSelect.selectedOptions[0];
-
-      // If no parameter selected, check if Type/Style is selected
       if (!opt || !opt.value) {
-        // Add TYPE parameter using Type/Style dropdown value
+        let addedSomething = false;
+
+        // Add Harmony Key and Scale if visible
+        if (showHarmonyKeyScale) {
+          const keyVal = parseInt(harmonyKeySelect.value);
+          const scaleVal = parseInt(harmonyScaleSelect.value);
+          const keyText = harmonyKeySelect.selectedOptions[0].textContent;
+          const scaleText = harmonyScaleSelect.selectedOptions[0].textContent;
+
+          batchParams.push({
+            offset: 39,
+            name: 'KEY',
+            value: keyVal,
+            displayValue: keyText
+          });
+          batchParams.push({
+            offset: 40,
+            name: 'SCALE',
+            value: scaleVal,
+            displayValue: scaleText
+          });
+          addedSomething = true;
+        }
+
+        // Also add TYPE if available
         const enumOpt = enumSelect.selectedOptions[0];
-        if (!enumOpt || enumSelect.options.length === 0) return;
+        if (enumOpt && enumSelect.options.length > 0) {
+          const params = getParameters(category, subcategory);
+          const typeParam = params.find(p => p.name.toUpperCase() === 'TYPE');
+          if (typeParam) {
+            const value = parseInt(enumOpt.value);
+            const displayValue = `${value} (${enumOpt.textContent})`;
+            batchParams.push({
+              offset: typeParam.offset,
+              name: 'TYPE',
+              value,
+              displayValue
+            });
+            addedSomething = true;
+          }
+        }
 
-        // Find the TYPE parameter for current category/subcategory
-        const category = categorySelect.value;
-        const subcategory = subcatSelect.value;
-        const params = getParameters(category, subcategory);
-        const typeParam = params.find(p => p.name.toUpperCase() === 'TYPE');
-
-        if (!typeParam) return;
-
-        const value = parseInt(enumOpt.value);
-        const displayValue = `${value} (${enumOpt.textContent})`;
-
-        batchParams.push({
-          offset: typeParam.offset,
-          name: 'TYPE',
-          value,
-          displayValue
-        });
-        renderBatchList();
+        if (addedSomething) renderBatchList();
         return;
       }
 

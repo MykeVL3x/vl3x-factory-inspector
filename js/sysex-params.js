@@ -1085,7 +1085,7 @@ export const VL3X_PARAMS = {
     ]
   },
   "Vocal": {
-    "Other": [
+    "Harmony": [
       {
         "name": "LOW FREQ",
         "offset": 19,
@@ -1180,6 +1180,24 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "STYLE",
+        "offset": 29,
+        "min": 0,
+        "max": 29,
+        "enum": "harmony_style",
+        "unit": "None",
+        "display": null
+      },
+      {
+        "name": "HUMAN STYLE",
+        "offset": 30,
+        "min": 0,
+        "max": 6,
+        "enum": "human_style",
+        "unit": "None",
+        "display": null
+      },
+      {
         "name": "VIB STYLE",
         "offset": 31,
         "min": 0,
@@ -1187,6 +1205,18 @@ export const VL3X_PARAMS = {
         "enum": "vibrato_style",
         "unit": "None",
         "display": null
+      },
+      {
+        "name": "HUMANIZE",
+        "offset": 32,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": "%",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
       },
       {
         "name": "VIBRATO",
@@ -1210,12 +1240,42 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "NOTES SMOOTH",
+        "offset": 35,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
         "name": "NOTES GENDER",
         "offset": 36,
         "min": -50,
         "max": 50,
         "enum": null,
         "unit": null,
+        "display": null
+      },
+      {
+        "name": "NOTES PORTA",
+        "offset": 37,
+        "min": 0,
+        "max": 200,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "NATPLAY SRC",
+        "offset": 38,
+        "min": 0,
+        "max": 5,
+        "enum": "natplay_input",
+        "unit": "None",
         "display": null
       },
       {
@@ -1234,6 +1294,24 @@ export const VL3X_PARAMS = {
         "max": 6,
         "enum": "scale",
         "unit": null,
+        "display": null
+      },
+      {
+        "name": "TUNING",
+        "offset": 41,
+        "min": 0,
+        "max": 2,
+        "enum": "tuning",
+        "unit": "None",
+        "display": null
+      },
+      {
+        "name": "MODE V1",
+        "offset": 42,
+        "min": 0,
+        "max": 5,
+        "enum": "harmony_mode",
+        "unit": "None",
         "display": null
       },
       {
@@ -1282,6 +1360,48 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "V1 SMOOTH",
+        "offset": 48,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": "%",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "V1 GENDER",
+        "offset": 49,
+        "min": -50,
+        "max": 50,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V1 PORTA",
+        "offset": 50,
+        "min": 0,
+        "max": 200,
+        "enum": null,
+        "unit": "None",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "MODE V2",
+        "offset": 51,
+        "min": 0,
+        "max": 5,
+        "enum": "harmony_mode",
+        "unit": "None",
+        "display": null
+      },
+      {
         "name": "V2 VOICING",
         "offset": 52,
         "min": 0,
@@ -1324,6 +1444,48 @@ export const VL3X_PARAMS = {
         "max": 25,
         "enum": null,
         "unit": null,
+        "display": null
+      },
+      {
+        "name": "V2 SMOOTH",
+        "offset": 57,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": "%",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "V2 GENDER",
+        "offset": 58,
+        "min": -50,
+        "max": 50,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V2 PORTA",
+        "offset": 59,
+        "min": 0,
+        "max": 200,
+        "enum": null,
+        "unit": "None",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "MODE V3",
+        "offset": 60,
+        "min": 0,
+        "max": 5,
+        "enum": "harmony_mode",
+        "unit": "None",
         "display": null
       },
       {
@@ -1372,6 +1534,48 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "V3 SMOOTH",
+        "offset": 66,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": "%",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "V3 GENDER",
+        "offset": 67,
+        "min": -50,
+        "max": 50,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V3 PORTA",
+        "offset": 68,
+        "min": 0,
+        "max": 200,
+        "enum": null,
+        "unit": "None",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "MODE V4",
+        "offset": 69,
+        "min": 0,
+        "max": 5,
+        "enum": "harmony_mode",
+        "unit": "None",
+        "display": null
+      },
+      {
         "name": "V4 VOICING",
         "offset": 70,
         "min": 0,
@@ -1415,6 +1619,39 @@ export const VL3X_PARAMS = {
         "enum": null,
         "unit": null,
         "display": null
+      },
+      {
+        "name": "V4 SMOOTH",
+        "offset": 75,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": "%",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "V4 GENDER",
+        "offset": 76,
+        "min": -50,
+        "max": 50,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V4 PORTA",
+        "offset": 77,
+        "min": 0,
+        "max": 200,
+        "enum": null,
+        "unit": "None",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
       },
       {
         "name": "ATTACK",
@@ -1567,245 +1804,6 @@ export const VL3X_PARAMS = {
         "enum": null,
         "unit": "None",
         "display": null
-      }
-    ],
-    "Harmony": [
-      {
-        "name": "STYLE",
-        "offset": 29,
-        "min": 0,
-        "max": 29,
-        "enum": "harmony_style",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HUMAN STYLE",
-        "offset": 30,
-        "min": 0,
-        "max": 6,
-        "enum": "human_style",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HUMANIZE",
-        "offset": 32,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "NOTES SMOOTH",
-        "offset": 35,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": null,
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "NOTES PORTA",
-        "offset": 37,
-        "min": 0,
-        "max": 200,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "NATPLAY SRC",
-        "offset": 38,
-        "min": 0,
-        "max": 5,
-        "enum": "natplay_input",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "TUNING",
-        "offset": 41,
-        "min": 0,
-        "max": 2,
-        "enum": "tuning",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "MODE V1",
-        "offset": 42,
-        "min": 0,
-        "max": 5,
-        "enum": "harmony_mode",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "V1 SMOOTH",
-        "offset": 48,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "V1 GENDER",
-        "offset": 49,
-        "min": -50,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "V1 PORTA",
-        "offset": 50,
-        "min": 0,
-        "max": 200,
-        "enum": null,
-        "unit": "None",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "MODE V2",
-        "offset": 51,
-        "min": 0,
-        "max": 5,
-        "enum": "harmony_mode",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "V2 SMOOTH",
-        "offset": 57,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "V2 GENDER",
-        "offset": 58,
-        "min": -50,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "V2 PORTA",
-        "offset": 59,
-        "min": 0,
-        "max": 200,
-        "enum": null,
-        "unit": "None",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "MODE V3",
-        "offset": 60,
-        "min": 0,
-        "max": 5,
-        "enum": "harmony_mode",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "V3 SMOOTH",
-        "offset": 66,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "V3 GENDER",
-        "offset": 67,
-        "min": -50,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "V3 PORTA",
-        "offset": 68,
-        "min": 0,
-        "max": 200,
-        "enum": null,
-        "unit": "None",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "MODE V4",
-        "offset": 69,
-        "min": 0,
-        "max": 5,
-        "enum": "harmony_mode",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "V4 SMOOTH",
-        "offset": 75,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "V4 GENDER",
-        "offset": 76,
-        "min": -50,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "V4 PORTA",
-        "offset": 77,
-        "min": 0,
-        "max": 200,
-        "enum": null,
-        "unit": "None",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
       }
     ],
     "Choir": [
@@ -3568,11 +3566,10 @@ export const ENUMS = {
   ],
   "scale": [
     "Major",
-    "Minor",
-    "Mixolydian",
-    "Dorian",
-    "Lydian",
-    "HarmonicMinor",
+    "Minor NAT",
+    "Minor Harm",
+    "Minor ASC",
+    "Chromatic",
     "Custom"
   ],
   "harmony_mode": [
