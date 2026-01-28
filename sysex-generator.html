@@ -666,7 +666,7 @@
       const category = categorySelect.value;
       const subcategory = subcatSelect.value;
       const params = getParameters(category, subcategory);
-      paramSelect.innerHTML = '<option value="" disabled selected>SELECT</option>' + params
+      paramSelect.innerHTML = '<option value="" selected>DEFAULT</option>' + params
         .filter(p => p.name.toUpperCase() !== 'TYPE')
         .map(p =>
           `<option value="${p.offset}" data-min="${p.min}" data-max="${p.max}" data-unit="${p.unit || ''}" data-enum="${p.enum || ''}" data-name="${p.name}">${p.name.toUpperCase()}</option>`
@@ -717,7 +717,33 @@
 
     function addParameter() {
       const opt = paramSelect.selectedOptions[0];
-      if (!opt || !opt.value) return;  // Skip if no selection or SELECT placeholder
+
+      // If no parameter selected, check if Type/Style is selected
+      if (!opt || !opt.value) {
+        // Add TYPE parameter using Type/Style dropdown value
+        const enumOpt = enumSelect.selectedOptions[0];
+        if (!enumOpt || enumSelect.options.length === 0) return;
+
+        // Find the TYPE parameter for current category/subcategory
+        const category = categorySelect.value;
+        const subcategory = subcatSelect.value;
+        const params = getParameters(category, subcategory);
+        const typeParam = params.find(p => p.name.toUpperCase() === 'TYPE');
+
+        if (!typeParam) return;
+
+        const value = parseInt(enumOpt.value);
+        const displayValue = `${value} (${enumOpt.textContent})`;
+
+        batchParams.push({
+          offset: typeParam.offset,
+          name: 'TYPE',
+          value,
+          displayValue
+        });
+        renderBatchList();
+        return;
+      }
 
       const offset = parseInt(opt.value);
       const name = opt.dataset.name;
