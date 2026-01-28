@@ -1,7 +1,7 @@
 /**
  * sysex-params.js - Complete VL3X parameter database
  * Auto-generated from gold_standard_reference.json
- * Total parameters: 568
+ * Total parameters: 419
  */
 
 export const VL3X_PARAMS = {
@@ -962,7 +962,7 @@ export const VL3X_PARAMS = {
         "display": null
       }
     ],
-    "null": [
+    "Other": [
       {
         "name": "DC GAIN",
         "offset": 260,
@@ -1014,6 +1014,17 @@ export const VL3X_PARAMS = {
           "type": "offset_if_negative",
           "offset": 128
         }
+      }
+    ],
+    "HardTune": [
+      {
+        "name": "PRE/POST",
+        "offset": 281,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
       }
     ],
     "Rhythmic": [
@@ -1071,529 +1082,10 @@ export const VL3X_PARAMS = {
         "unit": null,
         "display": null
       }
-    ],
-    "HardTune": [
-      {
-        "name": "PRE/POST",
-        "offset": 281,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ]
-  },
-  "Hit Control": {
-    "Octaver": [
-      {
-        "name": "HitControl.Gtr Shift",
-        "offset": 301,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "uMod": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 282,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HitControl.Gtr Micromod",
-        "offset": 296,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Delay": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 283,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HitControl.Gtr Delay",
-        "offset": 297,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Reverb": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 284,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HitControl.Gtr Reverb",
-        "offset": 298,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Harmony": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 285,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Double": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 286,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Transducer": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 287,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "HardTune": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 288,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Choir": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 289,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Rhythmic": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 290,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HitControl.Gtr Rhythmic",
-        "offset": 302,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Stutter": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 291,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Synth": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 292,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "null": [
-      {
-        "name": "HitControl.VocWhammy",
-        "offset": 293,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "HitState.Vocal",
-        "offset": 303,
-        "min": 0,
-        "max": 1,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "Hit State",
-        "offset": 304,
-        "min": 0,
-        "max": 1,
-        "enum": null,
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Wah": [
-      {
-        "name": "HitControl.Gtr Wah",
-        "offset": 294,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Drive": [
-      {
-        "name": "HitControl.Gtr Boost",
-        "offset": 295,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Comp": [
-      {
-        "name": "HitControl.Gtr Compressor",
-        "offset": 299,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Amp": [
-      {
-        "name": "Hit Control",
-        "offset": 300,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ]
-  },
-  "Global": {
-    "Octaver": [
-      {
-        "name": "OCTAVER GLOBAL",
-        "offset": 461,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "uMod": [
-      {
-        "name": "GLOBAL",
-        "offset": 442,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "GLOBAL",
-        "offset": 451,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Delay": [
-      {
-        "name": "GLOBAL",
-        "offset": 443,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "GLOBAL",
-        "offset": 447,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Reverb": [
-      {
-        "name": "GLOBAL",
-        "offset": 444,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "GLOBAL",
-        "offset": 449,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "REVERB GLOBAL",
-        "offset": 457,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Harmony": [
-      {
-        "name": "GLOBAL",
-        "offset": 445,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Double": [
-      {
-        "name": "GLOBAL",
-        "offset": 446,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "HardTune": [
-      {
-        "name": "GLOBAL",
-        "offset": 448,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Synth": [
-      {
-        "name": "GLOBAL",
-        "offset": 450,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "null": [
-      {
-        "name": "Global.Voc Whammy",
-        "offset": 452,
-        "min": 0,
-        "max": 1,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "Global.LoopTrigger",
-        "offset": 466,
-        "min": 0,
-        "max": 1,
-        "enum": null,
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Transducer": [
-      {
-        "name": "GLOBAL",
-        "offset": 453,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Choir": [
-      {
-        "name": "GLOBAL",
-        "offset": 454,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Rhythmic": [
-      {
-        "name": "uMOD GLOBAL",
-        "offset": 455,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "RHYTHMIC GLOBAL",
-        "offset": 462,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Stutter": [
-      {
-        "name": "DELAY GLOBAL",
-        "offset": 456,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Amp": [
-      {
-        "name": "AMP GLOBAL",
-        "offset": 458,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Drive": [
-      {
-        "name": "DRIVE GLOBAL",
-        "offset": 459,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Comp": [
-      {
-        "name": "COMP GLOBAL",
-        "offset": 460,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Wah": [
-      {
-        "name": "WAH GLOBAL",
-        "offset": 463,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Button Map": [
-      {
-        "name": "GLOBAL",
-        "offset": 464,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Expr Pedal": [
-      {
-        "name": "GLOBAL",
-        "offset": 465,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
     ]
   },
   "Vocal": {
-    "null": [
+    "Other": [
       {
         "name": "LOW FREQ",
         "offset": 19,
@@ -2341,7 +1833,7 @@ export const VL3X_PARAMS = {
         "name": "TYPE",
         "offset": 80,
         "min": 0,
-        "max": 11,
+        "max": 10,
         "enum": "double_style",
         "unit": "None",
         "display": null
@@ -3364,6 +2856,249 @@ export const VL3X_PARAMS = {
       }
     ]
   },
+  "Hit_control": {
+    "uMod": [
+      {
+        "name": "HIT CONTROL",
+        "offset": 282,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": "None",
+        "display": null
+      },
+      {
+        "name": "HitControl.Gtr Micromod",
+        "offset": 296,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Delay": [
+      {
+        "name": "HIT CONTROL",
+        "offset": 283,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": "None",
+        "display": null
+      },
+      {
+        "name": "HitControl.Gtr Delay",
+        "offset": 297,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Reverb": [
+      {
+        "name": "HIT CONTROL",
+        "offset": 284,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": "None",
+        "display": null
+      },
+      {
+        "name": "HitControl.Gtr Reverb",
+        "offset": 298,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Harmony": [
+      {
+        "name": "HIT CONTROL",
+        "offset": 285,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Double": [
+      {
+        "name": "HIT CONTROL",
+        "offset": 286,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Transducer": [
+      {
+        "name": "HIT CONTROL",
+        "offset": 287,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "HardTune": [
+      {
+        "name": "HIT CONTROL",
+        "offset": 288,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Choir": [
+      {
+        "name": "HIT CONTROL",
+        "offset": 289,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Rhythmic": [
+      {
+        "name": "HIT CONTROL",
+        "offset": 290,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": "None",
+        "display": null
+      },
+      {
+        "name": "HitControl.Gtr Rhythmic",
+        "offset": 302,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Stutter": [
+      {
+        "name": "HIT CONTROL",
+        "offset": 291,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Synth": [
+      {
+        "name": "HIT CONTROL",
+        "offset": 292,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Other": [
+      {
+        "name": "HitControl.VocWhammy",
+        "offset": 293,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "HitState.Vocal",
+        "offset": 303,
+        "min": 0,
+        "max": 1,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "Hit State",
+        "offset": 304,
+        "min": 0,
+        "max": 1,
+        "enum": null,
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Wah": [
+      {
+        "name": "HitControl.Gtr Wah",
+        "offset": 294,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Drive": [
+      {
+        "name": "HitControl.Gtr Boost",
+        "offset": 295,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Comp": [
+      {
+        "name": "HitControl.Gtr Compressor",
+        "offset": 299,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Amp": [
+      {
+        "name": "Hit Control",
+        "offset": 300,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Octaver": [
+      {
+        "name": "HitControl.Gtr Shift",
+        "offset": 301,
+        "min": 0,
+        "max": 3,
+        "enum": "hit_control",
+        "unit": null,
+        "display": null
+      }
+    ]
+  },
   "Mixer": {
     "uMod": [
       {
@@ -3582,7 +3317,7 @@ export const VL3X_PARAMS = {
         "display": null
       }
     ],
-    "null": [
+    "Other": [
       {
         "name": "VOCAL LEVEL TRIM",
         "offset": 338,
@@ -3740,8 +3475,8 @@ export const VL3X_PARAMS = {
       }
     ]
   },
-  "Pedal Control": {
-    "null": [
+  "Pedal_control": {
+    "Other": [
       {
         "name": "EXPRESSION PEDAL",
         "offset": 388,
@@ -3771,120 +3506,8 @@ export const VL3X_PARAMS = {
       }
     ]
   },
-  "Button Map": {
-    "Button Map": [
-      {
-        "name": "uMOD",
-        "offset": 394,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "DELAY",
-        "offset": 395,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "REVERB",
-        "offset": 396,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HIT",
-        "offset": 397,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "COMP",
-        "offset": 398,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "DRIVE",
-        "offset": 399,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "uMOD.MODE",
-        "offset": 406,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "DELAY.MODE",
-        "offset": 407,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "REVERB.MODE",
-        "offset": 408,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HIT.MODE",
-        "offset": 409,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "COMP.MODE",
-        "offset": 410,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "DRIVE.MODE",
-        "offset": 411,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      }
-    ]
-  },
   "Looper": {
-    "null": [
+    "Other": [
       {
         "name": "Looper.LoadSlot",
         "offset": 391,
@@ -4040,1055 +3663,384 @@ export const VL3X_PARAMS = {
       }
     ]
   },
-  "System": {
-    "Settings": [
-      {
-        "name": "CONTRAST",
-        "offset": 0,
-        "min": 0,
-        "max": 10,
-        "system": true
-      },
-      {
-        "name": "Utility.Last_Preset",
-        "offset": 1,
-        "min": 0,
-        "max": 65535,
-        "system": true
-      },
-      {
-        "name": "Utility.Active_ButtMap",
-        "offset": 2,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Utility.Genre_Filter",
-        "offset": 3,
-        "min": 0,
-        "max": 21,
-        "system": true
-      },
-      {
-        "name": "TUNER REFERENCE",
-        "offset": 4,
-        "min": 800,
-        "max": 960,
-        "system": true
-      },
-      {
-        "name": "HIT BEHAVIOR",
-        "offset": 5,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Utility.GainSetMode.Mi",
-        "offset": 6,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "GLOBAL KEY/SCALE",
-        "offset": 7,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "GLOBAL TEMPO",
-        "offset": 8,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Utility.MIDI_Control",
-        "offset": 9,
-        "min": 1,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "Utility.MIDI_Channel_I",
-        "offset": 10,
-        "min": 0,
-        "max": 16,
-        "system": true
-      },
-      {
-        "name": "Utility.MIDI_Channel_O",
-        "offset": 11,
-        "min": 0,
-        "max": 16,
-        "system": true
-      },
-      {
-        "name": "Utility.MIDI_Filter_In",
-        "offset": 12,
-        "min": 0,
-        "max": 7,
-        "system": true
-      },
-      {
-        "name": "Utility.MIDI_Filter_Ou",
-        "offset": 13,
-        "min": 0,
-        "max": 3,
-        "system": true
-      },
-      {
-        "name": "Utility.SysEx_ID",
-        "offset": 14,
-        "min": 0,
-        "max": 127,
-        "system": true
-      },
-      {
-        "name": "SPLIT DIRECTION",
-        "offset": 15,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "SPLIT NOTE",
-        "offset": 16,
-        "min": 0,
-        "max": 127,
-        "system": true
-      },
-      {
-        "name": "PITCHBEND RANGE",
-        "offset": 17,
-        "min": 0,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "TRANSPOSE",
-        "offset": 18,
-        "min": -4,
-        "max": 4,
-        "system": true
-      },
-      {
-        "name": "MIDI TEMPO",
-        "offset": 19,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "INPUT TYPE",
-        "offset": 20,
-        "min": 0,
-        "max": 4,
-        "system": true
-      },
-      {
-        "name": "PHASE",
-        "offset": 21,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Utility.ExPedalMode",
-        "offset": 22,
-        "min": 0,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "Utility.FootSWMode",
-        "offset": 23,
-        "min": 0,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "ROOMSENSE AUTO-DETECT",
-        "offset": 24,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "XLR OUTPUT LEVEL",
-        "offset": 25,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Utility.USBOutMode",
-        "offset": 26,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "LEAD DELAY",
-        "offset": 27,
-        "min": 0,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "AUX VOCAL CANCEL",
-        "offset": 28,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "RoomEQ.Freq",
-        "offset": 29,
-        "min": 0,
-        "max": 104,
-        "system": true
-      },
-      {
-        "name": "PreFX.CompThresh",
-        "offset": 30,
-        "min": -60,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "PreFX.CompRatio",
-        "offset": 31,
-        "min": 0,
-        "max": 14,
-        "system": true
-      },
-      {
-        "name": "SHAPE",
-        "offset": 32,
-        "min": 0,
-        "max": 100,
-        "system": true
-      },
-      {
-        "name": "AutoShape.Warmth",
-        "offset": 33,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "AutoShape.Auto",
-        "offset": 34,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "COMPRESS",
-        "offset": 35,
-        "min": 0,
-        "max": 100,
-        "system": true
-      },
-      {
-        "name": "DynSmooth.Auto",
-        "offset": 36,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "DynSmooth.Threshold",
-        "offset": 37,
-        "min": -30,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "DynSmooth.Ratio",
-        "offset": 38,
-        "min": 10,
-        "max": 40,
-        "system": true
-      },
-      {
-        "name": "DE-ESS",
-        "offset": 39,
-        "min": 0,
-        "max": 100,
-        "system": true
-      },
-      {
-        "name": "ParEq.Low_Freq.Voice",
-        "offset": 40,
-        "min": 0,
-        "max": 240,
-        "system": true
-      },
-      {
-        "name": "ParEq.Low_Gain.Voice",
-        "offset": 41,
-        "min": -12,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "ParEq.Low_BW.Voice",
-        "offset": 42,
-        "min": 0,
-        "max": 32,
-        "system": true
-      },
-      {
-        "name": "ParEq.Hi_Freq.Voice",
-        "offset": 43,
-        "min": 0,
-        "max": 240,
-        "system": true
-      },
-      {
-        "name": "ParEq.Hi_Gain.Voice",
-        "offset": 44,
-        "min": -12,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "ParEq.Hi_BW.Voice",
-        "offset": 45,
-        "min": 0,
-        "max": 32,
-        "system": true
-      },
-      {
-        "name": "ParEq.Par1_Freq.Voice",
-        "offset": 46,
-        "min": 0,
-        "max": 240,
-        "system": true
-      },
-      {
-        "name": "ParEq.Par1_Gain.Voice",
-        "offset": 47,
-        "min": -12,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "ParEq.Par1_BW.Voice",
-        "offset": 48,
-        "min": 0,
-        "max": 32,
-        "system": true
-      },
-      {
-        "name": "AutoGate.Mode",
-        "offset": 49,
-        "min": 0,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "AutoGate.ManualThresho",
-        "offset": 50,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "GATE THRESHOLD",
-        "offset": 51,
-        "min": -81,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Level.Lea",
-        "offset": 52,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Attack.Le",
-        "offset": 53,
-        "min": 0,
-        "max": 45,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Release.L",
-        "offset": 54,
-        "min": 0,
-        "max": 45,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Level.Har",
-        "offset": 55,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Attack.Ha",
-        "offset": 56,
-        "min": 0,
-        "max": 45,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Release.H",
-        "offset": 57,
-        "min": 0,
-        "max": 45,
-        "system": true
-      },
-      {
-        "name": "VIBRATO BOOST",
-        "offset": 58,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "GLOBAL NATPLAY SOURCE",
-        "offset": 59,
-        "min": 0,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "SPEAKER SIM ENABLE",
-        "offset": 60,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "GLOBAL PITCH CORRECT",
-        "offset": 61,
-        "min": 0,
-        "max": 100,
-        "system": true
-      },
-      {
-        "name": "TONE",
-        "offset": 62,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Rhythmic.Metronome_Typ",
-        "offset": 63,
-        "min": 0,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "Rhythmic.Metronome_Lev",
-        "offset": 64,
-        "min": -100,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "Looper.InputA",
-        "offset": 65,
-        "min": 0,
-        "max": 4,
-        "system": true
-      },
-      {
-        "name": "Looper.InputB",
-        "offset": 66,
-        "min": 0,
-        "max": 4,
-        "system": true
-      },
-      {
-        "name": "Looper.InputC",
-        "offset": 67,
-        "min": 0,
-        "max": 5,
-        "system": true
-      },
-      {
-        "name": "LEAD MUTE",
-        "offset": 68,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "MIC GAIN",
-        "offset": 69,
-        "min": 0,
-        "max": 66,
-        "system": true
-      },
-      {
-        "name": "INPUT GAIN",
-        "offset": 70,
-        "min": 0,
-        "max": 18,
-        "system": true
-      },
-      {
-        "name": "<Reserved>",
-        "offset": 71,
-        "min": null,
-        "max": null,
-        "system": true
-      },
-      {
-        "name": "<Reserved>",
-        "offset": 72,
-        "min": null,
-        "max": null,
-        "system": true
-      },
-      {
-        "name": "MONITOR GAIN",
-        "offset": 73,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "AUX GAIN",
-        "offset": 74,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "TALK TRIM",
-        "offset": 75,
-        "min": -9,
-        "max": 4,
-        "system": true
-      },
-      {
-        "name": "AUX IN TYPE",
-        "offset": 76,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.Guitar_Level",
-        "offset": 77,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.Looper_Level",
-        "offset": 78,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.Aux_Level",
-        "offset": 79,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.Metronome_Lev",
-        "offset": 80,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.USB_Level",
-        "offset": 81,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Guitar_Trim",
-        "offset": 82,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Looper_Trim",
-        "offset": 83,
-        "min": -13,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Metronome_Level",
-        "offset": 84,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.USB_Level",
-        "offset": 85,
-        "min": -31,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Aux_Level",
-        "offset": 86,
-        "min": -31,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Monitor_Level",
-        "offset": 87,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.RoomSense_Level",
-        "offset": 88,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Main_Trim",
-        "offset": 89,
-        "min": -13,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Overall",
-        "offset": 90,
-        "min": -61,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "FXMix.Voices",
-        "offset": 91,
-        "min": -61,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "FXMix.Voc_Reverb",
-        "offset": 92,
-        "min": -61,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "FXMix.Gtr_Reverb",
-        "offset": 93,
-        "min": -61,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "OUTPUT MODE",
-        "offset": 94,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "USB OUTPUT TRIM",
-        "offset": 95,
-        "min": -12,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "XLR OUTPUT",
-        "offset": 96,
-        "min": 0,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "SimpleLim.Threshold.He",
-        "offset": 97,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "SimpleLim.Attack.Headp",
-        "offset": 98,
-        "min": 0,
-        "max": 19,
-        "system": true
-      },
-      {
-        "name": "SimpleLim.Release.Head",
-        "offset": 99,
-        "min": 0,
-        "max": 19,
-        "system": true
-      },
-      {
-        "name": "SimpleLim.Threshold.Ro",
-        "offset": 100,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "SimpleLim.Attack.RoomS",
-        "offset": 101,
-        "min": 0,
-        "max": 19,
-        "system": true
-      },
-      {
-        "name": "SimpleLim.Release.Room",
-        "offset": 102,
-        "min": 0,
-        "max": 19,
-        "system": true
-      },
-      {
-        "name": "Pedal.A.Calib",
-        "offset": 103,
-        "min": 0,
-        "max": 2097151,
-        "system": true
-      },
-      {
-        "name": "Pedal.B.Calib",
-        "offset": 104,
-        "min": 0,
-        "max": 2097151,
-        "system": true
-      },
-      {
-        "name": "Pedal.B.Func",
-        "offset": 105,
+  "Button_map": {
+    "Buttonmap": [
+      {
+        "name": "uMOD",
+        "offset": 394,
         "min": 0,
         "max": 36,
-        "system": true
+        "enum": "button_function",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "Pedal.B.MinPos",
-        "offset": 106,
-        "min": 0,
-        "max": 100,
-        "system": true
-      },
-      {
-        "name": "Pedal.B.MaxPos",
-        "offset": 107,
-        "min": 0,
-        "max": 100,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.ExtFootSw_1",
-        "offset": 108,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.ExtFootSw_2",
-        "offset": 109,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.ExtFootSw_3",
-        "offset": 110,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.StepKey",
-        "offset": 111,
+        "name": "DELAY",
+        "offset": 395,
         "min": 0,
         "max": 36,
-        "system": true
+        "enum": "button_function",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "ButtonMap.MicSwitch_1",
-        "offset": 112,
+        "name": "REVERB",
+        "offset": 396,
         "min": 0,
-        "max": 27,
-        "system": true
+        "max": 36,
+        "enum": "button_function",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "ButtonMode.StepKey",
-        "offset": 113,
+        "name": "HIT",
+        "offset": 397,
         "min": 0,
-        "max": 1,
-        "system": true
+        "max": 36,
+        "enum": "button_function",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "ButtonMode.ExtFootSw_4",
-        "offset": 114,
+        "name": "COMP",
+        "offset": 398,
         "min": 0,
-        "max": 1,
-        "system": true
+        "max": 36,
+        "enum": "button_function",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "ButtonMode.ExtFootSw_5",
-        "offset": 115,
+        "name": "DRIVE",
+        "offset": 399,
         "min": 0,
-        "max": 1,
-        "system": true
+        "max": 36,
+        "enum": "button_function",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "ButtonMode.ExtFootSw_6",
-        "offset": 116,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.ExtFootSw_1",
-        "offset": 117,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.ExtFootSw_2",
-        "offset": 118,
+        "name": "uMOD.MODE",
+        "offset": 406,
         "min": 0,
         "max": 1,
-        "system": true
+        "enum": "button_modifier",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "ButtonMode.ExtFootSw_3",
-        "offset": 119,
+        "name": "DELAY.MODE",
+        "offset": 407,
         "min": 0,
         "max": 1,
-        "system": true
+        "enum": "button_modifier",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "ButtonMode.MicSwitch_1",
-        "offset": 120,
+        "name": "REVERB.MODE",
+        "offset": 408,
         "min": 0,
         "max": 1,
-        "system": true
+        "enum": "button_modifier",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "ALL GUITAR FX GLOBAL",
-        "offset": 121,
+        "name": "HIT.MODE",
+        "offset": 409,
         "min": 0,
         "max": 1,
-        "system": true
+        "enum": "button_modifier",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "GLOBAL PRESET",
-        "offset": 122,
-        "min": 0,
-        "max": 500,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.Overall",
-        "offset": 123,
-        "min": -30,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "MIC CLIP PROTECTION",
-        "offset": 124,
+        "name": "COMP.MODE",
+        "offset": 410,
         "min": 0,
         "max": 1,
-        "system": true
+        "enum": "button_modifier",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "ButtonMap.ExtFootSw_4",
-        "offset": 125,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.ExtFootSw_5",
-        "offset": 126,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.ExtFootSw_6",
-        "offset": 127,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "MIX ROOMSENSE TO NP",
-        "offset": 128,
+        "name": "DRIVE.MODE",
+        "offset": 411,
         "min": 0,
         "max": 1,
-        "system": true
-      },
+        "enum": "button_modifier",
+        "unit": "None",
+        "display": null
+      }
+    ]
+  },
+  "Global_enables": {
+    "uMod": [
       {
-        "name": "MIX SCREEN TIMEOUT",
-        "offset": 129,
-        "min": 3,
-        "max": 11,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.MicSwitch_2",
-        "offset": 130,
-        "min": 0,
-        "max": 27,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.MicSwitch_3",
-        "offset": 131,
-        "min": 0,
-        "max": 27,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.MicSwitch_4",
-        "offset": 132,
-        "min": 0,
-        "max": 27,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.MicSwitch_2",
-        "offset": 133,
+        "name": "GLOBAL",
+        "offset": 442,
         "min": 0,
         "max": 1,
-        "system": true
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "ButtonMode.MicSwitch_3",
-        "offset": 134,
+        "name": "GLOBAL",
+        "offset": 451,
         "min": 0,
         "max": 1,
-        "system": true
-      },
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Delay": [
       {
-        "name": "ButtonMode.MicSwitch_4",
-        "offset": 135,
+        "name": "GLOBAL",
+        "offset": 443,
         "min": 0,
         "max": 1,
-        "system": true
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "Mix.Main.Track_Level",
-        "offset": 136,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Track_Level",
-        "offset": 137,
-        "min": -31,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "MIDI TX DELAY",
-        "offset": 138,
+        "name": "GLOBAL",
+        "offset": 447,
         "min": 0,
-        "max": 3,
-        "system": true
-      },
+        "max": 1,
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Reverb": [
       {
-        "name": "USB MODE",
-        "offset": 139,
+        "name": "GLOBAL",
+        "offset": 444,
         "min": 0,
-        "max": 2,
-        "system": true
+        "max": 1,
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "GUITAR JACK MODE",
-        "offset": 140,
+        "name": "GLOBAL",
+        "offset": 449,
         "min": 0,
-        "max": 2,
-        "system": true
+        "max": 1,
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 141,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "REVERB GLOBAL",
+        "offset": 457,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Harmony": [
+      {
+        "name": "GLOBAL",
+        "offset": 445,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Double": [
+      {
+        "name": "GLOBAL",
+        "offset": 446,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "HardTune": [
+      {
+        "name": "GLOBAL",
+        "offset": 448,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Synth": [
+      {
+        "name": "GLOBAL",
+        "offset": 450,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Other": [
+      {
+        "name": "Global.Voc Whammy",
+        "offset": 452,
+        "min": 0,
+        "max": 1,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 142,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "Global.LoopTrigger",
+        "offset": 466,
+        "min": 0,
+        "max": 1,
+        "enum": null,
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Transducer": [
+      {
+        "name": "GLOBAL",
+        "offset": 453,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
+      }
+    ],
+    "Buttonmap": [
+      {
+        "name": "GLOBAL",
+        "offset": 454,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 143,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "GLOBAL",
+        "offset": 464,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Rhythmic": [
+      {
+        "name": "uMOD GLOBAL",
+        "offset": 455,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 144,
-        "min": null,
-        "max": null,
-        "system": true
-      },
+        "name": "RHYTHMIC GLOBAL",
+        "offset": 462,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Stutter": [
       {
-        "name": "<Reserved>",
-        "offset": 145,
-        "min": null,
-        "max": null,
-        "system": true
-      },
+        "name": "DELAY GLOBAL",
+        "offset": 456,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Amp": [
       {
-        "name": "<Reserved>",
-        "offset": 146,
-        "min": null,
-        "max": null,
-        "system": true
-      },
+        "name": "AMP GLOBAL",
+        "offset": 458,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Drive": [
       {
-        "name": "<Reserved>",
-        "offset": 147,
-        "min": null,
-        "max": null,
-        "system": true
-      },
+        "name": "DRIVE GLOBAL",
+        "offset": 459,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Comp": [
       {
-        "name": "<Reserved>",
-        "offset": 148,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "COMP GLOBAL",
+        "offset": 460,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Octaver": [
+      {
+        "name": "OCTAVER GLOBAL",
+        "offset": 461,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Wah": [
+      {
+        "name": "WAH GLOBAL",
+        "offset": 463,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "Expr Pedal": [
+      {
+        "name": "GLOBAL",
+        "offset": 465,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": "None",
+        "display": null
       }
     ]
   }
 };
 
+// Export enums from gold standard
 export const ENUMS = {
   "key": [
     "C",
@@ -5114,12 +4066,12 @@ export const ENUMS = {
     "Custom"
   ],
   "harmony_mode": [
-    "NaturalPlay",
+    "Off",
+    "NatPlay",
     "Scale",
     "Shift",
-    "Drone",
-    "Fixed",
-    "Off"
+    "Pedal",
+    "Fixed"
   ],
   "harmony_style": [
     "High&Low",
@@ -5188,18 +4140,17 @@ export const ENUMS = {
     "OFF"
   ],
   "double_style": [
-    "1Voice",
-    "1VoiceW",
-    "2Voice",
-    "2VoiceW",
-    "4Voice",
-    "4VoiceW",
-    "Oct Up",
-    "Oct UpW",
-    "Oct Down",
-    "OctDwnW",
-    "Spread",
-    "OFF"
+    "1 Voice Tight",
+    "1 Voice Loose",
+    "2 Voices Wide",
+    "4 Voices Tight",
+    "4 Voices Wide",
+    "Mixed Doubles",
+    "4 Voices Mono",
+    "Oct On Double",
+    "Oct On Group",
+    "Oct Up Group",
+    "Mixed Octaves"
   ],
   "delay_style_voice": [
     "HALF",
@@ -5504,9 +4455,6 @@ export const ENUMS = {
     "MOMENTARY"
   ],
   "button_function": [
-    "uMod",
-    "DELAY",
-    "REVERB",
     "VOC HIT",
     "DOUBLE",
     "HARMONY",
@@ -5541,7 +4489,10 @@ export const ENUMS = {
     "LOOPTRIG F",
     "LOOPTRIG G",
     "LOOPTRIG H",
-    "TRACK START"
+    "TRACK START",
+    "uMod",
+    "DELAY",
+    "REVERB"
   ],
   "delay_filter_style": [
     "DIGITAL",
@@ -5595,29 +4546,6 @@ export function getParameters(category, subcategory) {
   return VL3X_PARAMS[category]?.[subcategory] || [];
 }
 
-export function findParamByOffset(offset) {
-  for (const cat of Object.keys(VL3X_PARAMS)) {
-    for (const subcat of Object.keys(VL3X_PARAMS[cat])) {
-      const param = VL3X_PARAMS[cat][subcat].find(p => p.offset === offset);
-      if (param) return { category: cat, subcategory: subcat, param };
-    }
-  }
-  return null;
-}
-
 export function getEnumValues(enumName) {
   return ENUMS[enumName] || [];
 }
-
-export function getAllParamsFlat() {
-  const all = [];
-  for (const cat of Object.keys(VL3X_PARAMS)) {
-    for (const subcat of Object.keys(VL3X_PARAMS[cat])) {
-      for (const param of VL3X_PARAMS[cat][subcat]) {
-        all.push({ category: cat, subcategory: subcat, ...param });
-      }
-    }
-  }
-  return all;
-}
-
