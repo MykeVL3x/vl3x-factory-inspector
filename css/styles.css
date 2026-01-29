@@ -703,3 +703,45 @@ body {
   color: #00ff88;
   font-style: normal;
 }
+
+/* Grid Layout for 4-column parameter display */
+.grid-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.grid-cell {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 0.5rem 0.6rem;
+  min-height: 50px;
+}
+
+.grid-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #888;
+  margin-bottom: 0.25rem;
+}
+
+.grid-value {
+  display: block;
+  font-size: 0.85rem;
+  color: #00d4ff;
+  font-weight: 500;
+}
+
+.grid-value.zero {
+  color: #555;
+}
+
+.grid-value.negative {
+  color: #ff6b6b;
+}

@@ -5,6 +5,7 @@
 import { getState } from './state.js';
 import { getDisplayValue } from './value-transforms.js';
 import { parsePresetValues } from './data-loader.js';
+import { getLayout, hasLayout } from './preset-layouts.js';
 
 /**
  * Get parameters filtered by category and subtab
@@ -115,6 +116,42 @@ export function isStyleHeaderParam(label, displayValue, category, subtab) {
 }
 
 /**
+ * Render grid layout for parameters
+ * @param {Object} layout - Layout definition with rows
+ * @param {number[]} values - Preset values array
+ * @param {Object} data - Full data object
+ * @returns {string} HTML string for grid layout
+ */
+function renderGridLayout(layout, values, data) {
+  let html = '<div class="grid-layout">';
+
+  for (const row of layout.rows) {
+    html += '<div class="grid-row">';
+    for (const cell of row) {
+      const val = values[cell.offset];
+      const displayVal = getDisplayValue(cell.offset, val, values, data);
+
+      let valClass = 'grid-value';
+      const numDisplay = parseFloat(displayVal);
+      if (numDisplay === 0 || displayVal === '0') {
+        valClass += ' zero';
+      } else if (numDisplay < 0) {
+        valClass += ' negative';
+      }
+
+      html += `<div class="grid-cell">
+        <span class="grid-label">${cell.label}</span>
+        <span class="${valClass}">${displayVal}</span>
+      </div>`;
+    }
+    html += '</div>';
+  }
+
+  html += '</div>';
+  return html;
+}
+
+/**
  * Render parameters for selected preset
  * @param {HTMLElement} container - Container for params
  * @param {Object} data - Full data object
@@ -139,6 +176,19 @@ export function renderParams(container, data, preset, category, subtab) {
   }
 
   const values = parsePresetValues(preset, data.labels.length);
+
+  // Check for custom grid layout
+  const layout = getLayout(category, subtab);
+  if (layout) {
+    const gridHtml = renderGridLayout(layout, values, data);
+    container.innerHTML = gridHtml;
+    let count = 0;
+    for (const row of layout.rows) {
+      count += row.length;
+    }
+    return count;
+  }
+
   let paramIndices = getFilteredParams(data, category, subtab);
   paramIndices = sortParamsByDisplayOrder(paramIndices, data, category, subtab);
 
