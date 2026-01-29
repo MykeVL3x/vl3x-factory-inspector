@@ -10,6 +10,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 0,
+        "sysex_id": 33,
         "min": 0,
         "max": 29,
         "enum": "amp_style",
@@ -19,6 +20,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LO F PRE",
         "offset": 1,
+        "sysex_id": 84,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -28,6 +30,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LO PRE",
         "offset": 2,
+        "sysex_id": 85,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -37,6 +40,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LO BW PRE",
         "offset": 3,
+        "sysex_id": 86,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -46,6 +50,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH F PRE",
         "offset": 4,
+        "sysex_id": 87,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -55,6 +60,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH PRE",
         "offset": 5,
+        "sysex_id": 88,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -64,6 +70,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HI BW PRE",
         "offset": 6,
+        "sysex_id": 89,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -73,6 +80,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MID F PRE",
         "offset": 7,
+        "sysex_id": 90,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -82,6 +90,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MID PRE",
         "offset": 8,
+        "sysex_id": 91,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -91,6 +100,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MID BW PRE",
         "offset": 9,
+        "sysex_id": 92,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -100,6 +110,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LO F POST",
         "offset": 10,
+        "sysex_id": 94,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -109,6 +120,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW POST",
         "offset": 11,
+        "sysex_id": 95,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -118,6 +130,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LO BW POST",
         "offset": 12,
+        "sysex_id": 96,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -127,6 +140,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HI F POST",
         "offset": 13,
+        "sysex_id": 97,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -136,6 +150,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH POST",
         "offset": 14,
+        "sysex_id": 98,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -145,6 +160,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HI BW POST",
         "offset": 15,
+        "sysex_id": 99,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -154,6 +170,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MID F POST",
         "offset": 16,
+        "sysex_id": 100,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -163,6 +180,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MID POST",
         "offset": 17,
+        "sysex_id": 101,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -172,6 +190,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MID BW POST",
         "offset": 18,
+        "sysex_id": 102,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -181,6 +200,7 @@ export const VL3X_PARAMS = {
       {
         "name": "AMP SAG",
         "offset": 258,
+        "sysex_id": 721,
         "min": 0,
         "max": 10,
         "enum": null,
@@ -190,6 +210,7 @@ export const VL3X_PARAMS = {
       {
         "name": "POSTGAIN",
         "offset": 259,
+        "sysex_id": 722,
         "min": -40,
         "max": 18,
         "enum": null,
@@ -199,6 +220,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MODE",
         "offset": 261,
+        "sysex_id": 724,
         "min": 0,
         "max": 1,
         "enum": "amp_mode",
@@ -208,6 +230,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LOCUT FC",
         "offset": 262,
+        "sysex_id": 725,
         "min": 0,
         "max": 72,
         "enum": null,
@@ -217,6 +240,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PREGAIN",
         "offset": 263,
+        "sysex_id": 726,
         "min": -9,
         "max": 60,
         "enum": null,
@@ -226,6 +250,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SPKR GAIN",
         "offset": 267,
+        "sysex_id": 730,
         "min": -20,
         "max": 20,
         "enum": null,
@@ -235,6 +260,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SPKR BW",
         "offset": 268,
+        "sysex_id": 731,
         "min": 0,
         "max": 16,
         "enum": null,
@@ -244,6 +270,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SPKR FC",
         "offset": 269,
+        "sysex_id": 732,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -255,6 +282,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 118,
+        "sysex_id": 256,
         "min": 0,
         "max": 13,
         "enum": "micromod_style_guitar",
@@ -264,6 +292,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY LEFT",
         "offset": 119,
+        "sysex_id": 259,
         "min": 0,
         "max": 230,
         "enum": null,
@@ -273,6 +302,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY RIGHT",
         "offset": 120,
+        "sysex_id": 260,
         "min": 0,
         "max": 230,
         "enum": null,
@@ -282,6 +312,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK L",
         "offset": 121,
+        "sysex_id": 261,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -291,6 +322,7 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB L",
         "offset": 122,
+        "sysex_id": 262,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -300,6 +332,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK R",
         "offset": 123,
+        "sysex_id": 263,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -309,6 +342,7 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB R",
         "offset": 124,
+        "sysex_id": 264,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -318,6 +352,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SPEED",
         "offset": 125,
+        "sysex_id": 267,
         "min": 5,
         "max": 1000,
         "enum": null,
@@ -327,6 +362,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PHASE",
         "offset": 126,
+        "sysex_id": 268,
         "min": 0,
         "max": 180,
         "enum": null,
@@ -336,6 +372,7 @@ export const VL3X_PARAMS = {
       {
         "name": "WAVE",
         "offset": 127,
+        "sysex_id": 269,
         "min": 0,
         "max": 2,
         "enum": "waveform",
@@ -345,6 +382,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DETUNE",
         "offset": 128,
+        "sysex_id": 972,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -354,6 +392,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DEPTH",
         "offset": 129,
+        "sysex_id": 973,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -363,6 +402,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW CUT",
         "offset": 130,
+        "sysex_id": 270,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -372,6 +412,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH CUT",
         "offset": 131,
+        "sysex_id": 271,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -381,6 +422,7 @@ export const VL3X_PARAMS = {
       {
         "name": "INV PHASE",
         "offset": 132,
+        "sysex_id": 272,
         "min": 0,
         "max": 3,
         "enum": "on_off",
@@ -401,6 +443,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 150,
+        "sysex_id": 290,
         "min": 0,
         "max": 14,
         "enum": "delay_style_guitar",
@@ -410,6 +453,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SOURCE",
         "offset": 151,
+        "sysex_id": 291,
         "min": 0,
         "max": 1,
         "enum": "delay_source",
@@ -419,6 +463,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DIV L",
         "offset": 152,
+        "sysex_id": 292,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -428,6 +473,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DIV R",
         "offset": 153,
+        "sysex_id": 293,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -437,6 +483,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY L",
         "offset": 154,
+        "sysex_id": 294,
         "min": 0,
         "max": 2500,
         "enum": null,
@@ -446,6 +493,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY R",
         "offset": 155,
+        "sysex_id": 295,
         "min": 0,
         "max": 2500,
         "enum": null,
@@ -455,6 +503,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK L",
         "offset": 156,
+        "sysex_id": 296,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -464,6 +513,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK R",
         "offset": 157,
+        "sysex_id": 297,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -473,6 +523,7 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB L TO R",
         "offset": 158,
+        "sysex_id": 298,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -482,6 +533,7 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB R TO L",
         "offset": 159,
+        "sysex_id": 299,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -491,6 +543,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK",
         "offset": 160,
+        "sysex_id": 300,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -500,6 +553,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MODDEPTH",
         "offset": 161,
+        "sysex_id": 974,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -509,6 +563,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MODSPEED",
         "offset": 162,
+        "sysex_id": 975,
         "min": 10,
         "max": 1000,
         "enum": null,
@@ -518,6 +573,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TRAILS",
         "offset": 163,
+        "sysex_id": 301,
         "min": 0,
         "max": 1,
         "enum": "on_off",
@@ -527,6 +583,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FILTERSTYLE",
         "offset": 164,
+        "sysex_id": 302,
         "min": 0,
         "max": 12,
         "enum": "delay_filter",
@@ -536,6 +593,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW CUT",
         "offset": 165,
+        "sysex_id": 303,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -545,6 +603,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH CUT",
         "offset": 166,
+        "sysex_id": 304,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -554,6 +613,7 @@ export const VL3X_PARAMS = {
       {
         "name": "WIDTH",
         "offset": 168,
+        "sysex_id": 306,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -563,6 +623,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCKING",
         "offset": 173,
+        "sysex_id": 311,
         "min": 0,
         "max": 1,
         "enum": "on_off",
@@ -572,6 +633,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK THRES",
         "offset": 174,
+        "sysex_id": 312,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -581,6 +643,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK AMT",
         "offset": 175,
+        "sysex_id": 313,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -590,6 +653,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK TIME",
         "offset": 176,
+        "sysex_id": 314,
         "min": 0,
         "max": 36,
         "enum": null,
@@ -599,6 +663,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PREDELAY",
         "offset": 193,
+        "sysex_id": 331,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -610,6 +675,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 190,
+        "sysex_id": 328,
         "min": 0,
         "max": 51,
         "enum": "reverb_style_guitar",
@@ -619,6 +685,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 191,
+        "sysex_id": 329,
         "min": 0,
         "max": 13,
         "enum": "reverb_type_guitar",
@@ -628,6 +695,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DECAY",
         "offset": 192,
+        "sysex_id": 330,
         "min": 1,
         "max": 290,
         "enum": null,
@@ -637,6 +705,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DIFFUSE",
         "offset": 194,
+        "sysex_id": 332,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -646,6 +715,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LO COLOR",
         "offset": 195,
+        "sysex_id": 333,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -655,6 +725,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HICOLOR",
         "offset": 196,
+        "sysex_id": 334,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -664,6 +735,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIFACTOR",
         "offset": 197,
+        "sysex_id": 335,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -673,6 +745,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MODSPEED",
         "offset": 198,
+        "sysex_id": 336,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -682,6 +755,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MODDEPTH",
         "offset": 199,
+        "sysex_id": 337,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -691,6 +765,7 @@ export const VL3X_PARAMS = {
       {
         "name": "EARLY RFLCT",
         "offset": 200,
+        "sysex_id": 338,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -700,6 +775,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LEVEL",
         "offset": 201,
+        "sysex_id": 339,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -709,6 +785,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TAIL LEVEL",
         "offset": 202,
+        "sysex_id": 340,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -718,6 +795,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCKING",
         "offset": 207,
+        "sysex_id": 345,
         "min": 0,
         "max": 1,
         "enum": "on_off",
@@ -727,6 +805,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK THRES",
         "offset": 208,
+        "sysex_id": 346,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -736,6 +815,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK AMT",
         "offset": 209,
+        "sysex_id": 347,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -745,6 +825,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK TIME",
         "offset": 210,
+        "sysex_id": 348,
         "min": 0,
         "max": 36,
         "enum": null,
@@ -756,6 +837,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 236,
+        "sysex_id": 694,
         "min": 0,
         "max": 5,
         "enum": "octaver_style",
@@ -765,6 +847,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MIX",
         "offset": 237,
+        "sysex_id": 695,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -774,6 +857,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SHIFT",
         "offset": 238,
+        "sysex_id": 696,
         "min": -24,
         "max": 24,
         "enum": null,
@@ -785,6 +869,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 239,
+        "sysex_id": 697,
         "min": 0,
         "max": 9,
         "enum": "wah_style",
@@ -794,6 +879,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 240,
+        "sysex_id": 698,
         "min": 0,
         "max": 2,
         "enum": "wah_subtype",
@@ -803,6 +889,7 @@ export const VL3X_PARAMS = {
       {
         "name": "ORDER",
         "offset": 241,
+        "sysex_id": 699,
         "min": 0,
         "max": 1,
         "enum": "wah_order",
@@ -812,6 +899,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SENSITIVITY",
         "offset": 242,
+        "sysex_id": 700,
         "min": 0,
         "max": 10,
         "enum": null,
@@ -821,6 +909,7 @@ export const VL3X_PARAMS = {
       {
         "name": "RESPONSE",
         "offset": 243,
+        "sysex_id": 701,
         "min": 0,
         "max": 11,
         "enum": null,
@@ -830,6 +919,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FMAX",
         "offset": 244,
+        "sysex_id": 702,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -839,6 +929,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH CUT",
         "offset": 245,
+        "sysex_id": 703,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -848,6 +939,7 @@ export const VL3X_PARAMS = {
       {
         "name": "RESONANCE",
         "offset": 246,
+        "sysex_id": 704,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -860,6 +952,7 @@ export const VL3X_PARAMS = {
       {
         "name": "BPM",
         "offset": 247,
+        "sysex_id": 705,
         "min": 20,
         "max": 600,
         "enum": null,
@@ -872,6 +965,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SHAPE",
         "offset": 248,
+        "sysex_id": 706,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -881,6 +975,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LEVEL",
         "offset": 249,
+        "sysex_id": 707,
         "min": -12,
         "max": 12,
         "enum": null,
@@ -890,6 +985,7 @@ export const VL3X_PARAMS = {
       {
         "name": "EXP MINPOS",
         "offset": 250,
+        "sysex_id": 708,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -899,6 +995,7 @@ export const VL3X_PARAMS = {
       {
         "name": "EXP MAXPOS",
         "offset": 251,
+        "sysex_id": 709,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -910,6 +1007,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 252,
+        "sysex_id": 710,
         "min": 0,
         "max": 4,
         "enum": "guitar_comp_style",
@@ -919,6 +1017,7 @@ export const VL3X_PARAMS = {
       {
         "name": "RATIO",
         "offset": 253,
+        "sysex_id": 711,
         "min": 0,
         "max": 14,
         "enum": null,
@@ -928,6 +1027,7 @@ export const VL3X_PARAMS = {
       {
         "name": "THRESHOLD",
         "offset": 254,
+        "sysex_id": 712,
         "min": -50,
         "max": 0,
         "enum": null,
@@ -937,6 +1037,7 @@ export const VL3X_PARAMS = {
       {
         "name": "ATTACK",
         "offset": 255,
+        "sysex_id": 713,
         "min": 0,
         "max": 19,
         "enum": null,
@@ -946,6 +1047,7 @@ export const VL3X_PARAMS = {
       {
         "name": "RELEASE",
         "offset": 256,
+        "sysex_id": 714,
         "min": 0,
         "max": 19,
         "enum": null,
@@ -955,6 +1057,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MAKEUP GAIN",
         "offset": 257,
+        "sysex_id": 715,
         "min": 0,
         "max": 30,
         "enum": null,
@@ -966,6 +1069,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DC GAIN",
         "offset": 260,
+        "sysex_id": 723,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -977,6 +1081,7 @@ export const VL3X_PARAMS = {
       {
         "name": "STYLE",
         "offset": 264,
+        "sysex_id": 727,
         "min": 0,
         "max": 2,
         "enum": "drive_style",
@@ -986,6 +1091,7 @@ export const VL3X_PARAMS = {
       {
         "name": "POST GAIN",
         "offset": 265,
+        "sysex_id": 728,
         "min": -40,
         "max": 18,
         "enum": null,
@@ -995,6 +1101,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PREGAIN",
         "offset": 266,
+        "sysex_id": 729,
         "min": -9,
         "max": 60,
         "enum": null,
@@ -1006,6 +1113,7 @@ export const VL3X_PARAMS = {
       {
         "name": "GTR PAN",
         "offset": 270,
+        "sysex_id": 734,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -1020,6 +1128,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 327,
+        "sysex_id": 833,
         "min": 0,
         "max": 6,
         "enum": "rhythmic_style",
@@ -1029,6 +1138,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DEPTH",
         "offset": 328,
+        "sysex_id": 834,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -1038,6 +1148,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DIVISION",
         "offset": 329,
+        "sysex_id": 835,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -1047,6 +1158,7 @@ export const VL3X_PARAMS = {
       {
         "name": "WAVEFORM",
         "offset": 330,
+        "sysex_id": 836,
         "min": 0,
         "max": 4,
         "enum": "waveform",
@@ -1056,6 +1168,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TREM BPM",
         "offset": 331,
+        "sysex_id": 838,
         "min": 45,
         "max": 300,
         "enum": null,
@@ -1065,6 +1178,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TARGET",
         "offset": 332,
+        "sysex_id": 839,
         "min": 0,
         "max": 1,
         "enum": "rhythmic_target",
@@ -1076,6 +1190,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PRE/POST",
         "offset": 281,
+        "sysex_id": 748,
         "min": 0,
         "max": 1,
         "enum": "on_off",
@@ -1089,6 +1204,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HitControl.Gtr Shift",
         "offset": 301,
+        "sysex_id": 792,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1100,6 +1216,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIT CONTROL",
         "offset": 282,
+        "sysex_id": 773,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1109,6 +1226,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HitControl.Gtr Micromod",
         "offset": 296,
+        "sysex_id": 787,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1120,6 +1238,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIT CONTROL",
         "offset": 283,
+        "sysex_id": 774,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1129,6 +1248,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HitControl.Gtr Delay",
         "offset": 297,
+        "sysex_id": 788,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1140,6 +1260,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIT CONTROL",
         "offset": 284,
+        "sysex_id": 775,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1149,6 +1270,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HitControl.Gtr Reverb",
         "offset": 298,
+        "sysex_id": 789,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1160,6 +1282,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIT CONTROL",
         "offset": 285,
+        "sysex_id": 776,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1171,6 +1294,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIT CONTROL",
         "offset": 286,
+        "sysex_id": 777,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1182,6 +1306,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIT CONTROL",
         "offset": 287,
+        "sysex_id": 778,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1193,6 +1318,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIT CONTROL",
         "offset": 288,
+        "sysex_id": 779,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1204,6 +1330,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIT CONTROL",
         "offset": 289,
+        "sysex_id": 780,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1215,6 +1342,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIT CONTROL",
         "offset": 290,
+        "sysex_id": 781,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1224,6 +1352,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HitControl.Gtr Rhythmic",
         "offset": 302,
+        "sysex_id": 793,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1235,6 +1364,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIT CONTROL",
         "offset": 291,
+        "sysex_id": 782,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1246,6 +1376,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIT CONTROL",
         "offset": 292,
+        "sysex_id": 783,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1257,6 +1388,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HitControl.VocWhammy",
         "offset": 293,
+        "sysex_id": 784,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1266,6 +1398,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HitState.Vocal",
         "offset": 303,
+        "sysex_id": 794,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -1275,6 +1408,7 @@ export const VL3X_PARAMS = {
       {
         "name": "Hit State",
         "offset": 304,
+        "sysex_id": 795,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -1286,6 +1420,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HitControl.Gtr Wah",
         "offset": 294,
+        "sysex_id": 785,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1297,6 +1432,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HitControl.Gtr Boost",
         "offset": 295,
+        "sysex_id": 786,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1308,6 +1444,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HitControl.Gtr Compressor",
         "offset": 299,
+        "sysex_id": 790,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1319,6 +1456,7 @@ export const VL3X_PARAMS = {
       {
         "name": "Hit Control",
         "offset": 300,
+        "sysex_id": 791,
         "min": 0,
         "max": 3,
         "enum": "hit_control",
@@ -1597,6 +1735,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW FREQ",
         "offset": 19,
+        "sysex_id": 104,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -1609,6 +1748,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW GAIN",
         "offset": 20,
+        "sysex_id": 105,
         "min": -12,
         "max": 12,
         "enum": null,
@@ -1618,6 +1758,7 @@ export const VL3X_PARAMS = {
       {
         "name": "Low BW.Harm",
         "offset": 21,
+        "sysex_id": 106,
         "min": 0,
         "max": 32,
         "enum": null,
@@ -1630,6 +1771,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH FREQ",
         "offset": 22,
+        "sysex_id": 107,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -1642,6 +1784,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH GAIN",
         "offset": 23,
+        "sysex_id": 108,
         "min": -12,
         "max": 12,
         "enum": null,
@@ -1651,6 +1794,7 @@ export const VL3X_PARAMS = {
       {
         "name": "Hi BW.Harm",
         "offset": 24,
+        "sysex_id": 109,
         "min": 0,
         "max": 32,
         "enum": null,
@@ -1660,6 +1804,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MID FREQ",
         "offset": 25,
+        "sysex_id": 110,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -1672,6 +1817,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MID GAIN",
         "offset": 26,
+        "sysex_id": 111,
         "min": -12,
         "max": 12,
         "enum": null,
@@ -1681,6 +1827,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MID BW",
         "offset": 27,
+        "sysex_id": 112,
         "min": 0,
         "max": 32,
         "enum": null,
@@ -1690,6 +1837,7 @@ export const VL3X_PARAMS = {
       {
         "name": "VIB STYLE",
         "offset": 31,
+        "sysex_id": 128,
         "min": 0,
         "max": 7,
         "enum": "vibrato_style",
@@ -1699,6 +1847,7 @@ export const VL3X_PARAMS = {
       {
         "name": "VIBRATO",
         "offset": 33,
+        "sysex_id": 130,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -1711,6 +1860,7 @@ export const VL3X_PARAMS = {
       {
         "name": "NOTES PAN",
         "offset": 34,
+        "sysex_id": 139,
         "min": 0,
         "max": 2,
         "enum": null,
@@ -1720,6 +1870,7 @@ export const VL3X_PARAMS = {
       {
         "name": "NOTES GENDER",
         "offset": 36,
+        "sysex_id": 141,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -1729,6 +1880,7 @@ export const VL3X_PARAMS = {
       {
         "name": "KEY",
         "offset": 39,
+        "sysex_id": 147,
         "min": 0,
         "max": 11,
         "enum": "key",
@@ -1738,6 +1890,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SCALE",
         "offset": 40,
+        "sysex_id": 148,
         "min": 0,
         "max": 6,
         "enum": "scale",
@@ -1747,6 +1900,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 VOICING",
         "offset": 43,
+        "sysex_id": 151,
         "min": 0,
         "max": 8,
         "enum": null,
@@ -1756,6 +1910,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 INTERVAL",
         "offset": 44,
+        "sysex_id": 152,
         "min": 0,
         "max": 28,
         "enum": null,
@@ -1765,6 +1920,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 SHIFT",
         "offset": 45,
+        "sysex_id": 153,
         "min": -24,
         "max": 24,
         "enum": null,
@@ -1774,6 +1930,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 PEDAL",
         "offset": 46,
+        "sysex_id": 154,
         "min": -36,
         "max": 36,
         "enum": null,
@@ -1783,6 +1940,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 FIXED",
         "offset": 47,
+        "sysex_id": 155,
         "min": -36,
         "max": 25,
         "enum": null,
@@ -1792,6 +1950,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 VOICING",
         "offset": 52,
+        "sysex_id": 162,
         "min": 0,
         "max": 8,
         "enum": null,
@@ -1801,6 +1960,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 INTERVAL",
         "offset": 53,
+        "sysex_id": 163,
         "min": 0,
         "max": 28,
         "enum": null,
@@ -1810,6 +1970,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 SHIFT",
         "offset": 54,
+        "sysex_id": 164,
         "min": -24,
         "max": 24,
         "enum": null,
@@ -1819,6 +1980,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 PEDAL",
         "offset": 55,
+        "sysex_id": 165,
         "min": -36,
         "max": 36,
         "enum": null,
@@ -1828,6 +1990,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 FIXED",
         "offset": 56,
+        "sysex_id": 166,
         "min": -36,
         "max": 25,
         "enum": null,
@@ -1837,6 +2000,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 VOICING",
         "offset": 61,
+        "sysex_id": 173,
         "min": 0,
         "max": 8,
         "enum": null,
@@ -1846,6 +2010,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 INTERVAL",
         "offset": 62,
+        "sysex_id": 174,
         "min": 0,
         "max": 28,
         "enum": null,
@@ -1855,6 +2020,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 SHIFT",
         "offset": 63,
+        "sysex_id": 175,
         "min": -24,
         "max": 24,
         "enum": null,
@@ -1864,6 +2030,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 PEDAL",
         "offset": 64,
+        "sysex_id": 176,
         "min": -36,
         "max": 36,
         "enum": null,
@@ -1873,6 +2040,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 FIXED",
         "offset": 65,
+        "sysex_id": 177,
         "min": -36,
         "max": 25,
         "enum": null,
@@ -1882,6 +2050,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 VOICING",
         "offset": 70,
+        "sysex_id": 184,
         "min": 0,
         "max": 8,
         "enum": null,
@@ -1891,6 +2060,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 INTERVAL",
         "offset": 71,
+        "sysex_id": 185,
         "min": 0,
         "max": 28,
         "enum": null,
@@ -1900,6 +2070,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 SHIFT",
         "offset": 72,
+        "sysex_id": 186,
         "min": -24,
         "max": 24,
         "enum": null,
@@ -1909,6 +2080,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 PEDAL",
         "offset": 73,
+        "sysex_id": 187,
         "min": -36,
         "max": 36,
         "enum": null,
@@ -1918,6 +2090,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 FIXED",
         "offset": 74,
+        "sysex_id": 188,
         "min": -36,
         "max": 25,
         "enum": null,
@@ -1927,6 +2100,7 @@ export const VL3X_PARAMS = {
       {
         "name": "ATTACK",
         "offset": 469,
+        "sysex_id": 133,
         "min": 0,
         "max": 1000,
         "enum": null,
@@ -1939,6 +2113,7 @@ export const VL3X_PARAMS = {
       {
         "name": "RELEASE",
         "offset": 470,
+        "sysex_id": 135,
         "min": 0,
         "max": 2000,
         "enum": null,
@@ -1951,6 +2126,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HOLD RELEASE",
         "offset": 471,
+        "sysex_id": 137,
         "min": 0,
         "max": 2000,
         "enum": null,
@@ -1965,6 +2141,7 @@ export const VL3X_PARAMS = {
       {
         "name": "ManualThresholdT",
         "offset": 28,
+        "sysex_id": 116,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -1974,6 +2151,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 220,
+        "sysex_id": 662,
         "min": 0,
         "max": 9,
         "enum": "transducer_style",
@@ -1983,6 +2161,7 @@ export const VL3X_PARAMS = {
       {
         "name": "ROUTING",
         "offset": 221,
+        "sysex_id": 663,
         "min": 0,
         "max": 4,
         "enum": null,
@@ -1992,6 +2171,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DISTORTION AMOUNT",
         "offset": 222,
+        "sysex_id": 664,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2004,6 +2184,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW CUT",
         "offset": 223,
+        "sysex_id": 665,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -2013,6 +2194,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH CUT",
         "offset": 224,
+        "sysex_id": 666,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -2022,6 +2204,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PRE GAIN",
         "offset": 225,
+        "sysex_id": 667,
         "min": -20,
         "max": 20,
         "enum": null,
@@ -2031,6 +2214,7 @@ export const VL3X_PARAMS = {
       {
         "name": "POST GAIN",
         "offset": 226,
+        "sysex_id": 668,
         "min": -20,
         "max": 20,
         "enum": null,
@@ -2040,6 +2224,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DISTORTION TYPE",
         "offset": 227,
+        "sysex_id": 669,
         "min": 0,
         "max": 14,
         "enum": null,
@@ -2049,6 +2234,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PRES GAIN",
         "offset": 228,
+        "sysex_id": 670,
         "min": -20,
         "max": 20,
         "enum": null,
@@ -2058,6 +2244,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PRES FC",
         "offset": 229,
+        "sysex_id": 671,
         "min": 100,
         "max": 195,
         "enum": null,
@@ -2070,6 +2257,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PRES BW",
         "offset": 230,
+        "sysex_id": 672,
         "min": 0,
         "max": 16,
         "enum": null,
@@ -2081,6 +2269,7 @@ export const VL3X_PARAMS = {
       {
         "name": "STYLE",
         "offset": 29,
+        "sysex_id": 126,
         "min": 0,
         "max": 29,
         "enum": "harmony_style",
@@ -2090,6 +2279,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HUMAN STYLE",
         "offset": 30,
+        "sysex_id": 127,
         "min": 0,
         "max": 6,
         "enum": "human_style",
@@ -2099,6 +2289,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HUMANIZE",
         "offset": 32,
+        "sysex_id": 129,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2111,6 +2302,7 @@ export const VL3X_PARAMS = {
       {
         "name": "NOTES SMOOTH",
         "offset": 35,
+        "sysex_id": 140,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2123,6 +2315,7 @@ export const VL3X_PARAMS = {
       {
         "name": "NOTES PORTA",
         "offset": 37,
+        "sysex_id": 142,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2132,6 +2325,7 @@ export const VL3X_PARAMS = {
       {
         "name": "NATPLAY SRC",
         "offset": 38,
+        "sysex_id": 145,
         "min": 0,
         "max": 5,
         "enum": "natplay_input",
@@ -2141,6 +2335,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TUNING",
         "offset": 41,
+        "sysex_id": 149,
         "min": 0,
         "max": 2,
         "enum": "tuning",
@@ -2150,6 +2345,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MODE V1",
         "offset": 42,
+        "sysex_id": 150,
         "min": 0,
         "max": 5,
         "enum": "harmony_mode",
@@ -2159,6 +2355,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 SMOOTH",
         "offset": 48,
+        "sysex_id": 157,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2171,6 +2368,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 GENDER",
         "offset": 49,
+        "sysex_id": 159,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2180,6 +2378,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 PORTA",
         "offset": 50,
+        "sysex_id": 160,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2192,6 +2391,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MODE V2",
         "offset": 51,
+        "sysex_id": 161,
         "min": 0,
         "max": 5,
         "enum": "harmony_mode",
@@ -2201,6 +2401,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 SMOOTH",
         "offset": 57,
+        "sysex_id": 168,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2213,6 +2414,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 GENDER",
         "offset": 58,
+        "sysex_id": 170,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2222,6 +2424,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 PORTA",
         "offset": 59,
+        "sysex_id": 171,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2234,6 +2437,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MODE V3",
         "offset": 60,
+        "sysex_id": 172,
         "min": 0,
         "max": 5,
         "enum": "harmony_mode",
@@ -2243,6 +2447,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 SMOOTH",
         "offset": 66,
+        "sysex_id": 179,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2255,6 +2460,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 GENDER",
         "offset": 67,
+        "sysex_id": 181,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2264,6 +2470,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 PORTA",
         "offset": 68,
+        "sysex_id": 182,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2276,6 +2483,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MODE V4",
         "offset": 69,
+        "sysex_id": 183,
         "min": 0,
         "max": 5,
         "enum": "harmony_mode",
@@ -2285,6 +2493,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 SMOOTH",
         "offset": 75,
+        "sysex_id": 190,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2297,6 +2506,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 GENDER",
         "offset": 76,
+        "sysex_id": 192,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2306,6 +2516,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 PORTA",
         "offset": 77,
+        "sysex_id": 193,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2320,6 +2531,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 78,
+        "sysex_id": 196,
         "min": 0,
         "max": 12,
         "enum": "choir_style",
@@ -2329,6 +2541,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LEVEL",
         "offset": 79,
+        "sysex_id": 197,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2340,6 +2553,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 80,
+        "sysex_id": 214,
         "min": 0,
         "max": 11,
         "enum": "double_style",
@@ -2349,6 +2563,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HUMAN STYLE",
         "offset": 81,
+        "sysex_id": 215,
         "min": 0,
         "max": 6,
         "enum": "human_style",
@@ -2358,6 +2573,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HUMANIZE",
         "offset": 82,
+        "sysex_id": 216,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2367,6 +2583,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 VOICING",
         "offset": 83,
+        "sysex_id": 217,
         "min": 0,
         "max": 3,
         "enum": "voice_voicing",
@@ -2376,6 +2593,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 PORTA",
         "offset": 84,
+        "sysex_id": 218,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2388,6 +2606,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 GENDER",
         "offset": 85,
+        "sysex_id": 219,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2397,6 +2616,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 SMOOTH",
         "offset": 86,
+        "sysex_id": 220,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2409,6 +2629,7 @@ export const VL3X_PARAMS = {
       {
         "name": "OctShift.V1",
         "offset": 87,
+        "sysex_id": 221,
         "min": -1200,
         "max": 1200,
         "enum": null,
@@ -2418,6 +2639,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 VOICING",
         "offset": 88,
+        "sysex_id": 222,
         "min": 0,
         "max": 3,
         "enum": "voice_voicing",
@@ -2427,6 +2649,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 PORTA",
         "offset": 89,
+        "sysex_id": 223,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2439,6 +2662,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 GENDER",
         "offset": 90,
+        "sysex_id": 224,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2448,6 +2672,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 SMOOTH",
         "offset": 91,
+        "sysex_id": 225,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2460,6 +2685,7 @@ export const VL3X_PARAMS = {
       {
         "name": "OctShift.V2",
         "offset": 92,
+        "sysex_id": 226,
         "min": -1200,
         "max": 1200,
         "enum": null,
@@ -2469,6 +2695,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 VOICING",
         "offset": 93,
+        "sysex_id": 227,
         "min": 0,
         "max": 3,
         "enum": "voice_voicing",
@@ -2478,6 +2705,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 PORTA",
         "offset": 94,
+        "sysex_id": 228,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2490,6 +2718,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 GENDER",
         "offset": 95,
+        "sysex_id": 229,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2499,6 +2728,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 SMOOTH",
         "offset": 96,
+        "sysex_id": 230,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2511,6 +2741,7 @@ export const VL3X_PARAMS = {
       {
         "name": "OctShift.V3",
         "offset": 97,
+        "sysex_id": 231,
         "min": -1200,
         "max": 1200,
         "enum": null,
@@ -2520,6 +2751,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 VOICING",
         "offset": 98,
+        "sysex_id": 232,
         "min": 0,
         "max": 3,
         "enum": "voice_voicing",
@@ -2529,6 +2761,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 PORTA",
         "offset": 99,
+        "sysex_id": 233,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2541,6 +2774,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 GENDER",
         "offset": 100,
+        "sysex_id": 234,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2550,6 +2784,7 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 SMOOTH",
         "offset": 101,
+        "sysex_id": 235,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2562,6 +2797,7 @@ export const VL3X_PARAMS = {
       {
         "name": "OctShift.V4",
         "offset": 102,
+        "sysex_id": 236,
         "min": -1200,
         "max": 1200,
         "enum": null,
@@ -2573,6 +2809,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 103,
+        "sysex_id": 239,
         "min": 0,
         "max": 22,
         "enum": "micromod_style_voice",
@@ -2582,6 +2819,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY LEFT",
         "offset": 104,
+        "sysex_id": 242,
         "min": 0,
         "max": 230,
         "enum": null,
@@ -2591,6 +2829,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY RIGHT",
         "offset": 105,
+        "sysex_id": 243,
         "min": 0,
         "max": 230,
         "enum": null,
@@ -2600,6 +2839,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK L",
         "offset": 106,
+        "sysex_id": 244,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -2609,6 +2849,7 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB L",
         "offset": 107,
+        "sysex_id": 245,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -2618,6 +2859,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK R",
         "offset": 108,
+        "sysex_id": 246,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -2627,6 +2869,7 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB R",
         "offset": 109,
+        "sysex_id": 247,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -2636,6 +2879,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SPEED",
         "offset": 110,
+        "sysex_id": 250,
         "min": 5,
         "max": 1000,
         "enum": null,
@@ -2645,6 +2889,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PHASE",
         "offset": 111,
+        "sysex_id": 251,
         "min": 0,
         "max": 180,
         "enum": null,
@@ -2654,6 +2899,7 @@ export const VL3X_PARAMS = {
       {
         "name": "WAVE",
         "offset": 112,
+        "sysex_id": 252,
         "min": 0,
         "max": 2,
         "enum": "waveform",
@@ -2663,6 +2909,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DETUNE",
         "offset": 113,
+        "sysex_id": 970,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -2672,6 +2919,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DEPTH",
         "offset": 114,
+        "sysex_id": 971,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2684,6 +2932,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW CUT",
         "offset": 115,
+        "sysex_id": 253,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -2693,6 +2942,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH CUT",
         "offset": 116,
+        "sysex_id": 254,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -2702,6 +2952,7 @@ export const VL3X_PARAMS = {
       {
         "name": "INV PHASE",
         "offset": 117,
+        "sysex_id": 255,
         "min": 0,
         "max": 3,
         "enum": null,
@@ -2713,6 +2964,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TEMPO",
         "offset": 133,
+        "sysex_id": 273,
         "min": 45,
         "max": 300,
         "enum": null,
@@ -2725,6 +2977,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 134,
+        "sysex_id": 274,
         "min": 0,
         "max": 18,
         "enum": "delay_style_voice",
@@ -2734,6 +2987,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SOURCE",
         "offset": 135,
+        "sysex_id": 275,
         "min": 0,
         "max": 1,
         "enum": "delay_source",
@@ -2743,6 +2997,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DIV L",
         "offset": 136,
+        "sysex_id": 276,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -2752,6 +3007,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DIV R",
         "offset": 137,
+        "sysex_id": 277,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -2761,6 +3017,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY L",
         "offset": 138,
+        "sysex_id": 278,
         "min": 0,
         "max": 2500,
         "enum": null,
@@ -2770,6 +3027,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY R",
         "offset": 139,
+        "sysex_id": 279,
         "min": 0,
         "max": 2500,
         "enum": null,
@@ -2779,6 +3037,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK L",
         "offset": 140,
+        "sysex_id": 280,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2788,6 +3047,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK R",
         "offset": 141,
+        "sysex_id": 281,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2797,6 +3057,7 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB L TO R",
         "offset": 142,
+        "sysex_id": 282,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2806,6 +3067,7 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB TO L",
         "offset": 143,
+        "sysex_id": 283,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2815,6 +3077,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK",
         "offset": 144,
+        "sysex_id": 284,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2824,6 +3087,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TRAILS",
         "offset": 145,
+        "sysex_id": 285,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -2833,6 +3097,7 @@ export const VL3X_PARAMS = {
       {
         "name": "FILTERSTYLE",
         "offset": 146,
+        "sysex_id": 286,
         "min": 0,
         "max": 12,
         "enum": "delay_filter",
@@ -2842,6 +3107,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW CUT",
         "offset": 147,
+        "sysex_id": 287,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -2851,6 +3117,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HI CUT",
         "offset": 148,
+        "sysex_id": 288,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -2860,6 +3127,7 @@ export const VL3X_PARAMS = {
       {
         "name": "EQ INSERT",
         "offset": 149,
+        "sysex_id": 289,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -2869,6 +3137,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCKING",
         "offset": 169,
+        "sysex_id": 307,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -2878,6 +3147,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK THRES",
         "offset": 170,
+        "sysex_id": 308,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -2887,6 +3157,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK AMT",
         "offset": 171,
+        "sysex_id": 309,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -2896,6 +3167,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK TIME",
         "offset": 172,
+        "sysex_id": 310,
         "min": 0,
         "max": 36,
         "enum": null,
@@ -2905,6 +3177,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PREDELAY",
         "offset": 180,
+        "sysex_id": 318,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2914,6 +3187,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PAN",
         "offset": 365,
+        "sysex_id": 305,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -2925,6 +3199,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 177,
+        "sysex_id": 315,
         "min": 0,
         "max": 42,
         "enum": "reverb_style_voice",
@@ -2934,6 +3209,7 @@ export const VL3X_PARAMS = {
       {
         "name": "REVERB TYPE",
         "offset": 178,
+        "sysex_id": 316,
         "min": 0,
         "max": 13,
         "enum": null,
@@ -2943,6 +3219,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DECAY",
         "offset": 179,
+        "sysex_id": 317,
         "min": 1,
         "max": 290,
         "enum": null,
@@ -2955,6 +3232,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DIFFUSE",
         "offset": 181,
+        "sysex_id": 319,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2964,6 +3242,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LOCOLOR",
         "offset": 182,
+        "sysex_id": 320,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2973,6 +3252,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HICOLOR",
         "offset": 183,
+        "sysex_id": 321,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2982,6 +3262,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HIFACTOR",
         "offset": 184,
+        "sysex_id": 322,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -2991,6 +3272,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MODSPEED",
         "offset": 185,
+        "sysex_id": 323,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -3000,6 +3282,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MODDEPTH",
         "offset": 186,
+        "sysex_id": 324,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -3009,6 +3292,7 @@ export const VL3X_PARAMS = {
       {
         "name": "EARLY RFLCT",
         "offset": 187,
+        "sysex_id": 325,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -3018,6 +3302,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TRAIL LEVEL",
         "offset": 188,
+        "sysex_id": 326,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -3027,6 +3312,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DRY LEVEL",
         "offset": 189,
+        "sysex_id": 327,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -3036,6 +3322,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCKING",
         "offset": 203,
+        "sysex_id": 341,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -3045,6 +3332,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK THRES",
         "offset": 204,
+        "sysex_id": 342,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -3054,6 +3342,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK AMT",
         "offset": 205,
+        "sysex_id": 343,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -3063,6 +3352,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK TIME",
         "offset": 206,
+        "sysex_id": 344,
         "min": 0,
         "max": 36,
         "enum": null,
@@ -3074,6 +3364,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 211,
+        "sysex_id": 349,
         "min": 0,
         "max": 12,
         "enum": "synth_style",
@@ -3083,6 +3374,7 @@ export const VL3X_PARAMS = {
       {
         "name": "LEAD MIX",
         "offset": 212,
+        "sysex_id": 350,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3092,6 +3384,7 @@ export const VL3X_PARAMS = {
       {
         "name": "CARRIER",
         "offset": 213,
+        "sysex_id": 351,
         "min": 0,
         "max": 11,
         "enum": null,
@@ -3101,6 +3394,7 @@ export const VL3X_PARAMS = {
       {
         "name": "CARR SHIFT",
         "offset": 214,
+        "sysex_id": 352,
         "min": 0,
         "max": 3,
         "enum": null,
@@ -3110,6 +3404,7 @@ export const VL3X_PARAMS = {
       {
         "name": "CARR MIX",
         "offset": 215,
+        "sysex_id": 353,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3119,6 +3414,7 @@ export const VL3X_PARAMS = {
       {
         "name": "GENDER",
         "offset": 216,
+        "sysex_id": 354,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -3128,6 +3424,7 @@ export const VL3X_PARAMS = {
       {
         "name": "NOTE SOURCE",
         "offset": 217,
+        "sysex_id": 355,
         "min": 0,
         "max": 3,
         "enum": null,
@@ -3137,6 +3434,7 @@ export const VL3X_PARAMS = {
       {
         "name": "RES",
         "offset": 218,
+        "sysex_id": 356,
         "min": 1,
         "max": 100,
         "enum": null,
@@ -3146,6 +3444,7 @@ export const VL3X_PARAMS = {
       {
         "name": "HARMONIES",
         "offset": 219,
+        "sysex_id": 357,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -3155,6 +3454,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PORTAMENTO",
         "offset": 392,
+        "sysex_id": 1132,
         "min": 0,
         "max": 5000,
         "enum": null,
@@ -3164,6 +3464,7 @@ export const VL3X_PARAMS = {
       {
         "name": "ESS LEVEL",
         "offset": 393,
+        "sysex_id": 1135,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3175,6 +3476,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 271,
+        "sysex_id": 735,
         "min": 0,
         "max": 6,
         "enum": "hardtune_style",
@@ -3184,6 +3486,7 @@ export const VL3X_PARAMS = {
       {
         "name": "KEY SOURCE",
         "offset": 272,
+        "sysex_id": 736,
         "min": 0,
         "max": 3,
         "enum": "key_source",
@@ -3193,6 +3496,7 @@ export const VL3X_PARAMS = {
       {
         "name": "AMOUNT",
         "offset": 273,
+        "sysex_id": 737,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3205,6 +3509,7 @@ export const VL3X_PARAMS = {
       {
         "name": "WINDOW",
         "offset": 274,
+        "sysex_id": 738,
         "min": 0,
         "max": 60,
         "enum": null,
@@ -3214,6 +3519,7 @@ export const VL3X_PARAMS = {
       {
         "name": "RATE",
         "offset": 275,
+        "sysex_id": 739,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3223,6 +3529,7 @@ export const VL3X_PARAMS = {
       {
         "name": "SHIFT",
         "offset": 276,
+        "sysex_id": 740,
         "min": -36,
         "max": 36,
         "enum": null,
@@ -3232,6 +3539,7 @@ export const VL3X_PARAMS = {
       {
         "name": "GENDER",
         "offset": 277,
+        "sysex_id": 742,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -3241,6 +3549,7 @@ export const VL3X_PARAMS = {
       {
         "name": "Note Select",
         "offset": 278,
+        "sysex_id": 743,
         "min": 0,
         "max": 4095,
         "enum": null,
@@ -3250,6 +3559,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MANUAL KEY",
         "offset": 279,
+        "sysex_id": 744,
         "min": 0,
         "max": 11,
         "enum": "key",
@@ -3259,6 +3569,7 @@ export const VL3X_PARAMS = {
       {
         "name": "MANUAL SCALE",
         "offset": 280,
+        "sysex_id": 747,
         "min": 0,
         "max": 5,
         "enum": "correct_scale",
@@ -3270,6 +3581,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 317,
+        "sysex_id": 808,
         "min": 0,
         "max": 10,
         "enum": "rhythmic_style",
@@ -3279,6 +3591,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DIVISION",
         "offset": 318,
+        "sysex_id": 809,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -3288,6 +3601,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DEPTH",
         "offset": 319,
+        "sysex_id": 812,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3300,6 +3614,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TARGET",
         "offset": 320,
+        "sysex_id": 821,
         "min": 0,
         "max": 6,
         "enum": "rhythmic_target",
@@ -3309,6 +3624,7 @@ export const VL3X_PARAMS = {
       {
         "name": "WAVE TYPE",
         "offset": 321,
+        "sysex_id": 822,
         "min": 0,
         "max": 22,
         "enum": null,
@@ -3320,6 +3636,7 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 322,
+        "sysex_id": 827,
         "min": 0,
         "max": 3,
         "enum": "stutter_style",
@@ -3329,6 +3646,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DIVISION",
         "offset": 323,
+        "sysex_id": 828,
         "min": 9,
         "max": 19,
         "enum": null,
@@ -3338,6 +3656,7 @@ export const VL3X_PARAMS = {
       {
         "name": "CAPTURE",
         "offset": 324,
+        "sysex_id": 829,
         "min": 0,
         "max": 2,
         "enum": null,
@@ -3347,6 +3666,7 @@ export const VL3X_PARAMS = {
       {
         "name": "DIRECTION",
         "offset": 325,
+        "sysex_id": 830,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -3356,6 +3676,7 @@ export const VL3X_PARAMS = {
       {
         "name": "PATH",
         "offset": 326,
+        "sysex_id": 831,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -5634,6 +5955,16 @@ export function findParamByOffset(offset) {
   for (const cat of Object.keys(VL3X_PARAMS)) {
     for (const subcat of Object.keys(VL3X_PARAMS[cat])) {
       const param = VL3X_PARAMS[cat][subcat].find(p => p.offset === offset);
+      if (param) return { category: cat, subcategory: subcat, param };
+    }
+  }
+  return null;
+}
+
+export function findParamBySysexId(sysexId) {
+  for (const cat of Object.keys(VL3X_PARAMS)) {
+    for (const subcat of Object.keys(VL3X_PARAMS[cat])) {
+      const param = VL3X_PARAMS[cat][subcat].find(p => p.sysex_id === sysexId);
       if (param) return { category: cat, subcategory: subcat, param };
     }
   }

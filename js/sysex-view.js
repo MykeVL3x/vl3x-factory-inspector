@@ -5,7 +5,7 @@
 
 import { getState } from './state.js';
 import { makeSysEx, parseSysEx, formatSysEx } from './sysex-calculator.js';
-import { VL3X_PARAMS, ENUMS, getCategories, getSubcategories, getParameters, findParamByOffset, getEnumValues } from './sysex-params.js';
+import { VL3X_PARAMS, ENUMS, getCategories, getSubcategories, getParameters, findParamByOffset, findParamBySysexId, getEnumValues } from './sysex-params.js';
 
 /**
  * Render the SysEx calculator view
@@ -106,44 +106,44 @@ export function renderSysExView(container) {
         <div class="common-ops">
           <div class="op-group">
             <h4>Harmony Level</h4>
-            <button class="op-btn" data-offset="357" data-value="-61">OFF (Muted)</button>
-            <button class="op-btn" data-offset="357" data-value="-12">LOW (-12dB)</button>
-            <button class="op-btn" data-offset="357" data-value="-6">MED (-6dB)</button>
-            <button class="op-btn" data-offset="357" data-value="0">FULL (0dB)</button>
-            <button class="op-btn" data-offset="357" data-value="6">BOOST (+6dB)</button>
+            <button class="op-btn" data-sysex-id="884" data-offset="357" data-value="-61">OFF (Muted)</button>
+            <button class="op-btn" data-sysex-id="884" data-offset="357" data-value="-12">LOW (-12dB)</button>
+            <button class="op-btn" data-sysex-id="884" data-offset="357" data-value="-6">MED (-6dB)</button>
+            <button class="op-btn" data-sysex-id="884" data-offset="357" data-value="0">FULL (0dB)</button>
+            <button class="op-btn" data-sysex-id="884" data-offset="357" data-value="6">BOOST (+6dB)</button>
           </div>
           <div class="op-group">
             <h4>Double Level</h4>
-            <button class="op-btn" data-offset="356" data-value="-61">OFF (Muted)</button>
-            <button class="op-btn" data-offset="356" data-value="-12">LOW (-12dB)</button>
-            <button class="op-btn" data-offset="356" data-value="0">FULL (0dB)</button>
+            <button class="op-btn" data-sysex-id="883" data-offset="356" data-value="-61">OFF (Muted)</button>
+            <button class="op-btn" data-sysex-id="883" data-offset="356" data-value="-12">LOW (-12dB)</button>
+            <button class="op-btn" data-sysex-id="883" data-offset="356" data-value="0">FULL (0dB)</button>
           </div>
           <div class="op-group">
             <h4>HardTune Amount</h4>
-            <button class="op-btn" data-offset="96" data-value="0">OFF (0%)</button>
-            <button class="op-btn" data-offset="96" data-value="30">SUBTLE (30%)</button>
-            <button class="op-btn" data-offset="96" data-value="60">MEDIUM (60%)</button>
-            <button class="op-btn" data-offset="96" data-value="100">FULL (100%)</button>
+            <button class="op-btn" data-sysex-id="230" data-offset="96" data-value="0">OFF (0%)</button>
+            <button class="op-btn" data-sysex-id="230" data-offset="96" data-value="30">SUBTLE (30%)</button>
+            <button class="op-btn" data-sysex-id="230" data-offset="96" data-value="60">MEDIUM (60%)</button>
+            <button class="op-btn" data-sysex-id="230" data-offset="96" data-value="100">FULL (100%)</button>
           </div>
           <div class="op-group">
             <h4>Vocal Reverb</h4>
-            <button class="op-btn" data-offset="377" data-value="-61">OFF (Muted)</button>
-            <button class="op-btn" data-offset="377" data-value="-18">LOW (-18dB)</button>
-            <button class="op-btn" data-offset="377" data-value="-12">MED (-12dB)</button>
-            <button class="op-btn" data-offset="377" data-value="0">FULL (0dB)</button>
+            <button class="op-btn" data-sysex-id="905" data-offset="377" data-value="-61">OFF (Muted)</button>
+            <button class="op-btn" data-sysex-id="905" data-offset="377" data-value="-18">LOW (-18dB)</button>
+            <button class="op-btn" data-sysex-id="905" data-offset="377" data-value="-12">MED (-12dB)</button>
+            <button class="op-btn" data-sysex-id="905" data-offset="377" data-value="0">FULL (0dB)</button>
           </div>
           <div class="op-group">
             <h4>Vocal Delay</h4>
-            <button class="op-btn" data-offset="375" data-value="-61">OFF (Muted)</button>
-            <button class="op-btn" data-offset="375" data-value="-18">LOW (-18dB)</button>
-            <button class="op-btn" data-offset="375" data-value="-12">MED (-12dB)</button>
-            <button class="op-btn" data-offset="375" data-value="0">FULL (0dB)</button>
+            <button class="op-btn" data-sysex-id="903" data-offset="375" data-value="-61">OFF (Muted)</button>
+            <button class="op-btn" data-sysex-id="903" data-offset="375" data-value="-18">LOW (-18dB)</button>
+            <button class="op-btn" data-sysex-id="903" data-offset="375" data-value="-12">MED (-12dB)</button>
+            <button class="op-btn" data-sysex-id="903" data-offset="375" data-value="0">FULL (0dB)</button>
           </div>
           <div class="op-group">
             <h4>Guitar Reverb</h4>
-            <button class="op-btn" data-offset="363" data-value="-61">OFF (Muted)</button>
-            <button class="op-btn" data-offset="363" data-value="-12">MED (-12dB)</button>
-            <button class="op-btn" data-offset="363" data-value="0">FULL (0dB)</button>
+            <button class="op-btn" data-sysex-id="911" data-offset="384" data-value="-61">OFF (Muted)</button>
+            <button class="op-btn" data-sysex-id="911" data-offset="384" data-value="-12">MED (-12dB)</button>
+            <button class="op-btn" data-sysex-id="911" data-offset="384" data-value="0">FULL (0dB)</button>
           </div>
         </div>
       </div>
@@ -263,9 +263,10 @@ function setupSysExEventListeners(container) {
   // Common operation buttons
   container.querySelectorAll('.op-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      const sysexId = parseInt(btn.dataset.sysexId);
       const offset = parseInt(btn.dataset.offset);
       const value = parseInt(btn.dataset.value);
-      const sysex = makeSysEx(offset, value);
+      const sysex = makeSysEx(sysexId, value);
 
       // Show in output
       container.querySelector('#sysexSpaced').value = sysex;
@@ -273,9 +274,9 @@ function setupSysExEventListeners(container) {
 
       // Update param meta
       const param = findParamByOffset(offset);
-      const unit = param?.unit || '';
+      const unit = param?.param?.unit || '';
       container.querySelector('#paramMeta').innerHTML =
-        `<span class="meta-label">Offset ${offset}</span> | <span class="meta-value">${param?.name || 'Unknown'} = ${value}${unit}</span>`;
+        `<span class="meta-label">SysEx ID ${sysexId} (offset ${offset})</span> | <span class="meta-value">${param?.param?.name || 'Unknown'} = ${value}${unit}</span>`;
 
       // Flash the button
       btn.classList.add('active');
@@ -313,7 +314,7 @@ function updateParamOptions() {
   const params = getParameters(category, subcategory);
 
   paramSelect.innerHTML = params.map(p =>
-    `<option value="${p.offset}" data-min="${p.min}" data-max="${p.max}"
+    `<option value="${p.offset}" data-sysex-id="${p.sysex_id || ''}" data-min="${p.min}" data-max="${p.max}"
              data-unit="${p.unit || ''}" data-enum="${p.enum || ''}">${p.name}</option>`
   ).join('');
 
@@ -352,7 +353,10 @@ function updateValueConstraints() {
   valueRange.textContent = `(${min} to ${max})`;
 
   // Show parameter details
-  paramDetails.innerHTML = `<span class="detail-offset">Offset: ${offset}</span>`;
+  const sysexId = option.dataset.sysexId;
+  paramDetails.innerHTML = sysexId
+    ? `<span class="detail-offset">SysEx ID: ${sysexId} | Offset: ${offset}</span>`
+    : `<span class="detail-offset">Offset: ${offset} (no SysEx ID - LIVE control not available)</span>`;
 
   // Handle enum parameters
   if (enumType && ENUMS[enumType]) {
@@ -474,10 +478,19 @@ function generateSysEx() {
   const offset = parseInt(paramSelect.value);
   const value = parseInt(paramValue.value);
   const option = paramSelect.selectedOptions[0];
+  const sysexId = option?.dataset.sysexId ? parseInt(option.dataset.sysexId) : null;
   const unit = option?.dataset.unit || '';
   const enumType = option?.dataset.enum;
 
-  const sysex = makeSysEx(offset, value);
+  // Check if sysex_id is available
+  if (!sysexId) {
+    sysexSpaced.value = 'ERROR: No SysEx ID for this parameter';
+    sysexCompact.value = '';
+    paramMeta.innerHTML = `<span class="meta-label">Offset ${offset}</span> | <span class="meta-error">This parameter does not support LIVE SysEx control</span>`;
+    return;
+  }
+
+  const sysex = makeSysEx(sysexId, value);
   sysexSpaced.value = sysex;
   sysexCompact.value = formatSysEx(sysex, true);
 
@@ -486,7 +499,7 @@ function generateSysEx() {
   if (enumType && ENUMS[enumType] && ENUMS[enumType][value]) {
     displayVal = `${value} (${ENUMS[enumType][value]})`;
   }
-  paramMeta.innerHTML = `<span class="meta-label">Offset ${offset}</span> | <span class="meta-value">${displayVal}</span>`;
+  paramMeta.innerHTML = `<span class="meta-label">SysEx ID ${sysexId} (offset ${offset})</span> | <span class="meta-value">${displayVal}</span>`;
 }
 
 /**
@@ -501,35 +514,29 @@ function decodeSysEx(hex, container) {
     return;
   }
 
-  // Find the parameter
-  const param = findParamByOffset(parsed.offset);
-  const paramName = param ? param.name : `Unknown`;
-  const unit = param?.unit || '';
+  // Find the parameter by sysex_id
+  const found = findParamBySysexId(parsed.sysexId);
+  const paramData = found?.param;
+  const paramName = paramData ? paramData.name : `Unknown (SysEx ID ${parsed.sysexId})`;
+  const unit = paramData?.unit || '';
 
   // Get enum value if applicable
   let displayVal = `${parsed.value}${unit}`;
-  if (param?.enum && ENUMS[param.enum] && ENUMS[param.enum][parsed.value]) {
-    displayVal = `${parsed.value} (${ENUMS[param.enum][parsed.value]})`;
+  if (paramData?.enum && ENUMS[paramData.enum] && ENUMS[paramData.enum][parsed.value]) {
+    displayVal = `${parsed.value} (${ENUMS[paramData.enum][parsed.value]})`;
   }
 
-  // Find category/subcategory
-  let location = 'Unknown location';
-  for (const [cat, subs] of Object.entries(VL3X_PARAMS)) {
-    for (const [sub, params] of Object.entries(subs)) {
-      if (params.find(p => p.offset === parsed.offset)) {
-        location = `${cat} > ${sub}`;
-        break;
-      }
-    }
-  }
+  // Location from found result
+  const location = found ? `${found.category} > ${found.subcategory}` : 'Unknown location';
 
   resultDiv.innerHTML = `
     <div class="decode-success">
       <div class="decode-row"><span>Parameter:</span><strong>${paramName}</strong></div>
       <div class="decode-row"><span>Location:</span>${location}</div>
-      <div class="decode-row"><span>Offset:</span>${parsed.offset} (chunk ${parsed.chunk}, local ${parsed.local})</div>
+      <div class="decode-row"><span>SysEx ID:</span>${parsed.sysexId} (page ${parsed.page}, param ${parsed.param})</div>
+      ${paramData ? `<div class="decode-row"><span>Offset:</span>${paramData.offset}</div>` : ''}
       <div class="decode-row"><span>Value:</span><strong>${displayVal}</strong></div>
-      ${param ? `<div class="decode-row"><span>Range:</span>${param.min} to ${param.max}${unit}</div>` : ''}
+      ${paramData ? `<div class="decode-row"><span>Range:</span>${paramData.min} to ${paramData.max}${unit}</div>` : ''}
     </div>
   `;
 }
