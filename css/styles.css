@@ -50,6 +50,20 @@ body {
   color: #888;
 }
 
+.fb-group-link {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: #7ec8e3;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.fb-group-link:hover {
+  color: #a8d8ea;
+  text-decoration: underline;
+}
+
 /* Search Box */
 .search-box {
   padding: 0.75rem 1rem;
