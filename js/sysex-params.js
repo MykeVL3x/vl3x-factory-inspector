@@ -1,7 +1,7 @@
 /**
  * sysex-params.js - Complete VL3X parameter database
  * Auto-generated from gold_standard_reference.json
- * Total parameters: 568
+ * Total parameters: 373
  */
 
 export const VL3X_PARAMS = {
@@ -10,7 +10,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 0,
-        "sysex_id": 33,
         "min": 0,
         "max": 29,
         "enum": "amp_style",
@@ -20,7 +19,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LO F PRE",
         "offset": 1,
-        "sysex_id": 84,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -30,7 +28,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LO PRE",
         "offset": 2,
-        "sysex_id": 85,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -40,7 +37,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LO BW PRE",
         "offset": 3,
-        "sysex_id": 86,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -50,7 +46,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH F PRE",
         "offset": 4,
-        "sysex_id": 87,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -60,7 +55,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH PRE",
         "offset": 5,
-        "sysex_id": 88,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -70,7 +64,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HI BW PRE",
         "offset": 6,
-        "sysex_id": 89,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -80,7 +73,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MID F PRE",
         "offset": 7,
-        "sysex_id": 90,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -90,7 +82,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MID PRE",
         "offset": 8,
-        "sysex_id": 91,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -100,7 +91,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MID BW PRE",
         "offset": 9,
-        "sysex_id": 92,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -110,7 +100,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LO F POST",
         "offset": 10,
-        "sysex_id": 94,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -120,7 +109,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW POST",
         "offset": 11,
-        "sysex_id": 95,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -130,7 +118,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LO BW POST",
         "offset": 12,
-        "sysex_id": 96,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -140,7 +127,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HI F POST",
         "offset": 13,
-        "sysex_id": 97,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -150,7 +136,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH POST",
         "offset": 14,
-        "sysex_id": 98,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -160,7 +145,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HI BW POST",
         "offset": 15,
-        "sysex_id": 99,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -170,7 +154,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MID F POST",
         "offset": 16,
-        "sysex_id": 100,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -180,7 +163,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MID POST",
         "offset": 17,
-        "sysex_id": 101,
         "min": -18,
         "max": 18,
         "enum": null,
@@ -190,7 +172,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MID BW POST",
         "offset": 18,
-        "sysex_id": 102,
         "min": 0,
         "max": 24,
         "enum": null,
@@ -200,7 +181,6 @@ export const VL3X_PARAMS = {
       {
         "name": "AMP SAG",
         "offset": 258,
-        "sysex_id": 721,
         "min": 0,
         "max": 10,
         "enum": null,
@@ -210,7 +190,6 @@ export const VL3X_PARAMS = {
       {
         "name": "POSTGAIN",
         "offset": 259,
-        "sysex_id": 722,
         "min": -40,
         "max": 18,
         "enum": null,
@@ -220,7 +199,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MODE",
         "offset": 261,
-        "sysex_id": 724,
         "min": 0,
         "max": 1,
         "enum": "amp_mode",
@@ -230,7 +208,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LOCUT FC",
         "offset": 262,
-        "sysex_id": 725,
         "min": 0,
         "max": 72,
         "enum": null,
@@ -240,7 +217,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PREGAIN",
         "offset": 263,
-        "sysex_id": 726,
         "min": -9,
         "max": 60,
         "enum": null,
@@ -250,7 +226,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SPKR GAIN",
         "offset": 267,
-        "sysex_id": 730,
         "min": -20,
         "max": 20,
         "enum": null,
@@ -260,7 +235,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SPKR BW",
         "offset": 268,
-        "sysex_id": 731,
         "min": 0,
         "max": 16,
         "enum": null,
@@ -270,7 +244,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SPKR FC",
         "offset": 269,
-        "sysex_id": 732,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -282,7 +255,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 118,
-        "sysex_id": 256,
         "min": 0,
         "max": 13,
         "enum": "micromod_style_guitar",
@@ -292,7 +264,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY LEFT",
         "offset": 119,
-        "sysex_id": 259,
         "min": 0,
         "max": 230,
         "enum": null,
@@ -302,7 +273,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY RIGHT",
         "offset": 120,
-        "sysex_id": 260,
         "min": 0,
         "max": 230,
         "enum": null,
@@ -312,7 +282,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK L",
         "offset": 121,
-        "sysex_id": 261,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -322,7 +291,6 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB L",
         "offset": 122,
-        "sysex_id": 262,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -332,7 +300,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK R",
         "offset": 123,
-        "sysex_id": 263,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -342,7 +309,6 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB R",
         "offset": 124,
-        "sysex_id": 264,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -352,7 +318,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SPEED",
         "offset": 125,
-        "sysex_id": 267,
         "min": 5,
         "max": 1000,
         "enum": null,
@@ -362,7 +327,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PHASE",
         "offset": 126,
-        "sysex_id": 268,
         "min": 0,
         "max": 180,
         "enum": null,
@@ -372,7 +336,6 @@ export const VL3X_PARAMS = {
       {
         "name": "WAVE",
         "offset": 127,
-        "sysex_id": 269,
         "min": 0,
         "max": 2,
         "enum": "waveform",
@@ -382,7 +345,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DETUNE",
         "offset": 128,
-        "sysex_id": 972,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -392,7 +354,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DEPTH",
         "offset": 129,
-        "sysex_id": 973,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -402,7 +363,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW CUT",
         "offset": 130,
-        "sysex_id": 270,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -412,7 +372,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH CUT",
         "offset": 131,
-        "sysex_id": 271,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -422,7 +381,6 @@ export const VL3X_PARAMS = {
       {
         "name": "INV PHASE",
         "offset": 132,
-        "sysex_id": 272,
         "min": 0,
         "max": 3,
         "enum": "on_off",
@@ -443,7 +401,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 150,
-        "sysex_id": 290,
         "min": 0,
         "max": 14,
         "enum": "delay_style_guitar",
@@ -453,7 +410,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SOURCE",
         "offset": 151,
-        "sysex_id": 291,
         "min": 0,
         "max": 1,
         "enum": "delay_source",
@@ -463,7 +419,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DIV L",
         "offset": 152,
-        "sysex_id": 292,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -473,7 +428,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DIV R",
         "offset": 153,
-        "sysex_id": 293,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -483,7 +437,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY L",
         "offset": 154,
-        "sysex_id": 294,
         "min": 0,
         "max": 2500,
         "enum": null,
@@ -493,7 +446,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY R",
         "offset": 155,
-        "sysex_id": 295,
         "min": 0,
         "max": 2500,
         "enum": null,
@@ -503,7 +455,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK L",
         "offset": 156,
-        "sysex_id": 296,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -513,7 +464,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK R",
         "offset": 157,
-        "sysex_id": 297,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -523,7 +473,6 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB L TO R",
         "offset": 158,
-        "sysex_id": 298,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -533,7 +482,6 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB R TO L",
         "offset": 159,
-        "sysex_id": 299,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -543,7 +491,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK",
         "offset": 160,
-        "sysex_id": 300,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -553,7 +500,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MODDEPTH",
         "offset": 161,
-        "sysex_id": 974,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -563,7 +509,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MODSPEED",
         "offset": 162,
-        "sysex_id": 975,
         "min": 10,
         "max": 1000,
         "enum": null,
@@ -573,7 +518,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TRAILS",
         "offset": 163,
-        "sysex_id": 301,
         "min": 0,
         "max": 1,
         "enum": "on_off",
@@ -583,7 +527,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FILTERSTYLE",
         "offset": 164,
-        "sysex_id": 302,
         "min": 0,
         "max": 12,
         "enum": "delay_filter",
@@ -593,7 +536,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW CUT",
         "offset": 165,
-        "sysex_id": 303,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -603,7 +545,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH CUT",
         "offset": 166,
-        "sysex_id": 304,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -613,7 +554,6 @@ export const VL3X_PARAMS = {
       {
         "name": "WIDTH",
         "offset": 168,
-        "sysex_id": 306,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -623,7 +563,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCKING",
         "offset": 173,
-        "sysex_id": 311,
         "min": 0,
         "max": 1,
         "enum": "on_off",
@@ -633,7 +572,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK THRES",
         "offset": 174,
-        "sysex_id": 312,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -643,7 +581,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK AMT",
         "offset": 175,
-        "sysex_id": 313,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -653,7 +590,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK TIME",
         "offset": 176,
-        "sysex_id": 314,
         "min": 0,
         "max": 36,
         "enum": null,
@@ -663,7 +599,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PREDELAY",
         "offset": 193,
-        "sysex_id": 331,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -675,7 +610,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 190,
-        "sysex_id": 328,
         "min": 0,
         "max": 51,
         "enum": "reverb_style_guitar",
@@ -685,7 +619,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 191,
-        "sysex_id": 329,
         "min": 0,
         "max": 13,
         "enum": "reverb_type_guitar",
@@ -695,7 +628,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DECAY",
         "offset": 192,
-        "sysex_id": 330,
         "min": 1,
         "max": 290,
         "enum": null,
@@ -705,7 +637,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DIFFUSE",
         "offset": 194,
-        "sysex_id": 332,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -715,7 +646,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LO COLOR",
         "offset": 195,
-        "sysex_id": 333,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -725,7 +655,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HICOLOR",
         "offset": 196,
-        "sysex_id": 334,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -735,7 +664,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIFACTOR",
         "offset": 197,
-        "sysex_id": 335,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -745,7 +673,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MODSPEED",
         "offset": 198,
-        "sysex_id": 336,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -755,7 +682,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MODDEPTH",
         "offset": 199,
-        "sysex_id": 337,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -765,7 +691,6 @@ export const VL3X_PARAMS = {
       {
         "name": "EARLY RFLCT",
         "offset": 200,
-        "sysex_id": 338,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -775,7 +700,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LEVEL",
         "offset": 201,
-        "sysex_id": 339,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -785,7 +709,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TAIL LEVEL",
         "offset": 202,
-        "sysex_id": 340,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -795,7 +718,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCKING",
         "offset": 207,
-        "sysex_id": 345,
         "min": 0,
         "max": 1,
         "enum": "on_off",
@@ -805,7 +727,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK THRES",
         "offset": 208,
-        "sysex_id": 346,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -815,7 +736,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK AMT",
         "offset": 209,
-        "sysex_id": 347,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -825,7 +745,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK TIME",
         "offset": 210,
-        "sysex_id": 348,
         "min": 0,
         "max": 36,
         "enum": null,
@@ -837,7 +756,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 236,
-        "sysex_id": 694,
         "min": 0,
         "max": 5,
         "enum": "octaver_style",
@@ -847,7 +765,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MIX",
         "offset": 237,
-        "sysex_id": 695,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -857,7 +774,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SHIFT",
         "offset": 238,
-        "sysex_id": 696,
         "min": -24,
         "max": 24,
         "enum": null,
@@ -869,7 +785,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 239,
-        "sysex_id": 697,
         "min": 0,
         "max": 9,
         "enum": "wah_style",
@@ -879,7 +794,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 240,
-        "sysex_id": 698,
         "min": 0,
         "max": 2,
         "enum": "wah_subtype",
@@ -889,7 +803,6 @@ export const VL3X_PARAMS = {
       {
         "name": "ORDER",
         "offset": 241,
-        "sysex_id": 699,
         "min": 0,
         "max": 1,
         "enum": "wah_order",
@@ -899,7 +812,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SENSITIVITY",
         "offset": 242,
-        "sysex_id": 700,
         "min": 0,
         "max": 10,
         "enum": null,
@@ -909,7 +821,6 @@ export const VL3X_PARAMS = {
       {
         "name": "RESPONSE",
         "offset": 243,
-        "sysex_id": 701,
         "min": 0,
         "max": 11,
         "enum": null,
@@ -919,7 +830,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FMAX",
         "offset": 244,
-        "sysex_id": 702,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -929,7 +839,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH CUT",
         "offset": 245,
-        "sysex_id": 703,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -939,7 +848,6 @@ export const VL3X_PARAMS = {
       {
         "name": "RESONANCE",
         "offset": 246,
-        "sysex_id": 704,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -952,7 +860,6 @@ export const VL3X_PARAMS = {
       {
         "name": "BPM",
         "offset": 247,
-        "sysex_id": 705,
         "min": 20,
         "max": 600,
         "enum": null,
@@ -965,7 +872,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SHAPE",
         "offset": 248,
-        "sysex_id": 706,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -975,7 +881,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LEVEL",
         "offset": 249,
-        "sysex_id": 707,
         "min": -12,
         "max": 12,
         "enum": null,
@@ -985,7 +890,6 @@ export const VL3X_PARAMS = {
       {
         "name": "EXP MINPOS",
         "offset": 250,
-        "sysex_id": 708,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -995,7 +899,6 @@ export const VL3X_PARAMS = {
       {
         "name": "EXP MAXPOS",
         "offset": 251,
-        "sysex_id": 709,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -1007,7 +910,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 252,
-        "sysex_id": 710,
         "min": 0,
         "max": 4,
         "enum": "guitar_comp_style",
@@ -1017,7 +919,6 @@ export const VL3X_PARAMS = {
       {
         "name": "RATIO",
         "offset": 253,
-        "sysex_id": 711,
         "min": 0,
         "max": 14,
         "enum": null,
@@ -1027,7 +928,6 @@ export const VL3X_PARAMS = {
       {
         "name": "THRESHOLD",
         "offset": 254,
-        "sysex_id": 712,
         "min": -50,
         "max": 0,
         "enum": null,
@@ -1037,7 +937,6 @@ export const VL3X_PARAMS = {
       {
         "name": "ATTACK",
         "offset": 255,
-        "sysex_id": 713,
         "min": 0,
         "max": 19,
         "enum": null,
@@ -1047,7 +946,6 @@ export const VL3X_PARAMS = {
       {
         "name": "RELEASE",
         "offset": 256,
-        "sysex_id": 714,
         "min": 0,
         "max": 19,
         "enum": null,
@@ -1057,7 +955,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MAKEUP GAIN",
         "offset": 257,
-        "sysex_id": 715,
         "min": 0,
         "max": 30,
         "enum": null,
@@ -1065,11 +962,10 @@ export const VL3X_PARAMS = {
         "display": null
       }
     ],
-    "null": [
+    "Other": [
       {
         "name": "DC GAIN",
         "offset": 260,
-        "sysex_id": 723,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -1081,7 +977,6 @@ export const VL3X_PARAMS = {
       {
         "name": "STYLE",
         "offset": 264,
-        "sysex_id": 727,
         "min": 0,
         "max": 2,
         "enum": "drive_style",
@@ -1091,7 +986,6 @@ export const VL3X_PARAMS = {
       {
         "name": "POST GAIN",
         "offset": 265,
-        "sysex_id": 728,
         "min": -40,
         "max": 18,
         "enum": null,
@@ -1101,7 +995,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PREGAIN",
         "offset": 266,
-        "sysex_id": 729,
         "min": -9,
         "max": 60,
         "enum": null,
@@ -1113,7 +1006,6 @@ export const VL3X_PARAMS = {
       {
         "name": "GTR PAN",
         "offset": 270,
-        "sysex_id": 734,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -1124,11 +1016,21 @@ export const VL3X_PARAMS = {
         }
       }
     ],
+    "HardTune": [
+      {
+        "name": "PRE/POST",
+        "offset": 281,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
+      }
+    ],
     "Rhythmic": [
       {
         "name": "TYPE",
         "offset": 327,
-        "sysex_id": 833,
         "min": 0,
         "max": 6,
         "enum": "rhythmic_style",
@@ -1138,7 +1040,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DEPTH",
         "offset": 328,
-        "sysex_id": 834,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -1148,7 +1049,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DIVISION",
         "offset": 329,
-        "sysex_id": 835,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -1158,7 +1058,6 @@ export const VL3X_PARAMS = {
       {
         "name": "WAVEFORM",
         "offset": 330,
-        "sysex_id": 836,
         "min": 0,
         "max": 4,
         "enum": "waveform",
@@ -1168,7 +1067,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TREM BPM",
         "offset": 331,
-        "sysex_id": 838,
         "min": 45,
         "max": 300,
         "enum": null,
@@ -1178,564 +1076,19 @@ export const VL3X_PARAMS = {
       {
         "name": "TARGET",
         "offset": 332,
-        "sysex_id": 839,
         "min": 0,
         "max": 1,
         "enum": "rhythmic_target",
         "unit": null,
         "display": null
       }
-    ],
-    "HardTune": [
-      {
-        "name": "PRE/POST",
-        "offset": 281,
-        "sysex_id": 748,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ]
-  },
-  "Hit Control": {
-    "Octaver": [
-      {
-        "name": "HitControl.Gtr Shift",
-        "offset": 301,
-        "sysex_id": 792,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "uMod": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 282,
-        "sysex_id": 773,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HitControl.Gtr Micromod",
-        "offset": 296,
-        "sysex_id": 787,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Delay": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 283,
-        "sysex_id": 774,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HitControl.Gtr Delay",
-        "offset": 297,
-        "sysex_id": 788,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Reverb": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 284,
-        "sysex_id": 775,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HitControl.Gtr Reverb",
-        "offset": 298,
-        "sysex_id": 789,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Harmony": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 285,
-        "sysex_id": 776,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Double": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 286,
-        "sysex_id": 777,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Transducer": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 287,
-        "sysex_id": 778,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "HardTune": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 288,
-        "sysex_id": 779,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Choir": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 289,
-        "sysex_id": 780,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Rhythmic": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 290,
-        "sysex_id": 781,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HitControl.Gtr Rhythmic",
-        "offset": 302,
-        "sysex_id": 793,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Stutter": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 291,
-        "sysex_id": 782,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Synth": [
-      {
-        "name": "HIT CONTROL",
-        "offset": 292,
-        "sysex_id": 783,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "null": [
-      {
-        "name": "HitControl.VocWhammy",
-        "offset": 293,
-        "sysex_id": 784,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "HitState.Vocal",
-        "offset": 303,
-        "sysex_id": 794,
-        "min": 0,
-        "max": 1,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "Hit State",
-        "offset": 304,
-        "sysex_id": 795,
-        "min": 0,
-        "max": 1,
-        "enum": null,
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Wah": [
-      {
-        "name": "HitControl.Gtr Wah",
-        "offset": 294,
-        "sysex_id": 785,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Drive": [
-      {
-        "name": "HitControl.Gtr Boost",
-        "offset": 295,
-        "sysex_id": 786,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Comp": [
-      {
-        "name": "HitControl.Gtr Compressor",
-        "offset": 299,
-        "sysex_id": 790,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Amp": [
-      {
-        "name": "Hit Control",
-        "offset": 300,
-        "sysex_id": 791,
-        "min": 0,
-        "max": 3,
-        "enum": "hit_control",
-        "unit": null,
-        "display": null
-      }
-    ]
-  },
-  "Global": {
-    "Octaver": [
-      {
-        "name": "OCTAVER GLOBAL",
-        "offset": 461,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "uMod": [
-      {
-        "name": "GLOBAL",
-        "offset": 442,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "GLOBAL",
-        "offset": 451,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Delay": [
-      {
-        "name": "GLOBAL",
-        "offset": 443,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "GLOBAL",
-        "offset": 447,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Reverb": [
-      {
-        "name": "GLOBAL",
-        "offset": 444,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "GLOBAL",
-        "offset": 449,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "REVERB GLOBAL",
-        "offset": 457,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Harmony": [
-      {
-        "name": "GLOBAL",
-        "offset": 445,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Double": [
-      {
-        "name": "GLOBAL",
-        "offset": 446,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "HardTune": [
-      {
-        "name": "GLOBAL",
-        "offset": 448,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Synth": [
-      {
-        "name": "GLOBAL",
-        "offset": 450,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "null": [
-      {
-        "name": "Global.Voc Whammy",
-        "offset": 452,
-        "min": 0,
-        "max": 1,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "Global.LoopTrigger",
-        "offset": 466,
-        "min": 0,
-        "max": 1,
-        "enum": null,
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Transducer": [
-      {
-        "name": "GLOBAL",
-        "offset": 453,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Choir": [
-      {
-        "name": "GLOBAL",
-        "offset": 454,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
-    ],
-    "Rhythmic": [
-      {
-        "name": "uMOD GLOBAL",
-        "offset": 455,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "RHYTHMIC GLOBAL",
-        "offset": 462,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Stutter": [
-      {
-        "name": "DELAY GLOBAL",
-        "offset": 456,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Amp": [
-      {
-        "name": "AMP GLOBAL",
-        "offset": 458,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Drive": [
-      {
-        "name": "DRIVE GLOBAL",
-        "offset": 459,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Comp": [
-      {
-        "name": "COMP GLOBAL",
-        "offset": 460,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Wah": [
-      {
-        "name": "WAH GLOBAL",
-        "offset": 463,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Button Map": [
-      {
-        "name": "GLOBAL",
-        "offset": 464,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Expr Pedal": [
-      {
-        "name": "GLOBAL",
-        "offset": 465,
-        "min": 0,
-        "max": 1,
-        "enum": "on_off",
-        "unit": "None",
-        "display": null
-      }
     ]
   },
   "Vocal": {
-    "null": [
+    "Harmony": [
       {
         "name": "LOW FREQ",
         "offset": 19,
-        "sysex_id": 104,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -1748,7 +1101,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW GAIN",
         "offset": 20,
-        "sysex_id": 105,
         "min": -12,
         "max": 12,
         "enum": null,
@@ -1758,7 +1110,6 @@ export const VL3X_PARAMS = {
       {
         "name": "Low BW.Harm",
         "offset": 21,
-        "sysex_id": 106,
         "min": 0,
         "max": 32,
         "enum": null,
@@ -1771,7 +1122,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH FREQ",
         "offset": 22,
-        "sysex_id": 107,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -1784,7 +1134,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH GAIN",
         "offset": 23,
-        "sysex_id": 108,
         "min": -12,
         "max": 12,
         "enum": null,
@@ -1794,7 +1143,6 @@ export const VL3X_PARAMS = {
       {
         "name": "Hi BW.Harm",
         "offset": 24,
-        "sysex_id": 109,
         "min": 0,
         "max": 32,
         "enum": null,
@@ -1804,7 +1152,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MID FREQ",
         "offset": 25,
-        "sysex_id": 110,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -1817,7 +1164,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MID GAIN",
         "offset": 26,
-        "sysex_id": 111,
         "min": -12,
         "max": 12,
         "enum": null,
@@ -1827,7 +1173,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MID BW",
         "offset": 27,
-        "sysex_id": 112,
         "min": 0,
         "max": 32,
         "enum": null,
@@ -1835,9 +1180,26 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "STYLE",
+        "offset": 29,
+        "min": 0,
+        "max": 29,
+        "enum": "harmony_style",
+        "unit": "None",
+        "display": null
+      },
+      {
+        "name": "HUMAN STYLE",
+        "offset": 30,
+        "min": 0,
+        "max": 6,
+        "enum": "human_style",
+        "unit": "None",
+        "display": null
+      },
+      {
         "name": "VIB STYLE",
         "offset": 31,
-        "sysex_id": 128,
         "min": 0,
         "max": 7,
         "enum": "vibrato_style",
@@ -1845,9 +1207,20 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "HUMANIZE",
+        "offset": 32,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": "%",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
         "name": "VIBRATO",
         "offset": 33,
-        "sysex_id": 130,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -1860,7 +1233,6 @@ export const VL3X_PARAMS = {
       {
         "name": "NOTES PAN",
         "offset": 34,
-        "sysex_id": 139,
         "min": 0,
         "max": 2,
         "enum": null,
@@ -1868,9 +1240,20 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "NOTES SMOOTH",
+        "offset": 35,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
         "name": "NOTES GENDER",
         "offset": 36,
-        "sysex_id": 141,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -1878,9 +1261,26 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "NOTES PORTA",
+        "offset": 37,
+        "min": 0,
+        "max": 200,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "NATPLAY SRC",
+        "offset": 38,
+        "min": 0,
+        "max": 5,
+        "enum": "natplay_input",
+        "unit": "None",
+        "display": null
+      },
+      {
         "name": "KEY",
         "offset": 39,
-        "sysex_id": 147,
         "min": 0,
         "max": 11,
         "enum": "key",
@@ -1890,7 +1290,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SCALE",
         "offset": 40,
-        "sysex_id": 148,
         "min": 0,
         "max": 6,
         "enum": "scale",
@@ -1898,9 +1297,26 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "TUNING",
+        "offset": 41,
+        "min": 0,
+        "max": 2,
+        "enum": "tuning",
+        "unit": "None",
+        "display": null
+      },
+      {
+        "name": "MODE V1",
+        "offset": 42,
+        "min": 0,
+        "max": 5,
+        "enum": "harmony_mode",
+        "unit": "None",
+        "display": null
+      },
+      {
         "name": "V1 VOICING",
         "offset": 43,
-        "sysex_id": 151,
         "min": 0,
         "max": 8,
         "enum": null,
@@ -1910,7 +1326,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 INTERVAL",
         "offset": 44,
-        "sysex_id": 152,
         "min": 0,
         "max": 28,
         "enum": null,
@@ -1920,7 +1335,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 SHIFT",
         "offset": 45,
-        "sysex_id": 153,
         "min": -24,
         "max": 24,
         "enum": null,
@@ -1930,7 +1344,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 PEDAL",
         "offset": 46,
-        "sysex_id": 154,
         "min": -36,
         "max": 36,
         "enum": null,
@@ -1940,7 +1353,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 FIXED",
         "offset": 47,
-        "sysex_id": 155,
         "min": -36,
         "max": 25,
         "enum": null,
@@ -1948,9 +1360,50 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "V1 SMOOTH",
+        "offset": 48,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": "%",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "V1 GENDER",
+        "offset": 49,
+        "min": -50,
+        "max": 50,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V1 PORTA",
+        "offset": 50,
+        "min": 0,
+        "max": 200,
+        "enum": null,
+        "unit": "None",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "MODE V2",
+        "offset": 51,
+        "min": 0,
+        "max": 5,
+        "enum": "harmony_mode",
+        "unit": "None",
+        "display": null
+      },
+      {
         "name": "V2 VOICING",
         "offset": 52,
-        "sysex_id": 162,
         "min": 0,
         "max": 8,
         "enum": null,
@@ -1960,7 +1413,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 INTERVAL",
         "offset": 53,
-        "sysex_id": 163,
         "min": 0,
         "max": 28,
         "enum": null,
@@ -1970,7 +1422,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 SHIFT",
         "offset": 54,
-        "sysex_id": 164,
         "min": -24,
         "max": 24,
         "enum": null,
@@ -1980,7 +1431,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 PEDAL",
         "offset": 55,
-        "sysex_id": 165,
         "min": -36,
         "max": 36,
         "enum": null,
@@ -1990,7 +1440,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 FIXED",
         "offset": 56,
-        "sysex_id": 166,
         "min": -36,
         "max": 25,
         "enum": null,
@@ -1998,9 +1447,50 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "V2 SMOOTH",
+        "offset": 57,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": "%",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "V2 GENDER",
+        "offset": 58,
+        "min": -50,
+        "max": 50,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V2 PORTA",
+        "offset": 59,
+        "min": 0,
+        "max": 200,
+        "enum": null,
+        "unit": "None",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "MODE V3",
+        "offset": 60,
+        "min": 0,
+        "max": 5,
+        "enum": "harmony_mode",
+        "unit": "None",
+        "display": null
+      },
+      {
         "name": "V3 VOICING",
         "offset": 61,
-        "sysex_id": 173,
         "min": 0,
         "max": 8,
         "enum": null,
@@ -2010,7 +1500,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 INTERVAL",
         "offset": 62,
-        "sysex_id": 174,
         "min": 0,
         "max": 28,
         "enum": null,
@@ -2020,7 +1509,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 SHIFT",
         "offset": 63,
-        "sysex_id": 175,
         "min": -24,
         "max": 24,
         "enum": null,
@@ -2030,7 +1518,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 PEDAL",
         "offset": 64,
-        "sysex_id": 176,
         "min": -36,
         "max": 36,
         "enum": null,
@@ -2040,7 +1527,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 FIXED",
         "offset": 65,
-        "sysex_id": 177,
         "min": -36,
         "max": 25,
         "enum": null,
@@ -2048,9 +1534,50 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "V3 SMOOTH",
+        "offset": 66,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": "%",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "V3 GENDER",
+        "offset": 67,
+        "min": -50,
+        "max": 50,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V3 PORTA",
+        "offset": 68,
+        "min": 0,
+        "max": 200,
+        "enum": null,
+        "unit": "None",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "MODE V4",
+        "offset": 69,
+        "min": 0,
+        "max": 5,
+        "enum": "harmony_mode",
+        "unit": "None",
+        "display": null
+      },
+      {
         "name": "V4 VOICING",
         "offset": 70,
-        "sysex_id": 184,
         "min": 0,
         "max": 8,
         "enum": null,
@@ -2060,7 +1587,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 INTERVAL",
         "offset": 71,
-        "sysex_id": 185,
         "min": 0,
         "max": 28,
         "enum": null,
@@ -2070,7 +1596,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 SHIFT",
         "offset": 72,
-        "sysex_id": 186,
         "min": -24,
         "max": 24,
         "enum": null,
@@ -2080,7 +1605,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 PEDAL",
         "offset": 73,
-        "sysex_id": 187,
         "min": -36,
         "max": 36,
         "enum": null,
@@ -2090,7 +1614,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 FIXED",
         "offset": 74,
-        "sysex_id": 188,
         "min": -36,
         "max": 25,
         "enum": null,
@@ -2098,9 +1621,41 @@ export const VL3X_PARAMS = {
         "display": null
       },
       {
+        "name": "V4 SMOOTH",
+        "offset": 75,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": "%",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "V4 GENDER",
+        "offset": 76,
+        "min": -50,
+        "max": 50,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V4 PORTA",
+        "offset": 77,
+        "min": 0,
+        "max": 200,
+        "enum": null,
+        "unit": "None",
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
         "name": "ATTACK",
         "offset": 469,
-        "sysex_id": 133,
         "min": 0,
         "max": 1000,
         "enum": null,
@@ -2113,7 +1668,6 @@ export const VL3X_PARAMS = {
       {
         "name": "RELEASE",
         "offset": 470,
-        "sysex_id": 135,
         "min": 0,
         "max": 2000,
         "enum": null,
@@ -2126,7 +1680,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HOLD RELEASE",
         "offset": 471,
-        "sysex_id": 137,
         "min": 0,
         "max": 2000,
         "enum": null,
@@ -2141,7 +1694,6 @@ export const VL3X_PARAMS = {
       {
         "name": "ManualThresholdT",
         "offset": 28,
-        "sysex_id": 116,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -2151,7 +1703,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 220,
-        "sysex_id": 662,
         "min": 0,
         "max": 9,
         "enum": "transducer_style",
@@ -2161,7 +1712,6 @@ export const VL3X_PARAMS = {
       {
         "name": "ROUTING",
         "offset": 221,
-        "sysex_id": 663,
         "min": 0,
         "max": 4,
         "enum": null,
@@ -2171,7 +1721,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DISTORTION AMOUNT",
         "offset": 222,
-        "sysex_id": 664,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2184,7 +1733,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW CUT",
         "offset": 223,
-        "sysex_id": 665,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -2194,7 +1742,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH CUT",
         "offset": 224,
-        "sysex_id": 666,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -2204,7 +1751,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PRE GAIN",
         "offset": 225,
-        "sysex_id": 667,
         "min": -20,
         "max": 20,
         "enum": null,
@@ -2214,7 +1760,6 @@ export const VL3X_PARAMS = {
       {
         "name": "POST GAIN",
         "offset": 226,
-        "sysex_id": 668,
         "min": -20,
         "max": 20,
         "enum": null,
@@ -2224,7 +1769,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DISTORTION TYPE",
         "offset": 227,
-        "sysex_id": 669,
         "min": 0,
         "max": 14,
         "enum": null,
@@ -2234,7 +1778,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PRES GAIN",
         "offset": 228,
-        "sysex_id": 670,
         "min": -20,
         "max": 20,
         "enum": null,
@@ -2244,7 +1787,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PRES FC",
         "offset": 229,
-        "sysex_id": 671,
         "min": 100,
         "max": 195,
         "enum": null,
@@ -2257,7 +1799,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PRES BW",
         "offset": 230,
-        "sysex_id": 672,
         "min": 0,
         "max": 16,
         "enum": null,
@@ -2265,273 +1806,10 @@ export const VL3X_PARAMS = {
         "display": null
       }
     ],
-    "Harmony": [
-      {
-        "name": "STYLE",
-        "offset": 29,
-        "sysex_id": 126,
-        "min": 0,
-        "max": 29,
-        "enum": "harmony_style",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HUMAN STYLE",
-        "offset": 30,
-        "sysex_id": 127,
-        "min": 0,
-        "max": 6,
-        "enum": "human_style",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HUMANIZE",
-        "offset": 32,
-        "sysex_id": 129,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "NOTES SMOOTH",
-        "offset": 35,
-        "sysex_id": 140,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": null,
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "NOTES PORTA",
-        "offset": 37,
-        "sysex_id": 142,
-        "min": 0,
-        "max": 200,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "NATPLAY SRC",
-        "offset": 38,
-        "sysex_id": 145,
-        "min": 0,
-        "max": 5,
-        "enum": "natplay_input",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "TUNING",
-        "offset": 41,
-        "sysex_id": 149,
-        "min": 0,
-        "max": 2,
-        "enum": "tuning",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "MODE V1",
-        "offset": 42,
-        "sysex_id": 150,
-        "min": 0,
-        "max": 5,
-        "enum": "harmony_mode",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "V1 SMOOTH",
-        "offset": 48,
-        "sysex_id": 157,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "V1 GENDER",
-        "offset": 49,
-        "sysex_id": 159,
-        "min": -50,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "V1 PORTA",
-        "offset": 50,
-        "sysex_id": 160,
-        "min": 0,
-        "max": 200,
-        "enum": null,
-        "unit": "None",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "MODE V2",
-        "offset": 51,
-        "sysex_id": 161,
-        "min": 0,
-        "max": 5,
-        "enum": "harmony_mode",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "V2 SMOOTH",
-        "offset": 57,
-        "sysex_id": 168,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "V2 GENDER",
-        "offset": 58,
-        "sysex_id": 170,
-        "min": -50,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "V2 PORTA",
-        "offset": 59,
-        "sysex_id": 171,
-        "min": 0,
-        "max": 200,
-        "enum": null,
-        "unit": "None",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "MODE V3",
-        "offset": 60,
-        "sysex_id": 172,
-        "min": 0,
-        "max": 5,
-        "enum": "harmony_mode",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "V3 SMOOTH",
-        "offset": 66,
-        "sysex_id": 179,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "V3 GENDER",
-        "offset": 67,
-        "sysex_id": 181,
-        "min": -50,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "V3 PORTA",
-        "offset": 68,
-        "sysex_id": 182,
-        "min": 0,
-        "max": 200,
-        "enum": null,
-        "unit": "None",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "MODE V4",
-        "offset": 69,
-        "sysex_id": 183,
-        "min": 0,
-        "max": 5,
-        "enum": "harmony_mode",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "V4 SMOOTH",
-        "offset": 75,
-        "sysex_id": 190,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      },
-      {
-        "name": "V4 GENDER",
-        "offset": 76,
-        "sysex_id": 192,
-        "min": -50,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "V4 PORTA",
-        "offset": 77,
-        "sysex_id": 193,
-        "min": 0,
-        "max": 200,
-        "enum": null,
-        "unit": "None",
-        "display": {
-          "type": "offset_if_negative",
-          "offset": 128
-        }
-      }
-    ],
     "Choir": [
       {
         "name": "TYPE",
         "offset": 78,
-        "sysex_id": 196,
         "min": 0,
         "max": 12,
         "enum": "choir_style",
@@ -2541,7 +1819,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LEVEL",
         "offset": 79,
-        "sysex_id": 197,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2553,9 +1830,8 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 80,
-        "sysex_id": 214,
         "min": 0,
-        "max": 11,
+        "max": 10,
         "enum": "double_style",
         "unit": "None",
         "display": null
@@ -2563,7 +1839,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HUMAN STYLE",
         "offset": 81,
-        "sysex_id": 215,
         "min": 0,
         "max": 6,
         "enum": "human_style",
@@ -2573,7 +1848,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HUMANIZE",
         "offset": 82,
-        "sysex_id": 216,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2583,7 +1857,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 VOICING",
         "offset": 83,
-        "sysex_id": 217,
         "min": 0,
         "max": 3,
         "enum": "voice_voicing",
@@ -2593,7 +1866,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 PORTA",
         "offset": 84,
-        "sysex_id": 218,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2606,7 +1878,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 GENDER",
         "offset": 85,
-        "sysex_id": 219,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2616,7 +1887,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V1 SMOOTH",
         "offset": 86,
-        "sysex_id": 220,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2629,7 +1899,6 @@ export const VL3X_PARAMS = {
       {
         "name": "OctShift.V1",
         "offset": 87,
-        "sysex_id": 221,
         "min": -1200,
         "max": 1200,
         "enum": null,
@@ -2639,7 +1908,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 VOICING",
         "offset": 88,
-        "sysex_id": 222,
         "min": 0,
         "max": 3,
         "enum": "voice_voicing",
@@ -2649,7 +1917,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 PORTA",
         "offset": 89,
-        "sysex_id": 223,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2662,7 +1929,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 GENDER",
         "offset": 90,
-        "sysex_id": 224,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2672,7 +1938,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V2 SMOOTH",
         "offset": 91,
-        "sysex_id": 225,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2685,7 +1950,6 @@ export const VL3X_PARAMS = {
       {
         "name": "OctShift.V2",
         "offset": 92,
-        "sysex_id": 226,
         "min": -1200,
         "max": 1200,
         "enum": null,
@@ -2695,7 +1959,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 VOICING",
         "offset": 93,
-        "sysex_id": 227,
         "min": 0,
         "max": 3,
         "enum": "voice_voicing",
@@ -2705,7 +1968,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 PORTA",
         "offset": 94,
-        "sysex_id": 228,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2718,7 +1980,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 GENDER",
         "offset": 95,
-        "sysex_id": 229,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2728,7 +1989,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V3 SMOOTH",
         "offset": 96,
-        "sysex_id": 230,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2741,7 +2001,6 @@ export const VL3X_PARAMS = {
       {
         "name": "OctShift.V3",
         "offset": 97,
-        "sysex_id": 231,
         "min": -1200,
         "max": 1200,
         "enum": null,
@@ -2751,7 +2010,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 VOICING",
         "offset": 98,
-        "sysex_id": 232,
         "min": 0,
         "max": 3,
         "enum": "voice_voicing",
@@ -2761,7 +2019,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 PORTA",
         "offset": 99,
-        "sysex_id": 233,
         "min": 0,
         "max": 200,
         "enum": null,
@@ -2774,7 +2031,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 GENDER",
         "offset": 100,
-        "sysex_id": 234,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -2784,7 +2040,6 @@ export const VL3X_PARAMS = {
       {
         "name": "V4 SMOOTH",
         "offset": 101,
-        "sysex_id": 235,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2797,7 +2052,6 @@ export const VL3X_PARAMS = {
       {
         "name": "OctShift.V4",
         "offset": 102,
-        "sysex_id": 236,
         "min": -1200,
         "max": 1200,
         "enum": null,
@@ -2809,7 +2063,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 103,
-        "sysex_id": 239,
         "min": 0,
         "max": 22,
         "enum": "micromod_style_voice",
@@ -2819,7 +2072,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY LEFT",
         "offset": 104,
-        "sysex_id": 242,
         "min": 0,
         "max": 230,
         "enum": null,
@@ -2829,7 +2081,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY RIGHT",
         "offset": 105,
-        "sysex_id": 243,
         "min": 0,
         "max": 230,
         "enum": null,
@@ -2839,7 +2090,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK L",
         "offset": 106,
-        "sysex_id": 244,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -2849,7 +2099,6 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB L",
         "offset": 107,
-        "sysex_id": 245,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -2859,7 +2108,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK R",
         "offset": 108,
-        "sysex_id": 246,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -2869,7 +2117,6 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB R",
         "offset": 109,
-        "sysex_id": 247,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -2879,7 +2126,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SPEED",
         "offset": 110,
-        "sysex_id": 250,
         "min": 5,
         "max": 1000,
         "enum": null,
@@ -2889,7 +2135,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PHASE",
         "offset": 111,
-        "sysex_id": 251,
         "min": 0,
         "max": 180,
         "enum": null,
@@ -2899,7 +2144,6 @@ export const VL3X_PARAMS = {
       {
         "name": "WAVE",
         "offset": 112,
-        "sysex_id": 252,
         "min": 0,
         "max": 2,
         "enum": "waveform",
@@ -2909,7 +2153,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DETUNE",
         "offset": 113,
-        "sysex_id": 970,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -2919,7 +2162,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DEPTH",
         "offset": 114,
-        "sysex_id": 971,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -2932,7 +2174,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW CUT",
         "offset": 115,
-        "sysex_id": 253,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -2942,7 +2183,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIGH CUT",
         "offset": 116,
-        "sysex_id": 254,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -2952,7 +2192,6 @@ export const VL3X_PARAMS = {
       {
         "name": "INV PHASE",
         "offset": 117,
-        "sysex_id": 255,
         "min": 0,
         "max": 3,
         "enum": null,
@@ -2964,7 +2203,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TEMPO",
         "offset": 133,
-        "sysex_id": 273,
         "min": 45,
         "max": 300,
         "enum": null,
@@ -2977,7 +2215,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 134,
-        "sysex_id": 274,
         "min": 0,
         "max": 18,
         "enum": "delay_style_voice",
@@ -2987,7 +2224,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SOURCE",
         "offset": 135,
-        "sysex_id": 275,
         "min": 0,
         "max": 1,
         "enum": "delay_source",
@@ -2997,7 +2233,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DIV L",
         "offset": 136,
-        "sysex_id": 276,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -3007,7 +2242,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DIV R",
         "offset": 137,
-        "sysex_id": 277,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -3017,7 +2251,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY L",
         "offset": 138,
-        "sysex_id": 278,
         "min": 0,
         "max": 2500,
         "enum": null,
@@ -3027,7 +2260,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DELAY R",
         "offset": 139,
-        "sysex_id": 279,
         "min": 0,
         "max": 2500,
         "enum": null,
@@ -3037,7 +2269,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK L",
         "offset": 140,
-        "sysex_id": 280,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3047,7 +2278,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK R",
         "offset": 141,
-        "sysex_id": 281,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3057,7 +2287,6 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB L TO R",
         "offset": 142,
-        "sysex_id": 282,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3067,7 +2296,6 @@ export const VL3X_PARAMS = {
       {
         "name": "XFB TO L",
         "offset": 143,
-        "sysex_id": 283,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3077,7 +2305,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FEEDBACK",
         "offset": 144,
-        "sysex_id": 284,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3087,7 +2314,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TRAILS",
         "offset": 145,
-        "sysex_id": 285,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -3097,7 +2323,6 @@ export const VL3X_PARAMS = {
       {
         "name": "FILTERSTYLE",
         "offset": 146,
-        "sysex_id": 286,
         "min": 0,
         "max": 12,
         "enum": "delay_filter",
@@ -3107,7 +2332,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LOW CUT",
         "offset": 147,
-        "sysex_id": 287,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -3117,7 +2341,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HI CUT",
         "offset": 148,
-        "sysex_id": 288,
         "min": 0,
         "max": 240,
         "enum": null,
@@ -3127,7 +2350,6 @@ export const VL3X_PARAMS = {
       {
         "name": "EQ INSERT",
         "offset": 149,
-        "sysex_id": 289,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -3137,7 +2359,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCKING",
         "offset": 169,
-        "sysex_id": 307,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -3147,7 +2368,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK THRES",
         "offset": 170,
-        "sysex_id": 308,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -3157,7 +2377,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK AMT",
         "offset": 171,
-        "sysex_id": 309,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -3167,7 +2386,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK TIME",
         "offset": 172,
-        "sysex_id": 310,
         "min": 0,
         "max": 36,
         "enum": null,
@@ -3177,7 +2395,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PREDELAY",
         "offset": 180,
-        "sysex_id": 318,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3187,7 +2404,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PAN",
         "offset": 365,
-        "sysex_id": 305,
         "min": -100,
         "max": 100,
         "enum": null,
@@ -3199,7 +2415,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 177,
-        "sysex_id": 315,
         "min": 0,
         "max": 42,
         "enum": "reverb_style_voice",
@@ -3209,7 +2424,6 @@ export const VL3X_PARAMS = {
       {
         "name": "REVERB TYPE",
         "offset": 178,
-        "sysex_id": 316,
         "min": 0,
         "max": 13,
         "enum": null,
@@ -3219,7 +2433,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DECAY",
         "offset": 179,
-        "sysex_id": 317,
         "min": 1,
         "max": 290,
         "enum": null,
@@ -3232,7 +2445,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DIFFUSE",
         "offset": 181,
-        "sysex_id": 319,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -3242,7 +2454,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LOCOLOR",
         "offset": 182,
-        "sysex_id": 320,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -3252,7 +2463,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HICOLOR",
         "offset": 183,
-        "sysex_id": 321,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -3262,7 +2472,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HIFACTOR",
         "offset": 184,
-        "sysex_id": 322,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -3272,7 +2481,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MODSPEED",
         "offset": 185,
-        "sysex_id": 323,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -3282,7 +2490,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MODDEPTH",
         "offset": 186,
-        "sysex_id": 324,
         "min": -25,
         "max": 25,
         "enum": null,
@@ -3292,7 +2499,6 @@ export const VL3X_PARAMS = {
       {
         "name": "EARLY RFLCT",
         "offset": 187,
-        "sysex_id": 325,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -3302,7 +2508,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TRAIL LEVEL",
         "offset": 188,
-        "sysex_id": 326,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -3312,7 +2517,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DRY LEVEL",
         "offset": 189,
-        "sysex_id": 327,
         "min": -25,
         "max": 0,
         "enum": null,
@@ -3322,7 +2526,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCKING",
         "offset": 203,
-        "sysex_id": 341,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -3332,7 +2535,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK THRES",
         "offset": 204,
-        "sysex_id": 342,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -3342,7 +2544,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK AMT",
         "offset": 205,
-        "sysex_id": 343,
         "min": -61,
         "max": 0,
         "enum": null,
@@ -3352,7 +2553,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DUCK TIME",
         "offset": 206,
-        "sysex_id": 344,
         "min": 0,
         "max": 36,
         "enum": null,
@@ -3364,7 +2564,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 211,
-        "sysex_id": 349,
         "min": 0,
         "max": 12,
         "enum": "synth_style",
@@ -3374,7 +2573,6 @@ export const VL3X_PARAMS = {
       {
         "name": "LEAD MIX",
         "offset": 212,
-        "sysex_id": 350,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3384,7 +2582,6 @@ export const VL3X_PARAMS = {
       {
         "name": "CARRIER",
         "offset": 213,
-        "sysex_id": 351,
         "min": 0,
         "max": 11,
         "enum": null,
@@ -3394,7 +2591,6 @@ export const VL3X_PARAMS = {
       {
         "name": "CARR SHIFT",
         "offset": 214,
-        "sysex_id": 352,
         "min": 0,
         "max": 3,
         "enum": null,
@@ -3404,7 +2600,6 @@ export const VL3X_PARAMS = {
       {
         "name": "CARR MIX",
         "offset": 215,
-        "sysex_id": 353,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3414,7 +2609,6 @@ export const VL3X_PARAMS = {
       {
         "name": "GENDER",
         "offset": 216,
-        "sysex_id": 354,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -3424,7 +2618,6 @@ export const VL3X_PARAMS = {
       {
         "name": "NOTE SOURCE",
         "offset": 217,
-        "sysex_id": 355,
         "min": 0,
         "max": 3,
         "enum": null,
@@ -3434,7 +2627,6 @@ export const VL3X_PARAMS = {
       {
         "name": "RES",
         "offset": 218,
-        "sysex_id": 356,
         "min": 1,
         "max": 100,
         "enum": null,
@@ -3444,7 +2636,6 @@ export const VL3X_PARAMS = {
       {
         "name": "HARMONIES",
         "offset": 219,
-        "sysex_id": 357,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -3454,7 +2645,6 @@ export const VL3X_PARAMS = {
       {
         "name": "PORTAMENTO",
         "offset": 392,
-        "sysex_id": 1132,
         "min": 0,
         "max": 5000,
         "enum": null,
@@ -3464,7 +2654,6 @@ export const VL3X_PARAMS = {
       {
         "name": "ESS LEVEL",
         "offset": 393,
-        "sysex_id": 1135,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3476,7 +2665,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 271,
-        "sysex_id": 735,
         "min": 0,
         "max": 6,
         "enum": "hardtune_style",
@@ -3486,7 +2674,6 @@ export const VL3X_PARAMS = {
       {
         "name": "KEY SOURCE",
         "offset": 272,
-        "sysex_id": 736,
         "min": 0,
         "max": 3,
         "enum": "key_source",
@@ -3496,7 +2683,6 @@ export const VL3X_PARAMS = {
       {
         "name": "AMOUNT",
         "offset": 273,
-        "sysex_id": 737,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3509,7 +2695,6 @@ export const VL3X_PARAMS = {
       {
         "name": "WINDOW",
         "offset": 274,
-        "sysex_id": 738,
         "min": 0,
         "max": 60,
         "enum": null,
@@ -3519,7 +2704,6 @@ export const VL3X_PARAMS = {
       {
         "name": "RATE",
         "offset": 275,
-        "sysex_id": 739,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3529,7 +2713,6 @@ export const VL3X_PARAMS = {
       {
         "name": "SHIFT",
         "offset": 276,
-        "sysex_id": 740,
         "min": -36,
         "max": 36,
         "enum": null,
@@ -3539,7 +2722,6 @@ export const VL3X_PARAMS = {
       {
         "name": "GENDER",
         "offset": 277,
-        "sysex_id": 742,
         "min": -50,
         "max": 50,
         "enum": null,
@@ -3549,7 +2731,6 @@ export const VL3X_PARAMS = {
       {
         "name": "Note Select",
         "offset": 278,
-        "sysex_id": 743,
         "min": 0,
         "max": 4095,
         "enum": null,
@@ -3559,7 +2740,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MANUAL KEY",
         "offset": 279,
-        "sysex_id": 744,
         "min": 0,
         "max": 11,
         "enum": "key",
@@ -3569,7 +2749,6 @@ export const VL3X_PARAMS = {
       {
         "name": "MANUAL SCALE",
         "offset": 280,
-        "sysex_id": 747,
         "min": 0,
         "max": 5,
         "enum": "correct_scale",
@@ -3581,7 +2760,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 317,
-        "sysex_id": 808,
         "min": 0,
         "max": 10,
         "enum": "rhythmic_style",
@@ -3591,7 +2769,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DIVISION",
         "offset": 318,
-        "sysex_id": 809,
         "min": 0,
         "max": 19,
         "enum": "note_division",
@@ -3601,7 +2778,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DEPTH",
         "offset": 319,
-        "sysex_id": 812,
         "min": 0,
         "max": 100,
         "enum": null,
@@ -3614,7 +2790,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TARGET",
         "offset": 320,
-        "sysex_id": 821,
         "min": 0,
         "max": 6,
         "enum": "rhythmic_target",
@@ -3624,7 +2799,6 @@ export const VL3X_PARAMS = {
       {
         "name": "WAVE TYPE",
         "offset": 321,
-        "sysex_id": 822,
         "min": 0,
         "max": 22,
         "enum": null,
@@ -3636,7 +2810,6 @@ export const VL3X_PARAMS = {
       {
         "name": "TYPE",
         "offset": 322,
-        "sysex_id": 827,
         "min": 0,
         "max": 3,
         "enum": "stutter_style",
@@ -3646,7 +2819,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DIVISION",
         "offset": 323,
-        "sysex_id": 828,
         "min": 9,
         "max": 19,
         "enum": null,
@@ -3656,7 +2828,6 @@ export const VL3X_PARAMS = {
       {
         "name": "CAPTURE",
         "offset": 324,
-        "sysex_id": 829,
         "min": 0,
         "max": 2,
         "enum": null,
@@ -3666,7 +2837,6 @@ export const VL3X_PARAMS = {
       {
         "name": "DIRECTION",
         "offset": 325,
-        "sysex_id": 830,
         "min": 0,
         "max": 1,
         "enum": null,
@@ -3676,17 +2846,14 @@ export const VL3X_PARAMS = {
       {
         "name": "PATH",
         "offset": 326,
-        "sysex_id": 831,
         "min": 0,
         "max": 1,
         "enum": null,
         "unit": "None",
         "display": null
       }
-    ]
-  },
-  "Mixer": {
-    "uMod": [
+    ],
+    "uMod Mix": [
       {
         "name": "LEAD TO uMOD",
         "offset": 333,
@@ -3697,7 +2864,7 @@ export const VL3X_PARAMS = {
         "display": null
       }
     ],
-    "Delay": [
+    "Delay Mix": [
       {
         "name": "LEAD TO DLY",
         "offset": 334,
@@ -3708,7 +2875,7 @@ export const VL3X_PARAMS = {
         "display": null
       }
     ],
-    "Reverb": [
+    "Reverb Mix": [
       {
         "name": "LEAD TO REVERB",
         "offset": 335,
@@ -3719,7 +2886,7 @@ export const VL3X_PARAMS = {
         "display": null
       }
     ],
-    "Harmony": [
+    "Harmony Mix": [
       {
         "name": "LEAD LEVEL",
         "offset": 336,
@@ -3809,36 +2976,9 @@ export const VL3X_PARAMS = {
         "enum": null,
         "unit": "dB",
         "display": null
-      },
-      {
-        "name": "HARM TO DLY",
-        "offset": 359,
-        "min": -61,
-        "max": 6,
-        "enum": null,
-        "unit": "dB",
-        "display": null
-      },
-      {
-        "name": "CHOIR TO DLY",
-        "offset": 360,
-        "min": -61,
-        "max": 6,
-        "enum": null,
-        "unit": "dB",
-        "display": null
-      },
-      {
-        "name": "uMOD TO DLY",
-        "offset": 361,
-        "min": -61,
-        "max": 6,
-        "enum": null,
-        "unit": "dB",
-        "display": null
       }
     ],
-    "Double": [
+    "Double Mix": [
       {
         "name": "LEAD LEVEL",
         "offset": 337,
@@ -3930,153 +3070,7 @@ export const VL3X_PARAMS = {
         "display": null
       }
     ],
-    "null": [
-      {
-        "name": "VOCAL LEVEL TRIM",
-        "offset": 338,
-        "min": -61,
-        "max": 0,
-        "enum": null,
-        "unit": "dB",
-        "display": null
-      },
-      {
-        "name": "LEAD PAN",
-        "offset": 339,
-        "min": -100,
-        "max": 100,
-        "enum": null,
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "LEVEL",
-        "offset": 373,
-        "min": -61,
-        "max": 0,
-        "enum": null,
-        "unit": "dB",
-        "display": null
-      },
-      {
-        "name": "WIDTH",
-        "offset": 374,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": null
-      },
-      {
-        "name": "LEVEL",
-        "offset": 375,
-        "min": -61,
-        "max": 6,
-        "enum": null,
-        "unit": "dB",
-        "display": null
-      },
-      {
-        "name": "WIDTH",
-        "offset": 376,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": null
-      },
-      {
-        "name": "LEVEL",
-        "offset": 377,
-        "min": -61,
-        "max": 6,
-        "enum": null,
-        "unit": "dB",
-        "display": null
-      },
-      {
-        "name": "WIDTH",
-        "offset": 378,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": null
-      },
-      {
-        "name": "Mixer LW.Level.Gtr uMod",
-        "offset": 379,
-        "min": -61,
-        "max": 0,
-        "enum": null,
-        "unit": "dB",
-        "display": null
-      },
-      {
-        "name": "Mixer LW.Width.Gtr uMod",
-        "offset": 380,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "Mixer LW.Level.Gtr Delay",
-        "offset": 382,
-        "min": -61,
-        "max": 0,
-        "enum": null,
-        "unit": "dB",
-        "display": null
-      },
-      {
-        "name": "Mixer LW.Width.Gtr Delay",
-        "offset": 383,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "Mixer LW.Level.Gtr Reverb",
-        "offset": 384,
-        "min": -61,
-        "max": 6,
-        "enum": null,
-        "unit": "dB",
-        "display": null
-      },
-      {
-        "name": "Mixer LW.Width.Gtr Reverb",
-        "offset": 385,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "Mix.Preset Trim",
-        "offset": 386,
-        "min": -6,
-        "max": 6,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "Mixer L.Preset Trim.Gtr",
-        "offset": 387,
-        "min": -6,
-        "max": 6,
-        "enum": null,
-        "unit": null,
-        "display": null
-      }
-    ],
-    "Synth": [
+    "Synth Mix": [
       {
         "name": "LEVEL",
         "offset": 358,
@@ -4088,1355 +3082,473 @@ export const VL3X_PARAMS = {
       }
     ]
   },
-  "Pedal Control": {
-    "null": [
+  "Setup": {
+    "INPUT": [
       {
-        "name": "EXPRESSION PEDAL",
-        "offset": 388,
-        "min": 0,
-        "max": 37,
-        "enum": null,
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "EXP MINPOS",
-        "offset": 389,
+        "name": "MIC GAIN",
+        "offset": 69,
         "min": 0,
         "max": 100,
         "enum": null,
-        "unit": "%",
-        "display": null
-      },
-      {
-        "name": "EXP MAXPOS",
-        "offset": 390,
-        "min": 0,
-        "max": 100,
-        "enum": null,
-        "unit": "%",
-        "display": null
-      }
-    ]
-  },
-  "Button Map": {
-    "Button Map": [
-      {
-        "name": "uMOD",
-        "offset": 394,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "DELAY",
-        "offset": 395,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "REVERB",
-        "offset": 396,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HIT",
-        "offset": 397,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "COMP",
-        "offset": 398,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "DRIVE",
-        "offset": 399,
-        "min": 0,
-        "max": 37,
-        "enum": "button_function",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "uMOD.MODE",
-        "offset": 406,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "DELAY.MODE",
-        "offset": 407,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "REVERB.MODE",
-        "offset": 408,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "HIT.MODE",
-        "offset": 409,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "COMP.MODE",
-        "offset": 410,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      },
-      {
-        "name": "DRIVE.MODE",
-        "offset": 411,
-        "min": 0,
-        "max": 1,
-        "enum": "button_modifier",
-        "unit": "None",
-        "display": null
-      }
-    ]
-  },
-  "Looper": {
-    "null": [
-      {
-        "name": "Looper.LoadSlot",
-        "offset": 391,
-        "min": 0,
-        "max": 50,
-        "enum": null,
         "unit": null,
         "display": null
-      },
-      {
-        "name": "LoopTrigger.Slot.A",
-        "offset": 418,
-        "min": 0,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Slot.B",
-        "offset": 419,
-        "min": 0,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Slot.C",
-        "offset": 420,
-        "min": 0,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Slot.D",
-        "offset": 421,
-        "min": 0,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Slot.E",
-        "offset": 422,
-        "min": 0,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Slot.F",
-        "offset": 423,
-        "min": 0,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Slot.G",
-        "offset": 424,
-        "min": 0,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Slot.H",
-        "offset": 425,
-        "min": 0,
-        "max": 50,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Track.A",
-        "offset": 430,
-        "min": 0,
-        "max": 4,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Track.B",
-        "offset": 431,
-        "min": 0,
-        "max": 4,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Track.C",
-        "offset": 432,
-        "min": 0,
-        "max": 4,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Track.D",
-        "offset": 433,
-        "min": 0,
-        "max": 4,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Track.E",
-        "offset": 434,
-        "min": 0,
-        "max": 4,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Track.F",
-        "offset": 435,
-        "min": 0,
-        "max": 4,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Track.G",
-        "offset": 436,
-        "min": 0,
-        "max": 4,
-        "enum": null,
-        "unit": null,
-        "display": null
-      },
-      {
-        "name": "LoopTrigger.Track.H",
-        "offset": 437,
-        "min": 0,
-        "max": 4,
-        "enum": null,
-        "unit": null,
-        "display": null
-      }
-    ]
-  },
-  "System": {
-    "Settings": [
-      {
-        "name": "CONTRAST",
-        "offset": 0,
-        "min": 0,
-        "max": 10,
-        "system": true
-      },
-      {
-        "name": "Utility.Last_Preset",
-        "offset": 1,
-        "min": 0,
-        "max": 65535,
-        "system": true
-      },
-      {
-        "name": "Utility.Active_ButtMap",
-        "offset": 2,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Utility.Genre_Filter",
-        "offset": 3,
-        "min": 0,
-        "max": 21,
-        "system": true
-      },
-      {
-        "name": "TUNER REFERENCE",
-        "offset": 4,
-        "min": 800,
-        "max": 960,
-        "system": true
-      },
-      {
-        "name": "HIT BEHAVIOR",
-        "offset": 5,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Utility.GainSetMode.Mi",
-        "offset": 6,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "GLOBAL KEY/SCALE",
-        "offset": 7,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "GLOBAL TEMPO",
-        "offset": 8,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Utility.MIDI_Control",
-        "offset": 9,
-        "min": 1,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "Utility.MIDI_Channel_I",
-        "offset": 10,
-        "min": 0,
-        "max": 16,
-        "system": true
-      },
-      {
-        "name": "Utility.MIDI_Channel_O",
-        "offset": 11,
-        "min": 0,
-        "max": 16,
-        "system": true
-      },
-      {
-        "name": "Utility.MIDI_Filter_In",
-        "offset": 12,
-        "min": 0,
-        "max": 7,
-        "system": true
-      },
-      {
-        "name": "Utility.MIDI_Filter_Ou",
-        "offset": 13,
-        "min": 0,
-        "max": 3,
-        "system": true
-      },
-      {
-        "name": "Utility.SysEx_ID",
-        "offset": 14,
-        "min": 0,
-        "max": 127,
-        "system": true
-      },
-      {
-        "name": "SPLIT DIRECTION",
-        "offset": 15,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "SPLIT NOTE",
-        "offset": 16,
-        "min": 0,
-        "max": 127,
-        "system": true
-      },
-      {
-        "name": "PITCHBEND RANGE",
-        "offset": 17,
-        "min": 0,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "TRANSPOSE",
-        "offset": 18,
-        "min": -4,
-        "max": 4,
-        "system": true
-      },
-      {
-        "name": "MIDI TEMPO",
-        "offset": 19,
-        "min": 0,
-        "max": 1,
-        "system": true
       },
       {
         "name": "INPUT TYPE",
         "offset": 20,
         "min": 0,
-        "max": 4,
-        "system": true
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "PHASE",
-        "offset": 21,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Utility.ExPedalMode",
-        "offset": 22,
-        "min": 0,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "Utility.FootSWMode",
-        "offset": 23,
-        "min": 0,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "ROOMSENSE AUTO-DETECT",
-        "offset": 24,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "XLR OUTPUT LEVEL",
-        "offset": 25,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Utility.USBOutMode",
-        "offset": 26,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "LEAD DELAY",
-        "offset": 27,
-        "min": 0,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "AUX VOCAL CANCEL",
-        "offset": 28,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "RoomEQ.Freq",
-        "offset": 29,
-        "min": 0,
-        "max": 104,
-        "system": true
-      },
-      {
-        "name": "PreFX.CompThresh",
-        "offset": 30,
-        "min": -60,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "PreFX.CompRatio",
-        "offset": 31,
-        "min": 0,
-        "max": 14,
-        "system": true
-      },
-      {
-        "name": "SHAPE",
-        "offset": 32,
+        "name": "MIC CLIP PROTECTION",
+        "offset": 124,
         "min": 0,
         "max": 100,
-        "system": true
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "AutoShape.Warmth",
-        "offset": 33,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "AutoShape.Auto",
-        "offset": 34,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "COMPRESS",
-        "offset": 35,
+        "name": "USB MODE",
+        "offset": 139,
         "min": 0,
         "max": 100,
-        "system": true
-      },
-      {
-        "name": "DynSmooth.Auto",
-        "offset": 36,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "DynSmooth.Threshold",
-        "offset": 37,
-        "min": -30,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "DynSmooth.Ratio",
-        "offset": 38,
-        "min": 10,
-        "max": 40,
-        "system": true
-      },
-      {
-        "name": "DE-ESS",
-        "offset": 39,
-        "min": 0,
-        "max": 100,
-        "system": true
-      },
-      {
-        "name": "ParEq.Low_Freq.Voice",
-        "offset": 40,
-        "min": 0,
-        "max": 240,
-        "system": true
-      },
-      {
-        "name": "ParEq.Low_Gain.Voice",
-        "offset": 41,
-        "min": -12,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "ParEq.Low_BW.Voice",
-        "offset": 42,
-        "min": 0,
-        "max": 32,
-        "system": true
-      },
-      {
-        "name": "ParEq.Hi_Freq.Voice",
-        "offset": 43,
-        "min": 0,
-        "max": 240,
-        "system": true
-      },
-      {
-        "name": "ParEq.Hi_Gain.Voice",
-        "offset": 44,
-        "min": -12,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "ParEq.Hi_BW.Voice",
-        "offset": 45,
-        "min": 0,
-        "max": 32,
-        "system": true
-      },
-      {
-        "name": "ParEq.Par1_Freq.Voice",
-        "offset": 46,
-        "min": 0,
-        "max": 240,
-        "system": true
-      },
-      {
-        "name": "ParEq.Par1_Gain.Voice",
-        "offset": 47,
-        "min": -12,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "ParEq.Par1_BW.Voice",
-        "offset": 48,
-        "min": 0,
-        "max": 32,
-        "system": true
-      },
-      {
-        "name": "AutoGate.Mode",
-        "offset": 49,
-        "min": 0,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "AutoGate.ManualThresho",
-        "offset": 50,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "GATE THRESHOLD",
-        "offset": 51,
-        "min": -81,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Level.Lea",
-        "offset": 52,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Attack.Le",
-        "offset": 53,
-        "min": 0,
-        "max": 45,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Release.L",
-        "offset": 54,
-        "min": 0,
-        "max": 45,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Level.Har",
-        "offset": 55,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Attack.Ha",
-        "offset": 56,
-        "min": 0,
-        "max": 45,
-        "system": true
-      },
-      {
-        "name": "AutoGateGain.Release.H",
-        "offset": 57,
-        "min": 0,
-        "max": 45,
-        "system": true
-      },
-      {
-        "name": "VIBRATO BOOST",
-        "offset": 58,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "GLOBAL NATPLAY SOURCE",
-        "offset": 59,
-        "min": 0,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "SPEAKER SIM ENABLE",
-        "offset": 60,
-        "min": 0,
-        "max": 1,
-        "system": true
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
         "name": "GLOBAL PITCH CORRECT",
         "offset": 61,
         "min": 0,
         "max": 100,
-        "system": true
-      },
-      {
-        "name": "TONE",
-        "offset": 62,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Rhythmic.Metronome_Typ",
-        "offset": 63,
-        "min": 0,
-        "max": 2,
-        "system": true
-      },
-      {
-        "name": "Rhythmic.Metronome_Lev",
-        "offset": 64,
-        "min": -100,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "Looper.InputA",
-        "offset": 65,
-        "min": 0,
-        "max": 4,
-        "system": true
-      },
-      {
-        "name": "Looper.InputB",
-        "offset": 66,
-        "min": 0,
-        "max": 4,
-        "system": true
-      },
-      {
-        "name": "Looper.InputC",
-        "offset": 67,
-        "min": 0,
-        "max": 5,
-        "system": true
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
         "name": "LEAD MUTE",
         "offset": 68,
         "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "MIC GAIN",
-        "offset": 69,
-        "min": 0,
-        "max": 66,
-        "system": true
-      },
-      {
-        "name": "INPUT GAIN",
-        "offset": 70,
-        "min": 0,
-        "max": 18,
-        "system": true
-      },
-      {
-        "name": "<Reserved>",
-        "offset": 71,
-        "min": null,
-        "max": null,
-        "system": true
-      },
-      {
-        "name": "<Reserved>",
-        "offset": 72,
-        "min": null,
-        "max": null,
-        "system": true
-      },
-      {
-        "name": "MONITOR GAIN",
-        "offset": 73,
-        "min": -31,
-        "max": 12,
-        "system": true
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
         "name": "AUX GAIN",
         "offset": 74,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "TALK TRIM",
-        "offset": 75,
-        "min": -9,
-        "max": 4,
-        "system": true
-      },
-      {
-        "name": "AUX IN TYPE",
-        "offset": 76,
         "min": 0,
-        "max": 1,
-        "system": true
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "Mix.Main.Guitar_Level",
-        "offset": 77,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.Looper_Level",
-        "offset": 78,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.Aux_Level",
-        "offset": 79,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.Metronome_Lev",
-        "offset": 80,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.USB_Level",
-        "offset": 81,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Guitar_Trim",
-        "offset": 82,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Looper_Trim",
-        "offset": 83,
-        "min": -13,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Metronome_Level",
-        "offset": 84,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.USB_Level",
-        "offset": 85,
-        "min": -31,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Aux_Level",
-        "offset": 86,
-        "min": -31,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Monitor_Level",
-        "offset": 87,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.RoomSense_Level",
-        "offset": 88,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Main_Trim",
-        "offset": 89,
-        "min": -13,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Overall",
-        "offset": 90,
-        "min": -61,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "FXMix.Voices",
-        "offset": 91,
-        "min": -61,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "FXMix.Voc_Reverb",
-        "offset": 92,
-        "min": -61,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "FXMix.Gtr_Reverb",
-        "offset": 93,
-        "min": -61,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "OUTPUT MODE",
-        "offset": 94,
+        "name": "AUX VOCAL CANCEL",
+        "offset": 28,
         "min": 0,
-        "max": 1,
-        "system": true
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "USB OUTPUT TRIM",
-        "offset": 95,
-        "min": -12,
-        "max": 12,
-        "system": true
+        "name": "MONITOR GAIN",
+        "offset": 73,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
+      {
+        "name": "ROOMSENSE AUTO-DETECT",
+        "offset": 24,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "LEAD DELAY",
+        "offset": 27,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      }
+    ],
+    "OUTPUT": [
       {
         "name": "XLR OUTPUT",
         "offset": 96,
         "min": 0,
-        "max": 2,
-        "system": true
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "SimpleLim.Threshold.He",
-        "offset": 97,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "SimpleLim.Attack.Headp",
-        "offset": 98,
-        "min": 0,
-        "max": 19,
-        "system": true
-      },
-      {
-        "name": "SimpleLim.Release.Head",
-        "offset": 99,
-        "min": 0,
-        "max": 19,
-        "system": true
-      },
-      {
-        "name": "SimpleLim.Threshold.Ro",
-        "offset": 100,
-        "min": -61,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "SimpleLim.Attack.RoomS",
-        "offset": 101,
-        "min": 0,
-        "max": 19,
-        "system": true
-      },
-      {
-        "name": "SimpleLim.Release.Room",
-        "offset": 102,
-        "min": 0,
-        "max": 19,
-        "system": true
-      },
-      {
-        "name": "Pedal.A.Calib",
-        "offset": 103,
-        "min": 0,
-        "max": 2097151,
-        "system": true
-      },
-      {
-        "name": "Pedal.B.Calib",
-        "offset": 104,
-        "min": 0,
-        "max": 2097151,
-        "system": true
-      },
-      {
-        "name": "Pedal.B.Func",
-        "offset": 105,
-        "min": 0,
-        "max": 36,
-        "system": true
-      },
-      {
-        "name": "Pedal.B.MinPos",
-        "offset": 106,
+        "name": "XLR OUTPUT LEVEL",
+        "offset": 25,
         "min": 0,
         "max": 100,
-        "system": true
-      },
-      {
-        "name": "Pedal.B.MaxPos",
-        "offset": 107,
-        "min": 0,
-        "max": 100,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.ExtFootSw_1",
-        "offset": 108,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.ExtFootSw_2",
-        "offset": 109,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.ExtFootSw_3",
-        "offset": 110,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.StepKey",
-        "offset": 111,
-        "min": 0,
-        "max": 36,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.MicSwitch_1",
-        "offset": 112,
-        "min": 0,
-        "max": 27,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.StepKey",
-        "offset": 113,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.ExtFootSw_4",
-        "offset": 114,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.ExtFootSw_5",
-        "offset": 115,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.ExtFootSw_6",
-        "offset": 116,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.ExtFootSw_1",
-        "offset": 117,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.ExtFootSw_2",
-        "offset": 118,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.ExtFootSw_3",
-        "offset": 119,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.MicSwitch_1",
-        "offset": 120,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ALL GUITAR FX GLOBAL",
-        "offset": 121,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "GLOBAL PRESET",
-        "offset": 122,
-        "min": 0,
-        "max": 500,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.Overall",
-        "offset": 123,
-        "min": -30,
-        "max": 0,
-        "system": true
-      },
-      {
-        "name": "MIC CLIP PROTECTION",
-        "offset": 124,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.ExtFootSw_4",
-        "offset": 125,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.ExtFootSw_5",
-        "offset": 126,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.ExtFootSw_6",
-        "offset": 127,
-        "min": 0,
-        "max": 54,
-        "system": true
-      },
-      {
-        "name": "MIX ROOMSENSE TO NP",
-        "offset": 128,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "MIX SCREEN TIMEOUT",
-        "offset": 129,
-        "min": 3,
-        "max": 11,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.MicSwitch_2",
-        "offset": 130,
-        "min": 0,
-        "max": 27,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.MicSwitch_3",
-        "offset": 131,
-        "min": 0,
-        "max": 27,
-        "system": true
-      },
-      {
-        "name": "ButtonMap.MicSwitch_4",
-        "offset": 132,
-        "min": 0,
-        "max": 27,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.MicSwitch_2",
-        "offset": 133,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.MicSwitch_3",
-        "offset": 134,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "ButtonMode.MicSwitch_4",
-        "offset": 135,
-        "min": 0,
-        "max": 1,
-        "system": true
-      },
-      {
-        "name": "Mix.Main.Track_Level",
-        "offset": 136,
-        "min": -31,
-        "max": 12,
-        "system": true
-      },
-      {
-        "name": "Mix.HP.Track_Level",
-        "offset": 137,
-        "min": -31,
-        "max": 6,
-        "system": true
-      },
-      {
-        "name": "MIDI TX DELAY",
-        "offset": 138,
-        "min": 0,
-        "max": 3,
-        "system": true
-      },
-      {
-        "name": "USB MODE",
-        "offset": 139,
-        "min": 0,
-        "max": 2,
-        "system": true
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
         "name": "GUITAR JACK MODE",
         "offset": 140,
         "min": 0,
-        "max": 2,
-        "system": true
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 141,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "TALK TRIM",
+        "offset": 75,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 142,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "USB OUTPUT MODE",
+        "offset": 26,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 143,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "USB OUTPUT TRIM",
+        "offset": 95,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      }
+    ],
+    "GUITAR": [
+      {
+        "name": "INPUT GAIN",
+        "offset": 70,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 144,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "PHASE",
+        "offset": 21,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 145,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "SPEAKER SIM ENABLE",
+        "offset": 60,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 146,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "OUTPUT MODE",
+        "offset": 94,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 147,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "GATE THRESHOLD",
+        "offset": 51,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      }
+    ],
+    "MIDI": [
+      {
+        "name": "SOURCE",
+        "offset": 9,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       },
       {
-        "name": "<Reserved>",
-        "offset": 148,
-        "min": null,
-        "max": null,
-        "system": true
+        "name": "MIDI TEMPO",
+        "offset": 19,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "INPUT CHANNEL",
+        "offset": 10,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "OUTPUT CHANNEL",
+        "offset": 11,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "INPUT FILTER",
+        "offset": 12,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "OUTPUT FILTER",
+        "offset": 13,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "TRANSPOSE",
+        "offset": 18,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "PITCHBEND RANGE",
+        "offset": 17,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "SPLIT NOTE",
+        "offset": 16,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "SPLIT DIRECTION",
+        "offset": 15,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "VIBRATO BOOST",
+        "offset": 58,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "SYSEX ID",
+        "offset": 14,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "MIDI TX DELAY",
+        "offset": 138,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      }
+    ],
+    "TONE": [
+      {
+        "name": "TONE",
+        "offset": 62,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "SHAPE",
+        "offset": 32,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "COMPRESS",
+        "offset": 35,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "DE-ESS",
+        "offset": 39,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      }
+    ],
+    "SYSTEM": [
+      {
+        "name": "GLOBAL TEMPO",
+        "offset": 8,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "GLOBAL PRESET",
+        "offset": 122,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "GLOBAL KEY/SCALE",
+        "offset": 7,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "ALL GUITAR FX GLOBAL",
+        "offset": 121,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "GLOBAL NATPLAY SOURCE",
+        "offset": 59,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "MIX ROOMSENSE TO NP",
+        "offset": 128,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "TUNER REFERENCE",
+        "offset": 4,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "HIT BEHAVIOR",
+        "offset": 5,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "AUX IN TYPE",
+        "offset": 76,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "CONTRAST",
+        "offset": 0,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "MIX SCREEN TIMEOUT",
+        "offset": 129,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       }
     ]
   }
 };
 
+// Export enums from gold standard
 export const ENUMS = {
   "key": [
     "C",
@@ -5454,60 +3566,51 @@ export const ENUMS = {
   ],
   "scale": [
     "Major",
-    "Minor",
-    "Mixolydian",
-    "Dorian",
-    "Lydian",
-    "HarmonicMinor",
+    "Minor NAT",
+    "Minor Harm",
+    "Minor ASC",
+    "Chromatic",
     "Custom"
   ],
-  "natplay_input": [
-    "AUTOSENSE",
-    "GUITAR",
-    "MIDI",
-    "AUX/MON",
-    "ROOMSENSE",
-    "TRACK/USB"
-  ],
   "harmony_mode": [
-    "NaturalPlay",
+    "Off",
+    "NatPlay",
     "Scale",
     "Shift",
-    "Drone",
-    "Fixed",
-    "Off"
+    "Pedal",
+    "Fixed"
   ],
   "harmony_style": [
-    "HIGH",
-    "LOW",
-    "HIGH & LOW",
-    "HIGH & HIGHER",
-    "LOW & LOWER",
-    "HIGHER & LOWER",
-    "BASS & HIGH",
-    "GOSPEL CHOIR",
-    "UPPER CHOIR",
-    "LOWER CHOIR",
-    "HIGH & PEDAL + O",
-    "HIGH & SCALE -3RD",
-    "LOW & FIXED -12",
-    "LOWER & PEDAL -5",
-    "HIGH & SHIFT +7",
-    "BIG MIXED MODE",
-    "HIGH & LOW & PEDALS",
-    "PEDAL OCTAVE CHOIR",
-    "PEDAL BASS GROUP",
-    "LOWER MONKS",
-    "UPPER MONKS",
-    "FIFTH UP",
-    "-4TH DOWN",
-    "OCTAVE UP GROUP",
-    "OCTAVE DOWN GROUP",
-    "HARMONIZED NOTES",
-    "TIGHT NOTES",
-    "MALE NOTES",
-    "FEMALE NOTES",
-    "4CHNL NOTES"
+    "High&Low",
+    "High",
+    "Low",
+    "Higher",
+    "Lower",
+    "Up",
+    "Down",
+    "Up Oct",
+    "Down Oct",
+    "3 High",
+    "3 Low",
+    "4 High",
+    "4 Low",
+    "4 Up",
+    "4 Down",
+    "3 Up Oct",
+    "3 Down Oct",
+    "4 Up Oct",
+    "4 Down Oct",
+    "Octaves",
+    "Oct Up",
+    "Oct Down",
+    "Oct Both",
+    "Unison",
+    "2 Uni",
+    "3 Uni",
+    "4 Uni",
+    "2 Bass",
+    "3 Bass",
+    "4 Bass"
   ],
   "human_style": [
     "Unison",
@@ -5544,18 +3647,17 @@ export const ENUMS = {
     "OFF"
   ],
   "double_style": [
-    "1Voice",
-    "1VoiceW",
-    "2Voice",
-    "2VoiceW",
-    "4Voice",
-    "4VoiceW",
-    "Oct Up",
-    "Oct UpW",
-    "Oct Down",
-    "OctDwnW",
-    "Spread",
-    "OFF"
+    "1 Voice Tight",
+    "1 Voice Loose",
+    "2 Voices Wide",
+    "4 Voices Tight",
+    "4 Voices Wide",
+    "Mixed Doubles",
+    "4 Voices Mono",
+    "Oct On Double",
+    "Oct On Group",
+    "Oct Up Group",
+    "Mixed Octaves"
   ],
   "delay_style_voice": [
     "HALF",
@@ -5668,16 +3770,16 @@ export const ENUMS = {
     "DARK CHAMBER",
     "THIN PLATE",
     "QUICK PLATE",
-    "SHORT SPRING",
+    "SHORT SPRINT",
     "REAL PLATE",
     "JAZZ PLATE",
     "BROADWAY HALL",
     "AMSTERDAM HALL",
-    "WOODEN CHAMBER",
+    "WOOD CHAMBER",
     "DOME CHAPEL",
     "REFLECTION PLATE",
     "SHIMMER MOD",
-    "BASKETBALL COURT",
+    "BACKETBALL COURT",
     "SOFT HALL",
     "REAL PLATE LONG",
     "SPRING-ISH",
@@ -5691,7 +3793,7 @@ export const ENUMS = {
     "THIN SPRING",
     "HOCKEY ARENA",
     "FULL SPRING",
-    "LONG BRIGHT MOD",
+    "LONG BRGHT MOD",
     "LONG SPRING"
   ],
   "synth_style": [
@@ -5760,7 +3862,7 @@ export const ENUMS = {
   "amp_style": [
     "ACOUSTIC",
     "CLEAN BRIT",
-    "CALI CLEAN",
+    "CALICLEAN",
     "UK CLEAN",
     "DEEP CLEAN",
     "BRIGHT SWITCH",
@@ -5860,9 +3962,6 @@ export const ENUMS = {
     "MOMENTARY"
   ],
   "button_function": [
-    "uMod",
-    "DELAY",
-    "REVERB",
     "VOC HIT",
     "DOUBLE",
     "HARMONY",
@@ -5897,7 +3996,10 @@ export const ENUMS = {
     "LOOPTRIG F",
     "LOOPTRIG G",
     "LOOPTRIG H",
-    "TRACK START"
+    "TRACK START",
+    "uMod",
+    "DELAY",
+    "REVERB"
   ],
   "delay_filter_style": [
     "DIGITAL",
@@ -5951,39 +4053,18 @@ export function getParameters(category, subcategory) {
   return VL3X_PARAMS[category]?.[subcategory] || [];
 }
 
-export function findParamByOffset(offset) {
-  for (const cat of Object.keys(VL3X_PARAMS)) {
-    for (const subcat of Object.keys(VL3X_PARAMS[cat])) {
-      const param = VL3X_PARAMS[cat][subcat].find(p => p.offset === offset);
-      if (param) return { category: cat, subcategory: subcat, param };
-    }
-  }
-  return null;
-}
-
-export function findParamBySysexId(sysexId) {
-  for (const cat of Object.keys(VL3X_PARAMS)) {
-    for (const subcat of Object.keys(VL3X_PARAMS[cat])) {
-      const param = VL3X_PARAMS[cat][subcat].find(p => p.sysex_id === sysexId);
-      if (param) return { category: cat, subcategory: subcat, param };
-    }
-  }
-  return null;
-}
-
 export function getEnumValues(enumName) {
   return ENUMS[enumName] || [];
 }
 
-export function getAllParamsFlat() {
-  const all = [];
-  for (const cat of Object.keys(VL3X_PARAMS)) {
-    for (const subcat of Object.keys(VL3X_PARAMS[cat])) {
-      for (const param of VL3X_PARAMS[cat][subcat]) {
-        all.push({ category: cat, subcategory: subcat, ...param });
+export function findParamByOffset(offset) {
+  for (const category of Object.keys(VL3X_PARAMS)) {
+    for (const subcategory of Object.keys(VL3X_PARAMS[category])) {
+      const param = VL3X_PARAMS[category][subcategory].find(p => p.offset === offset);
+      if (param) {
+        return { ...param, category, subcategory };
       }
     }
   }
-  return all;
+  return null;
 }
-

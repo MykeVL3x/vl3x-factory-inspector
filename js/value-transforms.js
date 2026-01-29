@@ -133,7 +133,10 @@ export function getDisplayValue(offset, rawValue, allValues, data) {
       adjustedValue = rawValue + (transform.offset || 0);
     }
 
-    const displayValue = Math.round(adjustedValue * (transform.scale || 1));
+    const scaledValue = adjustedValue * (transform.scale || 1);
+    const displayValue = transform.scale && transform.scale < 1
+      ? scaledValue.toFixed(1)
+      : Math.round(scaledValue);
     let result = (transform.prefix || '') + displayValue + (transform.suffix || '');
 
     // Add unit if defined
@@ -142,6 +145,45 @@ export function getDisplayValue(offset, rawValue, allValues, data) {
     }
 
     return result;
+  }
+
+  // Check for EQ frequency lookup (Hz params with 0-240 range)
+  if (data.units && data.units[offset] === 'Hz' && data.eq_freq_table) {
+    // Handle negative values (signed byte conversion)
+    let freqIndex = rawValue;
+    if (freqIndex < 0) {
+      freqIndex = freqIndex + 256;
+    }
+
+    // Clamp to valid range
+    if (freqIndex >= 0 && freqIndex <= 240) {
+      const hzValue = data.eq_freq_table[freqIndex];
+      if (hzValue !== undefined) {
+        return hzValue + ' Hz';
+      }
+    }
+  }
+
+  // Check for EQ bandwidth lookup (BW params with 0-23 range)
+  if (data.units && data.units[offset] === 'BW' && data.eq_bw_table) {
+    let bwIndex = rawValue;
+    if (bwIndex < 0) {
+      bwIndex = bwIndex + 256;
+    }
+    if (bwIndex >= 0 && bwIndex < data.eq_bw_table.length) {
+      return data.eq_bw_table[bwIndex];
+    }
+  }
+
+  // Check for speaker bandwidth lookup (SPKR_BW params with 0-16 range)
+  if (data.units && data.units[offset] === 'SPKR_BW' && data.spkr_bw_table) {
+    let bwIndex = rawValue;
+    if (bwIndex < 0) {
+      bwIndex = bwIndex + 256;
+    }
+    if (bwIndex >= 0 && bwIndex < data.spkr_bw_table.length) {
+      return data.spkr_bw_table[bwIndex];
+    }
   }
 
   // Default: plain value with optional unit
