@@ -139,8 +139,8 @@ export function getDisplayValue(offset, rawValue, allValues, data) {
       : Math.round(scaledValue);
     let result = (transform.prefix || '') + displayValue + (transform.suffix || '');
 
-    // Add unit if defined
-    if (data.units && data.units[offset]) {
+    // Add unit if defined (but skip if transform already has suffix to avoid duplication)
+    if (data.units && data.units[offset] && !transform.suffix) {
       result += ' ' + data.units[offset];
     }
 

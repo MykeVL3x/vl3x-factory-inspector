@@ -167,9 +167,10 @@ function setView(view) {
   elements.viewEffects.classList.toggle('active', view === 'effects');
   elements.viewSysEx.classList.toggle('active', view === 'sysex');
 
-  // Show/hide search and preset list
-  elements.searchBox.style.display = view === 'presets' ? 'block' : 'none';
-  elements.presetList.style.display = view === 'presets' ? 'block' : 'none';
+  // Show/hide search and preset list (visible for presets and effects views)
+  const showPresetList = view === 'presets' || view === 'effects';
+  elements.searchBox.style.display = showPresetList ? 'block' : 'none';
+  elements.presetList.style.display = showPresetList ? 'block' : 'none';
   elements.sysexNav.style.display = view === 'sysex' ? 'block' : 'none';
 
   const data = getState('data');

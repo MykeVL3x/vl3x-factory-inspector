@@ -152,6 +152,130 @@ function renderGridLayout(layout, values, data) {
 }
 
 /**
+ * Render Cross-Domain ButtonMap educational view
+ * Static visual showing how cross-domain button assignments work
+ * @returns {string} HTML string
+ */
+function renderCrossDomainButtonMap() {
+  // ButtonMap button labels (same for both Vocal and Guitar)
+  const buttonLabels = ['uMOD', 'DELAY', 'REVERB', 'HIT', 'DOUBLE/COMP', 'HARMONY/DRIVE'];
+
+  // Vocal ButtonMap: 6 Vocal effects (all cyan - same domain)
+  const vocalButtons = [
+    { value: 'uMOD', mode: 'LATCHED' },
+    { value: 'DELAY', mode: 'LATCHED' },
+    { value: 'REVERB', mode: 'LATCHED' },
+    { value: 'HIT', mode: 'MOMENTARY' },
+    { value: 'DOUBLE', mode: 'LATCHED' },
+    { value: 'HARMONY', mode: 'LATCHED' }
+  ];
+
+  // Guitar ButtonMap: 4 Vocal effects (cyan - cross-domain) + 2 Guitar effects (red - native)
+  const guitarButtons = [
+    { value: 'uMOD', mode: 'LATCHED', crossDomain: true },
+    { value: 'DELAY', mode: 'LATCHED', crossDomain: true },
+    { value: 'REVERB', mode: 'LATCHED', crossDomain: true },
+    { value: 'HIT', mode: 'MOMENTARY', crossDomain: true },
+    { value: 'G COMP', mode: 'LATCHED', crossDomain: false },
+    { value: 'G DRIVE', mode: 'LATCHED', crossDomain: false }
+  ];
+
+  let html = `
+    <div class="crossdomain-container">
+      <div class="crossdomain-intro">
+        <strong>Cross-Domain Button Assignments</strong>
+        <p>Trigger Vocal effects while in Guitar mode (and vice versa) without switching layers.</p>
+      </div>
+
+      <div class="crossdomain-section">
+        <h3 class="crossdomain-title vocal-title">Vocal ButtonMap</h3>
+        <p class="crossdomain-subtitle">Standard same-domain assignments</p>
+        <div class="buttonmap-grid">
+          <div class="buttonmap-row">`;
+
+  // Vocal buttons row 1 (buttons 1-3)
+  for (let i = 0; i < 3; i++) {
+    html += `
+            <div class="buttonmap-cell">
+              <span class="button-number">${buttonLabels[i]}</span>
+              <span class="button-value vocal-effect">${vocalButtons[i].value}</span>
+              <span class="button-mode">${vocalButtons[i].mode}</span>
+            </div>`;
+  }
+
+  html += `
+          </div>
+          <div class="buttonmap-row">`;
+
+  // Vocal buttons row 2 (buttons 4-6)
+  for (let i = 3; i < 6; i++) {
+    html += `
+            <div class="buttonmap-cell">
+              <span class="button-number">${buttonLabels[i]}</span>
+              <span class="button-value vocal-effect">${vocalButtons[i].value}</span>
+              <span class="button-mode">${vocalButtons[i].mode}</span>
+            </div>`;
+  }
+
+  html += `
+          </div>
+        </div>
+      </div>
+
+      <div class="crossdomain-section">
+        <h3 class="crossdomain-title guitar-title">Guitar ButtonMap</h3>
+        <p class="crossdomain-subtitle">Cross-domain: Vocal effects on Guitar buttons</p>
+        <div class="buttonmap-grid">
+          <div class="buttonmap-row">`;
+
+  // Guitar buttons row 1 (buttons 1-3)
+  for (let i = 0; i < 3; i++) {
+    const btn = guitarButtons[i];
+    const colorClass = btn.crossDomain ? 'vocal-effect' : 'guitar-effect';
+    html += `
+            <div class="buttonmap-cell">
+              <span class="button-number">${buttonLabels[i]}</span>
+              <span class="button-value ${colorClass}">${btn.value}</span>
+              <span class="button-mode">${btn.mode}</span>
+            </div>`;
+  }
+
+  html += `
+          </div>
+          <div class="buttonmap-row">`;
+
+  // Guitar buttons row 2 (buttons 4-6)
+  for (let i = 3; i < 6; i++) {
+    const btn = guitarButtons[i];
+    const colorClass = btn.crossDomain ? 'vocal-effect' : 'guitar-effect';
+    html += `
+            <div class="buttonmap-cell">
+              <span class="button-number">${buttonLabels[i]}</span>
+              <span class="button-value ${colorClass}">${btn.value}</span>
+              <span class="button-mode">${btn.mode}</span>
+            </div>`;
+  }
+
+  html += `
+          </div>
+        </div>
+      </div>
+
+      <div class="crossdomain-legend">
+        <span class="legend-item"><span class="legend-swatch vocal-effect"></span> Vocal Effect</span>
+        <span class="legend-item"><span class="legend-swatch guitar-effect"></span> Guitar Effect</span>
+      </div>
+
+      <div class="crossdomain-note">
+        <em>In Guitar mode, buttons 1-4 trigger Vocal effects without switching modes.</em>
+      </div>
+    </div>
+  `;
+
+  return html;
+}
+
+/**
  * Render parameters for selected preset
  * @param {HTMLElement} container - Container for params
  * @param {Object} data - Full data object
@@ -161,6 +285,12 @@ function renderGridLayout(layout, values, data) {
  * @returns {number} Count of rendered parameters
  */
 export function renderParams(container, data, preset, category, subtab) {
+  // Cross-Domain ButtonMap view doesn't require a preset
+  if (category === 'buttonmap') {
+    container.innerHTML = renderCrossDomainButtonMap();
+    return 12; // 6 + 6 buttons shown
+  }
+
   if (!preset) {
     container.innerHTML = `<div class="empty-state">
       <p class="inspector-description">The VL3X Preset Inspector is a website that lets you browse every factory preset like flipping through a recipe app - you can see exactly what ingredients (effects, settings, button assignments) each preset uses. The main purpose is to provide a browsable way to look at the most important settings and setups the VL3X uses.</p>
@@ -237,17 +367,6 @@ export function renderParams(container, data, preset, category, subtab) {
   if (preset.n === 490) {
     html += `<div class="preset-info-box">
       Preset 490 is the factory "Blank" preset and is consistently present after a factory reset, making it the standard starting template for initializing new presets via copy/paste.
-    </div>`;
-  }
-
-  // Educational panel for ButtonMap category
-  if (category === 'buttonmap') {
-    html += `<div class="preset-info-box buttonmap-info">
-      <strong>Cross-Domain Button Assignments</strong><br><br>
-      You can trigger Vocal effects while in Guitar mode (and vice versa) by assigning effects across layers.<br><br>
-      <strong>Example:</strong> While playing in Guitar mode, tap a button to trigger Vocal Harmony
-      without switching layers. Or in Vocal mode, control Guitar Delay with a footswitch.<br><br>
-      <em>Factory presets use same-layer assignments only. Cross-Domain values show 0 unless customized.</em>
     </div>`;
   }
 

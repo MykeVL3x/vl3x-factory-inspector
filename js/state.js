@@ -9,7 +9,7 @@ const DEFAULT_STATE = {
   activeCategory: 'vocal_params', // 'vocal_params' | 'guitar_params' | 'looper' | 'pedal_control'
   activeGuitarSub: 'Amp',        // Current guitar subtab
   activeVocalSub: 'Harmony',     // Current vocal subtab
-  activeEffectGroup: 'Pitch/Harmony', // Current effects view group
+  activeEffectGroup: 'Pitch',         // Current effects view group
   selectedPreset: null,          // Currently selected preset object
   data: null,                    // Loaded preset data
   setupData: null                // Loaded setup data

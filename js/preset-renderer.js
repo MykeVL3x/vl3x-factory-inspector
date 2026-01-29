@@ -21,10 +21,11 @@ export function renderPresetList(container, presets, filter = '', onSelect) {
 
   for (const preset of filteredPresets) {
     const isGlobal = preset.n >= GLOBAL_PRESET_THRESHOLD;
+    const isBlank = preset.n === 490;
     const isActive = selectedPreset && selectedPreset.n === preset.n;
-    const displayName = preset.m.replace(/^H/, '');
+    const displayName = preset.m;
 
-    html += `<div class="preset-item ${isGlobal ? 'gbl' : ''} ${isActive ? 'active' : ''}" data-num="${preset.n}">
+    html += `<div class="preset-item ${isGlobal ? 'gbl' : ''} ${isBlank ? 'blank' : ''} ${isActive ? 'active' : ''}" data-num="${preset.n}">
       <span class="preset-num">${preset.n}</span>
       <span class="preset-name">${displayName}</span>
     </div>`;
@@ -85,7 +86,7 @@ export function updatePresetHeader(titleEl, infoEl, preset) {
     return;
   }
 
-  const displayName = preset.m.replace(/^H/, '');
+  const displayName = preset.m;
   titleEl.textContent = `${preset.n}:${displayName}`;
 
   const isGlobal = preset.n >= GLOBAL_PRESET_THRESHOLD;
@@ -107,5 +108,5 @@ export function isGlobalPreset(preset) {
  * @returns {string} Display name
  */
 export function getPresetDisplayName(preset) {
-  return preset.m.replace(/^H/, '');
+  return preset.m;
 }
