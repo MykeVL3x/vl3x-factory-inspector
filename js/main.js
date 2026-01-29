@@ -15,16 +15,6 @@ import { renderSysExView } from './sysex-view.js';
 // DOM element references
 let elements = {};
 
-// Original caution box content
-const CAUTION_CONTENT = `
-  <strong>CAUTION:</strong><br>
-  If using VoiceSupport2 or VoiceLive Editor, keep MIDI settings:<br>
-  - INPUT SOURCE=USB<br>
-  - INPUT/OUTPUT Channels=1<br>
-  - No INPUT/OUTPUT FILTERS<br>
-  - SYSEX ID=0
-`;
-
 /**
  * Initialize the application
  */
@@ -44,10 +34,7 @@ export async function init() {
     viewSetup: document.getElementById('viewSetup'),
     viewEffects: document.getElementById('viewEffects'),
     viewSysEx: document.getElementById('viewSysEx'),
-    cautionBox: document.getElementById('cautionBox'),
-    sysexLinkRow: document.getElementById('sysexLinkRow'),
-    examplesLinkRow: document.getElementById('examplesLinkRow'),
-    sysexNav: document.getElementById('sysexNav')
+    cautionBox: document.getElementById('cautionBox')
   };
 
   // Load data
@@ -77,14 +64,6 @@ export async function init() {
       elements.viewEffects.style.cursor = 'pointer';
     }
   });
-
-  // Check URL hash for initial view
-  const hash = window.location.hash.slice(1);
-  if (hash === 'sysex') {
-    setView('sysex');
-  } else if (hash === 'setup') {
-    setView('setup');
-  }
 }
 
 /**
@@ -170,31 +149,18 @@ function setView(view) {
   // Show/hide search and preset list
   elements.searchBox.style.display = view === 'presets' ? 'block' : 'none';
   elements.presetList.style.display = view === 'presets' ? 'block' : 'none';
-  elements.sysexNav.style.display = view === 'sysex' ? 'block' : 'none';
 
   const data = getState('data');
   const setupData = getState('setupData');
   const preset = getState('selectedPreset');
 
-  // Helper to reset caution box to original state
-  const resetCautionBox = () => {
-    elements.cautionBox.className = 'caution-box';
-    elements.cautionBox.innerHTML = CAUTION_CONTENT;
-  };
-
-  // Hide sysex links for non-sysex views
-  elements.sysexLinkRow.style.display = 'none';
-  elements.examplesLinkRow.style.display = 'none';
-
   if (view === 'setup') {
-    resetCautionBox();
     toggleSetupUI(elements, true);
     updateSetupHeader(elements.presetTitle, elements.presetInfo);
     const count = renderSetupView(elements.paramsContainer, setupData);
     updateStatsBar(elements.statsLeft, count);
 
   } else if (view === 'effects') {
-    resetCautionBox();
     toggleEffectsUI(elements, true);
     updateEffectsHeader(elements.presetTitle, elements.presetInfo);
     renderEffectsGroupTabs(elements.categoryTabs, () => {
@@ -205,44 +171,17 @@ function setView(view) {
     updateStatsBar(elements.statsLeft, count);
 
   } else if (view === 'sysex') {
-    // SysEx About view
+    // Hide preset-specific UI elements
     elements.categoryTabs.innerHTML = '';
     elements.subtabs.style.display = 'none';
-    elements.cautionBox.style.display = 'none';
-    elements.sysexLinkRow.style.display = 'block';
-    elements.examplesLinkRow.style.display = 'block';
-    elements.presetTitle.textContent = 'What is SysEx?';
-    elements.presetInfo.textContent = 'System Exclusive MIDI messages for advanced control';
-    elements.paramsContainer.innerHTML = `
-      <div class="sysex-about">
-        <p>SysEx (System Exclusive) is a type of MIDI message that lets you control parameters that regular MIDI can't reach. While standard MIDI gives you Program Change (to switch presets) and Control Change (for things like volume), SysEx opens the door to everything else.</p>
-
-        <p>On the VL3X, that means all 472 parameters: reverb types, delay times, harmony styles, amp models, EQ settings, button assignments, and more. If you can adjust it on the pedal, you can control it via SysEx.</p>
-
-        <div class="info-box" style="background: var(--card-bg); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin: 1.5rem 0;">
-          <h4 style="color: var(--accent); margin: 0 0 0.5rem 0;">The SysEx Generator</h4>
-          <p style="margin: 0;">The SysEx Generator takes the guesswork out of building these messages. Select a parameter, choose a value, and it outputs the exact hex string you need. Copy it into onSong, your MC-8, or any MIDI-capable controller.</p>
-        </div>
-
-        <h3 style="margin-top: 1.5rem;">Why use SysEx with the VL3X?</h3>
-        <ul class="benefit-list" style="list-style: none; padding: 0;">
-          <li style="padding: 0.75rem 0; padding-left: 1.5rem; position: relative; border-bottom: 1px solid var(--border);"><span style="position: absolute; left: 0; color: var(--accent);">→</span><strong>Remote control:</strong> Change any parameter from your iPad, foot controller, or DAW without touching the pedal</li>
-          <li style="padding: 0.75rem 0; padding-left: 1.5rem; position: relative; border-bottom: 1px solid var(--border);"><span style="position: absolute; left: 0; color: var(--accent);">→</span><strong>Per-song automation:</strong> Build setlists where each song loads the exact settings you need</li>
-          <li style="padding: 0.75rem 0; padding-left: 1.5rem; position: relative; border-bottom: 1px solid var(--border);"><span style="position: absolute; left: 0; color: var(--accent);">→</span><strong>Smooth transitions:</strong> Avoid the audio glitch that comes with the built-in Steps feature</li>
-          <li style="padding: 0.75rem 0; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">→</span><strong>Hands-free operation:</strong> Keep playing while your sound changes happen automatically</li>
-        </ul>
-
-        <div class="info-box" style="background: var(--card-bg); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin: 1.5rem 0;">
-          <h4 style="color: var(--accent); margin: 0 0 0.5rem 0;">Ready to build SysEx messages?</h4>
-          <p style="margin: 0;">Click <a href="sysex-generator.html" style="color: var(--accent);">SysEx Generator</a> in the left panel to start creating commands for your VL3X.</p>
-        </div>
-      </div>
-    `;
-    elements.statsLeft.textContent = 'Preset Params: 472 | System Params: 149';
+    elements.cautionBox.style.display = 'block';
+    elements.presetTitle.textContent = 'SysEx Calculator';
+    elements.presetInfo.textContent = 'Generate seamless parameter control messages';
+    renderSysExView(elements.paramsContainer);
+    elements.statsLeft.textContent = 'Total Presets: 259 | Total Parameters: 472 | Parameters Showing: 0';
 
   } else {
     // Presets view
-    resetCautionBox();
     elements.cautionBox.style.display = 'none';
     renderCategoryTabs(elements.categoryTabs, handleCategoryChange);
     renderSubtabs(elements.subtabs, handleSubtabChange);
