@@ -92,10 +92,40 @@ export const OFFSET_TO_SYSEX_ID = {
 };
 
 /**
- * Reverse mapping: sysex_id to offset (built at module load time)
+ * Mapping from system parameter offset (0-149) to sysex_id for 0x22 parameter writes.
+ * System parameters use a DIFFERENT offset namespace than preset parameters.
+ * Generated from gold_standard_reference.json system_parameters.by_offset.
+ *
+ * IMPORTANT: Same offset number = DIFFERENT parameter!
+ *   - Preset offset 4 = Guitar Amp Hi Freq (sysex_id 87)
+ *   - System offset 4 = TUNER REFERENCE (sysex_id 3)
+ */
+export const SYSTEM_OFFSET_TO_SYSEX_ID = {
+  0: 1071,   // SYSTEM.CONTRAST (value * 10 = percent)
+  4: 3,      // SYSTEM.TUNER REFERENCE (encoded Hz)
+  5: 977,    // SYSTEM.HIT BEHAVIOR
+  7: 4,      // SYSTEM.GLOBAL KEY/SCALE
+  8: 5,      // SYSTEM.GLOBAL TEMPO
+  59: 146,   // SYSTEM.GLOBAL NATPLAY SOURCE
+  76: 979,   // SYSTEM.AUX IN TYPE
+  121: 1044, // SYSTEM.ALL GUITAR FX GLOBAL
+  122: 1045, // SYSTEM.GLOBAL PRESET (value + 512 = preset number)
+  128: 1087, // SYSTEM.MIX ROOMSENSE TO NP
+  129: 1089, // SYSTEM.MIX SCREEN TIMEOUT (3-10 seconds, 11 = OFF)
+};
+
+/**
+ * Reverse mapping: sysex_id to preset offset (built at module load time)
  */
 export const SYSEX_ID_TO_OFFSET = Object.fromEntries(
   Object.entries(OFFSET_TO_SYSEX_ID).map(([offset, sysexId]) => [sysexId, parseInt(offset)])
+);
+
+/**
+ * Reverse mapping: sysex_id to system offset (built at module load time)
+ */
+export const SYSEX_ID_TO_SYSTEM_OFFSET = Object.fromEntries(
+  Object.entries(SYSTEM_OFFSET_TO_SYSEX_ID).map(([offset, sysexId]) => [sysexId, parseInt(offset)])
 );
 
 // ============================================================================
@@ -103,12 +133,22 @@ export const SYSEX_ID_TO_OFFSET = Object.fromEntries(
 // ============================================================================
 
 /**
- * Get sysex_id for a given offset
+ * Get sysex_id for a given preset parameter offset
  * @param {number} offset - Parameter offset (0-471)
  * @returns {number|null} sysex_id or null if not mapped
  */
 export function getSysexId(offset) {
   return OFFSET_TO_SYSEX_ID[offset] ?? null;
+}
+
+/**
+ * Get sysex_id for a given system parameter offset
+ * System parameters use a separate offset namespace (0-149) from preset parameters.
+ * @param {number} offset - System parameter offset (0-149)
+ * @returns {number|null} sysex_id or null if not mapped
+ */
+export function getSystemSysexId(offset) {
+  return SYSTEM_OFFSET_TO_SYSEX_ID[offset] ?? null;
 }
 
 /**
@@ -216,6 +256,43 @@ export function makeSysEx(offset, value) {
   if (sysexId === null) {
     // Return error indicator for unmapped offsets
     return `ERROR: No sysex_id mapping for offset ${offset}`;
+  }
+
+  // Calculate page and param from sysex_id
+  const { page, param } = getPageAndParam(sysexId);
+  const valBytes = encodeValue(value);
+
+  // Build message bytes
+  const bytes = [
+    0xF0,           // SysEx start
+    ...TC_ID,       // Manufacturer ID (3 bytes)
+    DEVICE_ID,      // Device ID
+    MODEL_ID,       // Model ID
+    CMD_PARAM_WRITE, // Command
+    page,           // Page (from sysex_id >> 7)
+    param,          // Param (from sysex_id & 0x7F)
+    ...valBytes,    // Value (4 bytes)
+    0xF7            // SysEx end
+  ];
+
+  // Format as hex string with spaces
+  return bytes.map(b => b.toString(16).toUpperCase().padStart(2, '0')).join(' ');
+}
+
+/**
+ * Generate complete SysEx message for a SYSTEM parameter write
+ * System parameters use a separate offset namespace and sysex_id mapping.
+ * @param {number} offset - System parameter offset (0-149)
+ * @param {number} value - Parameter value
+ * @returns {string} Hex string with spaces (e.g., "F0 00 01 38 ..."), or error message
+ */
+export function makeSysExForSystem(offset, value) {
+  // Look up sysex_id from system offset
+  const sysexId = getSystemSysexId(offset);
+
+  if (sysexId === null) {
+    // Return error indicator for unmapped offsets
+    return `ERROR: No sysex_id mapping for system offset ${offset}`;
   }
 
   // Calculate page and param from sysex_id

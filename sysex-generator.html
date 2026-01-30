@@ -497,7 +497,7 @@
     <nav class="generator-nav">
       <a href="index.html#sysex" class="back-link">&larr; Back to SysEx</a>
       <h1>SysEx Generator</h1>
-      <p style="color:var(--text-muted);font-size:0.85rem;">Build MIDI sequences for live preset control</p>
+      <p style="color:var(--text-muted);font-size:0.85rem;">Build MIDI sequences for live preset control<a href="index.html" class="panel-home-btn" title="Home">&#8962;</a></p>
 
       <div class="nav-section">
         <h3>Preset (Optional)</h3>
@@ -520,7 +520,7 @@
             <select id="paramCategory" class="form-select"></select>
           </div>
           <div class="form-group">
-            <label>Subcategory</label>
+            <label id="secondLevelLabel">Type/Style</label>
             <select id="paramSubcategory" class="form-select"></select>
           </div>
           <div class="harmony-key-scale" id="harmonyKeyScale">
@@ -537,22 +537,17 @@
             </div>
           </div>
           <div class="form-group">
-            <label>Type/Style</label>
-            <select id="enumSelect" class="form-select">
-              <option value="">—</option>
-            </select>
-          </div>
-          <div class="form-group">
             <label>Parameter</label>
             <select id="paramSelect" class="form-select"></select>
           </div>
-          <div class="form-group">
+          <div class="form-group" id="valueGroup">
             <label>Value <span id="valueRange"></span></label>
-            <div class="slider-row">
+            <div class="slider-row" id="sliderRow">
               <input type="range" id="valueSlider" class="param-slider" min="0" max="100" value="0">
               <input type="number" id="paramValue" class="value-display">
               <span id="paramUnit" class="value-unit"></span>
             </div>
+            <select id="enumValueSelect" class="form-select" style="display:none;"></select>
           </div>
           <button class="add-btn" id="addParam">+ Add to Sequence</button>
         </div>
@@ -611,7 +606,7 @@
 
   <script type="module">
     import { VL3X_PARAMS, ENUMS, getCategories, getSubcategories, getParameters, getEnumValues } from './js/sysex-params.js';
-    import { makeSysEx } from './js/sysex-calculator.js';
+    import { makeSysEx, makeSysExForSystem } from './js/sysex-calculator.js';
 
     // State
     let batchParams = [];
@@ -623,12 +618,15 @@
     const clearAllBtn = document.getElementById('clearAll');
     const categorySelect = document.getElementById('paramCategory');
     const subcatSelect = document.getElementById('paramSubcategory');
+    const secondLevelLabel = document.getElementById('secondLevelLabel');
     const paramSelect = document.getElementById('paramSelect');
     const valueSlider = document.getElementById('valueSlider');
     const paramValue = document.getElementById('paramValue');
     const paramUnit = document.getElementById('paramUnit');
     const valueRange = document.getElementById('valueRange');
-    const enumSelect = document.getElementById('enumSelect');
+    const valueGroup = document.getElementById('valueGroup');
+    const sliderRow = document.getElementById('sliderRow');
+    const enumValueSelect = document.getElementById('enumValueSelect');
     const harmonyKeyScaleDiv = document.getElementById('harmonyKeyScale');
     const harmonyKeySelect = document.getElementById('harmonyKey');
     const harmonyScaleSelect = document.getElementById('harmonyScale');
@@ -714,23 +712,43 @@
       const category = categorySelect.value;
       const subcats = getSubcategories(category);
       subcatSelect.innerHTML = subcats.map(s => `<option value="${s}">${s.toUpperCase()}</option>`).join('');
+
+      // Ensure first option is selected
+      subcatSelect.selectedIndex = 0;
+
+      // Update label based on category
+      // Guitar/Vocal show "Effect" (Amp, Delay, Harmony, etc.)
+      // Setup shows "Subcategory" (SYSTEM, MIDI, etc.)
+      if (category === 'Setup') {
+        secondLevelLabel.textContent = 'Subcategory';
+      } else {
+        secondLevelLabel.textContent = 'Effect';
+      }
+
       updateParameters();
     }
 
     function updateParameters() {
       const category = categorySelect.value;
       const subcategory = subcatSelect.value;
+
+      // Guard: ensure valid selection
+      if (!category || !subcategory) {
+        paramSelect.innerHTML = '<option value="" selected>SELECT</option>';
+        return;
+      }
       const params = getParameters(category, subcategory);
 
       // Show Harmony Key/Scale when Vocal > Harmony selected
       const showHarmonyKeyScale = (category === 'Vocal' && subcategory === 'Harmony');
       harmonyKeyScaleDiv.classList.toggle('visible', showHarmonyKeyScale);
 
-      // Filter out KEY and SCALE from Parameter dropdown when showing dedicated controls
-      paramSelect.innerHTML = '<option value="" selected>DEFAULT</option>' + params
+
+      // Parameter dropdown shows ALL parameters including TYPE/STYLE
+      // Only filter KEY/SCALE for Harmony (shown in separate controls)
+      paramSelect.innerHTML = '<option value="" selected>SELECT</option>' + params
         .filter(p => {
           const name = p.name.toUpperCase();
-          if (name === 'TYPE') return false;
           if (showHarmonyKeyScale && (name === 'KEY' || name === 'SCALE')) return false;
           return true;
         })
@@ -738,23 +756,15 @@
           `<option value="${p.offset}" data-min="${p.min}" data-max="${p.max}" data-unit="${p.unit || ''}" data-enum="${p.enum || ''}" data-name="${p.name}">${p.name.toUpperCase()}</option>`
         ).join('');
 
-      // Populate Option dropdown based on subcategory (find first param with enum)
-      const enumParam = params.find(p => p.enum && ENUMS[p.enum]);
-      if (enumParam) {
-        const vals = getEnumValues(enumParam.enum);
-        enumSelect.innerHTML = vals.map((v, i) => `<option value="${i}">${v.toUpperCase()}</option>`).join('');
-        enumSelect.selectedIndex = 0;
-      } else {
-        enumSelect.innerHTML = '';
-      }
-
       updateValueConstraints();
     }
 
     function updateValueConstraints() {
       const opt = paramSelect.selectedOptions[0];
       if (!opt || !opt.value) {
-        // Reset to neutral state when SELECT placeholder is shown
+        // Reset value controls when no parameter selected
+        sliderRow.style.display = 'flex';
+        enumValueSelect.style.display = 'none';
         valueSlider.min = 0;
         valueSlider.max = 100;
         valueSlider.value = 0;
@@ -767,24 +777,50 @@
       const min = parseInt(opt.dataset.min);
       const max = parseInt(opt.dataset.max);
       const unit = opt.dataset.unit || '';
+      const enumType = opt.dataset.enum;
 
-      // Update slider and value constraints to match parameter range
-      valueSlider.min = min;
-      valueSlider.max = max;
-      paramValue.min = min;
-      paramValue.max = max;
-      paramUnit.textContent = unit;
-      valueRange.textContent = `(${min} to ${max})`;
+      // Check if parameter has an enum
+      if (enumType && ENUMS[enumType]) {
+        // Show enum dropdown, hide slider
+        sliderRow.style.display = 'none';
+        enumValueSelect.style.display = 'block';
+        valueRange.textContent = '';
 
-      // Start at left (minimum value)
-      valueSlider.value = min;
-      paramValue.value = min;
+        // Populate enum dropdown with values within min/max range
+        const enumValues = ENUMS[enumType];
+        enumValueSelect.innerHTML = enumValues
+          .map((val, idx) => {
+            if (idx >= min && idx <= max) {
+              return `<option value="${idx}">${val ? val.toUpperCase() : idx}</option>`;
+            }
+            return '';
+          })
+          .filter(x => x)
+          .join('');
+      } else {
+        // Show slider, hide enum dropdown
+        sliderRow.style.display = 'flex';
+        enumValueSelect.style.display = 'none';
+
+        // Update slider and value constraints to match parameter range
+        valueSlider.min = min;
+        valueSlider.max = max;
+        paramValue.min = min;
+        paramValue.max = max;
+        paramUnit.textContent = unit;
+        valueRange.textContent = `(${min} to ${max})`;
+
+        // Start at left (minimum value)
+        valueSlider.value = min;
+        paramValue.value = min;
+      }
     }
 
     function addParameter() {
       const category = categorySelect.value;
       const subcategory = subcatSelect.value;
       const showHarmonyKeyScale = (category === 'Vocal' && subcategory === 'Harmony');
+      const isSystem = (category === 'Setup');
 
       // If Harmony Key/Scale visible and no specific parameter selected, add Key and Scale
       const opt = paramSelect.selectedOptions[0];
@@ -802,33 +838,17 @@
             offset: 39,
             name: 'KEY',
             value: keyVal,
-            displayValue: keyText
+            displayValue: keyText,
+            isSystem: false
           });
           batchParams.push({
             offset: 40,
             name: 'SCALE',
             value: scaleVal,
-            displayValue: scaleText
+            displayValue: scaleText,
+            isSystem: false
           });
           addedSomething = true;
-        }
-
-        // Also add TYPE if available
-        const enumOpt = enumSelect.selectedOptions[0];
-        if (enumOpt && enumSelect.options.length > 0) {
-          const params = getParameters(category, subcategory);
-          const typeParam = params.find(p => p.name.toUpperCase() === 'TYPE');
-          if (typeParam) {
-            const value = parseInt(enumOpt.value);
-            const displayValue = `${value} (${enumOpt.textContent})`;
-            batchParams.push({
-              offset: typeParam.offset,
-              name: 'TYPE',
-              value,
-              displayValue
-            });
-            addedSomething = true;
-          }
         }
 
         if (addedSomething) renderBatchList();
@@ -837,16 +857,21 @@
 
       const offset = parseInt(opt.value);
       const name = opt.dataset.name;
-      const value = parseInt(paramValue.value);
       const unit = opt.dataset.unit || '';
       const enumType = opt.dataset.enum;
 
-      let displayValue = `${value}${unit}`;
-      if (enumType && ENUMS[enumType] && ENUMS[enumType][value]) {
-        displayValue = `${value} (${ENUMS[enumType][value]})`;
+      // Get value from enum dropdown or slider based on which is visible
+      let value, displayValue;
+      if (enumType && ENUMS[enumType] && enumValueSelect.style.display !== 'none') {
+        const enumOpt = enumValueSelect.selectedOptions[0];
+        value = parseInt(enumOpt.value);
+        displayValue = enumOpt.textContent;
+      } else {
+        value = parseInt(paramValue.value);
+        displayValue = `${value}${unit}`;
       }
 
-      batchParams.push({ offset, name, value, displayValue });
+      batchParams.push({ offset, name, value, displayValue, isSystem });
       renderBatchList();
     }
 
@@ -911,7 +936,9 @@
       // Parameter changes
       output.push(`<span class="comment">// Parameter Changes</span>`);
       batchParams.forEach((p, i) => {
-        const sysex = makeSysEx(p.offset, p.value);
+        // Use appropriate function based on parameter type
+        const sysex = p.isSystem ? makeSysExForSystem(p.offset, p.value) : makeSysEx(p.offset, p.value);
+        const paramType = p.isSystem ? 'System' : 'Preset';
         output.push(`<span class="sysex">${sysex}</span>  <span class="comment">// ${p.name} = ${p.displayValue}</span>`);
         if (i < batchParams.length - 1) {
           output.push(`<span class="wait">WAIT 50ms</span>                        <span class="comment">// Inter-message delay</span>`);
