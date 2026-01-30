@@ -47,7 +47,9 @@ export async function init() {
     cautionBox: document.getElementById('cautionBox'),
     sysexLinkRow: document.getElementById('sysexLinkRow'),
     examplesLinkRow: document.getElementById('examplesLinkRow'),
-    sysexNav: document.getElementById('sysexNav')
+    sysexNav: document.getElementById('sysexNav'),
+    panelTitle: document.getElementById('panelTitle'),
+    panelSubtitle: document.getElementById('panelSubtitle')
   };
 
   // Load data
@@ -183,6 +185,15 @@ function setView(view) {
     elements.cautionBox.innerHTML = CAUTION_CONTENT;
   };
 
+  // Update panel header based on view
+  if (view === 'sysex') {
+    elements.panelTitle.textContent = 'System Exclusive Msgs';
+    elements.panelSubtitle.textContent = 'Control the VL3x differently!';
+  } else {
+    elements.panelTitle.textContent = 'VL3X Preset Inspector';
+    elements.panelSubtitle.textContent = 'Inspect factory presets differently!';
+  }
+
   // Hide sysex links for non-sysex views
   elements.sysexLinkRow.style.display = 'none';
   elements.examplesLinkRow.style.display = 'none';
@@ -212,34 +223,62 @@ function setView(view) {
     elements.cautionBox.style.display = 'none';
     elements.sysexLinkRow.style.display = 'block';
     elements.examplesLinkRow.style.display = 'block';
-    elements.presetTitle.textContent = 'What is SysEx?';
-    elements.presetInfo.textContent = 'System Exclusive MIDI messages for advanced control';
+    elements.presetTitle.textContent = 'SysEx Control';
+    elements.presetInfo.textContent = 'Build MIDI commands to control any VL3X parameter';
     elements.paramsContainer.innerHTML = `
       <div class="sysex-about">
-        <p>SysEx (System Exclusive) is a type of MIDI message that lets you control parameters that regular MIDI can't reach. While standard MIDI gives you Program Change (to switch presets) and Control Change (for things like volume), SysEx opens the door to everything else.</p>
-
-        <p>On the VL3X, that means all 472 parameters: reverb types, delay times, harmony styles, amp models, EQ settings, button assignments, and more. If you can adjust it on the pedal, you can control it via SysEx.</p>
-
-        <div class="info-box" style="background: var(--card-bg); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin: 1.5rem 0;">
-          <h4 style="color: var(--accent); margin: 0 0 0.5rem 0;">The SysEx Generator</h4>
-          <p style="margin: 0;">The SysEx Generator takes the guesswork out of building these messages. Select a parameter, choose a value, and it outputs the exact hex string you need. Copy it into onSong, your MC-8, or any MIDI-capable controller.</p>
+        <div class="sysex-hero">
+          <h3>Control all of the important parameters from your tablet, foot controller, or DAW</h3>
+          <p>SysEx (system exclusive) messages reach parameters that regular MIDI cannot: reverb types, harmony styles, delay times, and everything else you might want to control LIVE.</p>
         </div>
 
-        <h3 style="margin-top: 1.5rem;">Why use SysEx with the VL3X?</h3>
-        <ul class="benefit-list" style="list-style: none; padding: 0;">
-          <li style="padding: 0.75rem 0; padding-left: 1.5rem; position: relative; border-bottom: 1px solid var(--border);"><span style="position: absolute; left: 0; color: var(--accent);">→</span><strong>Remote control:</strong> Change any parameter from your iPad, foot controller, or DAW without touching the pedal</li>
-          <li style="padding: 0.75rem 0; padding-left: 1.5rem; position: relative; border-bottom: 1px solid var(--border);"><span style="position: absolute; left: 0; color: var(--accent);">→</span><strong>Per-song automation:</strong> Build setlists where each song loads the exact settings you need</li>
-          <li style="padding: 0.75rem 0; padding-left: 1.5rem; position: relative; border-bottom: 1px solid var(--border);"><span style="position: absolute; left: 0; color: var(--accent);">→</span><strong>Smooth transitions:</strong> Avoid the audio glitch that comes with the built-in Steps feature</li>
-          <li style="padding: 0.75rem 0; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">→</span><strong>Hands-free operation:</strong> Keep playing while your sound changes happen automatically</li>
-        </ul>
+        <div class="sysex-action-cards">
+          <div class="sysex-action-card">
+            <div class="sysex-card-icon">🔍</div>
+            <h4>Inspect Presets</h4>
+            <p>See what parameters are available in vocal and guitar presets and build your knowledge about what sounds good (or not so good).</p>
+            <a href="#" class="card-link" onclick="document.getElementById('viewPresets').click(); return false;">Browse Presets →</a>
+          </div>
 
-        <div class="info-box" style="background: var(--card-bg); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin: 1.5rem 0;">
-          <h4 style="color: var(--accent); margin: 0 0 0.5rem 0;">Ready to build SysEx messages?</h4>
-          <p style="margin: 0;">Click <a href="sysex-generator.html" style="color: var(--accent);">SysEx Generator</a> in the left panel to start creating commands for your VL3X.</p>
+          <div class="sysex-action-card">
+            <div class="sysex-card-icon">⚡</div>
+            <h4>Build SysEx Commands</h4>
+            <p>Select a parameter, set a value, get the hex string. Then copy into your MIDI controller.</p>
+            <a href="sysex-generator.html" class="card-link">Open Generator →</a>
+          </div>
+
+          <div class="sysex-action-card">
+            <div class="sysex-card-icon">📋</div>
+            <h4>Step-by-Step Workflows</h4>
+            <p>Load presets via MIDI, enable editor mode, send parameter changes. Complete sequences with timing.</p>
+            <a href="examples.html" class="card-link">View Examples →</a>
+          </div>
+        </div>
+
+        <div class="sysex-use-cases">
+          <h4>What you can do with SysEx</h4>
+          <div class="use-case-grid">
+            <div class="use-case-item">
+              <span class="use-case-icon">→</span>
+              <span class="use-case-text"><strong>Per-song automation:</strong> Each song in your setlist loads exact settings</span>
+            </div>
+            <div class="use-case-item">
+              <span class="use-case-icon">→</span>
+              <span class="use-case-text"><strong>Smooth transitions:</strong> Avoid audio glitches from the built-in Steps feature</span>
+            </div>
+            <div class="use-case-item">
+              <span class="use-case-icon">→</span>
+              <span class="use-case-text"><strong>Remote control:</strong> Change any parameter without touching the pedal</span>
+            </div>
+            <div class="use-case-item">
+              <span class="use-case-icon">→</span>
+              <span class="use-case-text"><strong>Hands-free operation:</strong> Sound changes happen while you keep playing</span>
+            </div>
+          </div>
         </div>
       </div>
     `;
-    elements.statsLeft.textContent = 'Preset Params: 472 | System Params: 149';
+    elements.statsLeft.textContent = '';
 
   } else {
     // Presets view
