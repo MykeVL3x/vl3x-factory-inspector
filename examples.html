@@ -1,6 +1,6 @@
 <!--
   VL3X Factory Preset Inspector - Examples Page
-  Designed & Implemented - Mike Levine - V2.0 26 Jan 2026
+  Designed & Implemented - Mike Levine - V2.0 30 Jan 2026
   All VL3x details copyright 2026 TC Helicon. All Rights Reserved.
 -->
 <!DOCTYPE html>
@@ -11,6 +11,18 @@
   <title>Building VL3X Control using MIDI & SysEx</title>
   <link rel="stylesheet" href="css/styles.css">
   <style>
+    :root {
+      --bg: #1a1a2e;
+      --panel-bg: rgba(0, 0, 0, 0.3);
+      --card-bg: rgba(0, 0, 0, 0.2);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #e0e0e0;
+      --text-muted: #888;
+      --accent: #00d4ff;
+      --accent-green: #10b981;
+      --accent-orange: #f59e0b;
+    }
+
     html, body {
       height: 100%;
       margin: 0;
@@ -20,144 +32,80 @@
     .examples-container {
       display: flex;
       height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     }
 
     .examples-nav {
-      width: 380px;
+      width: 280px;
+      height: 100vh;
       background: var(--panel-bg);
       border-right: 1px solid var(--border);
       padding: 0.5rem;
-      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
 
     .examples-nav h1 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-bottom: 0.25rem;
       color: var(--accent);
     }
 
-    .examples-nav .back-link {
+    .back-link {
       display: inline-block;
       margin-bottom: 0.5rem;
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.85rem;
-    }
-
-    .examples-nav .back-link:hover {
-      color: var(--accent);
-    }
-
-    .examples-content {
-      flex: 1;
-      padding: 0.75rem 1rem;
-      overflow-y: auto;
-      background: var(--bg);
       font-size: 0.8rem;
     }
 
-    .example-article {
-      display: none;
-      max-width: 900px;
+    .back-link:hover {
+      color: var(--accent);
     }
 
-    .example-article.active {
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .nav-links a {
       display: block;
-    }
-
-    .example-article h2 {
-      color: var(--accent);
-      margin-bottom: 0.35rem;
-      font-size: 1.3rem;
-    }
-
-    .example-article h3 {
-      color: var(--text);
-      margin-top: 0.6rem;
-      margin-bottom: 0.25rem;
-      font-size: 1rem;
-    }
-
-    .example-article h4 {
-      color: var(--accent);
-      margin-top: 0;
-      margin-bottom: 0.2rem;
-      font-size: 0.85rem;
-    }
-
-    .example-article p {
-      line-height: 1.4;
-      margin-bottom: 0.35rem;
-      color: var(--text);
-    }
-
-    .example-article ul {
-      margin-bottom: 0.35rem;
-      padding-left: 1.25rem;
-    }
-
-    .example-article li {
-      margin-bottom: 0.2rem;
-      line-height: 1.4;
-    }
-
-    .highlight-box {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
       padding: 0.5rem 0.75rem;
-      border-radius: 0 6px 6px 0;
-      margin: 0.35rem 0;
-    }
-
-    .highlight-box.warning {
-      border-left-color: #f59e0b;
-      background: rgba(245, 158, 11, 0.1);
-    }
-
-    .highlight-box h4 {
-      margin: 0 0 0.2rem 0;
-    }
-
-    .highlight-box p {
-      margin: 0;
-    }
-
-    .step-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 0.4rem 0.6rem;
-      margin: 0.25rem 0;
-      display: flex;
-      gap: 0.5rem;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.2s;
     }
 
-    .step-number {
+    .nav-links a:hover {
+      border-color: var(--accent);
+      background: rgba(0, 212, 255, 0.1);
+    }
+
+    .nav-links a.active {
+      background: rgba(0, 212, 255, 0.2);
+      border-color: var(--accent);
       color: var(--accent);
-      font-weight: bold;
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      background: none;
-      border: 1px solid #9ca3af;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    }
+
+    .nav-section {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-section h3 {
       font-size: 0.75rem;
-    }
-
-    .step-content {
-      flex: 1;
-    }
-
-    .step-content p {
-      margin: 0.15rem 0;
-    }
-
-    .step-content ul {
-      margin: 0.2rem 0;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .timing-list {
@@ -165,8 +113,8 @@
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 0.5rem;
-      margin: 0.35rem 0;
       list-style: none;
+      font-size: 0.75rem;
     }
 
     .timing-list li {
@@ -184,6 +132,194 @@
       color: var(--accent);
     }
 
+    .examples-main {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    .content-section {
+      background: var(--panel-bg);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-section h2 {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .content-section h3 {
+      color: var(--text);
+      margin-top: 0.75rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.95rem;
+    }
+
+    .content-section p {
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      font-size: 0.85rem;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      margin: 0.35rem 0;
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .step-number {
+      color: var(--accent);
+      font-weight: bold;
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content h4 {
+      color: var(--accent);
+      margin: 0 0 0.2rem 0;
+      font-size: 0.85rem;
+    }
+
+    .step-content p {
+      margin: 0.15rem 0;
+      font-size: 0.8rem;
+    }
+
+    .step-content ul {
+      margin: 0.2rem 0;
+      padding-left: 1.25rem;
+      font-size: 0.8rem;
+    }
+
+    .step-content li {
+      margin-bottom: 0.15rem;
+    }
+
+    .step-content code {
+      display: block;
+      background: #0d1117;
+      color: var(--accent-green);
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-family: 'Monaco', 'Menlo', monospace;
+    }
+
+    .highlight-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      padding: 0.5rem 0.75rem;
+      border-radius: 0 6px 6px 0;
+      margin: 0.5rem 0;
+    }
+
+    .highlight-box.warning {
+      border-left-color: var(--accent-orange);
+      background: rgba(245, 158, 11, 0.1);
+    }
+
+    .highlight-box h4 {
+      color: var(--accent-orange);
+      margin: 0 0 0.2rem 0;
+      font-size: 0.85rem;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      font-size: 0.8rem;
+    }
+
+    .example-box {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      padding: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .example-box h4 {
+      margin: 0 0 0.5rem 0;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .example-box .label {
+      margin: 0.5rem 0 0.25rem 0;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .example-box code {
+      display: block;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-family: 'Monaco', 'Menlo', monospace;
+    }
+
+    .example-box code.sysex {
+      color: var(--accent-green);
+      font-size: 0.75rem;
+    }
+
+    .example-box .wait {
+      color: #9ca3af;
+      margin-top: 0.5rem;
+    }
+
+    .save-warning {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: 6px;
+      padding: 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .save-warning .title {
+      margin: 0 0 0.5rem 0;
+      color: var(--accent-orange);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .save-warning code {
+      display: block;
+      color: var(--accent-green);
+      font-size: 0.75rem;
+      font-family: 'Monaco', 'Menlo', monospace;
+    }
+
+    .save-warning p {
+      margin: 0.5rem 0 0 0;
+      color: var(--accent-orange);
+      font-size: 0.8rem;
+    }
+
+    .save-warning .note {
+      color: var(--text-muted);
+    }
+
     @media (max-width: 768px) {
       .examples-container {
         flex-direction: column;
@@ -191,6 +327,7 @@
       }
       .examples-nav {
         width: 100%;
+        height: auto;
         border-right: none;
         border-bottom: 1px solid var(--border);
       }
@@ -201,43 +338,54 @@
   <div class="examples-container">
     <nav class="examples-nav">
       <a href="index.html#sysex" class="back-link">&larr; Back to SysEx</a>
-      <h1>Building VL3X Control</h1>
-      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">using MIDI & SysEx</p>
+      <h1>VL3X Control</h1>
+      <p style="color:var(--text-muted);font-size:0.8rem;">MIDI & SysEx Workflows<a href="index.html" class="panel-home-btn" title="Home">&#8962;</a></p>
 
-      <div style="margin-bottom: 1rem;">
-        <a href="sysex-generator.html" style="display: block; padding: 0.5rem 0.75rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.9rem;">SysEx Generator</a>
-        <a href="examples.html" style="display: block; padding: 0.5rem 0.75rem; background: var(--accent); border: 1px solid var(--accent); border-radius: 6px; color: #fff; text-decoration: none; font-size: 0.9rem;">Examples: SysEx Workflows</a>
+      <div class="nav-links">
+        <a href="sysex-generator.html">SysEx Generator</a>
+        <a href="examples.html" class="active">Examples & Workflows</a>
+        <a href="midi-comparison.html">USB vs DIN-5 MIDI</a>
       </div>
 
-      <div style="background: var(--card-bg); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 0.75rem; font-size: 0.85rem;">
-        <h4 style="margin: 0 0 0.5rem 0; color: var(--accent); font-size: 0.9rem;">Example: Preset 300 - changed AMP TYPE from Acoustic to BODYREZ1</h4>
-
-        <p style="margin: 0.5rem 0 0.25rem 0; color: var(--text-muted);">Load Preset:</p>
-        <code style="display: block; color: #9ca3af;">CC0 = 0</code>
-        <code style="display: block; color: #9ca3af;">CC32 = 2</code>
-        <code style="display: block; color: #9ca3af;">PC = 44</code>
-
-        <p style="margin: 0.75rem 0 0.25rem 0; color: var(--text-muted);">Editor Enable:</p>
-        <code style="display: block; color: #10b981; font-size: 0.75rem;">F0 00 01 38 00 6D 15 00 F7</code>
-        <code style="display: block; color: #9ca3af; margin-top: 0.5rem;">Delay/Wait 200ms</code>
-
-        <p style="margin: 0.75rem 0 0.25rem 0; color: var(--text-muted);">Amp = BodyRez1:</p>
-        <code style="display: block; color: #10b981; font-size: 0.75rem;">F0 00 01 38 00 6D 22 00 21 00 00 00 19 F7</code>
-
-      </div>
-
-      <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 6px; padding: 0.75rem; margin-top: 0.75rem; font-size: 0.85rem;">
-        <p style="margin: 0 0 0.5rem 0; color: #f59e0b; font-size: 0.9rem; font-weight: 600;">Save To Preset:</p>
-        <code style="display: block; color: #10b981; font-size: 0.75rem;">F0 00 01 38 00 6D 24 00 F7</code>
-        <p style="margin: 0.5rem 0 0 0; color: #f59e0b; font-size: 0.8rem;">Saving to preset is likely not something you want to do during a live set. Consider the save carefully if you do use it.</p>
-        <p style="margin: 0.5rem 0 0 0; color: var(--text-muted); font-size: 0.8rem;">You can use SysEx to configure any preset Guitar/Vocal settings and save it. I find it much faster to do by hand, but you have an option.</p>
+      <div class="nav-section">
+        <h3>Timing Reference</h3>
+        <ul class="timing-list">
+          <li><span>After preset switch (PC)</span><strong>0ms*</strong></li>
+          <li><span>After Editor Enable</span><strong>0ms*</strong></li>
+          <li><span>Between param changes</span><strong>0ms*</strong></li>
+          <li><span>After Preset Store</span><strong>500ms</strong></li>
+        </ul>
+        <p style="font-size:0.65rem;color:var(--text-muted);margin-top:0.4rem;">*USB MIDI tested. Add 20-50ms margin for DIN MIDI or slower controllers.</p>
       </div>
     </nav>
 
-    <main class="examples-content">
-      <article id="replace-steps" class="example-article active">
+    <main class="examples-main">
+      <div class="content-section">
         <h2>Building VL3X Control using MIDI & SysEx</h2>
         <p>Control your VL3X from onSong, an MC-8, or any MIDI controller. <strong>Note:</strong> You can't load or modify a preset that hasn't been initialized.</p>
+
+        <!-- Working Example -->
+        <div class="example-box">
+          <h4>Example: Preset 300 - change AMP TYPE from Acoustic to BODYREZ1</h4>
+
+          <p class="label">Load Preset:</p>
+          <code>CC0 = 0</code>
+          <code>CC32 = 2</code>
+          <code>PC = 44</code>
+
+          <p class="label">Editor Enable:</p>
+          <code class="sysex">F0 00 01 38 00 6D 15 00 F7</code>
+
+          <p class="label">Amp = BodyRez1:</p>
+          <code class="sysex">F0 00 01 38 00 6D 22 00 21 00 00 00 19 F7</code>
+        </div>
+
+        <div class="save-warning">
+          <p class="title">Save To Preset:</p>
+          <code>F0 00 01 38 00 6D 24 00 F7</code>
+          <p>Saving to preset is likely not something you want to do during a live set. Consider the save carefully if you do use it.</p>
+          <p class="note">You can use SysEx to configure any preset Guitar/Vocal settings and save it. I find it much faster to do by hand, but you have an option.</p>
+        </div>
 
         <!-- Section A: Switch Presets -->
         <h3>A. Switch to a Preset</h3>
@@ -259,7 +407,7 @@
             <p>Send Bank Select first, then Program Change.</p>
             <ul>
               <li><strong>CC 0:</strong> Value = 0</li>
-              <li><strong>CC 32:</strong> Value = preset ÷ 128 (rounded down)</li>
+              <li><strong>CC 32:</strong> Value = preset / 128 (rounded down)</li>
               <li><strong>PC:</strong> Value = preset % 128</li>
             </ul>
             <p><strong>Example for Preset 300:</strong> CC0=0, CC32=2, PC=44</p>
@@ -282,22 +430,15 @@
           <div class="step-number">2</div>
           <div class="step-content">
             <h4>Send Editor Enable</h4>
-            <code style="display:block; background:#1a1a2e; color:#10b981; padding:0.4rem 0.6rem; border-radius:4px; font-size:0.75rem;">F0 00 01 38 00 6D 15 00 F7</code>
+            <code>F0 00 01 38 00 6D 15 00 F7</code>
           </div>
         </div>
 
         <div class="step-card">
           <div class="step-number">3</div>
           <div class="step-content">
-            <h4>Delay/Wait 200ms</h4>
-          </div>
-        </div>
-
-        <div class="step-card">
-          <div class="step-number">4</div>
-          <div class="step-content">
             <h4>Send Parameter Change</h4>
-            <p>Use the <a href="sysex-generator.html" style="color:var(--accent);">SysEx Generator</a> to build the command. Repeat for multiple params (50ms between).</p>
+            <p>Use the <a href="sysex-generator.html" style="color:var(--accent);">SysEx Generator</a> to build the command. Repeat for multiple params.</p>
           </div>
         </div>
 
@@ -310,29 +451,20 @@
         </div>
 
         <div class="step-card">
-          <div class="step-number">1-4</div>
+          <div class="step-number">1-3</div>
           <div class="step-content">
             <h4>Follow Section B Steps</h4>
           </div>
         </div>
 
         <div class="step-card">
-          <div class="step-number">5</div>
+          <div class="step-number">4</div>
           <div class="step-content">
             <h4>Send Store Command</h4>
-            <code style="display:block; background:#1a1a2e; color:#10b981; padding:0.4rem 0.6rem; border-radius:4px; font-size:0.75rem;">F0 00 01 38 00 6D 24 00 F7</code>
+            <code>F0 00 01 38 00 6D 24 00 F7</code>
           </div>
         </div>
-
-        <!-- Timing Summary -->
-        <h3>Timing Summary</h3>
-        <ul class="timing-list">
-          <li><span>After preset switch (PC)</span><strong>200ms</strong></li>
-          <li><span>After Editor Enable</span><strong>200ms</strong></li>
-          <li><span>Between parameter changes</span><strong>50ms</strong></li>
-          <li><span>After Preset Store</span><strong>500ms</strong></li>
-        </ul>
-      </article>
+      </div>
     </main>
   </div>
 

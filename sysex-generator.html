@@ -499,6 +499,11 @@
       <h1>SysEx Generator</h1>
       <p style="color:var(--text-muted);font-size:0.85rem;">Build MIDI sequences for live preset control<a href="index.html" class="panel-home-btn" title="Home">&#8962;</a></p>
 
+      <div style="display:flex;gap:0.4rem;margin:0.5rem 0;">
+        <a href="examples.html" style="flex:1;padding:0.35rem;background:var(--card-bg);border:1px solid var(--border);border-radius:4px;color:var(--text-muted);text-decoration:none;font-size:0.7rem;text-align:center;">Examples</a>
+        <a href="midi-comparison.html" style="flex:1;padding:0.35rem;background:var(--card-bg);border:1px solid var(--border);border-radius:4px;color:var(--text-muted);text-decoration:none;font-size:0.7rem;text-align:center;">USB vs DIN</a>
+      </div>
+
       <div class="nav-section">
         <h3>Preset (Optional)</h3>
         <div class="preset-input-group">
@@ -923,14 +928,12 @@
         output.push(`<span class="pc">CC 0 ${bank}</span>                          <span class="comment">// Bank Select MSB</span>`);
         output.push(`<span class="pc">CC 32 0</span>                          <span class="comment">// Bank Select LSB</span>`);
         output.push(`<span class="pc">PC ${program}</span>                          <span class="comment">// Program Change</span>`);
-        output.push(`<span class="wait">WAIT 50ms</span>                        <span class="comment">// Wait for preset load</span>`);
         output.push('');
       }
 
       // Editor Enable
       output.push(`<span class="comment">// Enable Editor Mode (required for parameter changes)</span>`);
       output.push(`<span class="sysex">F0 00 01 38 00 6D 15 00 F7</span>       <span class="comment">// Editor Enable</span>`);
-      output.push(`<span class="wait">WAIT 200ms</span>                       <span class="comment">// Wait for editor ready</span>`);
       output.push('');
 
       // Parameter changes
@@ -940,9 +943,6 @@
         const sysex = p.isSystem ? makeSysExForSystem(p.offset, p.value) : makeSysEx(p.offset, p.value);
         const paramType = p.isSystem ? 'System' : 'Preset';
         output.push(`<span class="sysex">${sysex}</span>  <span class="comment">// ${p.name} = ${p.displayValue}</span>`);
-        if (i < batchParams.length - 1) {
-          output.push(`<span class="wait">WAIT 50ms</span>                        <span class="comment">// Inter-message delay</span>`);
-        }
       });
 
       outputBlock.innerHTML = output.join('\n');
