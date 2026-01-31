@@ -2,6 +2,7 @@
  * sysex-params.js - Complete VL3X parameter database
  * Generated from preset-layouts.js (SOT display order)
  * Auto-fixed: enum max values, missing params
+ * Updated: 2026-01-30 - Added 41 missing params from gold_standard
  */
 
 export const VL3X_PARAMS = {
@@ -239,6 +240,33 @@ export const VL3X_PARAMS = {
         "max": 1,
         "enum": "on_off",
         "unit": null,
+        "display": null
+      },
+      {
+        "name": "LO BW PRE",
+        "offset": 3,
+        "min": 0,
+        "max": 24,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "HI BW PRE",
+        "offset": 6,
+        "min": 0,
+        "max": 24,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "DC GAIN",
+        "offset": 260,
+        "min": -100,
+        "max": 100,
+        "enum": null,
+        "unit": "dB",
         "display": null
       }
     ],
@@ -526,6 +554,15 @@ export const VL3X_PARAMS = {
         "enum": "on_off",
         "unit": null,
         "display": null
+      },
+      {
+        "name": "GTR DELAY WIDTH",
+        "offset": 383,
+        "min": -61,
+        "max": 0,
+        "enum": null,
+        "unit": null,
+        "display": null
       }
     ],
     "Reverb": [
@@ -699,6 +736,24 @@ export const VL3X_PARAMS = {
         "enum": "on_off",
         "unit": null,
         "display": null
+      },
+      {
+        "name": "REVERB TYPE",
+        "offset": 191,
+        "min": 0,
+        "max": 13,
+        "enum": "reverb_type_guitar",
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "GTR REVERB LEVEL",
+        "offset": 384,
+        "min": -61,
+        "max": 0,
+        "enum": null,
+        "unit": "dB",
+        "display": null
       }
     ],
     "Comp": [
@@ -866,6 +921,54 @@ export const VL3X_PARAMS = {
         "min": 0,
         "max": 1,
         "enum": "on_off",
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "HIGH CUT",
+        "offset": 245,
+        "min": 0,
+        "max": 240,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "BPM",
+        "offset": 247,
+        "min": 20,
+        "max": 600,
+        "enum": null,
+        "unit": null,
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "SHAPE",
+        "offset": 248,
+        "min": 0,
+        "max": 1,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "EXP MINPOS",
+        "offset": 250,
+        "min": 0,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "EXP MAXPOS",
+        "offset": 251,
+        "min": 0,
+        "max": 100,
+        "enum": null,
         "unit": null,
         "display": null
       }
@@ -1245,6 +1348,17 @@ export const VL3X_PARAMS = {
       {
         "name": "GLOBAL",
         "offset": 464,
+        "min": 0,
+        "max": 1,
+        "enum": "on_off",
+        "unit": null,
+        "display": null
+      }
+    ],
+    "HardTune": [
+      {
+        "name": "PRE/POST",
+        "offset": 281,
         "min": 0,
         "max": 1,
         "enum": "on_off",
@@ -1674,6 +1788,201 @@ export const VL3X_PARAMS = {
         "enum": "on_off",
         "unit": null,
         "display": null
+      },
+      {
+        "name": "NOTES PAN",
+        "offset": 34,
+        "min": 0,
+        "max": 2,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "NOTES GENDER",
+        "offset": 36,
+        "min": -50,
+        "max": 50,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "NOTES PORTA",
+        "offset": 37,
+        "min": 0,
+        "max": 200,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "SCALE",
+        "offset": 40,
+        "min": 0,
+        "max": 6,
+        "enum": "scale",
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V1 INTERVAL",
+        "offset": 44,
+        "min": 0,
+        "max": 28,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V1 SHIFT",
+        "offset": 45,
+        "min": -24,
+        "max": 24,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V1 PEDAL",
+        "offset": 46,
+        "min": -36,
+        "max": 36,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V1 FIXED",
+        "offset": 47,
+        "min": -36,
+        "max": 25,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V2 VOICING",
+        "offset": 52,
+        "min": 0,
+        "max": 8,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V2 INTERVAL",
+        "offset": 53,
+        "min": 0,
+        "max": 28,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V2 SHIFT",
+        "offset": 54,
+        "min": -24,
+        "max": 24,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V2 PEDAL",
+        "offset": 55,
+        "min": -36,
+        "max": 36,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V2 FIXED",
+        "offset": 56,
+        "min": -36,
+        "max": 25,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V3 SHIFT",
+        "offset": 63,
+        "min": -24,
+        "max": 24,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V3 PEDAL",
+        "offset": 64,
+        "min": -36,
+        "max": 36,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V3 FIXED",
+        "offset": 65,
+        "min": -36,
+        "max": 25,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V4 INTERVAL",
+        "offset": 71,
+        "min": 0,
+        "max": 28,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "V4 SHIFT",
+        "offset": 72,
+        "min": -24,
+        "max": 24,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "ATTACK",
+        "offset": 469,
+        "min": 0,
+        "max": 1000,
+        "enum": null,
+        "unit": null,
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "RELEASE",
+        "offset": 470,
+        "min": 0,
+        "max": 2000,
+        "enum": null,
+        "unit": null,
+        "display": {
+          "type": "offset_if_negative",
+          "offset": 128
+        }
+      },
+      {
+        "name": "LEAD PAN",
+        "offset": 339,
+        "min": -100,
+        "max": 100,
+        "enum": null,
+        "unit": null,
+        "display": null
       }
     ],
     "Double": [
@@ -1971,6 +2280,42 @@ export const VL3X_PARAMS = {
         "min": 0,
         "max": 1,
         "enum": "on_off",
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "OCTSHIFT V1",
+        "offset": 87,
+        "min": -1200,
+        "max": 1200,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "OCTSHIFT V2",
+        "offset": 92,
+        "min": -1200,
+        "max": 1200,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "OCTSHIFT V3",
+        "offset": 97,
+        "min": -1200,
+        "max": 1200,
+        "enum": null,
+        "unit": null,
+        "display": null
+      },
+      {
+        "name": "OCTSHIFT V4",
+        "offset": 102,
+        "min": -1200,
+        "max": 1200,
+        "enum": null,
         "unit": null,
         "display": null
       }
@@ -2710,6 +3055,15 @@ export const VL3X_PARAMS = {
         "enum": "on_off",
         "unit": null,
         "display": null
+      },
+      {
+        "name": "HARMONIES",
+        "offset": 219,
+        "min": 0,
+        "max": 1,
+        "enum": null,
+        "unit": null,
+        "display": null
       }
     ],
     "Transducer": [
@@ -2834,6 +3188,15 @@ export const VL3X_PARAMS = {
         "max": 1,
         "enum": "on_off",
         "unit": null,
+        "display": null
+      },
+      {
+        "name": "PRE GAIN",
+        "offset": 225,
+        "min": -20,
+        "max": 20,
+        "enum": null,
+        "unit": "dB",
         "display": null
       }
     ],
@@ -3696,6 +4059,15 @@ export const VL3X_PARAMS = {
         "max": 11,
         "enum": "mix_screen_timeout",
         "unit": null,
+        "display": null
+      },
+      {
+        "name": "PRESET TRIM",
+        "offset": 386,
+        "min": -6,
+        "max": 6,
+        "enum": null,
+        "unit": "dB",
         "display": null
       }
     ]

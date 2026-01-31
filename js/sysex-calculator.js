@@ -13,7 +13,7 @@
 // Constants
 // ============================================================================
 
-/** Scale factor for value encoding (2^21) */
+/** Scale factor - DEPRECATED, not used for 0x22 encoding (kept for backwards compatibility) */
 export const SCALE_FACTOR = 2097152;
 
 /** TC Helicon manufacturer ID */
@@ -196,34 +196,39 @@ export function getChunkAndLocal(offset) {
 }
 
 /**
- * Encode a parameter value into 4 7-bit bytes
+ * Encode a parameter value into 4 7-bit bytes for 0x22 writes
+ *
+ * IMPORTANT: Uses direct encoding (no scale factor), MSB first.
+ * Verified against VLE capture 2026-01-15 and apply_preset_live.py.
+ *
  * @param {number} value - Parameter value (can be negative)
- * @returns {number[]} Array of 4 bytes, each < 128
+ * @returns {number[]} Array of 4 bytes, each < 128, MSB first
  */
 export function encodeValue(value) {
   // Truncate to integer
   value = Math.trunc(value);
 
-  // Scale the value
-  let scaled = value * SCALE_FACTOR;
-
   // Handle negative values with 28-bit two's complement
-  if (scaled < 0) {
-    scaled = scaled & 0x0FFFFFFF;
+  if (value < 0) {
+    value = (1 << 28) + value;
   }
 
-  // Extract 4 7-bit bytes (LSB first)
-  const b0 = scaled & 0x7F;
-  const b1 = (scaled >> 7) & 0x7F;
-  const b2 = (scaled >> 14) & 0x7F;
-  const b3 = (scaled >> 21) & 0x7F;
+  // Extract 4 7-bit bytes (MSB first - matches VLE and apply_preset_live.py)
+  const b0 = (value >> 21) & 0x7F;
+  const b1 = (value >> 14) & 0x7F;
+  const b2 = (value >> 7) & 0x7F;
+  const b3 = value & 0x7F;
 
   return [b0, b1, b2, b3];
 }
 
 /**
  * Decode 4 7-bit bytes back to a parameter value
- * @param {number[]} bytes - Array of 4 bytes
+ *
+ * IMPORTANT: Uses direct decoding (no scale factor), MSB first.
+ * Matches encodeValue() encoding.
+ *
+ * @param {number[]} bytes - Array of 4 bytes, MSB first
  * @returns {number} Decoded parameter value
  */
 export function decodeValue(bytes) {
@@ -231,16 +236,15 @@ export function decodeValue(bytes) {
     return 0;
   }
 
-  // Combine bytes (LSB first)
-  let scaled = bytes[0] | (bytes[1] << 7) | (bytes[2] << 14) | (bytes[3] << 21);
+  // Combine bytes (MSB first)
+  let value = (bytes[0] << 21) | (bytes[1] << 14) | (bytes[2] << 7) | bytes[3];
 
   // Handle signed values (check if sign bit set in 28-bit range)
-  if (scaled >= (1 << 27)) {
-    scaled = scaled - (1 << 28);
+  if (value >= (1 << 27)) {
+    value = value - (1 << 28);
   }
 
-  // Unscale
-  return Math.round(scaled / SCALE_FACTOR);
+  return value;
 }
 
 /**
