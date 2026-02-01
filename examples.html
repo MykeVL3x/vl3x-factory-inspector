@@ -371,7 +371,7 @@
           <p class="label">Load Preset:</p>
           <code>CC0 = 0</code>
           <code>CC32 = 2</code>
-          <code>PC = 44</code>
+          <code>PC = 43</code>
 
           <p class="label">Editor Enable:</p>
           <code class="sysex">F0 00 01 38 00 6D 15 00 F7</code>
@@ -395,8 +395,8 @@
           <div class="step-number">1</div>
           <div class="step-content">
             <h4>For Presets 1-128</h4>
-            <p>Send Program Change only. Value = preset number.</p>
-            <p><strong>Example for Preset 50:</strong> PC=50</p>
+            <p>Send Program Change only. Value = preset - 1.</p>
+            <p><strong>Example for Preset 50:</strong> PC=49</p>
           </div>
         </div>
 
@@ -407,10 +407,10 @@
             <p>Send Bank Select first, then Program Change.</p>
             <ul>
               <li><strong>CC 0:</strong> Value = 0</li>
-              <li><strong>CC 32:</strong> Value = preset / 128 (rounded down)</li>
-              <li><strong>PC:</strong> Value = preset % 128</li>
+              <li><strong>CC 32:</strong> Value = (preset - 1) / 128 (rounded down)</li>
+              <li><strong>PC:</strong> Value = (preset - 1) % 128</li>
             </ul>
-            <p><strong>Example for Preset 300:</strong> CC0=0, CC32=2, PC=44</p>
+            <p><strong>Example for Preset 300:</strong> CC0=0, CC32=2, PC=43</p>
           </div>
         </div>
 
