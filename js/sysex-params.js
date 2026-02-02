@@ -1009,7 +1009,7 @@ export const VL3X_PARAMS = {
         "offset": 327,
         "min": 0,
         "max": 6,
-        "enum": "rhythmic_style",
+        "enum": "rhythm_style_guitar",
         "unit": null,
         "display": null
       },
@@ -3592,6 +3592,15 @@ export const ENUMS = {
     "Volume 3",
     "Vocoder",
     "OFF"
+  ],
+  "rhythm_style_guitar": [
+    "CHOPPER",
+    "TREMOLO",
+    "SOFT PANNER",
+    "HARD PANNER",
+    "SOFT SAW",
+    "SAW PANNER",
+    "CHOP SAW"
   ],
   "stutter_style": [
     "Gate",
