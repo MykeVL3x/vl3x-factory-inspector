@@ -3777,6 +3777,85 @@ export const ENUMS = {
     "1/32 DOT",
     "1/32",
     "1/32 TRIP"
+  ],
+  "amp_mode": [
+    "CLEAN",
+    "TUBE",
+    "CRUNCH",
+    "HIGH GAIN"
+  ],
+  "drive_style": [
+    "BOOST",
+    "DRIVE",
+    "DRIVE & BOOST"
+  ],
+  "wah_subtype": [
+    "CLASSIC",
+    "TOUCH",
+    "AUTOWAH"
+  ],
+  "wah_order": [
+    "2ND",
+    "4TH"
+  ],
+  "waveform": [
+    "SINE",
+    "TRIANGLE",
+    "SQUARE",
+    "SAW UP",
+    "SAW DOWN",
+    "RANDOM"
+  ],
+  "on_off": [
+    "OFF",
+    "ON"
+  ],
+  "delay_source": [
+    "MANUAL",
+    "TEMPO"
+  ],
+  "octaver_style": [
+    "OCTAVE DOWN",
+    "MIX OCTAVE DOWN",
+    "FOURTH DOWN",
+    "FIFTH UP",
+    "OCTAVE UP",
+    "2 OCT DOWN"
+  ],
+  "rhythmic_target": [
+    "LEVEL",
+    "PAN",
+    "FILTER"
+  ],
+  "natplay_input": [
+    "AUTO",
+    "GUITAR",
+    "MIDI",
+    "AUX",
+    "ROOMSENSE",
+    "BT/USB"
+  ],
+  "tuning": [
+    "EQUAL",
+    "JUST",
+    "BARBERSHOP"
+  ],
+  "voice_voicing": [
+    "2 OCTAVE DOWN",
+    "OCTAVE DOWN",
+    "BASS",
+    "LOWER",
+    "LOW",
+    "UNISON",
+    "HIGH",
+    "HIGHER",
+    "OCTAVE UP"
+  ],
+  "key_source": [
+    "FOLLOW HARMONY",
+    "MANUAL / CUSTOM",
+    "ROBOT MODE",
+    "PEDAL MODE"
   ]
 };
 
