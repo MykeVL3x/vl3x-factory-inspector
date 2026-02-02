@@ -277,7 +277,7 @@ function setView(view) {
           <p>Browse VL3X system settings and learn about the differences between USB and DIN-5 MIDI connections.</p>
         </div>
 
-        <div class="sysex-action-cards">
+        <div class="sysex-action-cards" style="grid-template-columns: 1fr 1fr;">
           <div class="sysex-action-card primary" style="border-color: rgba(255,230,109,0.4);">
             <div class="sysex-card-icon">⚙️</div>
             <h4>Setup Parameters</h4>
