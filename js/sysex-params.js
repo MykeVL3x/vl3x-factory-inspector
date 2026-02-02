@@ -3602,6 +3602,22 @@ export const ENUMS = {
     "SAW PANNER",
     "CHOP SAW"
   ],
+  "reverb_type_guitar": [
+    "HALL OF FAME",
+    "HALL OF FAME TILE",
+    "HALL OF FAME ROOM",
+    "HALL OF FAME LOFI",
+    "HALL OF FAME SPRING",
+    "HALL OF FAME PLATE",
+    "HALL OF FAME HALL",
+    "HALL OF FAME CHURCH",
+    "WOOL AMBIENCE",
+    "MICROSPACE SLAP",
+    "ALMOST SLAP",
+    "COZY CORNER",
+    "AMBIENT SCATTER",
+    "LIBRARY"
+  ],
   "stutter_style": [
     "Gate",
     "Stutter1",
