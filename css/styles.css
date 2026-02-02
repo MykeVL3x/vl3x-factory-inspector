@@ -1757,6 +1757,24 @@ body {
   max-width: 120px;
 }
 
+.param-screen-value {
+  color: #00d4ff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.param-raw-input {
+  width: 45px;
+  font-size: 0.65rem;
+  padding: 0.15rem 0.25rem;
+  opacity: 0.6;
+}
+
+.param-raw-input:focus {
+  opacity: 1;
+}
+
 .param-slider-wrapper {
   position: relative;
 }

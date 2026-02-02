@@ -15,6 +15,7 @@ import {
   setupFormatSelector,
   renderFormatInstructions
 } from './sysex-formatter.js';
+import { getDisplayValue } from './value-transforms.js';
 
 // ============================================================================
 // State Management
@@ -24,6 +25,7 @@ let currentCategory = 'Guitar';
 let currentSubcategory = 'Amp';
 let sysexOutput = [];  // Stacking array of SysEx entries
 let parameterValues = {};  // Track current parameter values
+let transformData = null;  // Loaded from data.json for display transforms
 
 // Editor Enable SysEx bytes
 const EDITOR_ENABLE_BYTES = [0xF0, 0x00, 0x01, 0x38, 0x00, 0x6D, 0x15, 0x00, 0xF7];
@@ -128,10 +130,39 @@ function removeFromSysExOutput(offset) {
 // ============================================================================
 
 /**
+ * Load transform data from data.json (cached)
+ */
+async function loadTransformData() {
+  if (transformData) return transformData;
+  try {
+    const response = await fetch('data.json');
+    transformData = await response.json();
+    return transformData;
+  } catch (e) {
+    console.warn('Could not load data.json for display transforms:', e);
+    return null;
+  }
+}
+
+/**
+ * Get screen display value for a parameter
+ * @param {number} offset - Parameter offset
+ * @param {number} rawValue - Raw stored value
+ * @returns {string} Display value as shown on VL3X screen
+ */
+function getScreenValue(offset, rawValue) {
+  if (!transformData) return String(rawValue);
+  return getDisplayValue(offset, rawValue, [], transformData);
+}
+
+/**
  * Render the full-width SysEx Generator view
  * @param {HTMLElement} container - The container element
  */
-export function renderSysExView(container) {
+export async function renderSysExView(container) {
+  // Load transform data for display values
+  await loadTransformData();
+
   // Reset state on view load
   sysexOutput = [];
   parameterValues = {};
@@ -283,10 +314,13 @@ function renderSliderParameter(param, currentValue) {
   const hasEnum = param.enum && ENUMS[param.enum];
   const enumValues = hasEnum ? getEnumValues(param.enum) : null;
 
-  // For enum sliders, show the label; for numeric, show the value
+  // Get screen display value (what VL3X shows)
+  const screenValue = getScreenValue(param.offset, currentValue);
+
+  // For enum sliders, show the label; for numeric, show screen value
   const displayValue = hasEnum && enumValues[currentValue]
     ? enumValues[currentValue]
-    : currentValue;
+    : screenValue;
 
   return `
     <div class="param-control param-slider-control" data-offset="${param.offset}" ${hasEnum ? `data-enum="${param.enum}"` : ''}>
@@ -296,13 +330,14 @@ function renderSliderParameter(param, currentValue) {
           ${hasEnum ? `
             <span class="param-enum-label" data-offset="${param.offset}">${displayValue}</span>
           ` : `
-            <input type="number" class="param-value-input"
+            <span class="param-screen-value" data-offset="${param.offset}">${screenValue}</span>
+            <input type="number" class="param-value-input param-raw-input"
                    value="${currentValue}"
                    min="${param.min}" max="${param.max}"
                    data-offset="${param.offset}"
                    data-name="${param.name}"
-                   data-unit="${unit}">
-            <span class="param-unit">${unit}</span>
+                   data-unit="${unit}"
+                   title="Raw value (for SysEx)">
           `}
         </span>
       </div>
@@ -462,10 +497,16 @@ function setupParameterListeners(container) {
       const unit = slider.dataset.unit || '';
       const enumName = slider.dataset.enum;
 
-      // Update corresponding value input or enum label
+      // Update corresponding value input
       const valueInput = container.querySelector(`.param-value-input[data-offset="${offset}"]`);
       if (valueInput) {
         valueInput.value = value;
+      }
+
+      // Update screen value display (what VL3X shows)
+      const screenValueEl = container.querySelector(`.param-screen-value[data-offset="${offset}"]`);
+      if (screenValueEl) {
+        screenValueEl.textContent = getScreenValue(offset, value);
       }
 
       // Update enum label if this is an enum slider
@@ -478,8 +519,8 @@ function setupParameterListeners(container) {
       // Find param info
       const param = findParamInfo(offset);
       if (param) {
-        // For enum sliders, show the enum label as display value
-        let displayValue = `${value}${unit}`;
+        // Get screen display value for SysEx output
+        let displayValue = getScreenValue(offset, value);
         if (enumName) {
           const enumValues = getEnumValues(enumName);
           displayValue = enumValues[value] || value;
@@ -493,7 +534,7 @@ function setupParameterListeners(container) {
     });
   });
 
-  // Value input
+  // Value input (raw value)
   container.querySelectorAll('.param-value-input').forEach(input => {
     input.addEventListener('change', (e) => {
       const offset = parseInt(input.dataset.offset);
@@ -513,10 +554,17 @@ function setupParameterListeners(container) {
         slider.value = value;
       }
 
+      // Update screen value display
+      const screenValueEl = container.querySelector(`.param-screen-value[data-offset="${offset}"]`);
+      if (screenValueEl) {
+        screenValueEl.textContent = getScreenValue(offset, value);
+      }
+
       // Find param info
       const param = findParamInfo(offset);
       if (param) {
-        const success = addToSysExOutput(param, value, `${value}${unit}`);
+        const displayValue = getScreenValue(offset, value);
+        const success = addToSysExOutput(param, value, displayValue);
         if (!success) {
           showNoMappingWarning(container, param.name);
         }
