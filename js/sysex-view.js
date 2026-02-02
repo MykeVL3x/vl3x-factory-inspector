@@ -327,14 +327,14 @@ function renderParameterGrid() {
 
 /**
  * Render a single parameter control
- * Rule: If parameter range is 10 or less, use dropdown; otherwise use slider
+ * Rule: If parameter range is 20 or less, use dropdown; otherwise use slider
  */
 function renderParameter(param) {
   const currentValue = parameterValues[param.offset] ?? param.min;
   const range = param.max - param.min;
 
-  // Use dropdown if range is 10 or less, slider otherwise
-  if (range <= 10) {
+  // Use dropdown if range is 20 or less, slider otherwise
+  if (range <= 20) {
     return renderDropdownParameter(param, currentValue);
   } else {
     return renderSliderParameter(param, currentValue);
@@ -342,7 +342,7 @@ function renderParameter(param) {
 }
 
 /**
- * Render a parameter as a dropdown (for range <= 10)
+ * Render a parameter as a dropdown (for range <= 20)
  * Works with both enum and non-enum params
  */
 function renderDropdownParameter(param, currentValue) {
