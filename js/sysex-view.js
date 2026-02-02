@@ -30,39 +30,47 @@ let transformData = null;  // Loaded from data.json for display transforms
 // Editor Enable SysEx bytes
 const EDITOR_ENABLE_BYTES = [0xF0, 0x00, 0x01, 0x38, 0x00, 0x6D, 0x15, 0x00, 0xF7];
 
-// Setup enum definitions (from vl3x_enum_reference.json)
+// Setup enum definitions (from vl3x_enum_reference.json and VL3X hardware)
 // Maps system offset -> enum values array
 const SETUP_ENUMS = {
-  // INPUT TYPE (offset 20)
-  20: ['DYNAMIC', 'CONDENSER', 'MP-75', 'E835', 'MP-76 MIC'],
-  // ROOMSENSE AUTO-DETECT (offset 24) - on_off
-  24: ['OFF', 'ON'],
-  // XLR OUTPUT LEVEL (offset 25)
-  25: ['LINE', 'MIC'],
-  // LEAD DELAY (offset 27)
-  27: ['OFF', '10ms', '20ms', '30ms', '40ms', '50ms'],
-  // AUX VOCAL CANCEL (offset 28) - on_off
-  28: ['OFF', 'ON'],
-  // LEAD MUTE (offset 68) - on_off
-  68: ['OFF', 'ON'],
-  // USB OUTPUT TRIM uses dB, not enum
-  // XLR OUTPUT (offset 96)
-  96: ['STEREO', 'DUAL MONO', 'DRY LEFT'],
-  // MIC CLIP PROTECTION (offset 124) - on_off
-  124: ['OFF', 'ON'],
-  // USB MODE (offset 139)
-  139: ['STEREO', 'DUAL MONO', '2 TRACK'],
-  // GUITAR JACK MODE (offset 140)
-  140: ['GUITAR', 'AUX', 'GUITAR+AUX'],
-  // PHASE (offset 21)
-  21: ['NORMAL', 'INVERTED'],
-  // GATE MODE (offset 49)
-  49: ['OFF', 'GATE', 'EXPAND'],
-  // SPEAKER SIM ENABLE (offset 60)
-  60: ['OFF', 'ON'],
-  // GLOBAL PITCH CORRECT (offset 61) - percent, not enum
-  // GUITAR OUTPUT MODE (offset 94)
-  94: ['MIX', 'DRY', 'AMPSIM']
+  // SYSTEM
+  0: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],  // CONTRAST
+  5: ['DYNAMIC', 'SNAPSHOT'],  // HIT BEHAVIOR
+  7: ['OFF', 'ON'],  // GLOBAL KEY/SCALE
+  8: ['OFF', 'ON'],  // GLOBAL TEMPO
+  // INPUT
+  20: ['DYNAMIC', 'CONDENSER', 'MP-75', 'E835', 'MP-76 MIC'],  // INPUT TYPE
+  24: ['OFF', 'ON'],  // ROOMSENSE AUTO-DETECT
+  27: ['OFF', 'SMALL', 'LARGE'],  // LEAD DELAY
+  28: ['OFF', 'ON'],  // AUX VOCAL CANCEL
+  59: ['OFF', 'AUTOSENSE', 'GUITAR', 'MIDI', 'AUX/MON', 'ROOMSENSE', 'TRACK/USB'],  // GLOBAL NATPLAY SOURCE
+  68: ['OFF', 'ON'],  // LEAD MUTE
+  76: ['LIVE', 'TRACKS'],  // AUX IN TYPE
+  124: ['OFF', 'ON'],  // MIC CLIP PROTECTION
+  139: ['STEREO', 'DUAL MONO', '2 TRACK'],  // USB MODE
+  // OUTPUT
+  25: ['LINE', 'MIC'],  // XLR OUTPUT LEVEL
+  96: ['STEREO', 'DUAL MONO', 'DRY LEFT'],  // XLR OUTPUT
+  140: ['GUITAR', 'AUX', 'GUITAR+AUX'],  // GUITAR JACK MODE
+  // GUITAR
+  21: ['NORMAL', 'INVERTED'],  // PHASE
+  60: ['OFF', 'ON'],  // SPEAKER SIM ENABLE
+  94: ['MIX', 'DRY'],  // OUTPUT MODE
+  // MIDI
+  15: ['SPLIT ABOVE', 'SPLIT BELOW'],  // SPLIT DIRECTION
+  19: ['OFF', 'ON'],  // MIDI TEMPO
+  58: ['OFF', 'ON'],  // VIBRATO BOOST
+  138: ['OFF', '10ms', '20ms', '30ms'],  // MIDI TX DELAY
+  // TONE
+  33: ['OFF', 'ON'],  // WARMTH
+  34: ['OFF', 'ON'],  // SMOOTHING AUTO (EQ MODE)
+  36: ['OFF', 'ON'],  // DYNAMICS AUTO (COMPRESSION MODE)
+  49: ['OFF', 'GATE', 'EXPAND'],  // GATE MODE
+  62: ['OFF', 'ON'],  // TONE
+  // SYSTEM (continued)
+  121: ['OFF', 'ON'],  // ALL GUITAR FX GLOBAL
+  128: ['OFF', 'ON'],  // MIX ROOMSENSE TO NP
+  129: ['3', '4', '5', '6', '7', '8', '9', '10', 'OFF']  // SCREEN TIMEOUT (3-11, 11=OFF)
 };
 
 // ============================================================================
