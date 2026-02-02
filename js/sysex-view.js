@@ -376,37 +376,30 @@ function renderDropdownParameter(param, currentValue) {
 
 /**
  * Render a slider parameter
+ * Shows: number input box + enum name (if enum) or unit (if no enum)
  */
 function renderSliderParameter(param, currentValue) {
   const unit = param.unit || '';
   const hasEnum = param.enum && ENUMS[param.enum];
   const enumValues = hasEnum ? getEnumValues(param.enum) : null;
 
-  // Get screen display value (what VL3X shows)
-  const screenValue = getScreenValue(param.offset, currentValue, currentCategory, param);
-
-  // For enum sliders, show the label; for numeric, show screen value
-  const displayValue = hasEnum && enumValues[currentValue]
-    ? enumValues[currentValue]
-    : screenValue;
+  // Get enum label if applicable
+  const enumLabel = hasEnum && enumValues[currentValue] ? enumValues[currentValue] : '';
 
   return `
     <div class="param-control param-slider-control" data-offset="${param.offset}" ${hasEnum ? `data-enum="${param.enum}"` : ''}>
       <div class="param-control-header">
         <label class="param-label">${param.name}</label>
         <span class="param-value-display">
-          ${hasEnum ? `
-            <span class="param-enum-label" data-offset="${param.offset}">${displayValue}</span>
-          ` : `
-            <span class="param-screen-value" data-offset="${param.offset}">${screenValue}</span>
-            <input type="number" class="param-value-input param-raw-input"
-                   value="${currentValue}"
-                   min="${param.min}" max="${param.max}"
-                   data-offset="${param.offset}"
-                   data-name="${param.name}"
-                   data-unit="${unit}"
-                   title="Raw value (for SysEx)">
-          `}
+          <input type="number" class="param-value-input param-raw-input"
+                 value="${currentValue}"
+                 min="${param.min}" max="${param.max}"
+                 data-offset="${param.offset}"
+                 data-name="${param.name}"
+                 data-unit="${unit}"
+                 title="Raw value (for SysEx)">
+          ${hasEnum ? `<span class="param-enum-label" data-offset="${param.offset}">${enumLabel}</span>` : ''}
+          ${!hasEnum && unit ? `<span class="param-unit">${unit}</span>` : ''}
         </span>
       </div>
       <div class="param-slider-wrapper">
