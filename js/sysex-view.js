@@ -148,9 +148,18 @@ async function loadTransformData() {
  * Get screen display value for a parameter
  * @param {number} offset - Parameter offset
  * @param {number} rawValue - Raw stored value
+ * @param {string} category - Category name (Guitar, Vocal, Setup)
+ * @param {Object} param - Parameter definition (optional, for unit info)
  * @returns {string} Display value as shown on VL3X screen
  */
-function getScreenValue(offset, rawValue) {
+function getScreenValue(offset, rawValue, category = currentCategory, param = null) {
+  // Setup uses system offsets (different namespace) - no complex transforms
+  if (category === 'Setup') {
+    const unit = param?.unit || '';
+    return unit ? `${rawValue} ${unit}` : String(rawValue);
+  }
+
+  // Guitar/Vocal use preset offsets with full transform pipeline
   if (!transformData) return String(rawValue);
   return getDisplayValue(offset, rawValue, [], transformData);
 }
@@ -315,7 +324,7 @@ function renderSliderParameter(param, currentValue) {
   const enumValues = hasEnum ? getEnumValues(param.enum) : null;
 
   // Get screen display value (what VL3X shows)
-  const screenValue = getScreenValue(param.offset, currentValue);
+  const screenValue = getScreenValue(param.offset, currentValue, currentCategory, param);
 
   // For enum sliders, show the label; for numeric, show screen value
   const displayValue = hasEnum && enumValues[currentValue]
@@ -503,10 +512,13 @@ function setupParameterListeners(container) {
         valueInput.value = value;
       }
 
+      // Find param info first (needed for screen value)
+      const param = findParamInfo(offset);
+
       // Update screen value display (what VL3X shows)
       const screenValueEl = container.querySelector(`.param-screen-value[data-offset="${offset}"]`);
       if (screenValueEl) {
-        screenValueEl.textContent = getScreenValue(offset, value);
+        screenValueEl.textContent = getScreenValue(offset, value, currentCategory, param);
       }
 
       // Update enum label if this is an enum slider
@@ -516,11 +528,10 @@ function setupParameterListeners(container) {
         enumLabel.textContent = enumValues[value] || value;
       }
 
-      // Find param info
-      const param = findParamInfo(offset);
+      // Add to SysEx output
       if (param) {
         // Get screen display value for SysEx output
-        let displayValue = getScreenValue(offset, value);
+        let displayValue = getScreenValue(offset, value, currentCategory, param);
         if (enumName) {
           const enumValues = getEnumValues(enumName);
           displayValue = enumValues[value] || value;
@@ -548,6 +559,9 @@ function setupParameterListeners(container) {
       value = Math.max(min, Math.min(max, value));
       input.value = value;
 
+      // Find param info first (needed for screen value)
+      const param = findParamInfo(offset);
+
       // Update corresponding slider
       const slider = container.querySelector(`.param-slider[data-offset="${offset}"]`);
       if (slider) {
@@ -557,13 +571,12 @@ function setupParameterListeners(container) {
       // Update screen value display
       const screenValueEl = container.querySelector(`.param-screen-value[data-offset="${offset}"]`);
       if (screenValueEl) {
-        screenValueEl.textContent = getScreenValue(offset, value);
+        screenValueEl.textContent = getScreenValue(offset, value, currentCategory, param);
       }
 
-      // Find param info
-      const param = findParamInfo(offset);
+      // Add to SysEx output
       if (param) {
-        const displayValue = getScreenValue(offset, value);
+        const displayValue = getScreenValue(offset, value, currentCategory, param);
         const success = addToSysExOutput(param, value, displayValue);
         if (!success) {
           showNoMappingWarning(container, param.name);
