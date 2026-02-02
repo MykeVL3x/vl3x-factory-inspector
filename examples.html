@@ -1,6 +1,6 @@
 <!--
   VL3X Factory Preset Inspector - Examples Page
-  Designed & Implemented - Mike Levine - V2.0 30 Jan 2026
+  Designed & Implemented - Mike Levine - V2.0 01 Feb 2026
   All VL3x details copyright 2026 TC Helicon. All Rights Reserved.
 -->
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Building VL3X Control using MIDI & SysEx</title>
+  <title>VL3X MIDI & SysEx Workflows</title>
   <link rel="stylesheet" href="css/styles.css">
   <style>
     :root {
@@ -239,10 +239,19 @@
       background: rgba(245, 158, 11, 0.1);
     }
 
+    .highlight-box.info {
+      border-left-color: var(--accent-green);
+      background: rgba(16, 185, 129, 0.1);
+    }
+
     .highlight-box h4 {
       color: var(--accent-orange);
       margin: 0 0 0.2rem 0;
       font-size: 0.85rem;
+    }
+
+    .highlight-box.info h4 {
+      color: var(--accent-green);
     }
 
     .highlight-box p {
@@ -282,10 +291,19 @@
       font-size: 0.75rem;
     }
 
-    .example-box .wait {
-      color: #9ca3af;
-      margin-top: 0.5rem;
+    .sysex-structure {
+      background: #0d1117;
+      border-radius: 4px;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 0.7rem;
     }
+
+    .sysex-structure .header { color: #f59e0b; }
+    .sysex-structure .cmd { color: #00d4ff; }
+    .sysex-structure .data { color: #10b981; }
+    .sysex-structure .comment { color: #6b7280; }
 
     .save-warning {
       background: rgba(245, 158, 11, 0.1);
@@ -320,6 +338,16 @@
       color: var(--text-muted);
     }
 
+    .formula-box {
+      background: #0d1117;
+      border-radius: 4px;
+      padding: 0.5rem 0.75rem;
+      margin: 0.25rem 0;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 0.75rem;
+      color: var(--accent-green);
+    }
+
     @media (max-width: 768px) {
       .examples-container {
         flex-direction: column;
@@ -342,128 +370,199 @@
       <p style="color:var(--text-muted);font-size:0.8rem;">MIDI & SysEx Workflows<a href="index.html" class="panel-home-btn" title="Home">&#8962;</a></p>
 
       <div class="nav-links">
-        <a href="sysex-generator.html">SysEx Generator</a>
+        <a href="index.html#generator">GTR, VOC & Setup</a>
+        <a href="index.html#mixer">Mixing Desk</a>
         <a href="examples.html" class="active">Examples & Workflows</a>
-        <a href="midi-comparison.html">USB vs DIN-5 MIDI</a>
       </div>
 
       <div class="nav-section">
-        <h3>Timing Reference</h3>
+        <h3>Timing (Verified USB)</h3>
         <ul class="timing-list">
-          <li><span>After preset switch (PC)</span><strong>0ms*</strong></li>
-          <li><span>After Editor Enable</span><strong>0ms*</strong></li>
-          <li><span>Between param changes</span><strong>0ms*</strong></li>
+          <li><span>After PC/CC switch</span><strong>0ms</strong></li>
+          <li><span>After Editor Enable</span><strong>0ms</strong></li>
+          <li><span>Between 0x22 writes</span><strong>0ms</strong></li>
           <li><span>After Preset Store</span><strong>500ms</strong></li>
         </ul>
-        <p style="font-size:0.65rem;color:var(--text-muted);margin-top:0.4rem;">*USB MIDI tested. Add 20-50ms margin for DIN MIDI or slower controllers.</p>
+        <p style="font-size:0.65rem;color:var(--text-muted);margin-top:0.4rem;">USB MIDI tested 100+ iterations at 0ms. Add 20-50ms for DIN MIDI.</p>
+      </div>
+
+      <div class="nav-section">
+        <h3>Key SysEx Commands</h3>
+        <ul class="timing-list">
+          <li><span>Editor Enable</span><strong>0x15</strong></li>
+          <li><span>Parameter Write</span><strong>0x22</strong></li>
+          <li><span>Store to Preset</span><strong>0x24</strong></li>
+          <li><span>Request Preset</span><strong>0x45</strong></li>
+        </ul>
       </div>
     </nav>
 
     <main class="examples-main">
       <div class="content-section">
-        <h2>Building VL3X Control using MIDI & SysEx</h2>
-        <p>Control your VL3X from onSong, an MC-8, or any MIDI controller. <strong>Note:</strong> You can't load or modify a preset that hasn't been initialized.</p>
+        <h2>VL3X MIDI & SysEx Workflows</h2>
+        <p>Control your VL3X from onSong, Morningstar MC-8, Stage Traxx 4, or any MIDI controller that supports SysEx messaging.</p>
+
+        <div class="highlight-box info">
+          <h4>MIDI SOURCE Setting</h4>
+          <p>VL3X can only receive from USB OR DIN-5 MIDI, not both. Set MIDI SOURCE in Setup to match your connection.</p>
+        </div>
 
         <!-- Working Example -->
         <div class="example-box">
-          <h4>Example: Preset 300 - change AMP TYPE from Acoustic to BODYREZ1</h4>
+          <h4>Complete Example: Load Preset 300, Change Amp to BODYREZ1</h4>
 
-          <p class="label">Load Preset:</p>
+          <p class="label">1. Load Preset (Bank Select + PC):</p>
           <code>CC0 = 0</code>
           <code>CC32 = 2</code>
           <code>PC = 43</code>
 
-          <p class="label">Editor Enable:</p>
+          <p class="label">2. Enable Editor Mode:</p>
           <code class="sysex">F0 00 01 38 00 6D 15 00 F7</code>
 
-          <p class="label">Amp = BodyRez1:</p>
+          <p class="label">3. Set Amp TYPE = BodyRez1 (value 25):</p>
           <code class="sysex">F0 00 01 38 00 6D 22 00 21 00 00 00 19 F7</code>
         </div>
 
-        <div class="save-warning">
-          <p class="title">Save To Preset:</p>
-          <code>F0 00 01 38 00 6D 24 00 F7</code>
-          <p>Saving to preset is likely not something you want to do during a live set. Consider the save carefully if you do use it.</p>
-          <p class="note">You can use SysEx to configure any preset Guitar/Vocal settings and save it. I find it much faster to do by hand, but you have an option.</p>
-        </div>
-
         <!-- Section A: Switch Presets -->
-        <h3>A. Switch to a Preset</h3>
+        <h3>A. Switch to a Preset (PC/CC)</h3>
         <p>Load a preset using standard MIDI messages. No SysEx required.</p>
+
+        <div class="highlight-box">
+          <h4>Preset Addressing Formula (VERIFIED)</h4>
+          <p>PC/CC uses 0-indexed addressing:</p>
+          <div class="formula-box">bank = (slot - 1) // 128<br>pc = (slot - 1) % 128</div>
+        </div>
 
         <div class="step-card">
           <div class="step-number">1</div>
           <div class="step-content">
             <h4>For Presets 1-128</h4>
             <p>Send Program Change only. Value = preset - 1.</p>
-            <p><strong>Example for Preset 50:</strong> PC=49</p>
+            <p><strong>Preset 1:</strong> PC = 0</p>
+            <p><strong>Preset 50:</strong> PC = 49</p>
+            <p><strong>Preset 128:</strong> PC = 127</p>
           </div>
         </div>
 
         <div class="step-card">
           <div class="step-number">2</div>
           <div class="step-content">
-            <h4>For Presets 129+</h4>
-            <p>Send Bank Select first, then Program Change.</p>
+            <h4>For Presets 129-500</h4>
+            <p>Send Bank Select (CC0 + CC32), then Program Change.</p>
             <ul>
-              <li><strong>CC 0:</strong> Value = 0</li>
-              <li><strong>CC 32:</strong> Value = (preset - 1) / 128 (rounded down)</li>
-              <li><strong>PC:</strong> Value = (preset - 1) % 128</li>
+              <li><strong>CC0:</strong> Always 0</li>
+              <li><strong>CC32:</strong> (preset - 1) / 128 (rounded down)</li>
+              <li><strong>PC:</strong> (preset - 1) % 128</li>
             </ul>
-            <p><strong>Example for Preset 300:</strong> CC0=0, CC32=2, PC=43</p>
+            <p><strong>Preset 129:</strong> CC0=0, CC32=1, PC=0</p>
+            <p><strong>Preset 256:</strong> CC0=0, CC32=1, PC=127</p>
+            <p><strong>Preset 300:</strong> CC0=0, CC32=2, PC=43</p>
+            <p><strong>Preset 500:</strong> CC0=0, CC32=3, PC=115</p>
           </div>
         </div>
 
         <!-- Section B: Change Parameters Live -->
-        <h3>B. Change Parameters Live (Temporary)</h3>
-        <p>Modify any parameter in real-time. Changes are <strong>temporary</strong> and lost when you switch presets.</p>
+        <h3>B. Change Parameters Live</h3>
+        <p>Modify any parameter in real-time. Changes are <strong>temporary</strong>, lost when you switch presets.</p>
+
+        <div class="highlight-box warning">
+          <h4>Editor Enable Required</h4>
+          <p>You MUST send 0x15 (Editor Enable) before any 0x22 parameter writes will affect the live state.</p>
+        </div>
 
         <div class="step-card">
           <div class="step-number">1</div>
           <div class="step-content">
             <h4>Load Your Preset</h4>
-            <p>Use the Program Change method from Section A.</p>
+            <p>Use the PC/CC method from Section A.</p>
           </div>
         </div>
 
         <div class="step-card">
           <div class="step-number">2</div>
           <div class="step-content">
-            <h4>Send Editor Enable</h4>
+            <h4>Send Editor Enable (0x15)</h4>
             <code>F0 00 01 38 00 6D 15 00 F7</code>
+            <p style="margin-top:0.3rem;color:var(--text-muted);">Required once per session. Enables parameter control.</p>
           </div>
         </div>
 
         <div class="step-card">
           <div class="step-number">3</div>
           <div class="step-content">
-            <h4>Send Parameter Change</h4>
-            <p>Use the <a href="sysex-generator.html" style="color:var(--accent);">SysEx Generator</a> to build the command. Repeat for multiple params.</p>
+            <h4>Send Parameter Changes (0x22)</h4>
+            <p>Use the <a href="index.html#generator" style="color:var(--accent);">SysEx Generator</a> or <a href="index.html#mixer" style="color:var(--accent);">Mixing Desk</a> to build commands.</p>
+            <div class="sysex-structure">
+              <span class="header">F0 00 01 38 00 6D</span> <span class="cmd">22</span> <span class="data">[page] [param] [v0] [v1] [v2] [v3]</span> <span class="header">F7</span><br>
+              <span class="comment">│                    │   │              │</span><br>
+              <span class="comment">│ TC Helicon header  │   │ 4-byte value │</span><br>
+              <span class="comment">│                    │   └─ 7-bit safe  │</span><br>
+              <span class="comment">│                    └─ param write cmd │</span>
+            </div>
+            <p style="margin-top:0.3rem;font-size:0.75rem;color:var(--text-muted);">page = sysex_id >> 7, param = sysex_id & 0x7F</p>
           </div>
         </div>
 
         <!-- Section C: Store Changes Permanently -->
-        <h3>C. Store Changes Permanently</h3>
+        <h3>C. Store Changes Permanently (0x24)</h3>
 
         <div class="highlight-box warning">
           <h4>Use With Caution</h4>
-          <p>Stored changes overwrite the preset. This is rarely needed for live performance.</p>
+          <p>Stored changes overwrite the preset permanently. This is rarely needed for live performance. Consider whether you really need to save, or if temporary changes are sufficient.</p>
         </div>
 
         <div class="step-card">
-          <div class="step-number">1-3</div>
+          <div class="step-number">1</div>
           <div class="step-content">
-            <h4>Follow Section B Steps</h4>
+            <h4>Complete Steps 1-3 from Section B</h4>
+            <p>Load preset, enable editor, send parameter changes.</p>
           </div>
         </div>
 
         <div class="step-card">
-          <div class="step-number">4</div>
+          <div class="step-number">2</div>
           <div class="step-content">
-            <h4>Send Store Command</h4>
+            <h4>Send Store Command (0x24)</h4>
             <code>F0 00 01 38 00 6D 24 00 F7</code>
+            <p style="margin-top:0.3rem;color:var(--text-muted);">Wait 500ms after store before sending more commands.</p>
           </div>
         </div>
+
+        <!-- Section D: Common Mistakes -->
+        <h3>D. Common Mistakes to Avoid</h3>
+
+        <div class="step-card">
+          <div class="step-number">!</div>
+          <div class="step-content">
+            <h4>Forgetting Editor Enable</h4>
+            <p>0x22 writes do nothing without sending 0x15 first. Send it once after connecting.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">!</div>
+          <div class="step-content">
+            <h4>Wrong Preset Formula</h4>
+            <p>PC/CC uses (slot-1) formula. SysEx 0x45/0x20 uses slot directly. These are different!</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">!</div>
+          <div class="step-content">
+            <h4>Sending to Uninitialized Preset</h4>
+            <p>PC to an empty slot is ignored. The preset must exist before you can load or modify it.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">!</div>
+          <div class="step-content">
+            <h4>Too Fast on DIN MIDI</h4>
+            <p>USB MIDI works at 0ms delays. DIN MIDI needs 20-50ms between commands to avoid "PACKAGES LOST" errors.</p>
+          </div>
+        </div>
+
       </div>
     </main>
   </div>

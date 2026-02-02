@@ -1,164 +1,705 @@
 /**
- * sysex-view.js - Interactive SysEx Calculator for VL3X
- * Generates exact SysEx messages for ALL parameters with full value ranges
+ * sysex-view.js - Full-Width Stacking SysEx Generator for VL3X
+ * Complete redesign with category tabs, subcategory pills, parameter grid,
+ * and stacking SysEx output.
  */
 
 import { getState } from './state.js';
-import { makeSysEx, parseSysEx, formatSysEx } from './sysex-calculator.js';
+import { makeSysEx, makeSysExForSystem, parseSysEx, formatSysEx as formatSysExLegacy } from './sysex-calculator.js?v=20260201b';
 import { VL3X_PARAMS, ENUMS, getCategories, getSubcategories, getParameters, findParamByOffset, getEnumValues } from './sysex-params.js';
+import {
+  formatSysEx,
+  getCurrentFormat,
+  setCurrentFormat,
+  renderFormatSelector,
+  setupFormatSelector,
+  renderFormatInstructions
+} from './sysex-formatter.js';
+
+// ============================================================================
+// State Management
+// ============================================================================
+
+let currentCategory = 'Guitar';
+let currentSubcategory = 'Amp';
+let sysexOutput = [];  // Stacking array of SysEx entries
+let parameterValues = {};  // Track current parameter values
+
+// Editor Enable SysEx bytes
+const EDITOR_ENABLE_BYTES = [0xF0, 0x00, 0x01, 0x38, 0x00, 0x6D, 0x15, 0x00, 0xF7];
+
+// ============================================================================
+// Core Functions
+// ============================================================================
 
 /**
- * Render the SysEx calculator view
+ * Generate SysEx bytes for a parameter change using offset
+ * @param {number} offset - The parameter offset
+ * @param {number} value - The new value
+ * @param {boolean} isSystem - True for Setup category (uses SYSTEM_OFFSET_TO_SYSEX_ID)
+ * @returns {number[]} Array of bytes
+ */
+function generateSysExBytes(offset, value, isSystem = false) {
+  // Setup uses SYSTEM_OFFSET_TO_SYSEX_ID, Guitar/Vocal use OFFSET_TO_SYSEX_ID
+  const sysexStr = isSystem
+    ? makeSysExForSystem(offset, value)
+    : makeSysEx(offset, value);
+
+  // Check for error
+  if (sysexStr.startsWith('ERROR:')) {
+    return null;
+  }
+
+  // Parse hex string back to bytes
+  return sysexStr.split(' ').map(h => parseInt(h, 16));
+}
+
+/**
+ * Add a parameter change to the stacking SysEx output
+ * @returns {boolean} True if SysEx was generated, false if no mapping exists
+ */
+function addToSysExOutput(param, value, displayValue) {
+  // Setup uses SYSTEM_OFFSET_TO_SYSEX_ID (43 mappings), Guitar/Vocal use OFFSET_TO_SYSEX_ID
+  const isSystem = currentCategory === 'Setup';
+  const bytes = generateSysExBytes(param.offset, value, isSystem);
+  if (!bytes) {
+    console.warn(`No sysex_id mapping for offset ${param.offset}`);
+    return false;
+  }
+
+  const format = getCurrentFormat();
+  const entry = {
+    offset: param.offset,
+    name: param.name,
+    category: currentCategory,
+    value: value,
+    displayValue: displayValue,
+    bytes: bytes,
+    text: formatSysEx(bytes, format)
+  };
+
+  // Check if this parameter is already in the output
+  const existingIndex = sysexOutput.findIndex(e => e.offset === param.offset);
+  if (existingIndex >= 0) {
+    // Update existing entry
+    sysexOutput[existingIndex] = entry;
+  } else {
+    // Add new entry
+    sysexOutput.push(entry);
+  }
+
+  // Track the value
+  parameterValues[param.offset] = value;
+  return true;
+}
+
+/**
+ * Reformat all SysEx output entries with current format
+ */
+function reformatOutput() {
+  const format = getCurrentFormat();
+  sysexOutput.forEach(entry => {
+    entry.text = formatSysEx(entry.bytes, format);
+  });
+}
+
+/**
+ * Clear all output
+ */
+function clearOutput() {
+  sysexOutput = [];
+  parameterValues = {};
+}
+
+/**
+ * Remove a single entry from the output by offset
+ * @param {number} offset - The parameter offset to remove
+ */
+function removeFromSysExOutput(offset) {
+  const index = sysexOutput.findIndex(e => e.offset === offset);
+  if (index >= 0) {
+    sysexOutput.splice(index, 1);
+    delete parameterValues[offset];
+  }
+}
+
+// ============================================================================
+// Rendering Functions
+// ============================================================================
+
+/**
+ * Render the full-width SysEx Generator view
  * @param {HTMLElement} container - The container element
- * @returns {void}
  */
 export function renderSysExView(container) {
+  // Reset state on view load
+  sysexOutput = [];
+  parameterValues = {};
+
+  // Initialize with first category and subcategory
   const categories = getCategories();
+  currentCategory = categories[0] || 'Guitar';
+  const subcategories = getSubcategories(currentCategory);
+  currentSubcategory = subcategories[0] || 'Amp';
 
   container.innerHTML = `
-    <div class="sysex-calculator">
-      <div class="sysex-section">
-        <h3>SysEx Generator</h3>
-        <p class="sysex-desc">Generate exact SysEx messages for any VL3X parameter.
-        Copy directly into onSong or MC-8 for seamless, pop-free control.</p>
+    <div class="sysex-generator-fullwidth">
 
-        <div class="sysex-form">
-          <div class="sysex-row">
-            <div class="form-group">
-              <label for="paramCategory">Category</label>
-              <select id="paramCategory" class="sysex-select">
-                ${categories.map(cat => `<option value="${cat}">${cat}</option>`).join('')}
-              </select>
-            </div>
+      <div class="generator-content">
+        <div class="generator-left">
+          <div class="category-tabs-section">
+            ${renderCategoryTabs()}
+          </div>
 
-            <div class="form-group">
-              <label for="paramSubcategory">Subcategory</label>
-              <select id="paramSubcategory" class="sysex-select">
-              </select>
+          <div class="subcategory-pills-section">
+            ${renderSubcategoryPills()}
+          </div>
+
+          <div class="parameter-section">
+            <div class="parameter-grid" id="parameterGrid">
+              ${renderParameterGrid()}
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label for="paramSelect">Parameter</label>
-            <select id="paramSelect" class="sysex-select">
-            </select>
-          </div>
-
-          <div id="paramDetails" class="param-details"></div>
-
-          <div class="form-group">
-            <label for="paramValue">Value <span id="valueRange"></span></label>
-            <div class="value-input-group">
-              <input type="range" id="paramSlider" class="sysex-slider">
-              <input type="number" id="paramValue" class="sysex-input">
-              <span id="paramUnit" class="param-unit"></span>
+        <div class="generator-right">
+          <div class="sysex-output-section">
+            <div class="sysex-output-title">SysEx Output</div>
+            ${renderFormatSelector()}
+            <div id="formatInstructions">${renderFormatInstructions()}</div>
+            <div class="sysex-output-block" id="sysexOutputBlock">
+              ${renderSysExOutput()}
+            </div>
+            <div class="sysex-output-actions">
+              <button class="sysex-action-btn" id="clearOutput">Clear</button>
+              <button class="sysex-action-btn primary" id="copyAll"${sysexOutput.length === 0 ? ' disabled' : ''}>Copy All</button>
             </div>
           </div>
-
-          <div class="form-group" id="enumSelectGroup" style="display:none;">
-            <label for="enumSelect">Select Value</label>
-            <select id="enumSelect" class="sysex-select">
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Quick Values</label>
-            <div id="quickValues" class="quick-values"></div>
-          </div>
         </div>
-
-        <div class="sysex-output">
-          <label>SysEx Message (spaced - for onSong)</label>
-          <div class="output-row">
-            <input type="text" id="sysexSpaced" class="sysex-result" readonly>
-            <button id="copySpaced" class="copy-btn" title="Copy to clipboard">Copy</button>
-          </div>
-
-          <label>SysEx Message (compact - for MC-8)</label>
-          <div class="output-row">
-            <input type="text" id="sysexCompact" class="sysex-result" readonly>
-            <button id="copyCompact" class="copy-btn" title="Copy to clipboard">Copy</button>
-          </div>
-
-          <div class="param-meta" id="paramMeta"></div>
-        </div>
-      </div>
-
-      <div class="sysex-section">
-        <h3>SysEx Decoder</h3>
-        <p class="sysex-desc">Paste a SysEx message to decode its parameter and value.</p>
-
-        <div class="sysex-form">
-          <div class="form-group">
-            <label for="sysexInput">SysEx Message</label>
-            <input type="text" id="sysexInput" class="sysex-input wide"
-                   placeholder="F0 00 01 38 00 6D 22 ...">
-          </div>
-          <button id="decodeBtn" class="decode-btn">Decode</button>
-        </div>
-
-        <div id="decodeResult" class="decode-result"></div>
-      </div>
-
-      <div class="sysex-section">
-        <h3>Common Operations</h3>
-        <p class="sysex-desc">One-click commands for frequent adjustments.</p>
-        <div class="common-ops">
-          <div class="op-group">
-            <h4>Harmony Level</h4>
-            <button class="op-btn" data-offset="357" data-value="-61">OFF (Muted)</button>
-            <button class="op-btn" data-offset="357" data-value="-12">LOW (-12dB)</button>
-            <button class="op-btn" data-offset="357" data-value="-6">MED (-6dB)</button>
-            <button class="op-btn" data-offset="357" data-value="0">FULL (0dB)</button>
-            <button class="op-btn" data-offset="357" data-value="6">BOOST (+6dB)</button>
-          </div>
-          <div class="op-group">
-            <h4>Double Level</h4>
-            <button class="op-btn" data-offset="356" data-value="-61">OFF (Muted)</button>
-            <button class="op-btn" data-offset="356" data-value="-12">LOW (-12dB)</button>
-            <button class="op-btn" data-offset="356" data-value="0">FULL (0dB)</button>
-          </div>
-          <div class="op-group">
-            <h4>HardTune Amount</h4>
-            <button class="op-btn" data-offset="96" data-value="0">OFF (0%)</button>
-            <button class="op-btn" data-offset="96" data-value="30">SUBTLE (30%)</button>
-            <button class="op-btn" data-offset="96" data-value="60">MEDIUM (60%)</button>
-            <button class="op-btn" data-offset="96" data-value="100">FULL (100%)</button>
-          </div>
-          <div class="op-group">
-            <h4>Vocal Reverb</h4>
-            <button class="op-btn" data-offset="377" data-value="-61">OFF (Muted)</button>
-            <button class="op-btn" data-offset="377" data-value="-18">LOW (-18dB)</button>
-            <button class="op-btn" data-offset="377" data-value="-12">MED (-12dB)</button>
-            <button class="op-btn" data-offset="377" data-value="0">FULL (0dB)</button>
-          </div>
-          <div class="op-group">
-            <h4>Vocal Delay</h4>
-            <button class="op-btn" data-offset="375" data-value="-61">OFF (Muted)</button>
-            <button class="op-btn" data-offset="375" data-value="-18">LOW (-18dB)</button>
-            <button class="op-btn" data-offset="375" data-value="-12">MED (-12dB)</button>
-            <button class="op-btn" data-offset="375" data-value="0">FULL (0dB)</button>
-          </div>
-          <div class="op-group">
-            <h4>Guitar Reverb</h4>
-            <button class="op-btn" data-offset="363" data-value="-61">OFF (Muted)</button>
-            <button class="op-btn" data-offset="363" data-value="-12">MED (-12dB)</button>
-            <button class="op-btn" data-offset="363" data-value="0">FULL (0dB)</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="sysex-info">
-        <p><strong>Why SysEx?</strong> SysEx parameter changes are <em>seamless</em> - no audio interruption
-        or "preset pop" during live performance. Use these commands in onSong section markers or MC-8 buttons
-        to adjust your sound in real-time without switching presets.</p>
-        <p style="margin-top:0.5rem"><strong>Total Parameters:</strong> ${countParams()} parameters across ${categories.length} categories</p>
       </div>
     </div>
   `;
 
-  setupSysExEventListeners(container);
-  updateSubcategories();
+  setupEventListeners(container);
+}
+
+/**
+ * Render category tabs (Guitar | Vocal | Setup)
+ */
+function renderCategoryTabs() {
+  const categories = getCategories();
+
+  return `
+    <div class="category-tabs-bar">
+      ${categories.map(cat => `
+        <button class="category-tab ${cat === currentCategory ? 'active' : ''}"
+                data-category="${cat}">
+          ${cat.toUpperCase()}
+        </button>
+      `).join('')}
+    </div>
+  `;
+}
+
+/**
+ * Render subcategory pills with param count
+ */
+function renderSubcategoryPills() {
+  const subcategories = getSubcategories(currentCategory);
+  const params = getParameters(currentCategory, currentSubcategory);
+
+  return `
+    <div class="subcategory-row">
+      <div class="subcategory-pills">
+        ${subcategories.map(sub => `
+          <button class="subcategory-pill ${sub === currentSubcategory ? 'active' : ''}"
+                  data-subcategory="${sub}">
+            ${sub}
+          </button>
+        `).join('')}
+      </div>
+      <span class="param-count" id="paramCount">${params.length} params</span>
+    </div>
+  `;
+}
+
+/**
+ * Render parameter grid for current subcategory
+ */
+function renderParameterGrid() {
+  const params = getParameters(currentCategory, currentSubcategory);
+
+  if (!params || params.length === 0) {
+    return '<div class="empty-params">No parameters available</div>';
+  }
+
+  return params.map(param => renderParameter(param)).join('');
+}
+
+/**
+ * Render a single parameter control
+ */
+function renderParameter(param) {
+  const hasEnum = param.enum && ENUMS[param.enum];
+  const currentValue = parameterValues[param.offset] ?? param.min;
+  const valueCount = param.max - param.min + 1;
+
+  // Use dropdown for enums with 5 or fewer values, slider otherwise
+  if (hasEnum && valueCount <= 5) {
+    return renderEnumParameter(param, currentValue);
+  } else {
+    return renderSliderParameter(param, currentValue);
+  }
+}
+
+/**
+ * Render an enum parameter as a dropdown
+ */
+function renderEnumParameter(param, currentValue) {
+  const enumValues = getEnumValues(param.enum);
+
+  return `
+    <div class="param-control param-enum" data-offset="${param.offset}">
+      <label class="param-label">${param.name}</label>
+      <select class="param-select" data-offset="${param.offset}"
+              data-min="${param.min}" data-max="${param.max}"
+              data-name="${param.name}" data-unit="${param.unit || ''}">
+        ${enumValues.slice(param.min, param.max + 1).map((val, idx) => {
+          const actualIdx = param.min + idx;
+          return `<option value="${actualIdx}" ${actualIdx === currentValue ? 'selected' : ''}>
+            ${val || actualIdx}
+          </option>`;
+        }).join('')}
+      </select>
+    </div>
+  `;
+}
+
+/**
+ * Render a slider parameter
+ */
+function renderSliderParameter(param, currentValue) {
+  const unit = param.unit || '';
+  const hasEnum = param.enum && ENUMS[param.enum];
+  const enumValues = hasEnum ? getEnumValues(param.enum) : null;
+
+  // For enum sliders, show the label; for numeric, show the value
+  const displayValue = hasEnum && enumValues[currentValue]
+    ? enumValues[currentValue]
+    : currentValue;
+
+  return `
+    <div class="param-control param-slider-control" data-offset="${param.offset}" ${hasEnum ? `data-enum="${param.enum}"` : ''}>
+      <div class="param-control-header">
+        <label class="param-label">${param.name}</label>
+        <span class="param-value-display">
+          ${hasEnum ? `
+            <span class="param-enum-label" data-offset="${param.offset}">${displayValue}</span>
+          ` : `
+            <input type="number" class="param-value-input"
+                   value="${currentValue}"
+                   min="${param.min}" max="${param.max}"
+                   data-offset="${param.offset}"
+                   data-name="${param.name}"
+                   data-unit="${unit}">
+            <span class="param-unit">${unit}</span>
+          `}
+        </span>
+      </div>
+      <div class="param-slider-wrapper">
+        <input type="range" class="param-slider"
+               min="${param.min}" max="${param.max}" value="${currentValue}"
+               data-offset="${param.offset}"
+               data-name="${param.name}"
+               data-unit="${unit}"
+               ${hasEnum ? `data-enum="${param.enum}"` : ''}>
+        <div class="param-range-labels">
+          <span>${param.min}</span>
+          <span>${param.max}</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/**
+ * Render the stacking SysEx output
+ */
+function renderSysExOutput() {
+  if (sysexOutput.length === 0) {
+    return `
+      <div class="sysex-empty-state">
+        <p class="sysex-panel-info">This tool is not connected to your VL3X and has no knowledge of your current settings. Adjust any parameter to generate SysEx commands.<br><br>Hover over a line to see its details or click the red × to remove it. Use Clear to start over.</p>
+      </div>
+    `;
+  }
+
+  const format = getCurrentFormat();
+  let lines = [];
+
+  // Editor Enable first
+  lines.push(`<div class="sysex-line-row">
+    <span class="sysex-line sysex-header" data-tooltip="Editor Enable - required before parameter changes">${formatSysEx(EDITOR_ENABLE_BYTES, format)}</span>
+  </div>`);
+
+  // Parameter changes - color coded by category
+  sysexOutput.forEach(entry => {
+    const categoryClass = `sysex-cat-${(entry.category || 'guitar').toLowerCase()}`;
+    lines.push(`<div class="sysex-line-row" data-offset="${entry.offset}">
+      <button class="sysex-remove-btn" data-offset="${entry.offset}" title="Remove this line">×</button>
+      <span class="sysex-line sysex-param ${categoryClass}" data-tooltip="${entry.name} = ${entry.displayValue}">${entry.text}</span>
+    </div>`);
+  });
+
+  return lines.join('\n');
+}
+
+// ============================================================================
+// Event Handling
+// ============================================================================
+
+/**
+ * Set up event listeners
+ */
+function setupEventListeners(container) {
+  // Category tab clicks
+  container.querySelectorAll('.category-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      currentCategory = tab.dataset.category;
+      const subcategories = getSubcategories(currentCategory);
+      currentSubcategory = subcategories[0] || '';
+
+      // Update tabs
+      container.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Re-render subcategory pills and parameter grid
+      const pillsSection = container.querySelector('.subcategory-pills-section');
+      pillsSection.innerHTML = renderSubcategoryPills();
+      setupSubcategoryListeners(container);
+
+      updateParameterGrid(container);
+    });
+  });
+
+  setupSubcategoryListeners(container);
+  setupParameterListeners(container);
+  setupOutputListeners(container);
+
+  // Format selector
+  setupFormatSelector(container, (formatId) => {
+    reformatOutput();
+    updateSysExDisplay(container);
+    updateCopyAllButton(container, formatId);
+
+    const instructionsEl = container.querySelector('#formatInstructions');
+    if (instructionsEl) {
+      instructionsEl.innerHTML = renderFormatInstructions(formatId);
+    }
+  });
+
+  // Set initial Copy All button state
+  updateCopyAllButton(container, getCurrentFormat());
+}
+
+/**
+ * Update Copy All button state based on format and output
+ * Disabled for onSong (each line must be added separately) or when no output
+ */
+function updateCopyAllButton(container, formatId) {
+  const copyBtn = container.querySelector('#copyAll');
+  if (copyBtn) {
+    const isOnSong = formatId === 'onsong';
+    const isEmpty = sysexOutput.length === 0;
+    const isDisabled = isOnSong || isEmpty;
+
+    copyBtn.disabled = isDisabled;
+
+    if (isEmpty) {
+      copyBtn.title = 'No SysEx commands to copy';
+    } else if (isOnSong) {
+      copyBtn.title = 'Copy All disabled for onSong - add each line separately';
+    } else {
+      copyBtn.title = 'Copy all SysEx commands';
+    }
+  }
+}
+
+/**
+ * Set up subcategory pill listeners
+ */
+function setupSubcategoryListeners(container) {
+  container.querySelectorAll('.subcategory-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      currentSubcategory = pill.dataset.subcategory;
+
+      // Update pills
+      container.querySelectorAll('.subcategory-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+
+      // Update param count
+      const params = getParameters(currentCategory, currentSubcategory);
+      const countEl = container.querySelector('#paramCount');
+      if (countEl) {
+        countEl.textContent = `${params.length} params`;
+      }
+
+      updateParameterGrid(container);
+    });
+  });
+}
+
+/**
+ * Set up parameter control listeners
+ */
+function setupParameterListeners(container) {
+  // Slider input
+  container.querySelectorAll('.param-slider').forEach(slider => {
+    slider.addEventListener('input', (e) => {
+      const offset = parseInt(slider.dataset.offset);
+      const value = parseInt(slider.value);
+      const name = slider.dataset.name;
+      const unit = slider.dataset.unit || '';
+      const enumName = slider.dataset.enum;
+
+      // Update corresponding value input or enum label
+      const valueInput = container.querySelector(`.param-value-input[data-offset="${offset}"]`);
+      if (valueInput) {
+        valueInput.value = value;
+      }
+
+      // Update enum label if this is an enum slider
+      const enumLabel = container.querySelector(`.param-enum-label[data-offset="${offset}"]`);
+      if (enumLabel && enumName) {
+        const enumValues = getEnumValues(enumName);
+        enumLabel.textContent = enumValues[value] || value;
+      }
+
+      // Find param info
+      const param = findParamInfo(offset);
+      if (param) {
+        // For enum sliders, show the enum label as display value
+        let displayValue = `${value}${unit}`;
+        if (enumName) {
+          const enumValues = getEnumValues(enumName);
+          displayValue = enumValues[value] || value;
+        }
+        const success = addToSysExOutput(param, value, displayValue);
+        if (!success) {
+          showNoMappingWarning(container, param.name);
+        }
+        updateSysExDisplay(container);
+      }
+    });
+  });
+
+  // Value input
+  container.querySelectorAll('.param-value-input').forEach(input => {
+    input.addEventListener('change', (e) => {
+      const offset = parseInt(input.dataset.offset);
+      let value = parseInt(input.value);
+      const name = input.dataset.name;
+      const unit = input.dataset.unit || '';
+      const min = parseInt(input.min);
+      const max = parseInt(input.max);
+
+      // Clamp value
+      value = Math.max(min, Math.min(max, value));
+      input.value = value;
+
+      // Update corresponding slider
+      const slider = container.querySelector(`.param-slider[data-offset="${offset}"]`);
+      if (slider) {
+        slider.value = value;
+      }
+
+      // Find param info
+      const param = findParamInfo(offset);
+      if (param) {
+        const success = addToSysExOutput(param, value, `${value}${unit}`);
+        if (!success) {
+          showNoMappingWarning(container, param.name);
+        }
+        updateSysExDisplay(container);
+      }
+    });
+  });
+
+  // Enum select
+  container.querySelectorAll('.param-select').forEach(select => {
+    select.addEventListener('change', (e) => {
+      const offset = parseInt(select.dataset.offset);
+      const value = parseInt(select.value);
+      const name = select.dataset.name;
+      const displayValue = select.selectedOptions[0].textContent.trim();
+
+      // Find param info
+      const param = findParamInfo(offset);
+      if (param) {
+        const success = addToSysExOutput(param, value, displayValue);
+        if (!success) {
+          showNoMappingWarning(container, param.name);
+        }
+        updateSysExDisplay(container);
+      }
+    });
+  });
+}
+
+/**
+ * Show warning when parameter has no SysEx mapping
+ */
+function showNoMappingWarning(container, paramName) {
+  // Find or create warning element
+  let warning = container.querySelector('.sysex-no-mapping-warning');
+  if (!warning) {
+    warning = document.createElement('div');
+    warning.className = 'sysex-no-mapping-warning';
+    const outputSection = container.querySelector('.sysex-output-section');
+    if (outputSection) {
+      outputSection.insertBefore(warning, outputSection.querySelector('.sysex-output-block'));
+    }
+  }
+
+  warning.textContent = `"${paramName}" has no SysEx mapping - cannot generate command`;
+  warning.style.display = 'block';
+
+  // Auto-hide after 3 seconds
+  setTimeout(() => {
+    warning.style.display = 'none';
+  }, 3000);
+}
+
+/**
+ * Set up output action listeners
+ */
+function setupOutputListeners(container) {
+  // Clear button
+  const clearBtn = container.querySelector('#clearOutput');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      clearOutput();
+      updateSysExDisplay(container);
+      // Reset all controls to defaults
+      updateParameterGrid(container);
+    });
+  }
+
+  // Copy All button
+  const copyBtn = container.querySelector('#copyAll');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const format = getCurrentFormat();
+      let text = formatSysEx(EDITOR_ENABLE_BYTES, format) + '\n';
+      text += sysexOutput.map(e => e.text).join('\n');
+
+      navigator.clipboard.writeText(text).then(() => {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = 'Copy All', 1500);
+      });
+    });
+  }
+
+  // Remove buttons (event delegation on output block)
+  const outputBlock = container.querySelector('#sysexOutputBlock');
+  if (outputBlock) {
+    outputBlock.addEventListener('click', (e) => {
+      const removeBtn = e.target.closest('.sysex-remove-btn');
+      if (removeBtn) {
+        const offset = parseInt(removeBtn.dataset.offset);
+        removeFromSysExOutput(offset);
+        updateSysExDisplay(container);
+        // Reset the control for this parameter back to min
+        resetParameterControl(container, offset);
+      }
+    });
+  }
+}
+
+/**
+ * Reset a parameter control back to its minimum value
+ */
+function resetParameterControl(container, offset) {
+  const param = findParamInfo(offset);
+  if (!param) return;
+
+  // Reset slider
+  const slider = container.querySelector(`.param-slider[data-offset="${offset}"]`);
+  if (slider) {
+    slider.value = param.min;
+  }
+
+  // Reset value input
+  const valueInput = container.querySelector(`.param-value-input[data-offset="${offset}"]`);
+  if (valueInput) {
+    valueInput.value = param.min;
+  }
+
+  // Reset select
+  const select = container.querySelector(`.param-select[data-offset="${offset}"]`);
+  if (select) {
+    select.value = param.min;
+  }
+}
+
+/**
+ * Update parameter grid display
+ */
+function updateParameterGrid(container) {
+  const grid = container.querySelector('#parameterGrid');
+  if (grid) {
+    grid.innerHTML = renderParameterGrid();
+    setupParameterListeners(container);
+  }
+}
+
+/**
+ * Update SysEx display without full re-render
+ */
+function updateSysExDisplay(container) {
+  const block = container.querySelector('#sysexOutputBlock');
+  if (block) {
+    block.innerHTML = renderSysExOutput();
+  }
+
+  // Update Copy All button state
+  updateCopyAllButton(container, getCurrentFormat());
+}
+
+/**
+ * Find parameter info by offset
+ */
+function findParamInfo(offset) {
+  for (const cat of Object.keys(VL3X_PARAMS)) {
+    for (const sub of Object.keys(VL3X_PARAMS[cat])) {
+      const param = VL3X_PARAMS[cat][sub].find(p => p.offset === offset);
+      if (param) return param;
+    }
+  }
+  return null;
+}
+
+// ============================================================================
+// Legacy Exports (for compatibility)
+// ============================================================================
+
+/**
+ * Update the SysEx view header
+ */
+export function updateSysExHeader(titleEl, infoEl) {
+  titleEl.textContent = 'GTR, VOC & Setup';
+  infoEl.innerHTML = 'Generate SysEx commands for Guitar, Vocal, and Setup parameters';
+}
+
+/**
+ * Toggle SysEx UI elements
+ */
+export function toggleSysExUI(elements, show) {
+  if (show) {
+    elements.categoryTabs.innerHTML = '';
+    elements.subtabs.style.display = 'none';
+    elements.cautionBox.style.display = 'none';
+  }
 }
 
 /**
@@ -172,383 +713,4 @@ function countParams() {
     }
   }
   return count;
-}
-
-/**
- * Set up event listeners for the SysEx calculator
- * @param {HTMLElement} container - The container element
- */
-function setupSysExEventListeners(container) {
-  const categorySelect = container.querySelector('#paramCategory');
-  const subcatSelect = container.querySelector('#paramSubcategory');
-  const paramSelect = container.querySelector('#paramSelect');
-  const paramValue = container.querySelector('#paramValue');
-  const paramSlider = container.querySelector('#paramSlider');
-  const enumSelect = container.querySelector('#enumSelect');
-  const copySpaced = container.querySelector('#copySpaced');
-  const copyCompact = container.querySelector('#copyCompact');
-  const decodeBtn = container.querySelector('#decodeBtn');
-  const sysexInput = container.querySelector('#sysexInput');
-
-  // Category change
-  categorySelect.addEventListener('change', () => {
-    updateSubcategories();
-  });
-
-  // Subcategory change
-  subcatSelect.addEventListener('change', () => {
-    updateParamOptions();
-  });
-
-  // Parameter change
-  paramSelect.addEventListener('change', () => {
-    updateValueConstraints();
-    generateSysEx();
-  });
-
-  // Value changes (slider and input)
-  paramValue.addEventListener('input', () => {
-    paramSlider.value = paramValue.value;
-    updateEnumSelect();
-    generateSysEx();
-  });
-
-  paramSlider.addEventListener('input', () => {
-    paramValue.value = paramSlider.value;
-    updateEnumSelect();
-    generateSysEx();
-  });
-
-  // Enum select change
-  enumSelect.addEventListener('change', () => {
-    const val = parseInt(enumSelect.value);
-    paramValue.value = val;
-    paramSlider.value = val;
-    generateSysEx();
-  });
-
-  // Copy buttons
-  copySpaced.addEventListener('click', () => {
-    const input = container.querySelector('#sysexSpaced');
-    navigator.clipboard.writeText(input.value);
-    copySpaced.textContent = 'Copied!';
-    setTimeout(() => copySpaced.textContent = 'Copy', 1500);
-  });
-
-  copyCompact.addEventListener('click', () => {
-    const input = container.querySelector('#sysexCompact');
-    navigator.clipboard.writeText(input.value);
-    copyCompact.textContent = 'Copied!';
-    setTimeout(() => copyCompact.textContent = 'Copy', 1500);
-  });
-
-  // Decode button
-  decodeBtn.addEventListener('click', () => {
-    const hex = sysexInput.value;
-    decodeSysEx(hex, container);
-  });
-
-  // Quick value buttons
-  container.querySelectorAll('.quick-values').forEach(div => {
-    div.addEventListener('click', (e) => {
-      if (e.target.classList.contains('quick-btn')) {
-        paramValue.value = e.target.dataset.value;
-        paramSlider.value = e.target.dataset.value;
-        updateEnumSelect();
-        generateSysEx();
-      }
-    });
-  });
-
-  // Common operation buttons
-  container.querySelectorAll('.op-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const offset = parseInt(btn.dataset.offset);
-      const value = parseInt(btn.dataset.value);
-      const sysex = makeSysEx(offset, value);
-
-      // Show in output
-      container.querySelector('#sysexSpaced').value = sysex;
-      container.querySelector('#sysexCompact').value = formatSysEx(sysex, true);
-
-      // Update param meta
-      const param = findParamByOffset(offset);
-      const unit = param?.unit || '';
-      container.querySelector('#paramMeta').innerHTML =
-        `<span class="meta-label">Offset ${offset}</span> | <span class="meta-value">${param?.name || 'Unknown'} = ${value}${unit}</span>`;
-
-      // Flash the button
-      btn.classList.add('active');
-      setTimeout(() => btn.classList.remove('active'), 200);
-    });
-  });
-}
-
-/**
- * Update subcategory dropdown based on selected category
- */
-function updateSubcategories() {
-  const categorySelect = document.querySelector('#paramCategory');
-  const subcatSelect = document.querySelector('#paramSubcategory');
-  const category = categorySelect.value;
-  const subcats = getSubcategories(category);
-
-  subcatSelect.innerHTML = subcats.map(sub =>
-    `<option value="${sub}">${sub}</option>`
-  ).join('');
-
-  updateParamOptions();
-}
-
-/**
- * Update parameter options based on selected category/subcategory
- */
-function updateParamOptions() {
-  const categorySelect = document.querySelector('#paramCategory');
-  const subcatSelect = document.querySelector('#paramSubcategory');
-  const paramSelect = document.querySelector('#paramSelect');
-
-  const category = categorySelect.value;
-  const subcategory = subcatSelect.value;
-  const params = getParameters(category, subcategory);
-
-  paramSelect.innerHTML = params.map(p =>
-    `<option value="${p.offset}" data-min="${p.min}" data-max="${p.max}"
-             data-unit="${p.unit || ''}" data-enum="${p.enum || ''}">${p.name}</option>`
-  ).join('');
-
-  updateValueConstraints();
-  generateSysEx();
-}
-
-/**
- * Update value input constraints based on selected parameter
- */
-function updateValueConstraints() {
-  const paramSelect = document.querySelector('#paramSelect');
-  const paramValue = document.querySelector('#paramValue');
-  const paramSlider = document.querySelector('#paramSlider');
-  const paramUnit = document.querySelector('#paramUnit');
-  const valueRange = document.querySelector('#valueRange');
-  const quickValues = document.querySelector('#quickValues');
-  const enumSelectGroup = document.querySelector('#enumSelectGroup');
-  const enumSelect = document.querySelector('#enumSelect');
-  const paramDetails = document.querySelector('#paramDetails');
-
-  const option = paramSelect.selectedOptions[0];
-  if (!option) return;
-
-  const min = parseInt(option.dataset.min);
-  const max = parseInt(option.dataset.max);
-  const unit = option.dataset.unit;
-  const enumType = option.dataset.enum;
-  const offset = parseInt(option.value);
-
-  paramValue.min = min;
-  paramValue.max = max;
-  paramSlider.min = min;
-  paramSlider.max = max;
-  paramUnit.textContent = unit;
-  valueRange.textContent = `(${min} to ${max})`;
-
-  // Show parameter details
-  paramDetails.innerHTML = `<span class="detail-offset">Offset: ${offset}</span>`;
-
-  // Handle enum parameters
-  if (enumType && ENUMS[enumType]) {
-    enumSelectGroup.style.display = 'block';
-    const enumVals = getEnumValues(enumType);
-    enumSelect.innerHTML = enumVals.map((val, idx) =>
-      `<option value="${idx}">${idx}: ${val}</option>`
-    ).join('');
-  } else {
-    enumSelectGroup.style.display = 'none';
-  }
-
-  // Set to a sensible default value
-  let defaultVal;
-  if (unit === 'dB' && min < 0) {
-    defaultVal = 0; // Default to 0dB for level controls
-  } else if (min < 0) {
-    defaultVal = 0;
-  } else {
-    defaultVal = min;
-  }
-  defaultVal = Math.max(min, Math.min(max, defaultVal));
-
-  paramValue.value = defaultVal;
-  paramSlider.value = defaultVal;
-  updateEnumSelect();
-
-  // Generate quick value buttons
-  const quickVals = generateQuickValues(min, max, unit, enumType);
-  quickValues.innerHTML = quickVals.map(v =>
-    `<button class="quick-btn" data-value="${v.val}">${v.label}</button>`
-  ).join('');
-}
-
-/**
- * Update enum select to match current value
- */
-function updateEnumSelect() {
-  const paramSelect = document.querySelector('#paramSelect');
-  const paramValue = document.querySelector('#paramValue');
-  const enumSelect = document.querySelector('#enumSelect');
-
-  const option = paramSelect.selectedOptions[0];
-  if (!option) return;
-
-  const enumType = option.dataset.enum;
-  if (enumType && ENUMS[enumType]) {
-    enumSelect.value = paramValue.value;
-  }
-}
-
-/**
- * Generate quick value buttons based on range
- */
-function generateQuickValues(min, max, unit, enumType) {
-  const values = [];
-
-  // For enum types, show first few options
-  if (enumType && ENUMS[enumType]) {
-    const enumVals = getEnumValues(enumType);
-    const show = Math.min(5, enumVals.length);
-    for (let i = 0; i < show; i++) {
-      values.push({ val: i, label: enumVals[i] });
-    }
-    return values;
-  }
-
-  if (unit === 'dB') {
-    if (min <= -61) values.push({ val: -61, label: 'OFF' });
-    if (min <= -18 && max >= -18) values.push({ val: -18, label: '-18dB' });
-    if (min <= -12 && max >= -12) values.push({ val: -12, label: '-12dB' });
-    if (min <= -6 && max >= -6) values.push({ val: -6, label: '-6dB' });
-    if (min <= 0 && max >= 0) values.push({ val: 0, label: '0dB' });
-    if (max >= 6) values.push({ val: 6, label: '+6dB' });
-  } else if (unit === '%') {
-    values.push({ val: 0, label: '0%' });
-    if (max >= 25) values.push({ val: 25, label: '25%' });
-    if (max >= 50) values.push({ val: 50, label: '50%' });
-    if (max >= 75) values.push({ val: 75, label: '75%' });
-    if (max >= 100) values.push({ val: 100, label: '100%' });
-  } else if (unit === 'ms') {
-    values.push({ val: min, label: `${min}ms` });
-    const mid = Math.round((min + max) / 2);
-    values.push({ val: mid, label: `${mid}ms` });
-    values.push({ val: max, label: `${max}ms` });
-  } else if (unit === 'BPM') {
-    values.push({ val: 60, label: '60' });
-    values.push({ val: 90, label: '90' });
-    values.push({ val: 120, label: '120' });
-    values.push({ val: 140, label: '140' });
-    values.push({ val: 180, label: '180' });
-  } else {
-    // Generic: min, 25%, 50%, 75%, max
-    values.push({ val: min, label: `${min}` });
-    if (max - min > 4) {
-      const q1 = Math.round(min + (max - min) * 0.25);
-      const mid = Math.round((min + max) / 2);
-      const q3 = Math.round(min + (max - min) * 0.75);
-      values.push({ val: q1, label: `${q1}` });
-      values.push({ val: mid, label: `${mid}` });
-      values.push({ val: q3, label: `${q3}` });
-    }
-    values.push({ val: max, label: `${max}` });
-  }
-
-  return values.filter(v => v.val >= min && v.val <= max);
-}
-
-/**
- * Generate SysEx message from current form values
- */
-function generateSysEx() {
-  const paramSelect = document.querySelector('#paramSelect');
-  const paramValue = document.querySelector('#paramValue');
-  const sysexSpaced = document.querySelector('#sysexSpaced');
-  const sysexCompact = document.querySelector('#sysexCompact');
-  const paramMeta = document.querySelector('#paramMeta');
-
-  const offset = parseInt(paramSelect.value);
-  const value = parseInt(paramValue.value);
-  const option = paramSelect.selectedOptions[0];
-  const unit = option?.dataset.unit || '';
-  const enumType = option?.dataset.enum;
-
-  const sysex = makeSysEx(offset, value);
-  sysexSpaced.value = sysex;
-  sysexCompact.value = formatSysEx(sysex, true);
-
-  // Show value with enum name if applicable
-  let displayVal = `${value}${unit}`;
-  if (enumType && ENUMS[enumType] && ENUMS[enumType][value]) {
-    displayVal = `${value} (${ENUMS[enumType][value]})`;
-  }
-  paramMeta.innerHTML = `<span class="meta-label">Offset ${offset}</span> | <span class="meta-value">${displayVal}</span>`;
-}
-
-/**
- * Decode a SysEx message and display results
- */
-function decodeSysEx(hex, container) {
-  const resultDiv = container.querySelector('#decodeResult');
-  const parsed = parseSysEx(hex);
-
-  if (!parsed.valid) {
-    resultDiv.innerHTML = `<div class="decode-error">Invalid: ${parsed.error}</div>`;
-    return;
-  }
-
-  // Find the parameter
-  const param = findParamByOffset(parsed.offset);
-  const paramName = param ? param.name : `Unknown`;
-  const unit = param?.unit || '';
-
-  // Get enum value if applicable
-  let displayVal = `${parsed.value}${unit}`;
-  if (param?.enum && ENUMS[param.enum] && ENUMS[param.enum][parsed.value]) {
-    displayVal = `${parsed.value} (${ENUMS[param.enum][parsed.value]})`;
-  }
-
-  // Find category/subcategory
-  let location = 'Unknown location';
-  for (const [cat, subs] of Object.entries(VL3X_PARAMS)) {
-    for (const [sub, params] of Object.entries(subs)) {
-      if (params.find(p => p.offset === parsed.offset)) {
-        location = `${cat} > ${sub}`;
-        break;
-      }
-    }
-  }
-
-  resultDiv.innerHTML = `
-    <div class="decode-success">
-      <div class="decode-row"><span>Parameter:</span><strong>${paramName}</strong></div>
-      <div class="decode-row"><span>Location:</span>${location}</div>
-      <div class="decode-row"><span>Offset:</span>${parsed.offset} (chunk ${parsed.chunk}, local ${parsed.local})</div>
-      <div class="decode-row"><span>Value:</span><strong>${displayVal}</strong></div>
-      ${param ? `<div class="decode-row"><span>Range:</span>${param.min} to ${param.max}${unit}</div>` : ''}
-    </div>
-  `;
-}
-
-/**
- * Update the SysEx view header
- */
-export function updateSysExHeader(titleEl, infoEl) {
-  titleEl.textContent = 'SysEx Calculator';
-  infoEl.innerHTML = 'Generate seamless parameter control messages';
-}
-
-/**
- * Toggle SysEx UI elements
- */
-export function toggleSysExUI(elements, show) {
-  if (show) {
-    elements.categoryTabs.innerHTML = '';
-    elements.subtabs.style.display = 'none';
-    elements.cautionBox.style.display = 'none';
-  }
 }

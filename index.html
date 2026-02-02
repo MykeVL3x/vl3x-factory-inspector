@@ -25,12 +25,10 @@
       </div>
 
       <div class="view-toggle">
-        <button class="view-btn" id="viewSetup">Setup</button>
+        <button class="view-btn" id="viewGeneral">General</button>
         <button class="view-btn active" id="viewPresets">Presets</button>
         <div style="display:flex;flex-direction:column;align-items:center;"><span style="font-size:0.5rem;color:#fff;white-space:nowrap;position:relative;top:-0.3rem;">Select a preset</span><button class="view-btn" id="viewEffects" disabled style="opacity:0.4;cursor:not-allowed;">Effects</button></div>
         <button class="view-btn" id="viewSysEx">SysEx</button>
-        <a href="sysex-generator.html" class="view-btn sysex-gen-link" id="sysexLinkRow">SysEx Generator</a>
-        <a href="examples.html" class="view-btn sysex-gen-link" id="examplesLinkRow">Examples</a>
       </div>
 
       <div class="caution-box" id="cautionBox" style="display:none;">
@@ -52,9 +50,15 @@
 
       <div class="sysex-nav" id="sysexNav" style="display:none; padding:1rem;">
         <h3 style="color:#00d4ff; font-size:0.9rem; margin-bottom:1rem;">SysEx Tools</h3>
-        <a href="sysex-generator.html" style="display:block; padding:0.75rem; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.1); border-radius:6px; color:#e0e0e0; text-decoration:none; margin-bottom:0.5rem; font-size:0.9rem;">SysEx Generator</a>
-        <a href="examples.html" style="display:block; padding:0.75rem; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.1); border-radius:6px; color:#e0e0e0; text-decoration:none; margin-bottom:0.5rem; font-size:0.9rem;">Examples &amp; Workflows</a>
-        <a href="midi-comparison.html" style="display:block; padding:0.75rem; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.1); border-radius:6px; color:#e0e0e0; text-decoration:none; font-size:0.9rem;">USB vs DIN-5 MIDI</a>
+        <a href="#generator" id="navGenerator" class="nav-link">GTR, VOC & Setup</a>
+        <a href="#mixer" id="navMixer" class="nav-link">Mixing Desk</a>
+        <a href="examples.html" id="navExamples" class="nav-link">Examples &amp; Workflows</a>
+      </div>
+
+      <div class="general-nav" id="generalNav" style="display:none; padding:1rem;">
+        <h3 style="color:#ffe66d; font-size:0.9rem; margin-bottom:1rem;">General Info</h3>
+        <a href="#setup" id="navSetup" class="nav-link nav-link-general">Setup Parameters</a>
+        <a href="midi-comparison.html" id="navMidiComparison" class="nav-link nav-link-general">USB vs DIN-5 MIDI</a>
       </div>
     </div>
 
@@ -94,6 +98,6 @@
     </div>
   </div>
 
-  <script type="module" src="js/main.js?v=20260128a"></script>
+  <script type="module" src="js/main.js?v=20260201j"></script>
 </body>
 </html>
