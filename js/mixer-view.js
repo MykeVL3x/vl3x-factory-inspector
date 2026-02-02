@@ -15,9 +15,7 @@ import { getState } from './state.js';
 import {
   formatSysEx,
   getCurrentFormat,
-  renderFormatSelector,
-  setupFormatSelector,
-  renderFormatInstructions
+  setCurrentFormat
 } from './sysex-formatter.js';
 
 // ============================================================================
@@ -503,6 +501,58 @@ function renderChannelStrip(channelKey, channel) {
 }
 
 /**
+ * Render format pills (text only, matching sysex-view.js design)
+ */
+function renderFormatPills() {
+  const formats = [
+    { id: 'raw', label: 'Raw' },
+    { id: 'onsong', label: 'onSong' },
+    { id: 'compressed', label: 'MC-8' },
+    { id: 'stagetraxx', label: 'Stage Traxx 4' }
+  ];
+  const current = getCurrentFormat();
+
+  return formats.map(fmt => `
+    <button class="format-pill ${fmt.id === current ? 'active' : ''}" data-format="${fmt.id}">
+      ${fmt.label}
+    </button>
+  `).join('');
+}
+
+/**
+ * Render compact format instructions
+ */
+function renderFormatInstructionsCompact() {
+  const format = getCurrentFormat();
+  switch (format) {
+    case 'onsong':
+      return `<strong>onSong:</strong> Add each line separately via the MIDI Events screen, pressing + for each entry. First line (Editor Enable) is required before any parameter changes.`;
+    case 'stagetraxx':
+      return `<strong>Stage Traxx 4:</strong> Copy lines into your cue list. Timing is embedded in each line. First line (Editor Enable) is required before any parameter changes. See <a href="https://stagetraxx.com/user-guide/midi/" target="_blank">ST4 MIDI Guide</a>`;
+    case 'compressed':
+      return `<strong>MC-8:</strong> Paste hex string into SysEx field (no spaces). First line (Editor Enable) is required before any parameter changes.`;
+    case 'raw':
+    default:
+      return `<strong>Raw:</strong> Space-separated hex bytes. Copy and use as-is with many MIDI tools. First line (Editor Enable) is required before any parameter changes.`;
+  }
+}
+
+/**
+ * Get Editor Enable hint text based on format
+ */
+function getEditorEnableHint(format = getCurrentFormat()) {
+  switch (format) {
+    case 'onsong':
+    case 'stagetraxx':
+      return '';
+    case 'compressed':
+    case 'raw':
+    default:
+      return '// Automatically included!';
+  }
+}
+
+/**
  * Render SysEx output panel with remove buttons and hover tips
  */
 function renderSysExPanel() {
@@ -510,24 +560,21 @@ function renderSysExPanel() {
 
   // Check if we have any touched parameters
   const hasTouchedParams = touchedParams.size > 0;
+  const format = getCurrentFormat();
 
   let linesHtml;
   if (!hasTouchedParams) {
-    // Empty state with overlay info
+    // Empty state
     linesHtml = `
       <div class="sysex-empty-state">
-        <p class="mixer-panel-info">This tool is not connected to your VL3X and has no knowledge of your current settings. Adjust any fader or knob to generate SysEx commands.<br><br>Hover over a line to see its details or click the red × to remove it. Use Clear to start over.</p>
+        Adjust any fader or knob to generate SysEx commands.<br>
+        Hover over a line to see details. Click × to remove.
       </div>
     `;
   } else {
-    // Render lines with remove buttons
-    linesHtml = sysexOutput.map(item => {
+    // Render lines with remove buttons (skip header - it's shown separately)
+    linesHtml = sysexOutput.filter(item => item.type !== 'header').map(item => {
       const tooltip = `${item.label} = ${item.displayValue}`;
-      if (item.type === 'header') {
-        return `<div class="sysex-line-row">
-          <span class="sysex-line sysex-header" data-tooltip="${tooltip}">${item.text}</span>
-        </div>`;
-      }
       return `<div class="sysex-line-row" data-sysex-id="${item.sysexId}">
         <button class="sysex-remove-btn" data-sysex-id="${item.sysexId}" title="Remove this line">×</button>
         <span class="sysex-line sysex-data" data-tooltip="${tooltip}">${item.text}</span>
@@ -537,13 +584,21 @@ function renderSysExPanel() {
 
   return `
     <div class="mixer-sysex-panel">
-      <div class="channel-label" style="color: #00d4ff">SysEx Output</div>
-      ${renderFormatSelector()}
-      <div id="formatInstructions">${renderFormatInstructions()}</div>
-      <div class="sysex-output" id="mixerSysexOutput">${linesHtml}</div>
-      <div class="sysex-actions">
-        <button class="sysex-action-btn" id="mixerClear">Clear</button>
-        <button class="sysex-action-btn primary" id="mixerCopyAll"${hasTouchedParams ? '' : ' disabled'}>Copy All</button>
+      <div class="output-title">SysEx Output</div>
+      <div class="format-pills" id="formatSelector">
+        ${renderFormatPills()}
+      </div>
+      <div class="output-instructions" id="formatInstructions">${renderFormatInstructionsCompact()}</div>
+      <div class="editor-enable-line" id="editorEnableLine" title="Editor Enable command">
+        <span class="sysex-bytes" id="editorEnableBytes">${formatSysEx(EDITOR_ENABLE_BYTES, format)}</span>
+        <span class="sysex-comment" id="editorEnableHint">${getEditorEnableHint()}</span>
+      </div>
+      <div class="sysex-output-box" id="mixerSysexOutput">
+        ${linesHtml}
+        <div class="sysex-actions">
+          <button class="sysex-action-btn" id="mixerClear">Clear</button>
+          <button class="sysex-action-btn primary" id="mixerCopyAll"${hasTouchedParams ? '' : ' disabled'}>Copy All</button>
+        </div>
       </div>
     </div>
   `;
@@ -675,6 +730,46 @@ function setupMixerInteraction(container) {
     document.addEventListener('mouseup', () => isDragging = false);
   });
 
+  // Set up action buttons
+  setupActionButtons(container);
+
+  // Remove button clicks (event delegation)
+  const sysexOutputEl = container.querySelector('#mixerSysexOutput');
+  if (sysexOutputEl) {
+    sysexOutputEl.addEventListener('click', (e) => {
+      const removeBtn = e.target.closest('.sysex-remove-btn');
+      if (removeBtn) {
+        const sysexId = parseInt(removeBtn.dataset.sysexId);
+        removeFromTouched(sysexId, container);
+        updateSysExDisplay(container);
+      }
+    });
+  }
+
+  // Format pills
+  const formatSelector = container.querySelector('#formatSelector');
+  if (formatSelector) {
+    formatSelector.addEventListener('click', (e) => {
+      const pill = e.target.closest('.format-pill');
+      if (pill) {
+        const formatId = pill.dataset.format;
+        setCurrentFormat(formatId);
+
+        // Update active state
+        formatSelector.querySelectorAll('.format-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        // Update display
+        updateSysExDisplay(container);
+      }
+    });
+  }
+}
+
+/**
+ * Set up Copy and Clear button listeners
+ */
+function setupActionButtons(container) {
   // Copy button
   const copyBtn = container.querySelector('#mixerCopyAll');
   if (copyBtn) {
@@ -696,31 +791,6 @@ function setupMixerInteraction(container) {
       updateSysExDisplay(container);
     });
   }
-
-  // Remove button clicks (event delegation)
-  const sysexOutputEl = container.querySelector('#mixerSysexOutput');
-  if (sysexOutputEl) {
-    sysexOutputEl.addEventListener('click', (e) => {
-      const removeBtn = e.target.closest('.sysex-remove-btn');
-      if (removeBtn) {
-        const sysexId = parseInt(removeBtn.dataset.sysexId);
-        removeFromTouched(sysexId, container);
-        updateSysExDisplay(container);
-      }
-    });
-  }
-
-  // Format selector
-  setupFormatSelector(container, (formatId) => {
-    // Re-generate SysEx with new format
-    updateSysExDisplay(container);
-
-    // Update instructions
-    const instructionsEl = container.querySelector('#formatInstructions');
-    if (instructionsEl) {
-      instructionsEl.innerHTML = renderFormatInstructions(formatId);
-    }
-  });
 }
 
 /**
@@ -728,39 +798,58 @@ function setupMixerInteraction(container) {
  */
 function updateSysExDisplay(container) {
   updateSysExOutput();
+  const format = getCurrentFormat();
+  const hasTouchedParams = touchedParams.size > 0;
+
+  // Update editor enable line
+  const editorEnableBytes = container.querySelector('#editorEnableBytes');
+  if (editorEnableBytes) {
+    editorEnableBytes.textContent = formatSysEx(EDITOR_ENABLE_BYTES, format);
+  }
+  const editorEnableHint = container.querySelector('#editorEnableHint');
+  if (editorEnableHint) {
+    editorEnableHint.textContent = getEditorEnableHint(format);
+  }
+
+  // Update instructions
+  const instructionsEl = container.querySelector('#formatInstructions');
+  if (instructionsEl) {
+    instructionsEl.innerHTML = renderFormatInstructionsCompact();
+  }
+
+  // Update output lines
   const sysexOutputEl = container.querySelector('#mixerSysexOutput');
   if (sysexOutputEl) {
-    const hasTouchedParams = touchedParams.size > 0;
-
+    let linesHtml;
     if (!hasTouchedParams) {
-      // Empty state with overlay info
-      sysexOutputEl.innerHTML = `
+      // Empty state
+      linesHtml = `
         <div class="sysex-empty-state">
-          <p class="mixer-panel-info">This tool is not connected to your VL3X and has no knowledge of your current settings. Adjust any fader or knob to generate SysEx commands.<br><br>Hover over a line to see its details or click the red × to remove it. Use Clear to start over.</p>
+          Adjust any fader or knob to generate SysEx commands.<br>
+          Hover over a line to see details. Click × to remove.
         </div>
       `;
     } else {
-      // Render lines with remove buttons
-      const lines = sysexOutput.map(item => {
+      // Render lines with remove buttons (skip header - it's shown separately)
+      linesHtml = sysexOutput.filter(item => item.type !== 'header').map(item => {
         const tooltip = `${item.label} = ${item.displayValue}`;
-        if (item.type === 'header') {
-          return `<div class="sysex-line-row">
-            <span class="sysex-line sysex-header" data-tooltip="${tooltip}">${item.text}</span>
-          </div>`;
-        }
         return `<div class="sysex-line-row" data-sysex-id="${item.sysexId}">
           <button class="sysex-remove-btn" data-sysex-id="${item.sysexId}" title="Remove this line">×</button>
           <span class="sysex-line sysex-data" data-tooltip="${tooltip}">${item.text}</span>
         </div>`;
       }).join('');
-      sysexOutputEl.innerHTML = lines;
     }
 
-    // Toggle Copy All button state
-    const copyBtn = container.querySelector('#mixerCopyAll');
-    if (copyBtn) {
-      copyBtn.disabled = !hasTouchedParams;
-    }
+    // Preserve action buttons
+    sysexOutputEl.innerHTML = linesHtml + `
+      <div class="sysex-actions">
+        <button class="sysex-action-btn" id="mixerClear">Clear</button>
+        <button class="sysex-action-btn primary" id="mixerCopyAll"${hasTouchedParams ? '' : ' disabled'}>Copy All</button>
+      </div>
+    `;
+
+    // Re-attach button listeners
+    setupActionButtons(container);
   }
 }
 

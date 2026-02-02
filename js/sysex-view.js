@@ -10,10 +10,7 @@ import { VL3X_PARAMS, ENUMS, getCategories, getSubcategories, getParameters, fin
 import {
   formatSysEx,
   getCurrentFormat,
-  setCurrentFormat,
-  renderFormatSelector,
-  setupFormatSelector,
-  renderFormatInstructions
+  setCurrentFormat
 } from './sysex-formatter.js';
 import { getDisplayValue } from './value-transforms.js';
 
@@ -252,14 +249,18 @@ export async function renderSysExView(container) {
         </div>
 
         <div class="generator-right">
-          <div class="sysex-output-section">
-            <div class="sysex-output-title">SysEx Output</div>
-            ${renderFormatSelector()}
-            <div id="formatInstructions">${renderFormatInstructions()}</div>
-            <div class="sysex-output-block" id="sysexOutputBlock">
-              ${renderSysExOutput()}
-            </div>
-            <div class="sysex-output-actions">
+          <div class="output-title">SysEx Output</div>
+          <div class="format-pills" id="formatSelector">
+            ${renderFormatPills()}
+          </div>
+          <div class="output-instructions" id="formatInstructions">${renderFormatInstructionsCompact()}</div>
+          <div class="editor-enable-line" id="editorEnableLine" title="Editor Enable command">
+            <span class="sysex-bytes" id="editorEnableBytes">${formatSysEx(EDITOR_ENABLE_BYTES, getCurrentFormat())}</span>
+            <span class="sysex-comment" id="editorEnableHint">${getEditorEnableHint()}</span>
+          </div>
+          <div class="sysex-output-box" id="sysexOutputBlock">
+            ${renderSysExOutput()}
+            <div class="sysex-actions">
               <button class="sysex-action-btn" id="clearOutput">Clear</button>
               <button class="sysex-action-btn primary" id="copyAll"${sysexOutput.length === 0 ? ' disabled' : ''}>Copy All</button>
             </div>
@@ -288,6 +289,60 @@ function renderCategoryTabs() {
       `).join('')}
     </div>
   `;
+}
+
+/**
+ * Render format pills (text only, no icons)
+ */
+function renderFormatPills() {
+  const formats = [
+    { id: 'raw', label: 'Raw' },
+    { id: 'onsong', label: 'onSong' },
+    { id: 'compressed', label: 'MC-8' },
+    { id: 'stagetraxx', label: 'Stage Traxx 4' }
+  ];
+  const current = getCurrentFormat();
+
+  return formats.map(fmt => `
+    <button class="format-pill ${fmt.id === current ? 'active' : ''}" data-format="${fmt.id}">
+      ${fmt.label}
+    </button>
+  `).join('');
+}
+
+/**
+ * Render compact format instructions (no extra spacing)
+ */
+function renderFormatInstructionsCompact() {
+  const format = getCurrentFormat();
+  switch (format) {
+    case 'onsong':
+      return `<strong>onSong:</strong> Add each line separately via the MIDI Events screen, pressing + for each entry. First line (Editor Enable) is required before any parameter changes.`;
+    case 'stagetraxx':
+      return `<strong>Stage Traxx 4:</strong> Copy lines into your cue list. Timing is embedded in each line. First line (Editor Enable) is required before any parameter changes.`;
+    case 'compressed':
+      return `<strong>MC-8:</strong> Paste hex string into SysEx field (no spaces). First line (Editor Enable) is required before any parameter changes.`;
+    case 'raw':
+    default:
+      return `<strong>Raw:</strong> Space-separated hex bytes. Copy and use as-is with many MIDI tools. First line (Editor Enable) is required before any parameter changes.`;
+  }
+}
+
+/**
+ * Get Editor Enable hint text based on format
+ * For onSong, Copy All is disabled so user must copy this line manually first
+ * For Stage Traxx 4, no hint needed (timing format is self-explanatory)
+ */
+function getEditorEnableHint(format = getCurrentFormat()) {
+  switch (format) {
+    case 'onsong':
+    case 'stagetraxx':
+      return '';
+    case 'compressed':
+    case 'raw':
+    default:
+      return '// Automatically included!';
+  }
 }
 
 /**
@@ -327,14 +382,14 @@ function renderParameterGrid() {
 
 /**
  * Render a single parameter control
- * Rule: If parameter range is 20 or less, use dropdown; otherwise use slider
+ * Rule: If parameter range is 30 or less, use dropdown; otherwise use slider
  */
 function renderParameter(param) {
   const currentValue = parameterValues[param.offset] ?? param.min;
   const range = param.max - param.min;
 
-  // Use dropdown if range is 20 or less, slider otherwise
-  if (range <= 20) {
+  // Use dropdown if range is 30 or less, slider otherwise
+  if (range <= 30) {
     return renderDropdownParameter(param, currentValue);
   } else {
     return renderSliderParameter(param, currentValue);
@@ -342,7 +397,7 @@ function renderParameter(param) {
 }
 
 /**
- * Render a parameter as a dropdown (for range <= 20)
+ * Render a parameter as a dropdown (for range <= 30)
  * Works with both enum and non-enum params
  */
 function renderDropdownParameter(param, currentValue) {
@@ -376,30 +431,35 @@ function renderDropdownParameter(param, currentValue) {
 
 /**
  * Render a slider parameter
- * Shows: number input box + enum name (if enum) or unit (if no enum)
+ * - Enum params: number input + enum name to the right
+ * - Non-enum params: screen value display (human-readable, matches VL3X screen)
  */
 function renderSliderParameter(param, currentValue) {
   const unit = param.unit || '';
   const hasEnum = param.enum && ENUMS[param.enum];
   const enumValues = hasEnum ? getEnumValues(param.enum) : null;
 
-  // Get enum label if applicable
+  // Get display values
   const enumLabel = hasEnum && enumValues[currentValue] ? enumValues[currentValue] : '';
+  const screenValue = getScreenValue(param.offset, currentValue, currentCategory, param);
 
   return `
     <div class="param-control param-slider-control" data-offset="${param.offset}" ${hasEnum ? `data-enum="${param.enum}"` : ''}>
       <div class="param-control-header">
         <label class="param-label">${param.name}</label>
         <span class="param-value-display">
-          <input type="number" class="param-value-input param-raw-input"
-                 value="${currentValue}"
-                 min="${param.min}" max="${param.max}"
-                 data-offset="${param.offset}"
-                 data-name="${param.name}"
-                 data-unit="${unit}"
-                 title="Raw value (for SysEx)">
-          ${hasEnum ? `<span class="param-enum-label" data-offset="${param.offset}">${enumLabel}</span>` : ''}
-          ${!hasEnum && unit ? `<span class="param-unit">${unit}</span>` : ''}
+          ${hasEnum ? `
+            <input type="number" class="param-value-input param-raw-input"
+                   value="${currentValue}"
+                   min="${param.min}" max="${param.max}"
+                   data-offset="${param.offset}"
+                   data-name="${param.name}"
+                   data-unit="${unit}"
+                   title="Raw index value">
+            <span class="param-enum-label" data-offset="${param.offset}">${enumLabel}</span>
+          ` : `
+            <span class="param-screen-value" data-offset="${param.offset}">${screenValue}</span>
+          `}
         </span>
       </div>
       <div class="param-slider-wrapper">
@@ -419,26 +479,20 @@ function renderSliderParameter(param, currentValue) {
 }
 
 /**
- * Render the stacking SysEx output
+ * Render the stacking SysEx output (parameter commands only, Editor Enable is in header)
  */
 function renderSysExOutput() {
   if (sysexOutput.length === 0) {
     return `
       <div class="sysex-empty-state">
-        <p class="sysex-panel-info">This tool is not connected to your VL3X and has no knowledge of your current settings. Adjust any parameter to generate SysEx commands.<br><br>Hover over a line to see its details or click the red × to remove it. Use Clear to start over.</p>
+        Adjust any parameter to generate SysEx commands.<br>
+        Hover over a line to see details. Click × to remove.
       </div>
     `;
   }
 
-  const format = getCurrentFormat();
+  // Parameter changes only - color coded by category
   let lines = [];
-
-  // Editor Enable first
-  lines.push(`<div class="sysex-line-row">
-    <span class="sysex-line sysex-header" data-tooltip="Editor Enable - required before parameter changes">${formatSysEx(EDITOR_ENABLE_BYTES, format)}</span>
-  </div>`);
-
-  // Parameter changes - color coded by category
   sysexOutput.forEach(entry => {
     const categoryClass = `sysex-cat-${(entry.category || 'guitar').toLowerCase()}`;
     lines.push(`<div class="sysex-line-row" data-offset="${entry.offset}">
@@ -482,17 +536,8 @@ function setupEventListeners(container) {
   setupParameterListeners(container);
   setupOutputListeners(container);
 
-  // Format selector
-  setupFormatSelector(container, (formatId) => {
-    reformatOutput();
-    updateSysExDisplay(container);
-    updateCopyAllButton(container, formatId);
-
-    const instructionsEl = container.querySelector('#formatInstructions');
-    if (instructionsEl) {
-      instructionsEl.innerHTML = renderFormatInstructions(formatId);
-    }
-  });
+  // Format pills
+  setupFormatPills(container);
 
   // Set initial Copy All button state
   updateCopyAllButton(container, getCurrentFormat());
@@ -519,6 +564,45 @@ function updateCopyAllButton(container, formatId) {
       copyBtn.title = 'Copy all SysEx commands';
     }
   }
+}
+
+/**
+ * Set up format pill listeners
+ */
+function setupFormatPills(container) {
+  container.querySelectorAll('.format-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const formatId = pill.dataset.format;
+      setCurrentFormat(formatId);
+
+      // Update active state
+      container.querySelectorAll('.format-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+
+      // Reformat output
+      reformatOutput();
+      updateSysExDisplay(container);
+      updateCopyAllButton(container, formatId);
+
+      // Update instructions
+      const instructionsEl = container.querySelector('#formatInstructions');
+      if (instructionsEl) {
+        instructionsEl.innerHTML = renderFormatInstructionsCompact();
+      }
+
+      // Update Editor Enable line
+      const editorEnableBytes = container.querySelector('#editorEnableBytes');
+      if (editorEnableBytes) {
+        editorEnableBytes.textContent = formatSysEx(EDITOR_ENABLE_BYTES, formatId);
+      }
+
+      // Update Editor Enable hint
+      const editorEnableHint = container.querySelector('#editorEnableHint');
+      if (editorEnableHint) {
+        editorEnableHint.textContent = getEditorEnableHint(formatId);
+      }
+    });
+  });
 }
 
 /**
