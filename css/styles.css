@@ -1696,7 +1696,8 @@ body {
 }
 
 /* Enum parameter (dropdown) */
-.param-enum .param-select {
+.param-enum .param-select,
+.param-dropdown .param-select {
   width: 100%;
   padding: 0.4rem 0.5rem;
   background: rgba(0, 0, 0, 0.4);
@@ -1707,7 +1708,8 @@ body {
   cursor: pointer;
 }
 
-.param-enum .param-select:focus {
+.param-enum .param-select:focus,
+.param-dropdown .param-select:focus {
   outline: none;
   border-color: #00d4ff;
 }

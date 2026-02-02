@@ -319,38 +319,48 @@ function renderParameterGrid() {
 
 /**
  * Render a single parameter control
+ * Rule: If parameter range is 10 or less, use dropdown; otherwise use slider
  */
 function renderParameter(param) {
-  const hasEnum = param.enum && ENUMS[param.enum];
   const currentValue = parameterValues[param.offset] ?? param.min;
-  const valueCount = param.max - param.min + 1;
+  const range = param.max - param.min;
 
-  // Use dropdown for enums with 5 or fewer values, slider otherwise
-  if (hasEnum && valueCount <= 5) {
-    return renderEnumParameter(param, currentValue);
+  // Use dropdown if range is 10 or less, slider otherwise
+  if (range <= 10) {
+    return renderDropdownParameter(param, currentValue);
   } else {
     return renderSliderParameter(param, currentValue);
   }
 }
 
 /**
- * Render an enum parameter as a dropdown
+ * Render a parameter as a dropdown (for range <= 10)
+ * Works with both enum and non-enum params
  */
-function renderEnumParameter(param, currentValue) {
-  const enumValues = getEnumValues(param.enum);
+function renderDropdownParameter(param, currentValue) {
+  const hasEnum = param.enum && ENUMS[param.enum];
+  const enumValues = hasEnum ? getEnumValues(param.enum) : null;
+
+  // Generate options from min to max
+  const options = [];
+  for (let val = param.min; val <= param.max; val++) {
+    let displayText;
+    if (enumValues && enumValues[val]) {
+      displayText = enumValues[val];
+    } else {
+      // Use screen value for non-enum params
+      displayText = getScreenValue(param.offset, val, currentCategory, param);
+    }
+    options.push(`<option value="${val}" ${val === currentValue ? 'selected' : ''}>${displayText}</option>`);
+  }
 
   return `
-    <div class="param-control param-enum" data-offset="${param.offset}">
+    <div class="param-control param-dropdown" data-offset="${param.offset}">
       <label class="param-label">${param.name}</label>
       <select class="param-select" data-offset="${param.offset}"
               data-min="${param.min}" data-max="${param.max}"
               data-name="${param.name}" data-unit="${param.unit || ''}">
-        ${enumValues.slice(param.min, param.max + 1).map((val, idx) => {
-          const actualIdx = param.min + idx;
-          return `<option value="${actualIdx}" ${actualIdx === currentValue ? 'selected' : ''}>
-            ${val || actualIdx}
-          </option>`;
-        }).join('')}
+        ${options.join('')}
       </select>
     </div>
   `;
